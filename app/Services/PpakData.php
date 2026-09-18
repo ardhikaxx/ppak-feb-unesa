@@ -246,7 +246,7 @@ class PpakData
                 'category' => 'Admisi & Pendaftaran',
                 'date' => '15 September 2024',
                 'author' => 'Tim Sekretariat PPAk',
-                'image' => 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/unesa_campus_hero.jpg',
                 'read_time' => '4 menit baca',
                 'tags' => ['Pendaftaran', 'Admisi', 'Mahasiswa Baru', 'Akuntansi'],
                 'content' => '
@@ -267,7 +267,7 @@ class PpakData
                 'category' => 'Akademik & Seminar',
                 'date' => '02 September 2024',
                 'author' => 'Gugus Humas FEB',
-                'image' => 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/accounting_lecture.jpg',
                 'read_time' => '5 menit baca',
                 'tags' => ['Kuliah Tamu', 'Big 4', 'Auditing', 'AI in Accounting'],
                 'content' => '
@@ -316,7 +316,7 @@ class PpakData
                 'category' => 'Kerja Sama & Kemitraan',
                 'date' => '28 Juli 2024',
                 'author' => 'Humas FEB UNESA',
-                'image' => 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/audit_team_practice.jpg',
                 'read_time' => '3 menit baca',
                 'tags' => ['MoU', 'KAP', 'Karier', 'Kemitraan'],
                 'content' => '
@@ -863,7 +863,7 @@ class PpakData
                 'category' => 'akademik',
                 'category_label' => 'Perkuliahan & Praktika',
                 'date' => 'September 2024',
-                'image' => 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/audit_team_practice.jpg',
             ],
             [
                 'id' => 2,
@@ -871,7 +871,7 @@ class PpakData
                 'category' => 'seminar',
                 'category_label' => 'Seminar & Kuliah Pakar',
                 'date' => 'Agustus 2024',
-                'image' => 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/accounting_lecture.jpg',
             ],
             [
                 'id' => 3,
@@ -879,7 +879,7 @@ class PpakData
                 'category' => 'yudisium',
                 'category_label' => 'Yudisium & Seremoni',
                 'date' => 'Agustus 2024',
-                'image' => 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/unesa_campus_hero.jpg',
             ],
             [
                 'id' => 4,

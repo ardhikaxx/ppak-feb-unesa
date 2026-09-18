@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="Ruang Perkuliahan dan Diskusi Mahasiswa FEB UNESA" class="img-fluid rounded-3 border shadow-sm">
+                    <img src="{{ asset('images/accounting_lecture.jpg') }}" alt="Ruang Perkuliahan dan Diskusi Mahasiswa FEB UNESA" class="img-fluid rounded-3 border shadow-sm">
                 </div>
             </div>
         </div>

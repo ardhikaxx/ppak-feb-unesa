@@ -5,9 +5,7 @@
                 {{-- Column 1: Identity & About --}}
                 <div class="col-lg-4 col-md-6">
                     <div class="d-flex align-items-center gap-3 mb-3">
-                        <div class="navbar-brand-emblem" style="width: 44px; height: 44px; font-size: 1.1rem;">
-                            <span>PPAk</span>
-                        </div>
+                        <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="46" style="background: rgba(255, 255, 255, 0.06); padding: 5px 12px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.12);">
                         <div>
                             <div class="fw-bold text-white fs-5 lh-1">PPAk FEB UNESA</div>
                             <div class="text-secondary" style="font-size: 0.775rem;">Universitas Negeri Surabaya</div>

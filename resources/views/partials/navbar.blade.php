@@ -1,13 +1,12 @@
 <nav class="navbar navbar-expand-xl navbar-ppak" aria-label="Navigasi Utama">
     <div class="container">
-        {{-- Brand / Wordmark --}}
+        {{-- Brand / Wordmark with Official UNESA Logo --}}
         <a class="navbar-brand-wrapper" href="{{ route('home') }}">
-            <div class="navbar-brand-emblem" aria-hidden="true">
-                <span>PPAk</span>
-            </div>
-            <div class="navbar-brand-text">
-                <span class="navbar-brand-title">PPAk FEB UNESA</span>
-                <span class="navbar-brand-subtitle">Universitas Negeri Surabaya</span>
+            <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" class="navbar-brand-logo">
+            <div class="navbar-brand-divider d-none d-sm-block"></div>
+            <div class="navbar-brand-text d-none d-sm-flex">
+                <span class="navbar-brand-title">PPAk FEB</span>
+                <span class="navbar-brand-subtitle">Pendidikan Profesi Akuntansi</span>
             </div>
         </a>
 
@@ -20,11 +19,10 @@
         <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
             <div class="offcanvas-header border-bottom">
                 <div class="d-flex align-items-center gap-2">
-                    <div class="navbar-brand-emblem" style="width: 38px; height: 38px; font-size: 0.95rem;">
-                        <span>PPAk</span>
-                    </div>
+                    <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="34">
+                    <div class="navbar-brand-divider"></div>
                     <div>
-                        <div class="fw-bold text-navy lh-sm" style="font-size: 0.95rem;">PPAk FEB UNESA</div>
+                        <div class="fw-bold text-navy lh-sm" style="font-size: 0.95rem;">PPAk FEB</div>
                         <div class="text-muted" style="font-size: 0.725rem;">Universitas Negeri Surabaya</div>
                     </div>
                 </div>

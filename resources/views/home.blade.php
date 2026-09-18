@@ -53,15 +53,13 @@
 
             <div class="col-lg-6">
                 <div class="hero-visual-card">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=85" alt="Aktivitas Akademik dan Pembelajaran di PPAk FEB UNESA">
+                    <img src="{{ asset('images/unesa_campus_hero.jpg') }}" alt="Aktivitas Akademik dan Kampus di PPAk FEB UNESA">
                     <div class="hero-floating-badge">
                         <div class="d-flex align-items-center gap-3">
-                            <div class="navbar-brand-emblem" style="width: 46px; height: 46px; font-size: 1.15rem;">
-                                <i class="fa-solid fa-award"></i>
-                            </div>
+                            <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="40">
                             <div>
-                                <div class="fw-bold text-navy" style="font-size: 0.95rem;">Terakreditasi Baik Sekali</div>
-                                <div class="text-secondary small">Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi</div>
+                                <div class="fw-bold text-navy" style="font-size: 0.95rem;">Terakreditasi Baik Sekali [LAMEMBA]</div>
+                                <div class="text-secondary small">Universitas Negeri Surabaya &bull; Fakultas Ekonomika dan Bisnis</div>
                             </div>
                         </div>
                     </div>

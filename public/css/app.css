@@ -8,18 +8,19 @@
    1. Root Variables & Theme Colors
    -------------------------------------------------------------------------- */
 :root {
-  /* Brand Palette (UNESA Identity Inspired) */
-  --ppak-navy: #0b1f3a;
-  --ppak-navy-dark: #071529;
-  --ppak-navy-light: #163259;
-  --ppak-blue: #1b56b3;
-  --ppak-blue-hover: #144491;
-  --ppak-blue-soft: #f0f5fc;
-  --ppak-blue-border: #dbe7f6;
-  --ppak-gold: #b37d14;
-  --ppak-gold-hover: #9c6c0e;
-  --ppak-gold-soft: #fdf8ed;
-  --ppak-gold-border: #f4e3be;
+  /* Brand Palette (Exact UNESA Official unesa.ac.id Identity) */
+  --ppak-navy: #062137;
+  --ppak-navy-dark: #041a2c;
+  --ppak-navy-light: #0b3556;
+  --ppak-blue: #0b3556;
+  --ppak-blue-hover: #062137;
+  --ppak-blue-soft: #edf4fa;
+  --ppak-blue-border: #d2e4f3;
+  --ppak-gold: #c98a2c;
+  --ppak-gold-bright: #ffcd00;
+  --ppak-gold-hover: #ad741f;
+  --ppak-gold-soft: #fff9e6;
+  --ppak-gold-border: #fce8b3;
 
   /* Surfaces & Backgrounds */
   --ppak-bg: #ffffff;
@@ -250,6 +251,26 @@ a:hover {
   align-items: center;
   gap: 12px;
   text-decoration: none;
+}
+
+.navbar-brand-logo {
+  height: 40px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+  transition: transform var(--transition-fast);
+}
+
+.navbar-brand-wrapper:hover .navbar-brand-logo {
+  transform: scale(1.02);
+}
+
+.navbar-brand-divider {
+  width: 1px;
+  height: 28px;
+  background-color: var(--ppak-border);
+  margin: 0 2px;
 }
 
 .navbar-brand-emblem {
