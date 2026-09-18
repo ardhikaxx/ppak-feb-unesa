@@ -2533,7 +2533,7 @@ a:hover {
     padding: 8px 12px 10px;
     margin-top: 0;
     margin-bottom: -64px;
-    background-color: #0A2D51; /* cover top gap when topbar hidden (d-none) */
+    background-color: transparent;
   }
 
   .navbar-ppak {
