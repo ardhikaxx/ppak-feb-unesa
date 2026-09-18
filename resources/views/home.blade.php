@@ -14,7 +14,7 @@
             <div class="col-lg-9 col-xl-8">
                 <div class="hero-brand-badge">
                     <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi UNESA" class="hero-brand-badge-logo">
-                    <span class="hero-brand-badge-text">PENDIDIKAN PROFESI AKUNTANSI (PPAk) &bull; FEB UNESA</span>
+                    <span class="hero-brand-badge-text">PENDIDIKAN PROFESI AKUNTANSI &bull; FEB UNESA</span>
                 </div>
                 <h1 class="hero-headline">
                     Membangun Profesional Akuntansi yang <span class="accent">Kompeten & Berintegritas</span>
