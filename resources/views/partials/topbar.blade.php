@@ -1,6 +1,6 @@
 <div class="top-infobar d-none d-md-block" role="complementary" aria-label="Informasi Kontak">
     <div class="container-xl">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center py-1">
             <p class="top-infobar-brand m-0">
                 Pendidikan Profesi Akuntansi <span class="top-infobar-sep">&bull;</span> Fakultas Ekonomika dan Bisnis <span class="top-infobar-sep">&bull;</span> Universitas Negeri Surabaya
             </p>

@@ -254,7 +254,7 @@
                 </ul>
 
                 {{-- Action CTA Button --}}
-                <div class="d-flex align-items-center mt-3 mt-xl-0 pt-2 pt-xl-0 border-top border-xl-0 ms-xl-2 me-xl-1">
+                <div class="d-flex align-items-center mt-3 mt-xl-0 ms-xl-2 me-xl-1">
                     <a href="{{ route('admisi.jalur-syarat') }}" class="btn-navbar-pill w-100 w-xl-auto">
                         <span>Pendaftaran</span>
                         <i class="fa-solid fa-arrow-right"></i>
