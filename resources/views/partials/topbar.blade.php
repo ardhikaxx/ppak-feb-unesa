@@ -2,17 +2,19 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <a href="mailto:ppak.feb@unesa.ac.id" class="me-3">
+                <span class="text-white-50 small fw-medium">Pendidikan Profesi Akuntansi &bull; Fakultas Ekonomika dan Bisnis &bull; Universitas Negeri Surabaya</span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <a href="mailto:ppak.feb@unesa.ac.id" class="d-none d-xl-inline-flex">
                     <i class="fa-regular fa-envelope"></i>
                     <span>ppak.feb@unesa.ac.id</span>
                 </a>
-                <span class="divider"></span>
-                <a href="tel:+62318280009" class="ms-1">
+                <span class="divider d-none d-xl-inline-block"></span>
+                <a href="tel:+62318280009" class="d-none d-xl-inline-flex">
                     <i class="fa-solid fa-phone"></i>
                     <span>+62 31 828 0009</span>
                 </a>
-            </div>
-            <div class="d-flex align-items-center gap-3">
+                <span class="divider d-none d-xl-inline-block"></span>
                 <a href="{{ route('akademik.kalender') }}">
                     <i class="fa-regular fa-calendar-days"></i>
                     <span>Kalender</span>

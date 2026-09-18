@@ -61,15 +61,15 @@
                     <h3 class="footer-heading">Sekretariat PPAk FEB UNESA</h3>
                     <ul class="list-unstyled small text-secondary mb-3">
                         <li class="d-flex align-items-start gap-3 mb-2">
-                            <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
+                            <i class="fa-solid fa-location-dot mt-1 text-gold"></i>
                             <span>Gedung G6 FEB, Kampus Ketintang, Jl. Ketintang, Surabaya, Jawa Timur 60231</span>
                         </li>
                         <li class="d-flex align-items-center gap-3 mb-2">
-                            <i class="fa-solid fa-envelope text-primary"></i>
+                            <i class="fa-solid fa-envelope text-gold"></i>
                             <a href="mailto:ppak.feb@unesa.ac.id" class="text-secondary text-decoration-none hover-white">ppak.feb@unesa.ac.id</a>
                         </li>
                         <li class="d-flex align-items-center gap-3 mb-2">
-                            <i class="fa-solid fa-phone text-primary"></i>
+                            <i class="fa-solid fa-phone text-gold"></i>
                             <span>+62 31 828 0009 / Ext. 312</span>
                         </li>
                         <li class="d-flex align-items-center gap-3 mb-2">

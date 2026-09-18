@@ -122,3 +122,39 @@ test('non-existent route returns 404 with custom error page', function () {
     $response->assertSee('404');
     $response->assertSee('Halaman Tidak Ditemukan');
 });
+
+test('all 26 designated route names and aliases resolve with status 200', function () {
+    $routes = [
+        'home',
+        'profil.sejarah',
+        'profil.visi-misi',
+        'profil.struktur',
+        'profil.dosen',
+        'profil.akreditasi',
+        'akademik.kurikulum',
+        'akademik.kalender',
+        'akademik.sertifikasi',
+        'akademik.panduan',
+        'admisi.syarat',
+        'admisi.biaya',
+        'admisi.prosedur',
+        'admisi.faq',
+        'riset.publikasi',
+        'riset.pengabdian',
+        'riset.kerjasama',
+        'kemahasiswaan.alumni',
+        'kemahasiswaan.komunitas',
+        'kemahasiswaan.karier',
+        'informasi.berita',
+        'informasi.agenda',
+        'informasi.galeri',
+        'kontak.lokasi',
+        'kontak.helpdesk',
+        'kontak.unduhan',
+    ];
+
+    foreach ($routes as $routeName) {
+        $response = $this->get(route($routeName));
+        $response->assertStatus(200);
+    }
+});

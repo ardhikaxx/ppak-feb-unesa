@@ -5,8 +5,8 @@
             <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" class="navbar-brand-logo">
             <div class="navbar-brand-divider d-none d-sm-block"></div>
             <div class="navbar-brand-text d-none d-sm-flex">
-                <span class="navbar-brand-title">PPAk FEB</span>
-                <span class="navbar-brand-subtitle">Pendidikan Profesi Akuntansi</span>
+                <span class="navbar-brand-title">Pendidikan Profesi Akuntansi</span>
+                <span class="navbar-brand-subtitle">Fakultas Ekonomika dan Bisnis &bull; Universitas Negeri Surabaya</span>
             </div>
         </a>
 
@@ -22,8 +22,8 @@
                     <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="34">
                     <div class="navbar-brand-divider"></div>
                     <div>
-                        <div class="fw-bold text-navy lh-sm" style="font-size: 0.95rem;">PPAk FEB</div>
-                        <div class="text-muted" style="font-size: 0.725rem;">Universitas Negeri Surabaya</div>
+                        <div class="fw-bold text-navy lh-sm" style="font-size: 0.92rem;">Pendidikan Profesi Akuntansi</div>
+                        <div class="text-muted" style="font-size: 0.72rem;">Fakultas Ekonomika dan Bisnis &bull; UNESA</div>
                     </div>
                 </div>
                 <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Tutup"></button>

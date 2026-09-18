@@ -32,10 +32,10 @@
             </nav>
         @endif
 
-        {{-- Badge / Subtitle Pill --}}
+        {{-- Badge / Subtitle Eyebrow in UNESA Gold --}}
         @if($badge)
             <div class="mb-2">
-                <span class="badge-ppak badge-ppak-blue">
+                <span class="badge-ppak badge-ppak-gold">
                     {{ $badge }}
                 </span>
             </div>
@@ -43,6 +43,9 @@
 
         {{-- Page Title --}}
         <h1 class="page-header-title">{{ $title }}</h1>
+
+        {{-- Golden Line Accent --}}
+        <div class="golden-line"></div>
 
         {{-- Page Description / Lead --}}
         @if($lead)

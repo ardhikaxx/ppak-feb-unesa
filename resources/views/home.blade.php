@@ -6,22 +6,22 @@
 @section('content')
 
 {{-- =========================================================================
-   1. HERO SECTION (Apple-Inspired Split Minimalist)
+   1. HERO SECTION (Apple-Inspired Institutional Refinement)
    ========================================================================= --}}
 <section class="hero-home" aria-label="Hero Banner Utama">
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
                 <div class="mb-3">
-                    <span class="badge-ppak badge-ppak-navy">
-                        <i class="fa-solid fa-graduation-cap text-primary"></i> Program Profesi Akuntan Beregister
+                    <span class="badge-ppak badge-ppak-gold">
+                        <i class="fa-solid fa-graduation-cap"></i> PENDIDIKAN PROFESI AKUNTANSI
                     </span>
                 </div>
                 <h1 class="hero-headline">
-                    Pendidikan Profesi Akuntansi <span class="accent">FEB UNESA</span>
+                    Membangun Profesional Akuntansi yang <span class="accent">Kompeten dan Berintegritas</span>
                 </h1>
                 <p class="hero-subheadline">
-                    Program pendidikan profesi unggulan yang membina calon profesional akuntansi dengan penguasaan kompetensi akademik mutakhir, integritas etika luhur, skeptisisme profesional, serta kesiapan penuh menghadapi ekosistem kerja global.
+                    Program pendidikan profesi unggulan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya yang membina calon profesional akuntansi dengan penguasaan kompetensi akademik mutakhir, integritas etika luhur, skeptisisme profesional, serta kesiapan penuh menghadapi ekosistem kerja global.
                 </p>
                 <div class="d-flex flex-wrap gap-3">
                     <a href="{{ route('admisi.jalur-syarat') }}" class="btn-ppak-primary btn-ppak-lg">
@@ -29,7 +29,7 @@
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
                     <a href="{{ route('profil.sejarah') }}" class="btn-ppak-secondary btn-ppak-lg">
-                        <i class="fa-solid fa-circle-info text-primary"></i>
+                        <i class="fa-solid fa-circle-info text-navy"></i>
                         <span>Pelajari PPAk</span>
                     </a>
                 </div>
@@ -37,15 +37,15 @@
                 {{-- Fast Feature Bullets --}}
                 <div class="d-flex flex-wrap gap-4 mt-5 pt-3 border-top border-light-subtle">
                     <div class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-check text-primary"></i>
+                        <i class="fa-solid fa-circle-check text-gold"></i>
                         <span class="small fw-semibold text-secondary">Sebutan Akuntan (Ak.)</span>
                     </div>
                     <div class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-check text-primary"></i>
+                        <i class="fa-solid fa-circle-check text-gold"></i>
                         <span class="small fw-semibold text-secondary">Skema Waiver Ujian CA</span>
                     </div>
                     <div class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-check text-primary"></i>
+                        <i class="fa-solid fa-circle-check text-gold"></i>
                         <span class="small fw-semibold text-secondary">Kelas Reguler & Eksekutif</span>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     <img src="{{ asset('images/unesa_campus_hero.jpg') }}" alt="Aktivitas Akademik dan Kampus di PPAk FEB UNESA">
                     <div class="hero-floating-badge">
                         <div class="d-flex align-items-center gap-3">
-                            <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="40">
+                            <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="42">
                             <div>
                                 <div class="fw-bold text-navy" style="font-size: 0.95rem;">Terakreditasi Baik Sekali [LAMEMBA]</div>
                                 <div class="text-secondary small">Universitas Negeri Surabaya &bull; Fakultas Ekonomika dan Bisnis</div>
@@ -70,17 +70,18 @@
 </section>
 
 {{-- =========================================================================
-   2. PENGENALAN SINGKAT & KEY STATS (2-Column Editorial)
+   2. PENGENALAN SINGKAT (2-Column Editorial)
    ========================================================================= --}}
 <section class="section-py bg-subtle" aria-label="Pengenalan PPAk">
     <div class="container">
-        <div class="row g-5 align-items-center mb-5">
+        <div class="row g-5 align-items-center">
             <div class="col-lg-5">
-                <span class="badge-ppak badge-ppak-blue mb-2">Tentang Program</span>
-                <h2 class="mb-3">Mencetak Pemimpin Akuntansi yang Berintegritas</h2>
+                <span class="badge-ppak badge-ppak-gold mb-2">TENTANG PPAk FEB UNESA</span>
+                <h2 class="mb-3">Mencetak Pemimpin Akuntansi Berintegritas & Berdaya Saing Global</h2>
+                <div class="golden-line"></div>
             </div>
             <div class="col-lg-7">
-                <p class="lead mb-3">
+                <p class="lead mb-3 text-dark">
                     Pendidikan Profesi Akuntansi (PPAk) pada Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya diselenggarakan untuk menjawab kebutuhan industri dan profesi terhadap akuntan yang tidak hanya menguasai teori, namun memiliki kecakapan analitis dan etika kerja standar internasional.
                 </p>
                 <p class="text-secondary mb-0">
@@ -88,8 +89,14 @@
                 </p>
             </div>
         </div>
+    </div>
+</section>
 
-        {{-- Stat Cards --}}
+{{-- =========================================================================
+   3. INDIKATOR & STATISTIK INSTITUSIONAL
+   ========================================================================= --}}
+<section class="section-py-sm border-bottom border-top bg-white" aria-label="Statistik Institusional">
+    <div class="container">
         <div class="row g-4">
             @foreach($stats as $stat)
                 <div class="col-md-6 col-lg-3">
@@ -105,13 +112,14 @@
 </section>
 
 {{-- =========================================================================
-   3. KEUNGGULAN PPAK (Editorial Minimalist)
+   4. KEUNGGULAN PPAK FEB UNESA (Editorial Minimalist)
    ========================================================================= --}}
-<section class="section-py" aria-label="Keunggulan Program PPAk">
+<section class="section-py bg-white" aria-label="Keunggulan Program PPAk">
     <div class="container">
         <div class="text-center max-w-700 mx-auto mb-5">
-            <span class="badge-ppak badge-ppak-blue mb-2">Mengapa Memilih Kami</span>
+            <span class="badge-ppak badge-ppak-gold mb-2">Mengapa Memilih Kami</span>
             <h2>Keunggulan Pendidikan Profesi di FEB UNESA</h2>
+            <div class="golden-line center"></div>
             <p class="text-secondary">
                 Pendekatan holistik yang mengintegrasikan kecakapan teknis akuntansi, teknologi informasi analitika, dan etika profesi yang kokoh.
             </p>
@@ -136,7 +144,7 @@
 </section>
 
 {{-- =========================================================================
-   4. PROGRAM & KOMPETENSI (Grid of Competencies)
+   5. AKADEMIK & PILAR KOMPETENSI PROFESIONAL
    ========================================================================= --}}
 <section class="section-py bg-subtle" aria-label="Kompetensi Utama Lulusan">
     <div class="container">
@@ -144,6 +152,7 @@
             <div class="col-lg-7">
                 <span class="badge-ppak badge-ppak-navy mb-2">Standar Pembelajaran</span>
                 <h2>Pilar Kompetensi Profesional Akuntan</h2>
+                <div class="golden-line"></div>
                 <p class="text-secondary mb-0">
                     Struktur capaian pembelajaran disusun mengacu pada standar International Education Standards (IES) oleh IFAC dan Kerangka Kualifikasi Nasional Indonesia (KKNI) Jenjang 7.
                 </p>
@@ -176,26 +185,27 @@
 </section>
 
 {{-- =========================================================================
-   5. ADMISI & PENDAFTARAN (Stepper & Pathways)
+   6. ADMISI & PENDAFTARAN MAHASISWA BARU (Solid Navy Institutional)
    ========================================================================= --}}
-<section class="section-py" aria-label="Alur Pendaftaran Admisi">
+<section class="section-py section-admisi-navy" aria-label="Alur Pendaftaran Admisi">
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-5">
-                <span class="badge-ppak badge-ppak-gold mb-2">Admisi Mahasiswa Baru</span>
-                <h2 class="mb-3">Jalur Pendaftaran & Alur Seleksi Masuk</h2>
+                <span class="badge-ppak badge-ppak-gold mb-2">ADMISI MAHASISWA BARU</span>
+                <h2 class="text-white mb-3">Jalur Pendaftaran & Alur Seleksi Masuk</h2>
+                <div class="golden-line"></div>
                 <p class="text-secondary mb-4">
                     Penerimaan mahasiswa baru PPAk dibuka pada semester gasal dan genap. Proses seleksi transparan, berbasis portofolio akademik dan verifikasi kualifikasi sarjana.
                 </p>
 
-                <div class="p-4 rounded-3 border bg-subtle mb-4">
+                <div class="p-4 rounded-3 border border-white border-opacity-15 bg-white bg-opacity-10 mb-4">
                     <div class="d-flex align-items-center gap-3 mb-2">
-                        <i class="fa-solid fa-calendar-check text-primary fs-5"></i>
-                        <span class="fw-bold text-navy">Periode Gelombang Berjalan</span>
+                        <i class="fa-solid fa-calendar-check text-gold fs-5"></i>
+                        <span class="fw-bold text-white">Periode Gelombang Berjalan</span>
                     </div>
-                    <div class="small text-secondary mb-3">Pendaftaran daring sedang berlangsung untuk Semester Akademik 2024/2025.</div>
+                    <div class="small text-white-50 mb-3">Pendaftaran daring sedang berlangsung untuk Semester Akademik 2024/2025.</div>
                     <div class="d-flex gap-2">
-                        <a href="{{ route('admisi.jalur-syarat') }}" class="btn-ppak-primary btn-ppak-sm">
+                        <a href="{{ route('admisi.jalur-syarat') }}" class="btn-ppak-gold btn-ppak-sm">
                             <span>Syarat Masuk</span>
                         </a>
                         <a href="{{ route('admisi.biaya') }}" class="btn-ppak-secondary btn-ppak-sm">
@@ -211,8 +221,8 @@
                         <div class="stepper-item">
                             <div class="stepper-circle">{{ $step['step'] }}</div>
                             <div class="stepper-content">
-                                <h4 class="fs-6 fw-bold text-navy mb-1">{{ $step['title'] }}</h4>
-                                <p class="small text-secondary mb-0">{{ $step['desc'] }}</p>
+                                <h4 class="fs-6 fw-bold mb-1">{{ $step['title'] }}</h4>
+                                <p class="small mb-0">{{ $step['desc'] }}</p>
                             </div>
                             <div class="stepper-line"></div>
                         </div>
@@ -224,14 +234,15 @@
 </section>
 
 {{-- =========================================================================
-   6. BERITA & PENGUMUMAN TERBARU (Editorial Clean Cards)
+   7. BERITA & PENGUMUMAN TERBARU (Editorial Clean Cards)
    ========================================================================= --}}
-<section class="section-py bg-subtle" aria-label="Berita dan Pengumuman Terkini">
+<section class="section-py bg-white" aria-label="Berita dan Pengumuman Terkini">
     <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
-                <span class="badge-ppak badge-ppak-blue mb-2">Publikasi Informasi</span>
+                <span class="badge-ppak badge-ppak-gold mb-2">Publikasi Informasi</span>
                 <h2>Berita & Pengumuman Terbaru</h2>
+                <div class="golden-line"></div>
                 <p class="text-secondary mb-0">Informasi teraktual seputar dinamika akademik, kerja sama, dan kegiatan keprofesian di PPAk FEB UNESA.</p>
             </div>
             <div>
@@ -261,8 +272,8 @@
                             </h3>
                             <p class="news-card-excerpt">{{ $item['excerpt'] }}</p>
                             <div>
-                                <a href="{{ route('informasi.berita.detail', $item['slug']) }}" class="small fw-bold text-primary text-decoration-none">
-                                    Baca Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i>
+                                <a href="{{ route('informasi.berita.detail', $item['slug']) }}" class="small fw-bold text-navy text-decoration-none">
+                                    Baca Selengkapnya <i class="fa-solid fa-arrow-right ms-1 text-gold"></i>
                                 </a>
                             </div>
                         </div>
@@ -278,14 +289,15 @@
 </section>
 
 {{-- =========================================================================
-   7. AGENDA & EVENT MENDATANG (Distinct Horizontal Editorial List)
+   8. AGENDA & EVENT MENDATANG (Distinct Horizontal Editorial List)
    ========================================================================= --}}
-<section class="section-py" aria-label="Agenda dan Seminar Mendatang">
+<section class="section-py bg-subtle" aria-label="Agenda dan Seminar Mendatang">
     <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
-                <span class="badge-ppak badge-ppak-navy mb-2">Kegiatan Ilmiah & Profesi</span>
+                <span class="badge-ppak badge-ppak-gold mb-2">Kegiatan Ilmiah & Profesi</span>
                 <h2>Agenda & Event Mendatang</h2>
+                <div class="golden-line"></div>
                 <p class="text-secondary mb-0">Ikuti rangkaian seminar pakar, workshop CA/CPA, serta kuliah tamu dari praktisi industri.</p>
             </div>
             <div>
@@ -306,7 +318,7 @@
                         </div>
                         <div class="flex-grow-1">
                             <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
-                                <span class="badge-ppak badge-ppak-blue" style="font-size: 0.725rem;">{{ $event['category'] }}</span>
+                                <span class="badge-ppak badge-ppak-navy" style="font-size: 0.725rem;">{{ $event['category'] }}</span>
                                 <span class="small text-muted"><i class="fa-regular fa-clock me-1"></i> {{ $event['time'] }}</span>
                                 <span class="small text-muted"><i class="fa-solid fa-location-dot me-1"></i> {{ $event['venue'] }}</span>
                             </div>
@@ -328,14 +340,15 @@
 </section>
 
 {{-- =========================================================================
-   8. PROFIL DOSEN & PENGAJAR (Curated Faculty Preview)
+   9. PROFIL DOSEN & PRAKTISI PENGAJAR (Curated Faculty Preview)
    ========================================================================= --}}
-<section class="section-py bg-subtle" aria-label="Pengajar PPAk">
+<section class="section-py bg-white" aria-label="Pengajar PPAk">
     <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
-                <span class="badge-ppak badge-ppak-blue mb-2">Tenaga Pendidik</span>
+                <span class="badge-ppak badge-ppak-gold mb-2">Tenaga Pendidik</span>
                 <h2>Profil Dosen & Praktisi Pengajar</h2>
+                <div class="golden-line"></div>
                 <p class="text-secondary mb-0">Diajar oleh gabungan akademisi bergelar doktor/profesor dan praktisi senior pemegang sertifikasi profesi.</p>
             </div>
             <div>
@@ -369,28 +382,29 @@
 </section>
 
 {{-- =========================================================================
-   9. AKREDITASI & SERTIFIKASI (Credible Academic Section)
+   10. AKREDITASI & LEGALITAS RESMI (Credible Academic Quality)
    ========================================================================= --}}
-<section class="section-py" aria-label="Akreditasi dan Legalitas">
+<section class="section-py bg-white border-top" aria-label="Akreditasi dan Legalitas">
     <div class="container">
         <div class="p-4 p-lg-5 rounded-4 border bg-subtle">
             <div class="row align-items-center g-4">
                 <div class="col-lg-3 text-center">
                     <div class="p-4 bg-white rounded-3 border d-inline-block shadow-sm">
-                        <i class="fa-solid fa-building-columns text-primary display-4 mb-2"></i>
+                        <i class="fa-solid fa-building-columns text-navy display-4 mb-2"></i>
                         <div class="fw-bold text-navy small">LAMEMBA</div>
                         <div class="badge-ppak badge-ppak-gold mt-2">Baik Sekali</div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <span class="badge-ppak badge-ppak-blue mb-2">Jaminan Mutu Akademik</span>
+                    <span class="badge-ppak badge-ppak-gold mb-2">Jaminan Mutu Akademik</span>
                     <h3 class="h2 mb-2">Status Akreditasi Resmi Program Studi</h3>
+                    <div class="golden-line"></div>
                     <p class="text-secondary small mb-3">
                         Pendidikan Profesi Akuntansi (PPAk) Fakultas Ekonomika dan Bisnis UNESA telah memenuhi standar nasional penjaminan mutu pendidikan tinggi dengan predikat <strong>Baik Sekali</strong> berdasarkan asesmen Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA).
                     </p>
                     <div class="d-flex flex-wrap gap-3 small text-muted">
-                        <div><i class="fa-solid fa-file-lines me-1 text-primary"></i> SK: {{ $info['sk_akreditasi'] }}</div>
-                        <div><i class="fa-solid fa-calendar me-1 text-primary"></i> Masa Berlaku: {{ $info['masa_berlaku'] }}</div>
+                        <div><i class="fa-solid fa-file-lines me-1 text-gold"></i> SK: {{ $info['sk_akreditasi'] }}</div>
+                        <div><i class="fa-solid fa-calendar me-1 text-gold"></i> Masa Berlaku: {{ $info['masa_berlaku'] }}</div>
                     </div>
                 </div>
                 <div class="col-lg-3 text-lg-end">
@@ -405,13 +419,42 @@
 </section>
 
 {{-- =========================================================================
-   10. TESTIMONI ALUMNI & KARIER (Quotes & Pathways)
+   11. KERJA SAMA & MITRA STRATEGIS (Monochrome Minimalist)
+   ========================================================================= --}}
+<section class="section-py bg-white" aria-label="Mitra Strategis dan Kerja Sama">
+    <div class="container">
+        <div class="text-center max-w-700 mx-auto mb-5">
+            <span class="badge-ppak badge-ppak-gold mb-2">Jejaring Kelembagaan</span>
+            <h2>Mitra Strategis & Organisasi Profesi</h2>
+            <div class="golden-line center"></div>
+            <p class="text-secondary">
+                Kolaborasi sinergis dalam kurikulum profesi, penempatan magang, riset asurans, serta penyelenggaraan ujian sertifikasi akuntansi.
+            </p>
+        </div>
+
+        <div class="row g-3">
+            @foreach($mitra as $m)
+                <div class="col-lg-3 col-md-6">
+                    <div class="p-3 rounded-3 border bg-white h-100 text-center transition-hover">
+                        <div class="badge-ppak badge-ppak-navy mb-2" style="font-size: 0.675rem;">{{ $m['category'] }}</div>
+                        <h4 class="fs-6 fw-bold text-navy mb-1">{{ $m['name'] }}</h4>
+                        <div class="small text-secondary" style="font-size: 0.775rem;">{{ $m['type'] }}</div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- =========================================================================
+   12. TESTIMONI ALUMNI & KARIER (Quotes & Pathways)
    ========================================================================= --}}
 <section class="section-py bg-subtle" aria-label="Testimoni Alumni dan Jejak Karier">
     <div class="container">
         <div class="text-center max-w-700 mx-auto mb-5">
-            <span class="badge-ppak badge-ppak-blue mb-2">Dampak Lulusan</span>
+            <span class="badge-ppak badge-ppak-gold mb-2">Dampak Lulusan</span>
             <h2>Testimoni Alumni & Jejak Profesional</h2>
+            <div class="golden-line center"></div>
             <p class="text-secondary">
                 Lulusan PPAk FEB UNESA telah meniti karier sebagai pemimpin keuangan, akuntan publik, dan pemeriksa negara di berbagai lembaga prestisius.
             </p>
@@ -458,33 +501,6 @@
                     </div>
                 @endforeach
             </div>
-        </div>
-    </div>
-</section>
-
-{{-- =========================================================================
-   11. KERJA SAMA & MITRA STRATEGIS (Monochrome Minimalist)
-   ========================================================================= --}}
-<section class="section-py" aria-label="Mitra Strategis dan Kerja Sama">
-    <div class="container">
-        <div class="text-center max-w-700 mx-auto mb-5">
-            <span class="badge-ppak badge-ppak-navy mb-2">Jejaring Kelembagaan</span>
-            <h2>Mitra Strategis & Organisasi Profesi</h2>
-            <p class="text-secondary">
-                Kolaborasi sinergis dalam kurikulum profesi, penempatan magang, riset asurans, serta penyelenggaraan ujian sertifikasi akuntansi.
-            </p>
-        </div>
-
-        <div class="row g-3">
-            @foreach($mitra as $m)
-                <div class="col-lg-3 col-md-6">
-                    <div class="p-3 rounded-3 border bg-white h-100 text-center transition-hover">
-                        <div class="badge-ppak badge-ppak-blue mb-2" style="font-size: 0.675rem;">{{ $m['category'] }}</div>
-                        <h4 class="fs-6 fw-bold text-navy mb-1">{{ $m['name'] }}</h4>
-                        <div class="small text-secondary" style="font-size: 0.775rem;">{{ $m['type'] }}</div>
-                    </div>
-                </div>
-            @endforeach
         </div>
     </div>
 </section>
