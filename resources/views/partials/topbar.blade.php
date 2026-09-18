@@ -1,6 +1,6 @@
-<div class="top-infobar d-none d-md-block">
+<div class="top-infobar d-none d-md-block py-2">
     <div class="container-xl">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center my-1">
             <div class="d-flex align-items-center">
                 <span class="text-white-50 small fw-medium">Pendidikan Profesi Akuntansi &bull; Fakultas Ekonomika dan Bisnis &bull; Universitas Negeri Surabaya</span>
             </div>

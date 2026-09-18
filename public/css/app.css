@@ -309,8 +309,7 @@ a:hover {
   background-color: var(--ppak-navy-dark);
   color: #94a3b8;
   font-size: 0.825rem;
-  line-height: 1;
-  padding: 8px 0;
+  line-height: 1.4;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
