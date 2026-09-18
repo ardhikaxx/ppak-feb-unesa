@@ -95,7 +95,7 @@
                     <span>&copy; {{ date('Y') }} <strong>Pendidikan Profesi Akuntansi (PPAk)</strong>. Fakultas Ekonomika dan Bisnis — Universitas Negeri Surabaya.</span>
                 </div>
                 <div class="d-flex align-items-center gap-3">
-                    <span class="badge-ppak badge-ppak-navy" style="font-size: 0.725rem; text-transform: none;">
+                    <span class="badge-ppak" style="font-size: 0.725rem; text-transform: none; background: rgba(255,255,255,0.08); color: #ffffff; border: 1px solid rgba(255,255,255,0.15);">
                         <i class="fa-solid fa-award text-warning"></i> Akreditasi Baik Sekali [LAMEMBA]
                     </span>
                     <a href="#top-infobar" class="text-secondary hover-white" aria-label="Kembali ke atas">
