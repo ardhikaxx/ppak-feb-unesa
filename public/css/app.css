@@ -2530,9 +2530,9 @@ a:hover {
 
   .navbar-floating-header {
     top: 0;
-    padding: 8px 12px 10px;
+    padding: 0 12px;
     margin-top: 0;
-    margin-bottom: -64px;
+    margin-bottom: -40px;
     background-color: transparent;
   }
 
