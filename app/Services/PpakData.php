@@ -160,7 +160,7 @@ class PpakData
                 'category_label' => 'Auditing & Asurans',
                 'bidang' => 'Pengauditan Lanjutan, Asurans, dan Etika Profesi',
                 'matkul' => ['Audit dan Asurans Lanjutan', 'Etika Profesi dan Tata Kelola Korporasi'],
-                'image' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
+                'image' => '/images/default-img.png',
                 'email' => 'kaprodi.ppak@unesa.ac.id',
                 'sertifikasi' => ['Chartered Accountant (CA)', 'Certified Public Accountant (CPA)'],
             ],
@@ -173,7 +173,7 @@ class PpakData
                 'category_label' => 'Akuntansi Keuangan',
                 'bidang' => 'Pelaporan Keuangan Korporat & Standar Akuntansi Keuangan (PSAK/IFRS)',
                 'matkul' => ['Pelaporan Korporat Lanjutan', 'Akuntansi Keuangan Strategis'],
-                'image' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+                'image' => '/images/default-img.png',
                 'email' => 'guru.besar.ak@unesa.ac.id',
                 'sertifikasi' => ['Chartered Accountant (CA)', 'ASEAN CPA'],
             ],
@@ -186,7 +186,7 @@ class PpakData
                 'category_label' => 'Perpajakan',
                 'bidang' => 'Manajemen Perpajakan, Transfer Pricing, dan Kebijakan Fiskal',
                 'matkul' => ['Manajemen Perpajakan Lanjutan', 'Perpajakan Internasional & Strategi'],
-                'image' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
+                'image' => '/images/default-img.png',
                 'email' => 'pajak.dosen@unesa.ac.id',
                 'sertifikasi' => ['Chartered Accountant (CA)', 'Bersertifikat Konsultan Pajak (BKP) C'],
             ],
@@ -199,7 +199,7 @@ class PpakData
                 'category_label' => 'Auditing & Asurans',
                 'bidang' => 'Forensic Accounting, Fraud Investigation, dan Quality Assurance',
                 'matkul' => ['Akuntansi Forensik dan Investigasi', 'Praktik Audit Berbantuan Komputer'],
-                'image' => 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80',
+                'image' => '/images/default-img.png',
                 'email' => 'partner.kap@unesa.ac.id',
                 'sertifikasi' => ['Certified Fraud Examiner (CFE)', 'Certified Public Accountant (CPA)'],
             ],
@@ -212,7 +212,7 @@ class PpakData
                 'category_label' => 'Manajemen & Informasi',
                 'bidang' => 'Akuntansi Manajemen Stratejik & Pelaporan Keberlanjutan (ESG)',
                 'matkul' => ['Akuntansi Manajemen Stratejik', 'Sustainability Reporting & ESG'],
-                'image' => 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80',
+                'image' => '/images/default-img.png',
                 'email' => 'sekprodi.ppak@unesa.ac.id',
                 'sertifikasi' => ['Certified Management Accountant (CMA)', 'Certified Sustainability Reporting Assessor'],
             ],
@@ -225,7 +225,7 @@ class PpakData
                 'category_label' => 'Manajemen & Informasi',
                 'bidang' => 'Sistem Pengendalian Internal, Data Analytics, dan IT Governance',
                 'matkul' => ['Sistem Informasi Akuntansi Lanjutan', 'Analitika Data Keuangan'],
-                'image' => 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80',
+                'image' => '/images/default-img.png',
                 'email' => 'analytics.dosen@unesa.ac.id',
                 'sertifikasi' => ['Chartered Accountant (CA)', 'Certificate in Data Analytics (CertDA ICAEW)'],
             ],
@@ -284,7 +284,7 @@ class PpakData
                 'category' => 'Sertifikasi & Profesi',
                 'date' => '20 Agustus 2024',
                 'author' => 'Koordinator Kerja Sama',
-                'image' => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/default-img.png',
                 'read_time' => '3 menit baca',
                 'tags' => ['IAI', 'Chartered Accountant', 'Waiver CA', 'Sertifikasi'],
                 'content' => '
@@ -300,7 +300,7 @@ class PpakData
                 'category' => 'Workshop & Pelatihan',
                 'date' => '10 Agustus 2024',
                 'author' => 'Laboratorium Perpajakan PPAk',
-                'image' => 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/default-img.png',
                 'read_time' => '4 menit baca',
                 'tags' => ['Perpajakan', 'Coretax', 'DJP', 'Workshop'],
                 'content' => '
@@ -332,7 +332,7 @@ class PpakData
                 'category' => 'Alumni & Karier',
                 'date' => '15 Juli 2024',
                 'author' => 'Ikatan Alumni PPAk',
-                'image' => 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/default-img.png',
                 'read_time' => '4 menit baca',
                 'tags' => ['Alumni', 'BPK RI', 'Sektor Publik', 'Karier'],
                 'content' => '
@@ -438,7 +438,7 @@ class PpakData
                 'year' => 'Alumni Angkatan 2021',
                 'role' => 'Senior Assurance Auditor',
                 'company' => 'KAP Big Four (Jakarta)',
-                'avatar' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+                'avatar' => '/images/default-img.png',
                 'quote' => 'PPAk FEB UNESA tidak sekadar mengajarkan teori akuntansi lanjutan, melainkan melatih ketajaman skeptisisme profesional dan studi kasus nyata yang sangat aplikatif saat saya memimpin tim audit di KAP internasional.',
             ],
             [
@@ -446,7 +446,7 @@ class PpakData
                 'year' => 'Alumni Angkatan 2022',
                 'role' => 'Corporate Tax Planning Specialist',
                 'company' => 'BUMN Industri Energi',
-                'avatar' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+                'avatar' => '/images/default-img.png',
                 'quote' => 'Dosen-dosen pengajar yang sebagian besar adalah praktisi senior membuat setiap sesi perkuliahan terasa seperti simulasi dinamika kerja korporasi. Pengurusan sertifikasi CA dan pembebasan modul ujian juga berjalan sangat transparan dan terarah.',
             ],
             [
@@ -454,7 +454,7 @@ class PpakData
                 'year' => 'Alumni Angkatan 2020',
                 'role' => 'Auditor Pertama Pengawasan Keuangan',
                 'company' => 'Badan Pengawasan Keuangan dan Pembangunan (BPKP)',
-                'avatar' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+                'avatar' => '/images/default-img.png',
                 'quote' => 'Penanaman kode etik dan integritas di PPAk FEB UNESA menjadi pedoman utama saya dalam melaksanakan penugasan audit sektor publik dan audit kinerja kementerian.',
             ],
             [
@@ -462,7 +462,7 @@ class PpakData
                 'year' => 'Alumni Angkatan 2023',
                 'role' => 'Financial Controller',
                 'company' => 'Multinational Manufacturing Group',
-                'avatar' => 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+                'avatar' => '/images/default-img.png',
                 'quote' => 'Kelas eksekutif akhir pekan di PPAk UNESA memberikan ruang belajar yang sangat kondusif bagi pekerja profesional. Diskusi lintas profesi dengan sesama rekan kuliah memperluas wawasan bisnis secara signifikan.',
             ],
         ];
@@ -765,7 +765,7 @@ class PpakData
                 'tahun' => '2024',
                 'mitra' => 'Dinas Koperasi dan UKM serta Asosiasi UMKM Binaan',
                 'ringkasan' => 'Dosen dan mahasiswa PPAk memberikan pelatihan intensif pencatatan transaksi kas digital dan penyusunan neraca sederhana guna mempermudah akses pembiayaan perbankan.',
-                'image' => 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80',
+                'image' => '/images/default-img.png',
             ],
             [
                 'id' => 2,
@@ -774,7 +774,7 @@ class PpakData
                 'tahun' => '2024',
                 'mitra' => 'Aparatur Desa dan Badan Usaha Milik Desa (BUMDes)',
                 'ringkasan' => 'Penguatan kapabilitas aparatur desa dalam menerapkan prinsip transparansi, mitigasi risiko penatausahaan kas, dan pelaporan realisasi APBDes.',
-                'image' => 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80',
+                'image' => '/images/default-img.png',
             ],
             [
                 'id' => 3,
@@ -783,7 +783,7 @@ class PpakData
                 'tahun' => '2023',
                 'mitra' => 'Tax Center FEB UNESA & KPP Pratama Surabaya',
                 'ringkasan' => 'Layanan konsultasi sukarela yang melibatkan mahasiswa profesi untuk mendampingi masyarakat umum dalam memenuhi kewajiban pelaporan pajak.',
-                'image' => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80',
+                'image' => '/images/default-img.png',
             ],
         ];
     }
@@ -887,7 +887,7 @@ class PpakData
                 'category' => 'kunjungan',
                 'category_label' => 'Kunjungan Industri',
                 'date' => 'Juli 2024',
-                'image' => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/default-img.png',
             ],
             [
                 'id' => 5,
@@ -895,7 +895,7 @@ class PpakData
                 'category' => 'seminar',
                 'category_label' => 'Seminar & Kuliah Pakar',
                 'date' => 'Juni 2024',
-                'image' => 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/default-img.png',
             ],
             [
                 'id' => 6,
@@ -903,7 +903,7 @@ class PpakData
                 'category' => 'pengabdian',
                 'category_label' => 'Pengabdian Masyarakat',
                 'date' => 'Mei 2024',
-                'image' => 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80',
+                'image' => '/images/default-img.png',
             ],
         ];
     }
