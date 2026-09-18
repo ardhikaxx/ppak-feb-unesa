@@ -12,9 +12,9 @@
     <div class="container-xl">
         <div class="row align-items-center">
             <div class="col-lg-9 col-xl-8">
-                <div class="hero-pill-badge">
-                    <span class="hero-pill-dot"></span>
-                    <span><i class="fa-solid fa-graduation-cap me-1"></i> PENDIDIKAN PROFESI AKUNTANSI (PPAk) &bull; FEB UNESA</span>
+                <div class="hero-brand-badge">
+                    <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi UNESA" class="hero-brand-badge-logo">
+                    <span class="hero-brand-badge-text">PENDIDIKAN PROFESI AKUNTANSI (PPAk) &bull; FEB UNESA</span>
                 </div>
                 <h1 class="hero-headline">
                     Membangun Profesional Akuntansi yang <span class="accent">Kompeten & Berintegritas</span>

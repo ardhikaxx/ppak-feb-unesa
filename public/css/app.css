@@ -808,6 +808,42 @@ a:hover {
   z-index: 1;
 }
 
+.hero-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  padding: 0.5rem 1.05rem;
+  border-radius: var(--radius-sm); /* 8px rect, NOT pill */
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+  margin-bottom: 1.5rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hero-brand-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.28);
+}
+
+.hero-brand-badge-logo {
+  height: 28px;
+  width: auto;
+  max-width: 95px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.hero-brand-badge-text {
+  font-size: 0.825rem;
+  font-weight: 750;
+  letter-spacing: 0.03em;
+  color: var(--unesa-navy);
+  line-height: 1.25;
+}
+
+/* Backward compatibility if ever referenced */
 .hero-pill-badge {
   display: inline-flex;
   align-items: center;
@@ -823,14 +859,6 @@ a:hover {
   letter-spacing: 0.05em;
   color: #FAF4E6;
   margin-bottom: 1.25rem;
-}
-
-.hero-pill-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: var(--unesa-gold);
-  box-shadow: 0 0 10px var(--unesa-gold);
 }
 
 .hero-headline {
@@ -1963,6 +1991,19 @@ a:hover {
 @media (max-width: 991.98px) {
   .hero-home {
     padding: 3rem 0 3.5rem;
+  }
+
+  .hero-brand-badge {
+    padding: 0.45rem 0.85rem;
+    gap: 10px;
+  }
+
+  .hero-brand-badge-text {
+    font-size: 0.76rem;
+  }
+
+  .hero-brand-badge-logo {
+    height: 24px;
   }
 
   .hero-glass-card {
