@@ -613,25 +613,34 @@ a:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Offcanvas Apple Glass */
-.offcanvas-apple-glass {
-  background: rgba(7, 25, 48, 0.96) !important;
-  -webkit-backdrop-filter: blur(30px) saturate(190%) !important;
-  backdrop-filter: blur(30px) saturate(190%) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.5) !important;
-  color: #ffffff !important;
+/* Offcanvas Apple Glass (Mobile/Tablet Drawer Only) */
+@media (max-width: 1199.98px) {
+  .offcanvas-apple-glass {
+    background: rgba(7, 25, 48, 0.96) !important;
+    -webkit-backdrop-filter: blur(30px) saturate(190%) !important;
+    backdrop-filter: blur(30px) saturate(190%) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.5) !important;
+    color: #ffffff !important;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar-ppak .offcanvas-apple-glass,
+  .offcanvas-apple-glass {
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
 }
 
 .border-white-10 {
   border-color: rgba(255, 255, 255, 0.12) !important;
-}
-
-@media (min-width: 576px) {
-  .offcanvas-apple-glass {
-    border-top-left-radius: 24px;
-    border-bottom-left-radius: 24px;
-  }
 }
 
 /* --------------------------------------------------------------------------
