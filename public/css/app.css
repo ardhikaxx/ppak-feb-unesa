@@ -358,30 +358,30 @@ a:hover {
 .navbar-ppak {
   pointer-events: auto;
   margin: 0 auto;
-  max-width: 1360px;
+  max-width: 1320px;
   width: 100%;
-  padding: 0.38rem 1.45rem;
-  background: rgba(255, 255, 255, 0.86);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  padding: 0.36rem 1.45rem;
+  background: rgba(7, 25, 48, 0.78);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-pill); /* 9999px True Apple Pill */
   box-shadow:
-    0 12px 32px -4px rgba(0, 0, 0, 0.16),
-    0 4px 12px -2px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+    0 16px 40px -6px rgba(0, 0, 0, 0.45),
+    0 4px 12px -2px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-ppak.navbar-scrolled {
-  background: rgba(255, 255, 255, 0.90);
-  -webkit-backdrop-filter: blur(25px) saturate(190%);
-  backdrop-filter: blur(25px) saturate(190%);
-  border-color: rgba(255, 255, 255, 0.95);
+  background: rgba(7, 25, 48, 0.92);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(28px) saturate(190%);
+  border-color: rgba(255, 255, 255, 0.22);
   box-shadow:
-    0 16px 36px -4px rgba(10, 35, 66, 0.18),
-    0 6px 16px -2px rgba(10, 35, 66, 0.08),
-    inset 0 1px 0 0 rgba(255, 255, 255, 1);
+    0 20px 48px -6px rgba(0, 0, 0, 0.6),
+    0 6px 18px -2px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
 }
 
 /* Brand Wordmark & Emblem */
@@ -411,7 +411,7 @@ a:hover {
 .navbar-brand-divider {
   width: 1px;
   height: 24px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.22);
   margin: 0 4px;
   flex-shrink: 0;
 }
@@ -442,7 +442,7 @@ a:hover {
 .navbar-brand-title {
   font-size: 0.885rem;
   font-weight: 750;
-  color: var(--unesa-navy);
+  color: #ffffff;
   letter-spacing: -0.015em;
   line-height: 1.2;
   white-space: nowrap;
@@ -450,14 +450,14 @@ a:hover {
 
 .navbar-brand-subtitle {
   font-size: 0.675rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.72);
   font-weight: 500;
   letter-spacing: 0.01em;
   line-height: 1.2;
   white-space: nowrap;
 }
 
-/* Nav links - Apple Pill Aesthetics */
+/* Nav links - Apple Pill Dark Glass Aesthetics */
 .navbar-ppak .navbar-nav {
   gap: 2px;
 }
@@ -465,8 +465,8 @@ a:hover {
 .navbar-ppak .nav-link {
   font-size: 0.835rem;
   font-weight: 500;
-  color: var(--text-primary);
-  padding: 0.38rem 0.65rem;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.36rem 0.65rem;
   border-radius: var(--radius-pill); /* Pill hover item */
   border-bottom: none !important;
   transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -477,29 +477,30 @@ a:hover {
 }
 
 .navbar-ppak .nav-link:hover {
-  color: var(--unesa-navy);
-  background-color: rgba(10, 35, 66, 0.06);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 .navbar-ppak .nav-link.active,
 .navbar-ppak .nav-item.dropdown.active > .nav-link {
-  color: var(--unesa-navy);
+  color: #ffffff;
   font-weight: 600;
-  background-color: rgba(216, 174, 71, 0.18);
+  background-color: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
 }
 
-/* Apple-style Frosted Glass Dropdown Menu */
+/* Apple Pro Dark Glassmorphic Dropdown Menu */
 .navbar-ppak .dropdown-menu.dropdown-menu-apple,
 .navbar-ppak .dropdown-menu {
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 18px; /* Smooth Apple curvature */
-  background: rgba(255, 255, 255, 0.92);
-  -webkit-backdrop-filter: blur(25px) saturate(190%);
-  backdrop-filter: blur(25px) saturate(190%);
+  background: rgba(7, 25, 48, 0.94);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(28px) saturate(190%);
   box-shadow:
-    0 20px 40px -4px rgba(10, 35, 66, 0.14),
-    0 4px 12px -2px rgba(10, 35, 66, 0.06),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+    0 24px 48px -6px rgba(0, 0, 0, 0.55),
+    0 4px 16px -2px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
   padding: 0.55rem;
   margin-top: 0.75rem;
   min-width: 260px;
@@ -520,7 +521,7 @@ a:hover {
 .navbar-ppak .dropdown-item {
   font-size: 0.865rem;
   font-weight: 500;
-  color: var(--text-primary);
+  color: rgba(255, 255, 255, 0.88);
   padding: 0.52rem 0.85rem;
   border-radius: 10px; /* Squircle Apple item */
   transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
@@ -531,89 +532,96 @@ a:hover {
 
 .navbar-ppak .dropdown-item i {
   font-size: 0.8rem;
-  color: var(--text-secondary);
+  color: var(--unesa-gold);
   width: 18px;
   text-align: center;
-  transition: color var(--transition-fast);
+  transition: transform var(--transition-fast);
 }
 
 .navbar-ppak .dropdown-item:hover,
 .navbar-ppak .dropdown-item:focus {
-  background-color: rgba(10, 35, 66, 0.06);
-  color: var(--unesa-navy);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
 }
 
 .navbar-ppak .dropdown-item:hover i {
-  color: var(--unesa-gold);
+  transform: translateX(2px);
 }
 
 .navbar-ppak .dropdown-item.active {
-  background-color: rgba(216, 174, 71, 0.2);
-  color: var(--unesa-navy);
+  background-color: rgba(216, 174, 71, 0.22);
+  color: var(--unesa-gold-light);
   font-weight: 600;
 }
 
 .navbar-ppak .dropdown-item.active i {
-  color: var(--unesa-gold);
+  color: var(--unesa-gold-light);
 }
 
 .navbar-ppak .dropdown-toggle::after {
   font-size: 0.65rem;
   vertical-align: middle;
   margin-left: 3px;
-  opacity: 0.55;
+  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.8);
   transition: transform var(--transition-fast);
 }
 
 .navbar-ppak .dropdown-toggle:hover::after {
-  opacity: 0.85;
+  opacity: 1;
 }
 
 /* Apple Pill Button (Pendaftaran) */
 .btn-navbar-pill {
-  background-color: var(--unesa-gold);
-  color: var(--unesa-navy-dark) !important;
-  font-weight: 700;
+  background: linear-gradient(135deg, #f0c55f 0%, #d8ae47 100%);
+  color: #071930 !important;
+  font-weight: 750;
   font-size: 0.835rem;
   padding: 0.42rem 1.15rem;
   border-radius: var(--radius-pill); /* 9999px */
-  border: 1px solid rgba(216, 174, 71, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  box-shadow: 0 4px 14px rgba(216, 174, 71, 0.32);
+  box-shadow: 0 4px 16px rgba(216, 174, 71, 0.4);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   white-space: nowrap;
 }
 
 .btn-navbar-pill:hover {
-  background-color: #e5be58;
-  color: var(--unesa-navy-dark) !important;
+  background: #f7ce6d;
+  color: #071930 !important;
   transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 6px 18px rgba(216, 174, 71, 0.48);
+  box-shadow: 0 6px 20px rgba(216, 174, 71, 0.55);
 }
 
 /* Mobile Toggler */
 .navbar-toggler-apple {
   border-radius: var(--radius-pill) !important;
   padding: 0.35rem 0.65rem !important;
-  background: rgba(10, 35, 66, 0.05);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   transition: background var(--transition-fast);
 }
 
 .navbar-toggler-apple:hover {
-  background: rgba(10, 35, 66, 0.1);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Offcanvas Apple Glass */
 .offcanvas-apple-glass {
-  background: rgba(255, 255, 255, 0.94) !important;
-  -webkit-backdrop-filter: blur(25px) saturate(190%) !important;
-  backdrop-filter: blur(25px) saturate(190%) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.8) !important;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1) !important;
+  background: rgba(7, 25, 48, 0.96) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(190%) !important;
+  backdrop-filter: blur(30px) saturate(190%) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.5) !important;
+  color: #ffffff !important;
+}
+
+.border-white-10 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 @media (min-width: 576px) {
@@ -2085,6 +2093,7 @@ a:hover {
   .navbar-ppak {
     padding: 0.35rem 0.75rem 0.35rem 1rem;
     border-radius: var(--radius-pill);
+    background: rgba(7, 25, 48, 0.88);
   }
 
   .navbar-brand-logo {
@@ -2099,12 +2108,18 @@ a:hover {
     padding: 0.6rem 1rem;
     border-radius: 12px;
     font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .offcanvas-apple-glass .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
   }
 
   .offcanvas-apple-glass .dropdown-menu {
     box-shadow: none !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
-    background-color: rgba(10, 35, 66, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
     border-radius: 14px !important;
     padding: 0.4rem !important;
     margin: 0.35rem 0 0.5rem 0.5rem !important;

@@ -13,21 +13,21 @@
 
             {{-- Mobile Hamburger Toggle --}}
             <button class="navbar-toggler border-0 p-2 shadow-none navbar-toggler-apple" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-label="Buka navigasi menu">
-                <i class="fa-solid fa-bars text-navy fs-5"></i>
+                <i class="fa-solid fa-bars text-white fs-5"></i>
             </button>
 
             {{-- Offcanvas for Mobile & Collapsible for Desktop --}}
             <div class="offcanvas offcanvas-end offcanvas-apple-glass" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
-            <div class="offcanvas-header border-bottom">
+            <div class="offcanvas-header border-bottom border-white-10">
                 <div class="d-flex align-items-center gap-2">
                     <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="34">
                     <div class="navbar-brand-divider"></div>
                     <div>
-                        <div class="fw-bold text-navy lh-sm" style="font-size: 0.92rem;">Pendidikan Profesi Akuntansi</div>
-                        <div class="text-muted" style="font-size: 0.72rem;">Fakultas Ekonomika dan Bisnis &bull; UNESA</div>
+                        <div class="fw-bold text-white lh-sm" style="font-size: 0.92rem;">Pendidikan Profesi Akuntansi</div>
+                        <div class="text-white-50" style="font-size: 0.72rem;">Fakultas Ekonomika dan Bisnis &bull; UNESA</div>
                     </div>
                 </div>
-                <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Tutup"></button>
+                <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas" aria-label="Tutup"></button>
             </div>
 
             <div class="offcanvas-body">
