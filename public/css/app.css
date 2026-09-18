@@ -306,31 +306,58 @@ a:hover {
    4. Top Information Bar
    -------------------------------------------------------------------------- */
 .top-infobar {
-  background-color: var(--ppak-navy-dark);
+  background: linear-gradient(180deg, rgba(7, 20, 42, 0.98) 0%, rgba(7, 25, 48, 0.95) 100%);
   color: #94a3b8;
-  font-size: 0.825rem;
+  font-size: 0.785rem;
   line-height: 1.4;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.45rem 0;
+  letter-spacing: 0.005em;
 }
 
-.top-infobar a {
-  color: #cbd5e1;
-  transition: color var(--transition-fast);
+.top-infobar-brand {
+  font-size: 0.765rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.01em;
+}
+
+.top-infobar-sep {
+  opacity: 0.4;
+  margin: 0 2px;
+}
+
+.top-infobar-link {
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  font-weight: 500;
+  padding: 2px 0;
+  text-decoration: none;
 }
 
-.top-infobar a:hover {
-  color: #ffffff;
+.top-infobar-link:hover {
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.top-infobar .divider {
+.top-infobar-link i {
+  font-size: 0.72rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.top-infobar-link:hover i {
+  opacity: 1;
+}
+
+.top-infobar-divider {
   display: inline-block;
   width: 1px;
-  height: 12px;
-  background-color: rgba(255, 255, 255, 0.2);
-  margin: 0 10px;
+  height: 11px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.06) 100%);
+  margin: 0 12px;
   vertical-align: middle;
 }
 
@@ -342,45 +369,48 @@ a:hover {
   top: 12px;
   z-index: 1030;
   width: 100%;
-  padding: 12px 24px 0 24px;
+  padding: 10px 20px 0 20px;
   pointer-events: none;
   margin-top: 0;
-  margin-bottom: -76px; /* Pulls hero & page headers seamlessly under the floating pill */
-  transition: top var(--transition-base), padding var(--transition-base);
+  margin-bottom: -76px;
+  transition: padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-floating-header.scrolled {
-  padding-top: 8px;
+  padding-top: 6px;
 }
 
 .navbar-ppak.navbar-apple-pill,
 .navbar-ppak {
   pointer-events: auto;
   margin: 0 auto;
-  max-width: 1320px;
+  max-width: 1280px;
   width: 100%;
-  padding: 0.36rem 1.45rem;
-  background: rgba(7, 25, 48, 0.78);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: var(--radius-pill); /* 9999px True Apple Pill */
+  padding: 0.32rem 1.25rem;
+  background: rgba(7, 25, 48, 0.65);
+  -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.05);
+  backdrop-filter: blur(40px) saturate(180%) brightness(1.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-pill);
   box-shadow:
-    0 16px 40px -6px rgba(0, 0, 0, 0.45),
-    0 4px 12px -2px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    0 8px 32px -4px rgba(0, 0, 0, 0.35),
+    0 2px 8px -1px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: backdrop-filter, background;
 }
 
 .navbar-ppak.navbar-scrolled {
-  background: rgba(7, 25, 48, 0.92);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  backdrop-filter: blur(28px) saturate(190%);
-  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(7, 25, 48, 0.82);
+  -webkit-backdrop-filter: blur(48px) saturate(200%) brightness(1.02);
+  backdrop-filter: blur(48px) saturate(200%) brightness(1.02);
+  border-color: rgba(255, 255, 255, 0.18);
   box-shadow:
-    0 20px 48px -6px rgba(0, 0, 0, 0.6),
-    0 6px 18px -2px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+    0 12px 40px -4px rgba(0, 0, 0, 0.5),
+    0 4px 14px -2px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
 /* Brand Wordmark & Emblem */
@@ -390,44 +420,33 @@ a:hover {
   gap: 10px;
   text-decoration: none;
   flex-shrink: 0;
-  padding: 0.2rem 0;
+  padding: 0.15rem 0;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-brand-wrapper:hover {
+  opacity: 0.88;
 }
 
 .navbar-brand-logo {
-  height: 36px;
+  height: 34px;
   width: auto;
   max-width: 120px;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
-  transition: transform var(--transition-fast);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-brand-wrapper:hover .navbar-brand-logo {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .navbar-brand-divider {
   width: 1px;
-  height: 24px;
-  background-color: rgba(255, 255, 255, 0.22);
-  margin: 0 4px;
-  flex-shrink: 0;
-}
-
-.navbar-brand-emblem {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  background-color: var(--unesa-navy);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.92rem;
-  letter-spacing: -0.03em;
-  box-shadow: 0 2px 8px rgba(10, 35, 66, 0.15);
+  height: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.28) 50%, rgba(255,255,255,0.08) 100%);
+  margin: 0 6px;
   flex-shrink: 0;
 }
 
@@ -439,20 +458,20 @@ a:hover {
 }
 
 .navbar-brand-title {
-  font-size: 0.885rem;
-  font-weight: 750;
+  font-size: 0.835rem;
+  font-weight: 700;
   color: #ffffff;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
   white-space: nowrap;
 }
 
 .navbar-brand-subtitle {
-  font-size: 0.675rem;
-  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.645rem;
+  color: rgba(255, 255, 255, 0.58);
   font-weight: 500;
-  letter-spacing: 0.01em;
-  line-height: 1.2;
+  letter-spacing: 0.015em;
+  line-height: 1.25;
   white-space: nowrap;
 }
 
@@ -462,25 +481,32 @@ a:hover {
 }
 
 .navbar-ppak .nav-link {
-  font-size: 0.84rem;
+  font-size: 0.835rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.82);
-  padding: 0.38rem 0.65rem;
-  border-radius: 0;
+  color: rgba(255, 255, 255, 0.78);
+  padding: 0.35rem 0.65rem;
+  border-radius: 0 !important;
   border-bottom: none !important;
   background: transparent !important;
+  background-color: transparent !important;
   box-shadow: none !important;
   transition: color 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   gap: 4px;
   white-space: nowrap;
+  letter-spacing: -0.005em;
 }
 
 .navbar-ppak .nav-link:hover {
   color: #ffffff;
   background: transparent !important;
+  background-color: transparent !important;
   box-shadow: none !important;
+}
+
+.navbar-ppak .nav-link:active {
+  transform: none;
 }
 
 .navbar-ppak .nav-link.active,
@@ -488,44 +514,50 @@ a:hover {
   color: var(--unesa-gold) !important;
   font-weight: 650;
   background: transparent !important;
+  background-color: transparent !important;
   box-shadow: none !important;
+  border-radius: 0 !important;
 }
 
-/* Apple Pro Dark Glassmorphic Dropdown Menu */
+/* Apple Dark Glassmorphic Dropdown */
 .navbar-ppak .dropdown-menu.dropdown-menu-apple,
 .navbar-ppak .dropdown-menu {
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 18px; /* Smooth Apple curvature */
-  background: rgba(7, 25, 48, 0.94);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(12, 30, 55, 0.92);
+  -webkit-backdrop-filter: blur(48px) saturate(200%);
+  backdrop-filter: blur(48px) saturate(200%);
   box-shadow:
-    0 24px 48px -6px rgba(0, 0, 0, 0.55),
-    0 4px 16px -2px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
-  padding: 0.55rem;
-  margin-top: 0.75rem;
-  min-width: 260px;
-  animation: appleDropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    0 20px 40px -8px rgba(0, 0, 0, 0.5),
+    0 4px 12px -2px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  padding: 0.45rem;
+  margin-top: 0.65rem;
+  min-width: 250px;
+  animation: appleDropdownIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top center;
 }
 
-@keyframes appleDropdownFade {
+@keyframes appleDropdownIn {
   from {
     opacity: 0;
-    transform: translateY(8px) scale(0.98);
+    transform: translateY(6px) scale(0.97);
+    filter: blur(2px);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
 .navbar-ppak .dropdown-item {
-  font-size: 0.865rem;
+  font-size: 0.845rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.88);
-  padding: 0.52rem 0.85rem;
-  border-radius: 10px; /* Squircle Apple item */
+  color: rgba(255, 255, 255, 0.82);
+  padding: 0.48rem 0.75rem;
+  border-radius: 10px;
   transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
@@ -533,25 +565,31 @@ a:hover {
 }
 
 .navbar-ppak .dropdown-item i {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--unesa-gold);
   width: 18px;
   text-align: center;
-  transition: transform var(--transition-fast);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.85;
 }
 
 .navbar-ppak .dropdown-item:hover,
 .navbar-ppak .dropdown-item:focus {
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 }
 
 .navbar-ppak .dropdown-item:hover i {
   transform: translateX(2px);
+  opacity: 1;
+}
+
+.navbar-ppak .dropdown-item:active {
+  transform: scale(0.98);
 }
 
 .navbar-ppak .dropdown-item.active {
-  background-color: rgba(216, 174, 71, 0.22);
+  background-color: rgba(216, 174, 71, 0.18);
   color: var(--unesa-gold-light);
   font-weight: 600;
 }
@@ -561,68 +599,87 @@ a:hover {
 }
 
 .navbar-ppak .dropdown-toggle::after {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   vertical-align: middle;
   margin-left: 3px;
-  opacity: 0.7;
-  color: rgba(255, 255, 255, 0.8);
-  transition: transform var(--transition-fast);
+  opacity: 0.6;
+  color: rgba(255, 255, 255, 0.7);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-ppak .dropdown-toggle:hover::after {
   opacity: 1;
 }
 
-/* Apple Pill Button (Pendaftaran) */
+.navbar-ppak .show > .dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+
+/* Apple Pill CTA Button */
 .btn-navbar-pill {
   background: linear-gradient(135deg, #f0c55f 0%, #d8ae47 100%);
   color: #071930 !important;
-  font-weight: 750;
-  font-size: 0.835rem;
-  padding: 0.42rem 1.15rem;
-  border-radius: var(--radius-pill); /* 9999px */
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 700;
+  font-size: 0.815rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  box-shadow: 0 4px 16px rgba(216, 174, 71, 0.4);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    0 2px 12px rgba(216, 174, 71, 0.35),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   white-space: nowrap;
+  letter-spacing: -0.01em;
 }
 
 .btn-navbar-pill:hover {
-  background: #f7ce6d;
+  background: linear-gradient(135deg, #f5d06a 0%, #e0b84f 100%);
   color: #071930 !important;
   transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 6px 20px rgba(216, 174, 71, 0.55);
+  box-shadow:
+    0 4px 18px rgba(216, 174, 71, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
+}
+
+.btn-navbar-pill:active {
+  transform: translateY(0) scale(0.98);
 }
 
 /* Mobile Toggler */
 .navbar-toggler-apple {
   border-radius: var(--radius-pill) !important;
   padding: 0.35rem 0.65rem !important;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  transition: background var(--transition-fast);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .navbar-toggler-apple:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.navbar-toggler-apple:active {
+  transform: scale(0.95);
 }
 
 /* Offcanvas Apple Glass (Mobile/Tablet Drawer Only) */
 @media (max-width: 1199.98px) {
   .offcanvas-apple-glass {
-    background: rgba(7, 25, 48, 0.96) !important;
-    -webkit-backdrop-filter: blur(30px) saturate(190%) !important;
-    backdrop-filter: blur(30px) saturate(190%) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
-    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.5) !important;
+    background: rgba(7, 20, 42, 0.95) !important;
+    -webkit-backdrop-filter: blur(48px) saturate(200%) !important;
+    backdrop-filter: blur(48px) saturate(200%) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.45) !important;
     color: #ffffff !important;
-    border-top-left-radius: 24px;
-    border-bottom-left-radius: 24px;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
   }
 }
 
@@ -639,7 +696,7 @@ a:hover {
 }
 
 .border-white-10 {
-  border-color: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -2095,51 +2152,54 @@ a:hover {
 @media (max-width: 1199.98px) {
   .navbar-floating-header {
     top: 8px;
-    padding: 8px 14px 0 14px;
+    padding: 6px 12px 0 12px;
     margin-top: 0;
     margin-bottom: -62px;
   }
 
   .navbar-ppak.navbar-apple-pill,
   .navbar-ppak {
-    padding: 0.35rem 0.75rem 0.35rem 1rem;
+    padding: 0.3rem 0.65rem 0.3rem 0.85rem;
     border-radius: var(--radius-pill);
-    background: rgba(7, 25, 48, 0.88);
+    background: rgba(7, 25, 48, 0.82);
   }
 
   .navbar-brand-logo {
-    height: 32px;
+    height: 30px;
   }
 
   .offcanvas-apple-glass .navbar-nav {
-    gap: 6px;
+    gap: 4px;
   }
 
   .offcanvas-apple-glass .nav-link {
-    padding: 0.6rem 0.8rem;
-    border-radius: 0;
-    font-size: 0.92rem;
-    color: rgba(255, 255, 255, 0.88);
+    padding: 0.55rem 0.75rem;
+    border-radius: 0 !important;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.82);
     background: transparent !important;
+    background-color: transparent !important;
   }
 
   .offcanvas-apple-glass .nav-link:hover {
     color: #ffffff;
     background: transparent !important;
+    background-color: transparent !important;
   }
 
   .offcanvas-apple-glass .nav-link.active {
     color: var(--unesa-gold) !important;
     background: transparent !important;
+    background-color: transparent !important;
   }
 
   .offcanvas-apple-glass .dropdown-menu {
     box-shadow: none !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
     background-color: rgba(255, 255, 255, 0.05) !important;
-    border-radius: 14px !important;
-    padding: 0.4rem !important;
-    margin: 0.35rem 0 0.5rem 0.5rem !important;
+    border-radius: 12px !important;
+    padding: 0.35rem !important;
+    margin: 0.3rem 0 0.4rem 0.4rem !important;
   }
 }
 
@@ -2199,8 +2259,8 @@ a:hover {
 
   .navbar-ppak .dropdown-menu {
     box-shadow: none;
-    border: none;
-    background-color: var(--ppak-bg-subtle);
-    padding-left: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background-color: rgba(255, 255, 255, 0.04);
+    padding-left: 0.75rem;
   }
 }
