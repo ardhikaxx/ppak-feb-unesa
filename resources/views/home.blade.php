@@ -6,16 +6,15 @@
 @section('content')
 
 {{-- =========================================================================
-   1. HERO SECTION (Apple-Inspired Institutional Refinement)
+   1. HERO SECTION (Campus Photo Background with Primary Overlay & Glassmorphism)
    ========================================================================= --}}
-<section class="hero-home" aria-label="Hero Banner Utama">
+<section class="hero-home" style="background-image: linear-gradient(135deg, rgba(7, 25, 48, 0.94) 0%, rgba(10, 35, 66, 0.90) 50%, rgba(18, 63, 115, 0.82) 100%), url('{{ asset('images/unesa_campus_hero.jpg') }}');" aria-label="Hero Banner Utama">
     <div class="container-xl">
         <div class="row align-items-center g-4 g-lg-5">
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <span class="badge-ppak badge-ppak-gold">
-                        <i class="fa-solid fa-graduation-cap"></i> PENDIDIKAN PROFESI AKUNTANSI
-                    </span>
+            <div class="col-lg-7">
+                <div class="hero-pill-badge">
+                    <span class="hero-pill-dot"></span>
+                    <span><i class="fa-solid fa-graduation-cap me-1"></i> PENDIDIKAN PROFESI AKUNTANSI (PPAk)</span>
                 </div>
                 <h1 class="hero-headline">
                     Membangun Profesional Akuntansi yang <span class="accent">Kompeten & Berintegritas</span>
@@ -24,44 +23,101 @@
                     Program pendidikan profesi unggulan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya yang membina calon profesional akuntansi dengan penguasaan kompetensi akademik mutakhir, integritas etika luhur, skeptisisme profesional, serta kesiapan penuh menghadapi ekosistem kerja global.
                 </p>
                 <div class="d-flex flex-wrap gap-3">
-                    <a href="{{ route('admisi.jalur-syarat') }}" class="btn-ppak-primary btn-ppak-lg">
+                    <a href="{{ route('admisi.jalur-syarat') }}" class="btn-hero-primary">
                         <span>Daftar Sekarang</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
-                    <a href="{{ route('profil.sejarah') }}" class="btn-ppak-secondary btn-ppak-lg">
-                        <i class="fa-solid fa-circle-info text-navy"></i>
+                    <a href="{{ route('profil.sejarah') }}" class="btn-hero-secondary">
+                        <i class="fa-solid fa-circle-info text-gold"></i>
                         <span>Pelajari PPAk</span>
                     </a>
                 </div>
 
                 {{-- Fast Feature Bullets --}}
-                <div class="d-flex flex-wrap gap-3 gap-md-4 mt-4 pt-3 border-top border-light-subtle">
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-circle-check text-gold"></i>
-                        <span class="small fw-semibold text-secondary">Sebutan Akuntan (Ak.)</span>
+                <div class="hero-bullets">
+                    <div class="hero-bullet-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Sebutan Akuntan (Ak.)</span>
                     </div>
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-circle-check text-gold"></i>
-                        <span class="small fw-semibold text-secondary">Skema Waiver Ujian CA</span>
+                    <div class="hero-bullet-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Skema Waiver Ujian CA</span>
                     </div>
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-circle-check text-gold"></i>
-                        <span class="small fw-semibold text-secondary">Kelas Reguler & Eksekutif</span>
+                    <div class="hero-bullet-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Kelas Reguler & Eksekutif</span>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-6">
-                <div class="hero-visual-card">
-                    <img src="{{ asset('images/unesa_campus_hero.jpg') }}" alt="Aktivitas Akademik dan Kampus di PPAk FEB UNESA" class="hero-main-img">
-                    <div class="hero-floating-badge">
+            <div class="col-lg-5">
+                <div class="hero-glass-card">
+                    <div class="hero-glass-header">
                         <div class="d-flex align-items-center gap-3">
-                            <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" class="hero-badge-logo">
+                            <div class="hero-glass-logo-badge">
+                                <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi UNESA">
+                            </div>
                             <div>
-                                <div class="fw-bold text-navy" style="font-size: 0.9rem; line-height: 1.25;">Terakreditasi Baik Sekali [LAMEMBA]</div>
-                                <div class="text-secondary small" style="font-size: 0.74rem;">Fakultas Ekonomika dan Bisnis &bull; UNESA</div>
+                                <div class="fw-bold text-white" style="font-size: 0.92rem; line-height: 1.25;">Fakultas Ekonomika dan Bisnis</div>
+                                <div class="text-white-50 small" style="font-size: 0.75rem;">Universitas Negeri Surabaya</div>
                             </div>
                         </div>
+                        <span class="hero-glass-akreditasi">
+                            <i class="fa-solid fa-certificate text-gold"></i> LAMEMBA
+                        </span>
+                    </div>
+
+                    <div class="hero-glass-features">
+                        <div class="hero-glass-item">
+                            <div class="hero-glass-icon">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div class="hero-glass-content">
+                                <div class="hero-glass-label">Gelar & Kualifikasi Profesi</div>
+                                <div class="hero-glass-value">Sebutan Akuntan (Ak.) & Jalur Ujian CA / CPA</div>
+                            </div>
+                        </div>
+
+                        <div class="hero-glass-item">
+                            <div class="hero-glass-icon">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            <div class="hero-glass-content">
+                                <div class="hero-glass-label">Masa Studi & Beban Kurikulum</div>
+                                <div class="hero-glass-value">2 Semester (1 Tahun) &bull; 32 SKS Terstruktur</div>
+                            </div>
+                        </div>
+
+                        <div class="hero-glass-item">
+                            <div class="hero-glass-icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <div class="hero-glass-content">
+                                <div class="hero-glass-label">Pilihan Program Perkuliahan</div>
+                                <div class="hero-glass-value">Kelas Reguler & Kelas Eksekutif Akhir Pekan</div>
+                            </div>
+                        </div>
+
+                        <div class="hero-glass-item">
+                            <div class="hero-glass-icon">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                            <div class="hero-glass-content">
+                                <div class="hero-glass-label">Kemitraan Strategis & Afiliasi</div>
+                                <div class="hero-glass-value">IAI Wilayah Jatim & Jejaring KAP Rekanan</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-glass-footer">
+                        <div class="hero-live-pill">
+                            <span class="hero-pulse-dot"></span>
+                            <span>Pendaftaran Mahasiswa Baru Dibuka</span>
+                        </div>
+                        <a href="{{ route('admisi.biaya') }}" class="hero-glass-link">
+                            <span>Jadwal & Biaya</span>
+                            <i class="fa-solid fa-chevron-right ms-1"></i>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -762,36 +762,330 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   11. Homepage Hero Section (Apple-Inspired Institutional Refinement)
+   11. Homepage Hero Section (Primary Color Overlay & Glassmorphism Refinement)
    -------------------------------------------------------------------------- */
 .hero-home {
-  padding: clamp(2.75rem, 5vw, 4.25rem) 0;
-  background-color: #ffffff;
-  border-bottom: 1px solid var(--border);
   position: relative;
+  background-color: var(--unesa-navy-dark);
+  background-image:
+    linear-gradient(135deg, rgba(7, 25, 48, 0.94) 0%, rgba(10, 35, 66, 0.90) 50%, rgba(18, 63, 115, 0.82) 100%),
+    url('/images/unesa_campus_hero.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: clamp(3.75rem, 6.5vw, 5.5rem) 0;
+  color: #ffffff;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-home::before {
+  content: "";
+  position: absolute;
+  top: -25%;
+  right: -10%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(216, 174, 71, 0.12) 0%, rgba(18, 63, 115, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-home::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to top, rgba(7, 25, 48, 0.45), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-home .container-xl {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(216, 174, 71, 0.45);
+  padding: 0.42rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #FAF4E6;
+  margin-bottom: 1.25rem;
+}
+
+.hero-pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--unesa-gold);
+  box-shadow: 0 0 10px var(--unesa-gold);
 }
 
 .hero-headline {
-  font-size: clamp(2rem, 3.2vw, 2.85rem);
-  font-weight: 750;
-  color: var(--unesa-navy);
-  letter-spacing: -0.028em;
-  line-height: 1.22;
-  margin-bottom: 1.15rem;
+  font-size: clamp(2.1rem, 3.4vw, 3rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
 }
 
 .hero-headline span.accent {
-  color: var(--unesa-gold);
+  color: #F7D479;
+  text-shadow: 0 2px 16px rgba(247, 212, 121, 0.35);
 }
 
 .hero-subheadline {
-  font-size: 1.025rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  max-width: 540px;
-  margin-bottom: 1.75rem;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.75;
+  max-width: 580px;
+  margin-bottom: 2rem;
+  font-weight: 400;
 }
 
+.btn-hero-primary {
+  background-color: var(--unesa-gold);
+  color: var(--unesa-navy-dark) !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--unesa-gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(216, 174, 71, 0.3);
+  transition: all var(--transition-base);
+  text-decoration: none;
+}
+
+.btn-hero-primary:hover {
+  background-color: #e6be57;
+  border-color: #e6be57;
+  color: var(--unesa-navy-dark) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(216, 174, 71, 0.45);
+}
+
+.btn-hero-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all var(--transition-base);
+  text-decoration: none;
+}
+
+.btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+.hero-bullets {
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding-top: 1.25rem;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+}
+
+.hero-bullet-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.885rem;
+  font-weight: 600;
+}
+
+.hero-bullet-item i {
+  color: #F7D479;
+  font-size: 0.95rem;
+}
+
+/* Glassmorphism Spotlight Card */
+.hero-glass-card {
+  background: rgba(10, 35, 66, 0.68);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 1.85rem;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.hero-glass-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-glass-logo-badge {
+  background: #ffffff;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hero-glass-logo-badge img {
+  height: 36px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  display: block;
+}
+
+.hero-glass-akreditasi {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(216, 174, 71, 0.18);
+  border: 1px solid rgba(216, 174, 71, 0.45);
+  color: #FAF4E6;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.03em;
+}
+
+.hero-glass-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.35rem 0;
+}
+
+.hero-glass-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.hero-glass-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--unesa-gold);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.hero-glass-content {
+  flex-grow: 1;
+}
+
+.hero-glass-label {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.hero-glass-value {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.35;
+}
+
+.hero-glass-footer {
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4ade80;
+}
+
+.hero-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: heroPulse 2s infinite;
+}
+
+@keyframes heroPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.hero-glass-link {
+  color: #FAF4E6;
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color var(--transition-fast);
+}
+
+.hero-glass-link:hover {
+  color: var(--unesa-gold);
+}
+
+/* Fallback visual card aliases if ever needed */
 .hero-visual-card {
   position: relative;
   border-radius: var(--radius-lg);
@@ -1667,6 +1961,20 @@ a:hover {
 
 /* Mobile Adjustments */
 @media (max-width: 991.98px) {
+  .hero-home {
+    padding: 3rem 0 3.5rem;
+  }
+
+  .hero-glass-card {
+    padding: 1.35rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero-bullets {
+    gap: 0.75rem 1.25rem;
+    margin-top: 1.25rem;
+  }
+
   .hero-visual-card img {
     height: 360px;
   }
