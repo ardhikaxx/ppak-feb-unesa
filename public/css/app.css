@@ -773,7 +773,7 @@ a:hover {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  padding: clamp(3.75rem, 6.5vw, 5.5rem) 0;
+  padding: clamp(4.25rem, 7.5vw, 6.5rem) 0;
   color: #ffffff;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -848,11 +848,11 @@ a:hover {
 }
 
 .hero-subheadline {
-  font-size: 1.05rem;
+  font-size: 1.085rem;
   color: rgba(255, 255, 255, 0.88);
-  line-height: 1.75;
-  max-width: 580px;
-  margin-bottom: 2rem;
+  line-height: 1.8;
+  max-width: 720px;
+  margin-bottom: 2.25rem;
   font-weight: 400;
 }
 
