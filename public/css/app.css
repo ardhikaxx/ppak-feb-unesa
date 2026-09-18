@@ -1,0 +1,1429 @@
+/* ==========================================================================
+   PPAk FEB UNESA - Design System & Custom CSS
+   Inspirasi: Apple Design Aesthetic x Modern Academic Institution
+   Clean, Minimalist, Generous Whitespace, Strong Typography, Subtle Elevation
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Root Variables & Theme Colors
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand Palette (UNESA Identity Inspired) */
+  --ppak-navy: #0b1f3a;
+  --ppak-navy-dark: #071529;
+  --ppak-navy-light: #163259;
+  --ppak-blue: #1b56b3;
+  --ppak-blue-hover: #144491;
+  --ppak-blue-soft: #f0f5fc;
+  --ppak-blue-border: #dbe7f6;
+  --ppak-gold: #b37d14;
+  --ppak-gold-hover: #9c6c0e;
+  --ppak-gold-soft: #fdf8ed;
+  --ppak-gold-border: #f4e3be;
+
+  /* Surfaces & Backgrounds */
+  --ppak-bg: #ffffff;
+  --ppak-bg-subtle: #fafbfd;
+  --ppak-bg-muted: #f3f5f8;
+  --ppak-bg-elevated: #ffffff;
+
+  /* Borders & Dividers */
+  --ppak-border: #e6eaee;
+  --ppak-border-subtle: #f0f3f6;
+  --ppak-border-strong: #cbd5e1;
+
+  /* Typography */
+  --ppak-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ppak-font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ppak-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --ppak-text: #0f172a;
+  --ppak-text-secondary: #475569;
+  --ppak-text-muted: #64748b;
+  --ppak-text-tertiary: #94a3b8;
+
+  /* Radius (Apple-style proportional curves) */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
+
+  /* Shadows (Ultra-soft, feathered ambient depth) */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 4px 12px rgba(11, 31, 58, 0.04), 0 1px 3px rgba(11, 31, 58, 0.02);
+  --shadow-md: 0 10px 28px rgba(11, 31, 58, 0.06), 0 2px 6px rgba(11, 31, 58, 0.03);
+  --shadow-lg: 0 20px 48px rgba(11, 31, 58, 0.08), 0 4px 12px rgba(11, 31, 58, 0.04);
+  --shadow-hover: 0 14px 34px rgba(11, 31, 58, 0.09), 0 2px 8px rgba(11, 31, 58, 0.04);
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Typography Foundations
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--ppak-font);
+  color: var(--ppak-text);
+  background-color: var(--ppak-bg);
+  line-height: 1.7;
+  letter-spacing: -0.011em;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--ppak-font-heading);
+  font-weight: 650;
+  color: var(--ppak-navy);
+  letter-spacing: -0.024em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+h1, .h1 {
+  font-size: clamp(2.1rem, 3.8vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+h2, .h2 {
+  font-size: clamp(1.65rem, 2.6vw, 2.25rem);
+  letter-spacing: -0.026em;
+  line-height: 1.22;
+}
+
+h3, .h3 {
+  font-size: clamp(1.3rem, 1.8vw, 1.55rem);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+h4, .h4 {
+  font-size: 1.2rem;
+  letter-spacing: -0.015em;
+}
+
+h5, .h5 {
+  font-size: 1.05rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+  color: var(--ppak-text-secondary);
+}
+
+p.lead {
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.68;
+  color: var(--ppak-text-secondary);
+  letter-spacing: -0.012em;
+}
+
+a {
+  color: var(--ppak-blue);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--ppak-blue-hover);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ppak-blue);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* --------------------------------------------------------------------------
+   3. Layout & Section Helpers
+   -------------------------------------------------------------------------- */
+.container {
+  max-width: 1240px;
+}
+
+.section-py {
+  padding-top: clamp(3.5rem, 6vw, 5.5rem);
+  padding-bottom: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+.section-py-sm {
+  padding-top: clamp(2.5rem, 4vw, 3.5rem);
+  padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.bg-subtle {
+  background-color: var(--ppak-bg-subtle);
+}
+
+.bg-muted-custom {
+  background-color: var(--ppak-bg-muted);
+}
+
+.bg-navy {
+  background-color: var(--ppak-navy);
+  color: #ffffff;
+}
+
+.bg-navy-dark {
+  background-color: var(--ppak-navy-dark);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   4. Top Information Bar
+   -------------------------------------------------------------------------- */
+.top-infobar {
+  background-color: var(--ppak-navy-dark);
+  color: #94a3b8;
+  font-size: 0.825rem;
+  line-height: 1;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.top-infobar a {
+  color: #cbd5e1;
+  transition: color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.top-infobar a:hover {
+  color: #ffffff;
+}
+
+.top-infobar .divider {
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+/* --------------------------------------------------------------------------
+   5. Modern Sticky Navbar (Apple Frosted Glass)
+   -------------------------------------------------------------------------- */
+.navbar-ppak {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid var(--ppak-border);
+  padding: 0.85rem 0;
+  transition: padding var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
+}
+
+.navbar-ppak.navbar-scrolled {
+  padding: 0.65rem 0;
+  background-color: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 4px 20px rgba(11, 31, 58, 0.06);
+}
+
+/* Brand Wordmark & Emblem */
+.navbar-brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.navbar-brand-emblem {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--ppak-navy) 0%, var(--ppak-blue) 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.03em;
+  box-shadow: 0 2px 8px rgba(11, 31, 58, 0.18);
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-brand-title {
+  font-size: 1.025rem;
+  font-weight: 700;
+  color: var(--ppak-navy);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.navbar-brand-subtitle {
+  font-size: 0.725rem;
+  color: var(--ppak-text-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Nav links */
+.navbar-ppak .nav-link {
+  font-size: 0.915rem;
+  font-weight: 500;
+  color: var(--ppak-text);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.navbar-ppak .nav-link:hover {
+  color: var(--ppak-blue);
+  background-color: var(--ppak-bg-subtle);
+}
+
+.navbar-ppak .nav-link.active,
+.navbar-ppak .nav-item.dropdown.active > .nav-link {
+  color: var(--ppak-blue);
+  font-weight: 600;
+  background-color: var(--ppak-blue-soft);
+}
+
+/* Dropdown Menu (Apple Card Style) */
+.navbar-ppak .dropdown-menu {
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md);
+  background-color: #ffffff;
+  box-shadow: var(--shadow-md);
+  padding: 0.5rem;
+  margin-top: 0.65rem;
+  min-width: 260px;
+  animation: dropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-ppak .dropdown-item {
+  font-size: 0.885rem;
+  font-weight: 500;
+  color: var(--ppak-text);
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-ppak .dropdown-item i {
+  font-size: 0.8rem;
+  color: var(--ppak-text-muted);
+  width: 18px;
+  text-align: center;
+  transition: color var(--transition-fast);
+}
+
+.navbar-ppak .dropdown-item:hover,
+.navbar-ppak .dropdown-item:focus {
+  background-color: var(--ppak-bg-muted);
+  color: var(--ppak-blue);
+}
+
+.navbar-ppak .dropdown-item:hover i {
+  color: var(--ppak-blue);
+}
+
+.navbar-ppak .dropdown-item.active {
+  background-color: var(--ppak-blue-soft);
+  color: var(--ppak-blue);
+  font-weight: 600;
+}
+
+.navbar-ppak .dropdown-item.active i {
+  color: var(--ppak-blue);
+}
+
+.navbar-ppak .dropdown-toggle::after {
+  font-size: 0.7rem;
+  vertical-align: middle;
+  margin-left: 4px;
+  opacity: 0.6;
+  transition: transform var(--transition-fast);
+}
+
+/* --------------------------------------------------------------------------
+   6. Apple-style Buttons
+   -------------------------------------------------------------------------- */
+.btn-ppak-primary {
+  background-color: var(--ppak-blue);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.915rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(27, 86, 179, 0.2);
+}
+
+.btn-ppak-primary:hover {
+  background-color: var(--ppak-blue-hover);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(27, 86, 179, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-ppak-secondary {
+  background-color: #ffffff;
+  color: var(--ppak-navy);
+  font-weight: 600;
+  font-size: 0.915rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--ppak-border);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-ppak-secondary:hover {
+  background-color: var(--ppak-bg-subtle);
+  border-color: var(--ppak-border-strong);
+  color: var(--ppak-navy);
+  transform: translateY(-1px);
+}
+
+.btn-ppak-gold {
+  background-color: var(--ppak-gold);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.915rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(179, 125, 20, 0.25);
+}
+
+.btn-ppak-gold:hover {
+  background-color: var(--ppak-gold-hover);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(179, 125, 20, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-ppak-sm {
+  font-size: 0.835rem;
+  padding: 0.425rem 1rem;
+}
+
+.btn-ppak-lg {
+  font-size: 1rem;
+  padding: 0.75rem 1.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. Apple-style Minimal Badges
+   -------------------------------------------------------------------------- */
+.badge-ppak {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.775rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.badge-ppak-blue {
+  background-color: var(--ppak-blue-soft);
+  color: var(--ppak-blue);
+  border: 1px solid var(--ppak-blue-border);
+}
+
+.badge-ppak-navy {
+  background-color: rgba(11, 31, 58, 0.06);
+  color: var(--ppak-navy);
+  border: 1px solid rgba(11, 31, 58, 0.12);
+}
+
+.badge-ppak-gold {
+  background-color: var(--ppak-gold-soft);
+  color: var(--ppak-gold);
+  border: 1px solid var(--ppak-gold-border);
+}
+
+.badge-ppak-green {
+  background-color: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+/* --------------------------------------------------------------------------
+   8. Cards & Surfaces
+   -------------------------------------------------------------------------- */
+.card-ppak {
+  background-color: #ffffff;
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  overflow: hidden;
+  height: 100%;
+}
+
+.card-ppak:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(27, 86, 179, 0.25);
+}
+
+.card-ppak-flat {
+  background-color: #ffffff;
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: border-color var(--transition-fast);
+}
+
+.card-ppak-flat:hover {
+  border-color: var(--ppak-border-strong);
+}
+
+/* --------------------------------------------------------------------------
+   9. Breadcrumb Component
+   -------------------------------------------------------------------------- */
+.breadcrumb-ppak {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+  font-size: 0.835rem;
+}
+
+.breadcrumb-ppak-item {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ppak-text-muted);
+}
+
+.breadcrumb-ppak-item + .breadcrumb-ppak-item::before {
+  content: "›";
+  padding: 0 8px;
+  color: var(--ppak-text-tertiary);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.breadcrumb-ppak-item a {
+  color: var(--ppak-text-muted);
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb-ppak-item a:hover {
+  color: var(--ppak-blue);
+}
+
+.breadcrumb-ppak-item.active {
+  color: var(--ppak-text-secondary);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   10. Internal Page Header / Subpage Hero
+   -------------------------------------------------------------------------- */
+.page-header-ppak {
+  background: linear-gradient(180deg, var(--ppak-bg-subtle) 0%, #ffffff 100%);
+  border-bottom: 1px solid var(--ppak-border);
+  padding: clamp(2.5rem, 4.5vw, 4rem) 0 clamp(2rem, 3.5vw, 3rem);
+}
+
+.page-header-title {
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--ppak-navy);
+  margin-bottom: 0.65rem;
+}
+
+.page-header-lead {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  color: var(--ppak-text-secondary);
+  max-width: 720px;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   11. Homepage Hero Section (Apple Split Minimalist)
+   -------------------------------------------------------------------------- */
+.hero-home {
+  padding: clamp(3.5rem, 6.5vw, 6rem) 0 clamp(3rem, 5vw, 5rem);
+  background: radial-gradient(circle at 85% 20%, rgba(27, 86, 179, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 10% 80%, rgba(179, 125, 20, 0.04) 0%, transparent 45%),
+              #ffffff;
+  border-bottom: 1px solid var(--ppak-border-subtle);
+  position: relative;
+}
+
+.hero-headline {
+  font-size: clamp(2.35rem, 4.2vw, 3.65rem);
+  font-weight: 750;
+  color: var(--ppak-navy);
+  letter-spacing: -0.034em;
+  line-height: 1.12;
+  margin-bottom: 1.25rem;
+}
+
+.hero-headline span.accent {
+  color: var(--ppak-blue);
+}
+
+.hero-subheadline {
+  font-size: clamp(1.05rem, 1.35vw, 1.22rem);
+  color: var(--ppak-text-secondary);
+  line-height: 1.68;
+  max-width: 580px;
+  margin-bottom: 2rem;
+}
+
+.hero-visual-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--ppak-border);
+  background-color: var(--ppak-bg-muted);
+}
+
+.hero-visual-card img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-floating-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   12. Stat Cards (Editorial Minimalist)
+   -------------------------------------------------------------------------- */
+.stat-card-apple {
+  padding: 1.75rem 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md);
+  height: 100%;
+  transition: all var(--transition-base);
+}
+
+.stat-card-apple:hover {
+  border-color: var(--ppak-blue-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-number {
+  font-size: clamp(2.2rem, 3.2vw, 2.85rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: var(--ppak-navy);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--ppak-navy);
+  margin-bottom: 0.35rem;
+}
+
+.stat-desc {
+  font-size: 0.835rem;
+  color: var(--ppak-text-muted);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   13. Keunggulan Section (Editorial List & Minimal Icons)
+   -------------------------------------------------------------------------- */
+.feature-item {
+  display: flex;
+  gap: 18px;
+  padding: 1.25rem 0;
+}
+
+.feature-icon-wrapper {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  background-color: var(--ppak-blue-soft);
+  color: var(--ppak-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  border: 1px solid var(--ppak-blue-border);
+}
+
+.feature-title {
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: var(--ppak-navy);
+  margin-bottom: 0.35rem;
+}
+
+.feature-desc {
+  font-size: 0.885rem;
+  color: var(--ppak-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   14. Stepper & Admission Timeline
+   -------------------------------------------------------------------------- */
+.stepper-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.stepper-item {
+  display: flex;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.stepper-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background-color: #ffffff;
+  border: 2px solid var(--ppak-blue);
+  color: var(--ppak-blue);
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(27, 86, 179, 0.15);
+}
+
+.stepper-content {
+  flex-grow: 1;
+  background-color: #ffffff;
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.stepper-line {
+  position: absolute;
+  left: 21px;
+  top: 44px;
+  bottom: -24px;
+  width: 2px;
+  background-color: var(--ppak-border);
+  z-index: 1;
+}
+
+.stepper-item:last-child .stepper-line {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   15. News & Event Cards
+   -------------------------------------------------------------------------- */
+.news-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #ffffff;
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-base);
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(27, 86, 179, 0.25);
+}
+
+.news-card-img-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+  background-color: var(--ppak-bg-muted);
+}
+
+.news-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.news-card:hover .news-card-img {
+  transform: scale(1.03);
+}
+
+.news-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.news-card-meta {
+  font-size: 0.785rem;
+  color: var(--ppak-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.65rem;
+}
+
+.news-card-title {
+  font-size: 1.1rem;
+  font-weight: 650;
+  color: var(--ppak-navy);
+  line-height: 1.4;
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.015em;
+}
+
+.news-card-title a {
+  color: var(--ppak-navy);
+}
+
+.news-card-title a:hover {
+  color: var(--ppak-blue);
+}
+
+.news-card-excerpt {
+  font-size: 0.885rem;
+  color: var(--ppak-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+/* Event List Card (Distinct from News) */
+.event-item-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-fast);
+  margin-bottom: 1rem;
+}
+
+.event-item-card:hover {
+  border-color: var(--ppak-blue-border);
+  box-shadow: var(--shadow-sm);
+  transform: translateX(4px);
+}
+
+.event-date-box {
+  width: 68px;
+  height: 72px;
+  background-color: var(--ppak-blue-soft);
+  border: 1px solid var(--ppak-blue-border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.event-date-day {
+  font-size: 1.55rem;
+  font-weight: 750;
+  line-height: 1;
+  color: var(--ppak-navy);
+}
+
+.event-date-month {
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ppak-blue);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   16. Dosen & Pengajar Card
+   -------------------------------------------------------------------------- */
+.dosen-card {
+  background-color: #ffffff;
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-base);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dosen-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--ppak-blue-border);
+}
+
+.dosen-photo-wrapper {
+  position: relative;
+  padding-top: 105%;
+  background-color: var(--ppak-bg-muted);
+  overflow: hidden;
+}
+
+.dosen-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.dosen-card:hover .dosen-photo {
+  transform: scale(1.02);
+}
+
+.dosen-info {
+  padding: 1.25rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.dosen-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ppak-navy);
+  line-height: 1.35;
+  margin-bottom: 0.25rem;
+}
+
+.dosen-gelar {
+  font-size: 0.8rem;
+  color: var(--ppak-blue);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.dosen-role {
+  font-size: 0.825rem;
+  color: var(--ppak-text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   17. Testimonial Card
+   -------------------------------------------------------------------------- */
+.testi-card {
+  background-color: #ffffff;
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-subtle);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
+}
+
+.testi-card:hover {
+  border-color: var(--ppak-border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.testi-quote {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ppak-text);
+  font-style: normal;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.testi-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  object-fit: cover;
+  border: 2px solid var(--ppak-border);
+}
+
+.testi-name {
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: var(--ppak-navy);
+  line-height: 1.2;
+}
+
+.testi-role {
+  font-size: 0.785rem;
+  color: var(--ppak-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   18. Organizational Chart (Pure Semantic Responsive CSS)
+   -------------------------------------------------------------------------- */
+.org-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 0;
+}
+
+.org-level {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  position: relative;
+  width: 100%;
+}
+
+.org-card {
+  background-color: #ffffff;
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  min-width: 240px;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-fast);
+}
+
+.org-card:hover {
+  border-color: var(--ppak-blue);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.org-card-leader {
+  background-color: var(--ppak-navy);
+  color: #ffffff;
+  border-color: var(--ppak-navy-dark);
+}
+
+.org-card-leader .org-role {
+  color: #93c5fd;
+}
+
+.org-card-leader .org-name {
+  color: #ffffff;
+}
+
+.org-role {
+  font-size: 0.775rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ppak-blue);
+  margin-bottom: 0.35rem;
+}
+
+.org-name {
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--ppak-navy);
+  margin-bottom: 0.2rem;
+}
+
+.org-subtext {
+  font-size: 0.775rem;
+  color: var(--ppak-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   19. Clean Academic Tables
+   -------------------------------------------------------------------------- */
+.table-ppak-wrapper {
+  background-color: #ffffff;
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  box-shadow: var(--shadow-subtle);
+}
+
+.table-ppak {
+  width: 100%;
+  margin-bottom: 0;
+  border-collapse: collapse;
+}
+
+.table-ppak th {
+  background-color: var(--ppak-bg-subtle);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ppak-navy);
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--ppak-border);
+  white-space: nowrap;
+}
+
+.table-ppak td {
+  padding: 1rem 1.25rem;
+  font-size: 0.885rem;
+  color: var(--ppak-text-secondary);
+  border-bottom: 1px solid var(--ppak-border-subtle);
+  vertical-align: middle;
+}
+
+.table-ppak tr:last-child td {
+  border-bottom: none;
+}
+
+.table-ppak tbody tr:hover td {
+  background-color: var(--ppak-bg-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   20. Accordions (FAQ & Details)
+   -------------------------------------------------------------------------- */
+.accordion-ppak .accordion-item {
+  background-color: #ffffff;
+  border: 1px solid var(--ppak-border);
+  border-radius: var(--radius-md) !important;
+  margin-bottom: 0.85rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+}
+
+.accordion-ppak .accordion-button {
+  font-size: 0.985rem;
+  font-weight: 600;
+  color: var(--ppak-navy);
+  background-color: #ffffff;
+  padding: 1.15rem 1.35rem;
+  border: none;
+  box-shadow: none;
+}
+
+.accordion-ppak .accordion-button:not(.collapsed) {
+  background-color: var(--ppak-blue-soft);
+  color: var(--ppak-blue);
+}
+
+.accordion-ppak .accordion-body {
+  padding: 1.15rem 1.35rem 1.35rem;
+  font-size: 0.915rem;
+  line-height: 1.7;
+  color: var(--ppak-text-secondary);
+  background-color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   21. Gallery Grid & Lightbox
+   -------------------------------------------------------------------------- */
+.gallery-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  padding-top: 75%; /* 4:3 */
+  background-color: var(--ppak-bg-muted);
+  border: 1px solid var(--ppak-border);
+}
+
+.gallery-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1.25rem 1rem;
+  background: linear-gradient(to top, rgba(11, 31, 58, 0.85) 0%, transparent 100%);
+  color: #ffffff;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all var(--transition-fast);
+}
+
+.gallery-card:hover .gallery-overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.gallery-overlay-title {
+  font-size: 0.885rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.gallery-overlay-date {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+}
+
+/* --------------------------------------------------------------------------
+   22. Pre-Footer Call to Action Banner (Apple Style)
+   -------------------------------------------------------------------------- */
+.cta-banner-ppak {
+  background-color: var(--ppak-navy);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner-ppak h2 {
+  color: #ffffff;
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.85rem;
+}
+
+.cta-banner-ppak p {
+  color: #cbd5e1;
+  font-size: clamp(0.975rem, 1.2vw, 1.15rem);
+  max-width: 650px;
+  margin-bottom: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   23. Institutional Footer
+   -------------------------------------------------------------------------- */
+.footer-ppak {
+  background-color: var(--ppak-navy-dark);
+  color: #cbd5e1;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+}
+
+.footer-top {
+  padding: clamp(3.5rem, 5vw, 4.5rem) 0 clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.footer-heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.65rem;
+}
+
+.footer-links a {
+  color: #94a3b8;
+  transition: color var(--transition-fast);
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+.footer-bottom {
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.footer-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  font-size: 0.85rem;
+}
+
+.footer-social-btn:hover {
+  background-color: var(--ppak-blue);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   24. 404 Error Minimal Page
+   -------------------------------------------------------------------------- */
+.error-404-container {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.error-404-num {
+  font-size: clamp(5rem, 12vw, 9rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: var(--ppak-border-strong);
+  margin-bottom: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   25. Micro-interactions & Accessibility
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 991.98px) {
+  .hero-visual-card img {
+    height: 360px;
+  }
+  
+  .event-item-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .event-date-box {
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    padding: 0.35rem 0.75rem;
+    gap: 8px;
+  }
+
+  .event-date-day {
+    font-size: 1.1rem;
+  }
+
+  .navbar-ppak .dropdown-menu {
+    box-shadow: none;
+    border: none;
+    background-color: var(--ppak-bg-subtle);
+    padding-left: 1rem;
+  }
+}
