@@ -253,17 +253,8 @@
                         </li>
                     </ul>
 
-                    {{-- 3. CTA & Search Area (Sisi Kanan) --}}
+                    {{-- 3. CTA Area (Sisi Kanan) --}}
                     <div class="navbar-cta-group">
-                        {{-- Search Trigger Button --}}
-                        <button type="button" class="btn-navbar-search d-none d-lg-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Cari informasi program studi">
-                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                        </button>
-
-                        {{-- Subtle vertical divider between search and CTA --}}
-                        <div class="navbar-action-divider d-none d-lg-block" aria-hidden="true"></div>
-
-                        {{-- Action CTA Button Pendaftaran --}}
                         <a href="{{ route('admisi.jalur-syarat') }}" class="btn-navbar-cta w-100 w-xl-auto">
                             <span>Pendaftaran</span>
                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
@@ -274,24 +265,3 @@
         </div>
     </nav>
 </header>
-
-{{-- Quick Search Modal Dialog --}}
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0 shadow-lg" style="border-radius: 16px; overflow: hidden;">
-            <div class="modal-header border-bottom-0 pb-0 px-4 pt-4">
-                <h5 class="modal-title fw-bold text-navy fs-6" id="searchModalLabel">Pencarian PPAk FEB UNESA</h5>
-                <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Tutup"></button>
-            </div>
-            <div class="modal-body p-4">
-                <form action="{{ route('informasi.berita') }}" method="GET" class="search-form-modal">
-                    <div class="input-group">
-                        <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
-                        <input type="text" name="q" class="form-control bg-light border-start-0 shadow-none" placeholder="Ketik kata kunci pencarian (misal: kurikulum, biaya)..." aria-label="Kata kunci pencarian" autofocus>
-                        <button class="btn btn-ppak-primary px-3" type="submit">Cari</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
