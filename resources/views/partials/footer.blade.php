@@ -1,12 +1,12 @@
 <footer class="footer-ppak" aria-label="Informasi Footer Institusi">
     <div class="footer-top">
-        <div class="container">
+        <div class="container-xl">
             <div class="row g-4 g-lg-5">
                 {{-- Column 1: Identity & About --}}
                 <div class="col-lg-4 col-md-6">
                     <div class="d-flex align-items-center gap-3 mb-3">
-                        <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="46" class="img-fluid">
-                        <div>
+                        <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" style="height: 44px; width: auto; max-width: 140px; object-fit: contain; flex-shrink: 0;">
+                        <div style="flex-shrink: 0;">
                             <div class="fw-bold text-white fs-5 lh-1">PPAk FEB UNESA</div>
                             <div class="text-secondary" style="font-size: 0.775rem;">Universitas Negeri Surabaya</div>
                         </div>
@@ -77,7 +77,7 @@
                             <span>+62 812 3456 7890 (Helpdesk Mahasiswa)</span>
                         </li>
                     </ul>
-                    <div class="p-3 rounded-3 bg-white bg-opacity-5 border border-white border-opacity-10 mt-3">
+                    <div class="p-3 mt-3" style="background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px;">
                         <div class="d-flex align-items-center gap-2 text-white small fw-bold">
                             <i class="fa-solid fa-clock"></i>
                             <span>Jam Operasional Layanan:</span>
@@ -91,7 +91,7 @@
 
     {{-- Bottom Bar --}}
     <div class="footer-bottom">
-        <div class="container">
+        <div class="container-xl">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center text-md-start">
                 <div>
                     <span>&copy; {{ date('Y') }} <strong>Pendidikan Profesi Akuntansi (PPAk)</strong>. Fakultas Ekonomika dan Bisnis — Universitas Negeri Surabaya.</span>

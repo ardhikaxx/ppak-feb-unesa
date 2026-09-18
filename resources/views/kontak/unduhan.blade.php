@@ -94,7 +94,7 @@
 
         {{-- Verification note --}}
         <div class="p-4 rounded-3 border bg-subtle text-center">
-            <h4 class="fs-6 fw-bold text-navy mb-1"><i class="fa-solid fa-shield-check text-primary me-2"></i>Legalitas Dokumen Terverifikasi</h4>
+            <h4 class="fs-6 fw-bold text-navy mb-1"><i class="fa-solid fa-shield-halved text-primary me-2"></i>Legalitas Dokumen Terverifikasi</h4>
             <p class="small text-secondary mb-0 max-w-700 mx-auto">
                 Dokumen publik yang diunggah pada repositori ini merupakan publikasi resmi dari Sekretariat PPAk FEB Universitas Negeri Surabaya. Segala bentuk penggandaan dokumen untuk tujuan komersial tanpa izin tertulis dilarang.
             </p>
