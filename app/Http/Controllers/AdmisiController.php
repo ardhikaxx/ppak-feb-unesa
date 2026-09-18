@@ -2,41 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\PpakData;
+use App\Contracts\ContentRepositoryInterface;
 use Illuminate\View\View;
 
 class AdmisiController extends Controller
 {
+    public function __construct(private ContentRepositoryInterface $content) {}
+
     public function jalurSyarat(): View
     {
         return view('admisi.jalur-syarat', [
-            'admisi' => PpakData::getAdmisiInfo(),
-            'info' => PpakData::getGeneralInfo(),
+            'admisi' => $this->content->getAdmisiInfo(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function biaya(): View
     {
         return view('admisi.biaya', [
-            'admisi' => PpakData::getAdmisiInfo(),
-            'info' => PpakData::getGeneralInfo(),
+            'admisi' => $this->content->getAdmisiInfo(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function prosedurJadwal(): View
     {
         return view('admisi.prosedur-jadwal', [
-            'admisi' => PpakData::getAdmisiInfo(),
-            'kalender' => PpakData::getKalender(),
-            'info' => PpakData::getGeneralInfo(),
+            'admisi' => $this->content->getAdmisiInfo(),
+            'kalender' => $this->content->getKalender(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function faq(): View
     {
         return view('admisi.faq', [
-            'faqs' => PpakData::getFaq(),
-            'info' => PpakData::getGeneralInfo(),
+            'faqs' => $this->content->getFaq(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 }

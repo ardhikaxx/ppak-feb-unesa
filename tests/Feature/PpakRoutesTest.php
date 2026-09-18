@@ -123,28 +123,50 @@ test('non-existent route returns 404 with custom error page', function () {
     $response->assertSee('Halaman Tidak Ditemukan');
 });
 
-test('all 26 designated route names and aliases resolve with status 200', function () {
+test('legacy alias routes redirect 301 to canonical (no duplicate content)', function () {
+    $aliases = [
+        'profil.struktur' => '/profil/struktur-organisasi',
+        'profil.dosen' => '/profil/dosen-pengajar',
+        'akademik.sertifikasi' => '/akademik/gelar-sertifikasi',
+        'admisi.syarat' => '/admisi/jalur-syarat',
+        'admisi.prosedur' => '/admisi/prosedur-jadwal',
+        'riset.publikasi' => '/riset-pengabdian/riset-publikasi',
+        'riset.pengabdian' => '/riset-pengabdian/pengabdian',
+        'riset.kerjasama' => '/riset-pengabdian/kerja-sama',
+        'kemahasiswaan.alumni' => '/kemahasiswaan-alumni/alumni',
+        'kemahasiswaan.komunitas' => '/kemahasiswaan-alumni/mahasiswa',
+        'kemahasiswaan.karier' => '/kemahasiswaan-alumni/testimoni-karier',
+    ];
+
+    foreach ($aliases as $routeName => $canonical) {
+        $response = $this->get(route($routeName));
+        $response->assertStatus(301);
+        $response->assertRedirect($canonical);
+    }
+});
+
+test('canonical routes all return 200', function () {
     $routes = [
         'home',
         'profil.sejarah',
         'profil.visi-misi',
-        'profil.struktur',
-        'profil.dosen',
+        'profil.struktur-organisasi',
+        'profil.dosen-pengajar',
         'profil.akreditasi',
         'akademik.kurikulum',
         'akademik.kalender',
-        'akademik.sertifikasi',
+        'akademik.gelar-sertifikasi',
         'akademik.panduan',
-        'admisi.syarat',
+        'admisi.jalur-syarat',
         'admisi.biaya',
-        'admisi.prosedur',
+        'admisi.prosedur-jadwal',
         'admisi.faq',
-        'riset.publikasi',
-        'riset.pengabdian',
-        'riset.kerjasama',
-        'kemahasiswaan.alumni',
-        'kemahasiswaan.komunitas',
-        'kemahasiswaan.karier',
+        'riset-pengabdian.riset-publikasi',
+        'riset-pengabdian.pengabdian',
+        'riset-pengabdian.kerja-sama',
+        'kemahasiswaan-alumni.alumni',
+        'kemahasiswaan-alumni.mahasiswa',
+        'kemahasiswaan-alumni.testimoni-karier',
         'informasi.berita',
         'informasi.agenda',
         'informasi.galeri',
@@ -157,4 +179,35 @@ test('all 26 designated route names and aliases resolve with status 200', functi
         $response = $this->get(route($routeName));
         $response->assertStatus(200);
     }
+});
+
+test('berita pagination returns correct structure', function () {
+    $response = $this->get(route('informasi.berita', ['page' => 1]));
+    $response->assertStatus(200);
+    // Empty search still returns paginated
+    $response2 = $this->get(route('informasi.berita', ['q' => 'CA']));
+    $response2->assertStatus(200);
+});
+
+test('berita search with pagination preserves query string', function () {
+    $response = $this->get(route('search', ['q' => 'akuntansi']));
+    $response->assertStatus(200);
+    $response->assertSee('Hasil Pencarian');
+});
+
+test('sitemap returns valid xml', function () {
+    $response = $this->get(route('sitemap'));
+    $response->assertStatus(200);
+    $response->assertHeader('Content-Type', 'application/xml');
+    $response->assertSee('<urlset', false);
+});
+
+test('helpdesk rate limiting and validation', function () {
+    $response = $this->post(route('kontak.helpdesk.submit'), []);
+    $response->assertStatus(302); // validation redirect
+});
+
+test('unduhan download route throttled and validates', function () {
+    $response = $this->get(route('kontak.unduhan.download', 'not-exist.pdf'));
+    $response->assertStatus(404);
 });

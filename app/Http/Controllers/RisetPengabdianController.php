@@ -2,32 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\PpakData;
+use App\Contracts\ContentRepositoryInterface;
 use Illuminate\View\View;
 
 class RisetPengabdianController extends Controller
 {
+    public function __construct(private ContentRepositoryInterface $content) {}
+
     public function risetPublikasi(): View
     {
         return view('riset-pengabdian.riset-publikasi', [
-            'riset' => PpakData::getRiset(),
-            'info' => PpakData::getGeneralInfo(),
+            'riset' => $this->content->getRiset(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function pengabdian(): View
     {
         return view('riset-pengabdian.pengabdian', [
-            'pengabdian' => PpakData::getPengabdian(),
-            'info' => PpakData::getGeneralInfo(),
+            'pengabdian' => $this->content->getPengabdian(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function kerjaSama(): View
     {
         return view('riset-pengabdian.kerja-sama', [
-            'mitra' => PpakData::getMitra(),
-            'info' => PpakData::getGeneralInfo(),
+            'mitra' => $this->content->getMitra(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 }

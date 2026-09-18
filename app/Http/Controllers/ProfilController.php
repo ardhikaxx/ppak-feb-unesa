@@ -2,45 +2,61 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\PpakData;
+use App\Contracts\ContentRepositoryInterface;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ProfilController extends Controller
 {
+    public function __construct(private ContentRepositoryInterface $content) {}
+
     public function sejarah(): View
     {
         return view('profil.sejarah', [
-            'info' => PpakData::getGeneralInfo(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function visiMisi(): View
     {
         return view('profil.visi-misi', [
-            'info' => PpakData::getGeneralInfo(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function strukturOrganisasi(): View
     {
         return view('profil.struktur-organisasi', [
-            'info' => PpakData::getGeneralInfo(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
-    public function dosenPengajar(): View
+    public function dosenPengajar(Request $request): View
     {
+        $request->validate([
+            'kategori' => ['nullable', 'string', 'in:auditing,keuangan,perpajakan,manajemen,all'],
+            'page' => ['nullable', 'integer', 'min:1'],
+        ]);
+
+        $category = $request->query('kategori');
+        if ($category === 'all') {
+            $category = null;
+        }
+
+        $perPage = config('ppak.pagination.dosen', 8);
+        $dosen = $this->content->getDosenPaginated($perPage, $category);
+
         return view('profil.dosen-pengajar', [
-            'dosen' => PpakData::getDosen(),
-            'info' => PpakData::getGeneralInfo(),
+            'dosen' => $dosen,
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function akreditasi(): View
     {
         return view('profil.akreditasi', [
-            'info' => PpakData::getGeneralInfo(),
-            'unduhan' => PpakData::getUnduhan(),
+            'info' => $this->content->getGeneralInfo(),
+            'unduhan' => $this->content->getUnduhan(),
         ]);
     }
 }

@@ -53,11 +53,22 @@ return [
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
+            'url' => env('AWS_URL', env('CDN_URL')),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
             'report' => false,
+        ],
+
+        // Scalable document storage - local dev, S3/CDN production via same abstraction
+        'documents' => [
+            'driver' => env('FILESYSTEM_DOCUMENTS_DRIVER', 'local'),
+            'root' => env('FILESYSTEM_DOCUMENTS_DRIVER', 'local') === 's3'
+                ? ''
+                : storage_path('app/public/documents'),
+            'url' => rtrim(env('CDN_URL', env('APP_URL', 'http://localhost')), '/').'/storage/documents',
+            'visibility' => 'public',
+            'throw' => false,
         ],
 
     ],

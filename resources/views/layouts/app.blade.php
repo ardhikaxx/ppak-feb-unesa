@@ -4,63 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{-- Dynamic Title --}}
-    <title>@yield('title', 'Pendidikan Profesi Akuntansi FEB UNESA | Universitas Negeri Surabaya')</title>
-
-    {{-- SEO & Metadata --}}
-    <meta name="description" content="@yield('meta_description', 'Pendidikan Profesi Akuntansi (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya mempersiapkan akuntan profesional beregister dengan standar global, etika kokoh, dan kurikulum selaras IAI.')">
-    <meta name="keywords" content="PPAk, Pendidikan Profesi Akuntansi, FEB UNESA, Akuntan, Chartered Accountant, CA Indonesia, CPA, Akuntansi UNESA, Surabaya">
+    {{-- SEO - Scalable via SeoService, overridable per page --}}
+    <title>@yield('title', config('ppak.seo.default_title'))</title>
+    <meta name="description" content="@yield('meta_description', config('ppak.seo.default_description'))">
+    <meta name="keywords" content="@yield('meta_keywords', config('ppak.seo.default_keywords'))">
     <meta name="author" content="PPAk FEB UNESA">
-    <link rel="canonical" href="{{ url()->current() }}">
+    <link rel="canonical" href="@yield('canonical', url()->current())">
 
-    {{-- Open Graph / Social Sharing --}}
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('title', 'Pendidikan Profesi Akuntansi FEB UNESA')">
-    <meta property="og:description" content="@yield('meta_description', 'Program Pendidikan Profesi Akuntansi Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.')">
-    <meta property="og:image" content="@yield('og_image', asset('images/og-ppak-unesa.jpg'))">
+    {{-- Open Graph --}}
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:url" content="@yield('og_url', url()->current())">
+    <meta property="og:title" content="@yield('og_title', View::hasSection('title') ? trim($__env->yieldContent('title')) : config('ppak.seo.default_title'))">
+    <meta property="og:description" content="@yield('og_description', View::hasSection('meta_description') ? trim($__env->yieldContent('meta_description')) : config('ppak.seo.default_description'))">
+    <meta property="og:image" content="@yield('og_image', asset(ltrim(config('ppak.seo.default_image'), '/')))">
+    <meta property="og:site_name" content="PPAk FEB UNESA">
+    <meta property="og:locale" content="id_ID">
 
-    {{-- Bootstrap 5.3.3 via CDN --}}
+    {{-- Twitter --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('twitter_title', View::hasSection('title') ? trim($__env->yieldContent('title')) : config('ppak.seo.default_title'))">
+    <meta name="twitter:description" content="@yield('twitter_description', View::hasSection('meta_description') ? trim($__env->yieldContent('meta_description')) : config('ppak.seo.default_description'))">
+    <meta name="twitter:image" content="@yield('twitter_image', asset(ltrim(config('ppak.seo.default_image'), '/')) )">
+
+    {{-- Preconnect to CDN for performance (Bootstrap, Font Awesome) --}}
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    {{-- Bootstrap 5.3.3 via CDN - version locked, CDN-ready to local fallback --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     {{-- Font Awesome 6.6.0 via CDN --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    {{-- Custom Design System CSS --}}
+    {{-- Design System CSS - cache-busted, CDN-ready via asset URL --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ file_exists(public_path('css/app.css')) ? filemtime(public_path('css/app.css')) : time() }}">
+
+    {{-- Structured Data (Organization) --}}
+    <script type="application/ld+json">{!! json_encode(\App\Services\SeoService::organizationJsonLd(), JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}</script>
 
     @stack('styles')
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-    {{-- Skip link for accessibility --}}
+    {{-- Skip link --}}
     <a href="#main-content" class="visually-hidden-focusable p-3 bg-white text-primary position-absolute top-0 start-0 z-3">Lewati ke konten utama</a>
 
-    {{-- Top Information Bar --}}
     @include('partials.topbar')
-
-    {{-- Sticky Primary Navbar --}}
     @include('partials.navbar')
 
-    {{-- Main Content Area --}}
     <main id="main-content" class="flex-grow-1">
         @yield('content')
     </main>
 
-    {{-- Call To Action Pre-Footer (Rendered on pages unless explicitly hidden) --}}
     @unless(View::hasSection('hide_cta'))
         @include('partials.cta-banner')
     @endunless
 
-    {{-- Footer --}}
     @include('partials.footer')
 
-    {{-- Bootstrap 5.3.3 Bundle via CDN --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    {{-- Application Custom JS --}}
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- Bootstrap bundle - deferred, not blocking LCP --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     @stack('scripts')
 </body>

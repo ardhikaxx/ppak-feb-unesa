@@ -2,33 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\PpakData;
+use App\Contracts\ContentRepositoryInterface;
 use Illuminate\View\View;
 
 class KemahasiswaanAlumniController extends Controller
 {
+    public function __construct(private ContentRepositoryInterface $content) {}
+
     public function alumni(): View
     {
         return view('kemahasiswaan-alumni.alumni', [
-            'stats' => PpakData::getStats(),
-            'karierSectors' => PpakData::getKarierSectors(),
-            'info' => PpakData::getGeneralInfo(),
+            'stats' => $this->content->getStats(),
+            'karierSectors' => $this->content->getKarierSectors(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function mahasiswa(): View
     {
         return view('kemahasiswaan-alumni.mahasiswa', [
-            'info' => PpakData::getGeneralInfo(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function testimoniKarier(): View
     {
         return view('kemahasiswaan-alumni.testimoni-karier', [
-            'testimoni' => PpakData::getTestimoni(),
-            'karierSectors' => PpakData::getKarierSectors(),
-            'info' => PpakData::getGeneralInfo(),
+            'testimoni' => $this->content->getTestimoni(),
+            'karierSectors' => $this->content->getKarierSectors(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 }

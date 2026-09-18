@@ -2,39 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\PpakData;
+use App\Contracts\ContentRepositoryInterface;
 use Illuminate\View\View;
 
 class AkademikController extends Controller
 {
+    public function __construct(private ContentRepositoryInterface $content) {}
+
     public function kurikulum(): View
     {
         return view('akademik.kurikulum', [
-            'kurikulum' => PpakData::getKurikulum(),
-            'info' => PpakData::getGeneralInfo(),
+            'kurikulum' => $this->content->getKurikulum(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function kalender(): View
     {
         return view('akademik.kalender', [
-            'kalender' => PpakData::getKalender(),
-            'info' => PpakData::getGeneralInfo(),
+            'kalender' => $this->content->getKalender(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function gelarSertifikasi(): View
     {
         return view('akademik.gelar-sertifikasi', [
-            'info' => PpakData::getGeneralInfo(),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 
     public function panduan(): View
     {
+        $docs = array_filter($this->content->getUnduhan(), fn($doc) => in_array($doc['kategori'], ['Pedoman Akademik', 'Kalender']));
+
         return view('akademik.panduan', [
-            'panduanList' => array_filter(PpakData::getUnduhan(), fn($doc) => in_array($doc['kategori'], ['Pedoman Akademik', 'Kalender'])),
-            'info' => PpakData::getGeneralInfo(),
+            'panduanList' => array_values($docs),
+            'info' => $this->content->getGeneralInfo(),
         ]);
     }
 }
