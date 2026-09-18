@@ -8,7 +8,7 @@
 {{-- =========================================================================
    1. HERO SECTION (Campus Photo Background with Primary Overlay & Glassmorphism)
    ========================================================================= --}}
-<section class="hero-home" style="background-image: linear-gradient(135deg, rgba(7, 25, 48, 0.62) 0%, rgba(10, 35, 66, 0.52) 50%, rgba(18, 63, 115, 0.42) 100%), url('{{ asset('images/background-hero.jpg') }}');" aria-label="Hero Banner Utama">
+<section class="hero-home" style="background-image: linear-gradient(90deg, rgba(7, 25, 48, 0.86) 0%, rgba(7, 25, 48, 0.74) 28%, rgba(10, 35, 66, 0.38) 52%, rgba(10, 35, 66, 0.08) 72%, rgba(18, 63, 115, 0) 100%), url('{{ asset('images/background-hero.jpg') }}');" aria-label="Hero Banner Utama">
     <div class="container-xl">
         <div class="row align-items-center">
             <div class="col-lg-9 col-xl-8">
