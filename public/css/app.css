@@ -336,45 +336,68 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   5. Institutional Sticky Navbar (Solid White, Gold Accent)
+   5. Floating Pill Glassmorphic Navbar (Apple Design Aesthetic)
    -------------------------------------------------------------------------- */
-.navbar-ppak {
+.navbar-floating-header {
   position: sticky;
-  top: 0;
+  top: 12px;
   z-index: 1030;
-  background-color: #ffffff;
-  border-bottom: 1px solid var(--border);
-  padding: 0.65rem 0;
-  box-shadow: 0 2px 10px rgba(10, 35, 66, 0.04);
-  transition: padding var(--transition-base), box-shadow var(--transition-base);
+  width: 100%;
+  padding: 12px 24px 0 24px;
+  pointer-events: none;
+  margin-top: 0;
+  margin-bottom: -76px; /* Pulls hero & page headers seamlessly under the floating pill */
+  transition: top var(--transition-base), padding var(--transition-base);
+}
+
+.navbar-floating-header.scrolled {
+  padding-top: 8px;
+}
+
+.navbar-ppak.navbar-apple-pill,
+.navbar-ppak {
+  pointer-events: auto;
+  margin: 0 auto;
+  max-width: 1360px;
+  width: 100%;
+  padding: 0.38rem 1.45rem;
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-pill); /* 9999px True Apple Pill */
+  box-shadow:
+    0 12px 32px -4px rgba(0, 0, 0, 0.16),
+    0 4px 12px -2px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-ppak.navbar-scrolled {
-  padding: 0.5rem 0;
-  background-color: #ffffff;
-  box-shadow: 0 4px 18px rgba(10, 35, 66, 0.07);
-}
-
-.navbar-ppak .container,
-.navbar-ppak .container-xl,
-.top-infobar .container,
-.top-infobar .container-xl {
-  max-width: 1400px;
+  background: rgba(255, 255, 255, 0.90);
+  -webkit-backdrop-filter: blur(25px) saturate(190%);
+  backdrop-filter: blur(25px) saturate(190%);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 16px 36px -4px rgba(10, 35, 66, 0.18),
+    0 6px 16px -2px rgba(10, 35, 66, 0.08),
+    inset 0 1px 0 0 rgba(255, 255, 255, 1);
 }
 
 /* Brand Wordmark & Emblem */
 .navbar-brand-wrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
   flex-shrink: 0;
+  padding: 0.2rem 0;
 }
 
 .navbar-brand-logo {
-  height: 42px;
+  height: 36px;
   width: auto;
-  max-width: 130px;
+  max-width: 120px;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
@@ -387,15 +410,15 @@ a:hover {
 
 .navbar-brand-divider {
   width: 1px;
-  height: 28px;
-  background-color: var(--border);
-  margin: 0 2px;
+  height: 24px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 0 4px;
   flex-shrink: 0;
 }
 
 .navbar-brand-emblem {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-sm);
   background-color: var(--unesa-navy);
   color: #ffffff;
@@ -403,11 +426,10 @@ a:hover {
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.92rem;
   letter-spacing: -0.03em;
   box-shadow: 0 2px 8px rgba(10, 35, 66, 0.15);
   flex-shrink: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .navbar-brand-text {
@@ -418,36 +440,36 @@ a:hover {
 }
 
 .navbar-brand-title {
-  font-size: 0.965rem;
-  font-weight: 700;
+  font-size: 0.885rem;
+  font-weight: 750;
   color: var(--unesa-navy);
   letter-spacing: -0.015em;
-  line-height: 1.25;
+  line-height: 1.2;
   white-space: nowrap;
 }
 
 .navbar-brand-subtitle {
-  font-size: 0.72rem;
+  font-size: 0.675rem;
   color: var(--text-secondary);
   font-weight: 500;
   letter-spacing: 0.01em;
-  line-height: 1.25;
+  line-height: 1.2;
   white-space: nowrap;
 }
 
-/* Nav links */
+/* Nav links - Apple Pill Aesthetics */
 .navbar-ppak .navbar-nav {
   gap: 2px;
 }
 
 .navbar-ppak .nav-link {
-  font-size: 0.885rem;
+  font-size: 0.835rem;
   font-weight: 500;
   color: var(--text-primary);
-  padding: 0.45rem 0.65rem;
-  border-radius: 0;
-  border-bottom: 2px solid transparent;
-  transition: color var(--transition-fast), border-color var(--transition-fast);
+  padding: 0.38rem 0.65rem;
+  border-radius: var(--radius-pill); /* Pill hover item */
+  border-bottom: none !important;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -456,47 +478,52 @@ a:hover {
 
 .navbar-ppak .nav-link:hover {
   color: var(--unesa-navy);
-  border-bottom-color: rgba(216, 174, 71, 0.4);
+  background-color: rgba(10, 35, 66, 0.06);
 }
 
 .navbar-ppak .nav-link.active,
 .navbar-ppak .nav-item.dropdown.active > .nav-link {
   color: var(--unesa-navy);
   font-weight: 600;
-  background-color: transparent;
-  border-bottom: 2px solid var(--unesa-gold);
+  background-color: rgba(216, 174, 71, 0.18);
 }
 
-/* Dropdown Menu */
+/* Apple-style Frosted Glass Dropdown Menu */
+.navbar-ppak .dropdown-menu.dropdown-menu-apple,
 .navbar-ppak .dropdown-menu {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background-color: #ffffff;
-  box-shadow: var(--shadow-md);
-  padding: 0.5rem;
-  margin-top: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 18px; /* Smooth Apple curvature */
+  background: rgba(255, 255, 255, 0.92);
+  -webkit-backdrop-filter: blur(25px) saturate(190%);
+  backdrop-filter: blur(25px) saturate(190%);
+  box-shadow:
+    0 20px 40px -4px rgba(10, 35, 66, 0.14),
+    0 4px 12px -2px rgba(10, 35, 66, 0.06),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+  padding: 0.55rem;
+  margin-top: 0.75rem;
   min-width: 260px;
-  animation: dropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: appleDropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes dropdownFadeIn {
+@keyframes appleDropdownFade {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .navbar-ppak .dropdown-item {
-  font-size: 0.885rem;
+  font-size: 0.865rem;
   font-weight: 500;
   color: var(--text-primary);
-  padding: 0.55rem 0.85rem;
-  border-radius: var(--radius-xs);
-  transition: all var(--transition-fast);
+  padding: 0.52rem 0.85rem;
+  border-radius: 10px; /* Squircle Apple item */
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -512,7 +539,7 @@ a:hover {
 
 .navbar-ppak .dropdown-item:hover,
 .navbar-ppak .dropdown-item:focus {
-  background-color: var(--surface-alt);
+  background-color: rgba(10, 35, 66, 0.06);
   color: var(--unesa-navy);
 }
 
@@ -521,7 +548,7 @@ a:hover {
 }
 
 .navbar-ppak .dropdown-item.active {
-  background-color: var(--unesa-gold-light);
+  background-color: rgba(216, 174, 71, 0.2);
   color: var(--unesa-navy);
   font-weight: 600;
 }
@@ -531,11 +558,69 @@ a:hover {
 }
 
 .navbar-ppak .dropdown-toggle::after {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   vertical-align: middle;
-  margin-left: 4px;
-  opacity: 0.6;
+  margin-left: 3px;
+  opacity: 0.55;
   transition: transform var(--transition-fast);
+}
+
+.navbar-ppak .dropdown-toggle:hover::after {
+  opacity: 0.85;
+}
+
+/* Apple Pill Button (Pendaftaran) */
+.btn-navbar-pill {
+  background-color: var(--unesa-gold);
+  color: var(--unesa-navy-dark) !important;
+  font-weight: 700;
+  font-size: 0.835rem;
+  padding: 0.42rem 1.15rem;
+  border-radius: var(--radius-pill); /* 9999px */
+  border: 1px solid rgba(216, 174, 71, 0.85);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(216, 174, 71, 0.32);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-navbar-pill:hover {
+  background-color: #e5be58;
+  color: var(--unesa-navy-dark) !important;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(216, 174, 71, 0.48);
+}
+
+/* Mobile Toggler */
+.navbar-toggler-apple {
+  border-radius: var(--radius-pill) !important;
+  padding: 0.35rem 0.65rem !important;
+  background: rgba(10, 35, 66, 0.05);
+  transition: background var(--transition-fast);
+}
+
+.navbar-toggler-apple:hover {
+  background: rgba(10, 35, 66, 0.1);
+}
+
+/* Offcanvas Apple Glass */
+.offcanvas-apple-glass {
+  background: rgba(255, 255, 255, 0.94) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(190%) !important;
+  backdrop-filter: blur(25px) saturate(190%) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+@media (min-width: 576px) {
+  .offcanvas-apple-glass {
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -741,7 +826,7 @@ a:hover {
 .page-header-ppak {
   background-color: var(--unesa-navy);
   border-bottom: 2px solid var(--unesa-gold);
-  padding: clamp(3rem, 5vw, 4.25rem) 0 clamp(2.5rem, 4vw, 3.5rem);
+  padding: clamp(5.25rem, 7.5vw, 6.75rem) 0 clamp(2.5rem, 4vw, 3.5rem);
   color: #ffffff;
 }
 
@@ -773,7 +858,7 @@ a:hover {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  padding: clamp(4.25rem, 7.5vw, 6.5rem) 0;
+  padding: clamp(6.25rem, 9.5vw, 8.25rem) 0 clamp(4rem, 6vw, 6rem);
   color: #ffffff;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -1987,10 +2072,53 @@ a:hover {
   }
 }
 
+/* Tablet & Mobile Adjustments (Navbar breakpoint is xl / 1200px) */
+@media (max-width: 1199.98px) {
+  .navbar-floating-header {
+    top: 8px;
+    padding: 8px 14px 0 14px;
+    margin-top: 0;
+    margin-bottom: -62px;
+  }
+
+  .navbar-ppak.navbar-apple-pill,
+  .navbar-ppak {
+    padding: 0.35rem 0.75rem 0.35rem 1rem;
+    border-radius: var(--radius-pill);
+  }
+
+  .navbar-brand-logo {
+    height: 32px;
+  }
+
+  .offcanvas-apple-glass .navbar-nav {
+    gap: 6px;
+  }
+
+  .offcanvas-apple-glass .nav-link {
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    font-size: 0.92rem;
+  }
+
+  .offcanvas-apple-glass .dropdown-menu {
+    box-shadow: none !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    background-color: rgba(10, 35, 66, 0.03) !important;
+    border-radius: 14px !important;
+    padding: 0.4rem !important;
+    margin: 0.35rem 0 0.5rem 0.5rem !important;
+  }
+}
+
 /* Mobile Adjustments */
 @media (max-width: 991.98px) {
   .hero-home {
-    padding: 3rem 0 3.5rem;
+    padding: 5.5rem 0 3.5rem;
+  }
+
+  .page-header-ppak {
+    padding: 4.75rem 0 2.5rem;
   }
 
   .hero-brand-badge {

@@ -1,22 +1,23 @@
-<nav class="navbar navbar-expand-xl navbar-ppak" aria-label="Navigasi Utama">
-    <div class="container-xl">
-        {{-- Brand / Wordmark with Official UNESA Logo --}}
-        <a class="navbar-brand-wrapper" href="{{ route('home') }}">
-            <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" class="navbar-brand-logo">
-            <div class="navbar-brand-divider d-none d-sm-block"></div>
-            <div class="navbar-brand-text d-none d-sm-flex">
-                <span class="navbar-brand-title">Pendidikan Profesi Akuntansi</span>
-                <span class="navbar-brand-subtitle">Fakultas Ekonomika dan Bisnis UNESA</span>
-            </div>
-        </a>
+<header class="navbar-floating-header">
+    <nav class="navbar navbar-expand-xl navbar-ppak navbar-apple-pill" aria-label="Navigasi Utama">
+        <div class="container-fluid px-1 px-sm-2 px-xl-2">
+            {{-- Brand / Wordmark with Official UNESA Logo --}}
+            <a class="navbar-brand-wrapper" href="{{ route('home') }}">
+                <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" class="navbar-brand-logo">
+                <div class="navbar-brand-divider d-none d-md-block"></div>
+                <div class="navbar-brand-text d-none d-md-flex">
+                    <span class="navbar-brand-title">Pendidikan Profesi Akuntansi</span>
+                    <span class="navbar-brand-subtitle">Fakultas Ekonomika dan Bisnis UNESA</span>
+                </div>
+            </a>
 
-        {{-- Mobile Hamburger Toggle --}}
-        <button class="navbar-toggler border-0 p-2 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-label="Buka navigasi menu">
-            <i class="fa-solid fa-bars text-navy fs-5"></i>
-        </button>
+            {{-- Mobile Hamburger Toggle --}}
+            <button class="navbar-toggler border-0 p-2 shadow-none navbar-toggler-apple" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-label="Buka navigasi menu">
+                <i class="fa-solid fa-bars text-navy fs-5"></i>
+            </button>
 
-        {{-- Offcanvas for Mobile & Collapsible for Desktop --}}
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+            {{-- Offcanvas for Mobile & Collapsible for Desktop --}}
+            <div class="offcanvas offcanvas-end offcanvas-apple-glass" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
             <div class="offcanvas-header border-bottom">
                 <div class="d-flex align-items-center gap-2">
                     <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="34">
@@ -253,13 +254,13 @@
                 </ul>
 
                 {{-- Action CTA Button --}}
-                <div class="d-flex align-items-center mt-3 mt-xl-0 pt-2 pt-xl-0 border-top border-xl-0">
-                    <a href="{{ route('admisi.jalur-syarat') }}" class="btn-ppak-primary w-100 w-xl-auto">
+                <div class="d-flex align-items-center mt-3 mt-xl-0 pt-2 pt-xl-0 border-top border-xl-0 ms-xl-2 me-xl-1">
+                    <a href="{{ route('admisi.jalur-syarat') }}" class="btn-navbar-pill w-100 w-xl-auto">
                         <span>Pendaftaran</span>
-                        <i class="fa-solid fa-arrow-right fs-6"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>

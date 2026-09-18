@@ -8,12 +8,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 1. Sticky Navbar Scroll State
   const navbar = document.querySelector('.navbar-ppak');
+  const floatingHeader = document.querySelector('.navbar-floating-header');
   if (navbar) {
     const handleScroll = () => {
       if (window.scrollY > 20) {
         navbar.classList.add('navbar-scrolled');
+        if (floatingHeader) floatingHeader.classList.add('scrolled');
       } else {
         navbar.classList.remove('navbar-scrolled');
+        if (floatingHeader) floatingHeader.classList.remove('scrolled');
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
