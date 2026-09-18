@@ -16,11 +16,11 @@
 ])
 
 <section class="section-py bg-white">
-    <div class="container">
+    <div class="container-xl">
         <div class="row g-5 mb-5">
             {{-- Contact Information --}}
             <div class="col-lg-5">
-                <span class="badge-ppak badge-ppak-blue mb-2">Alamat Lengkap</span>
+                <span class="badge-ppak badge-ppak-gold mb-2">Alamat Lengkap</span>
                 <h2 class="h3 text-navy mb-4">Sekretariat PPAk FEB UNESA</h2>
 
                 <div class="d-flex align-items-start gap-3 mb-4">
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="d-flex gap-2 pt-2">
-                    <a href="https://maps.google.com/?q=FEB+UNESA+Ketintang+Surabaya" target="_blank" rel="noopener noreferrer" class="btn-ppak-primary btn-ppak-sm">
+                    <a href="https://maps.google.com/?q=Gedung+G6+FEB+UNESA" target="_blank" rel="noopener noreferrer" class="btn-ppak-primary btn-ppak-sm">
                         <i class="fa-solid fa-diamond-turn-right me-1"></i>
                         <span>Buka di Google Maps</span>
                     </a>
@@ -72,27 +72,27 @@
                 </div>
             </div>
 
-            {{-- Map Display Mockup / Embed --}}
+            {{-- Map Display Google Maps Embed --}}
             <div class="col-lg-7">
-                <div class="p-3 rounded-4 border bg-subtle h-100 d-flex flex-column">
-                    <div class="d-flex justify-content-between align-items-center mb-3 px-2">
-                        <span class="small fw-bold text-navy"><i class="fa-solid fa-map-location-dot me-1 text-primary"></i> Peta Satelit Kampus Ketintang</span>
-                        <span class="badge-ppak badge-ppak-navy" style="font-size: 0.675rem;">Koordinat: -7.3117, 112.7275</span>
+                <div class="p-3 rounded-4 border bg-white shadow-sm h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-3 px-1">
+                        <span class="small fw-bold text-navy"><i class="fa-solid fa-map-location-dot me-1 text-gold"></i> Peta Lokasi Gedung G6 FEB UNESA</span>
+                        <a href="https://maps.google.com/?q=Gedung+G6+FEB+UNESA" target="_blank" rel="noopener noreferrer" class="badge-ppak badge-ppak-gold text-decoration-none" style="font-size: 0.72rem;">
+                            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Buka Peta Penuh
+                        </a>
                     </div>
 
-                    {{-- Stylized Map Placeholder --}}
-                    <div class="rounded-3 border overflow-hidden flex-grow-1 position-relative d-flex align-items-center justify-content-center" style="min-height: 380px; background: linear-gradient(135deg, #e8f0fe 0%, #dbeafe 100%);">
-                        <div class="text-center p-4">
-                            <div class="navbar-brand-emblem mx-auto mb-3" style="width: 56px; height: 56px; font-size: 1.4rem;">
-                                <i class="fa-solid fa-location-pin"></i>
-                            </div>
-                            <h4 class="h5 fw-bold text-navy mb-1">Gedung G6 FEB UNESA</h4>
-                            <p class="small text-secondary mb-3 max-w-700">Jl. Ketintang, Surabaya, Jawa Timur 60231</p>
-                            <a href="https://maps.google.com/?q=Fakultas+Ekonomika+dan+Bisnis+UNESA+Ketintang" target="_blank" rel="noopener noreferrer" class="btn-ppak-primary btn-ppak-sm">
-                                <i class="fa-solid fa-location-arrow me-1"></i>
-                                <span>Petunjuk Arah Rute Navigasi</span>
-                            </a>
-                        </div>
+                    <div class="rounded-3 border overflow-hidden flex-grow-1 position-relative" style="min-height: 420px;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.362658310499!2d112.72604727593402!3d-7.313093871907306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fbff455381bd%3A0xf2fe8ae1a9e31504!2sGedung%20G6%20FEB%20UNESA!5e0!3m2!1sid!2sid!4v1789748209875!5m2!1sid!2sid" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; min-height: 420px; width: 100%; display: block;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            title="Peta Lokasi Gedung G6 FEB UNESA">
+                        </iframe>
                     </div>
                 </div>
             </div>
