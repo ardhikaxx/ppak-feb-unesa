@@ -65,6 +65,14 @@
   --radius-xl: 20px;
   --radius-pill: 9999px; /* Reserved for small tags & badges only */
 
+  /* Navbar Design Tokens (Squircle Floating Apple-inspired) */
+  --navbar-radius: 22px;
+  --navbar-shadow: 0 8px 30px rgba(10, 35, 66, 0.08);
+  --navbar-shadow-scrolled: 0 12px 36px rgba(10, 35, 66, 0.14);
+  --navbar-height: 82px;
+  --navbar-padding-x: 32px;
+  --navbar-padding-y: 14px;
+
   /* Shadows (Subtle, professional institutional elevation) */
   --shadow-subtle: 0 1px 3px rgba(10, 35, 66, 0.04), 0 1px 2px rgba(10, 35, 66, 0.02);
   --shadow-sm: 0 4px 12px rgba(10, 35, 66, 0.04), 0 1px 3px rgba(10, 35, 66, 0.02);
@@ -303,150 +311,175 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   4. Top Information Bar
+   4. Top Information Bar (Slim, Institutional Solid Navy, No Gradient)
    -------------------------------------------------------------------------- */
 .top-infobar {
-  background: linear-gradient(180deg, rgba(7, 20, 42, 0.98) 0%, rgba(7, 25, 48, 0.95) 100%);
-  color: #94a3b8;
-  font-size: 0.785rem;
+  background-color: var(--unesa-navy-dark); /* Solid #071930 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8125rem; /* ~13px */
   line-height: 1.4;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 0.7rem 0;
-  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.85);
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1020;
+}
+
+.top-infobar-container {
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.top-infobar-brand-wrapper {
+  display: flex;
+  align-items: center;
 }
 
 .top-infobar-brand {
-  font-size: 0.765rem;
+  font-size: 0.8125rem; /* 13px */
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.88);
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .top-infobar-sep {
   opacity: 0.4;
-  margin: 0 2px;
+  margin: 0 4px;
+}
+
+.top-infobar-utility {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .top-infobar-link {
-  color: rgba(255, 255, 255, 0.55);
-  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-weight: 500;
-  padding: 2px 0;
-  text-decoration: none;
+  gap: 7px;
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
 }
 
 .top-infobar-link:hover {
-  color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
 }
 
 .top-infobar-link i {
-  font-size: 0.72rem;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  font-size: 0.8rem;
+  color: var(--unesa-gold);
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .top-infobar-link:hover i {
   opacity: 1;
+  transform: translateY(-1px);
 }
 
 .top-infobar-divider {
   display: inline-block;
   width: 1px;
-  height: 11px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.06) 100%);
-  margin: 0 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin: 0 2px;
   vertical-align: middle;
+  flex-shrink: 0;
 }
 
 /* --------------------------------------------------------------------------
-   5. Floating Pill Glassmorphic Navbar (Apple Design Aesthetic)
+   5. Modern Floating Squircle Navbar (Apple Design Inspired x UNESA Identity)
    -------------------------------------------------------------------------- */
 .navbar-floating-header {
   position: sticky;
-  top: 12px;
+  top: 18px;
   z-index: 1030;
   width: 100%;
-  padding: 10px 20px 0 20px;
+  padding: 0 40px;
   pointer-events: none;
-  margin-top: 0;
-  margin-bottom: -76px;
-  transition: padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 18px;
+  margin-bottom: -102px;
+  transition: top 0.3s ease, margin 0.3s ease;
 }
 
-.navbar-floating-header.scrolled {
-  padding-top: 6px;
-}
-
-.navbar-ppak.navbar-apple-pill,
 .navbar-ppak {
   pointer-events: auto;
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 1440px;
   width: 100%;
-  padding: 0.32rem 1.25rem;
-  background: rgba(7, 25, 48, 0.65);
-  -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.05);
-  backdrop-filter: blur(40px) saturate(180%) brightness(1.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-pill);
-  box-shadow:
-    0 8px 32px -4px rgba(0, 0, 0, 0.35),
-    0 2px 8px -1px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.18),
-    inset 0 -1px 0 0 rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: backdrop-filter, background;
+  background-color: #ffffff; /* Solid White Surface */
+  border: 1px solid rgba(10, 35, 66, 0.08);
+  border-radius: var(--navbar-radius); /* 22px squircle */
+  box-shadow: var(--navbar-shadow); /* 0 8px 30px rgba(10, 35, 66, 0.08) */
+  padding: var(--navbar-padding-y) var(--navbar-padding-x); /* 14px 32px */
+  transition: padding 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: var(--navbar-height); /* 82px */
+  display: flex;
+  align-items: center;
 }
 
 .navbar-ppak.navbar-scrolled {
-  background: rgba(7, 25, 48, 0.82);
-  -webkit-backdrop-filter: blur(48px) saturate(200%) brightness(1.02);
-  backdrop-filter: blur(48px) saturate(200%) brightness(1.02);
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow:
-    0 12px 40px -4px rgba(0, 0, 0, 0.5),
-    0 4px 14px -2px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: var(--navbar-shadow-scrolled); /* 0 12px 36px rgba(10, 35, 66, 0.14) */
+  border-color: rgba(10, 35, 66, 0.12);
 }
 
-/* Brand Wordmark & Emblem */
+.navbar-ppak-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* 1. Brand Logo & Identity Area (Left) */
 .navbar-brand-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   text-decoration: none;
   flex-shrink: 0;
-  padding: 0.15rem 0;
+  padding: 2px 0;
   transition: opacity 0.2s ease;
 }
 
 .navbar-brand-wrapper:hover {
-  opacity: 0.88;
+  opacity: 0.92;
 }
 
 .navbar-brand-logo {
-  height: 34px;
+  height: 52px;
   width: auto;
-  max-width: 120px;
+  max-width: 155px;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-brand-wrapper:hover .navbar-brand-logo {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .navbar-brand-divider {
   width: 1px;
-  height: 22px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.28) 50%, rgba(255,255,255,0.08) 100%);
-  margin: 0 6px;
+  height: 38px;
+  background-color: rgba(10, 35, 66, 0.12);
   flex-shrink: 0;
 }
 
@@ -458,51 +491,49 @@ a:hover {
 }
 
 .navbar-brand-title {
-  font-size: 0.835rem;
+  font-size: 1.075rem; /* ~17.2px */
   font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.02em;
+  color: var(--unesa-navy); /* #0A2342 */
+  letter-spacing: -0.022em;
   line-height: 1.25;
-  white-space: nowrap;
 }
 
 .navbar-brand-subtitle {
-  font-size: 0.645rem;
-  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.725rem; /* ~11.6px */
+  color: #64748B;
   font-weight: 500;
-  letter-spacing: 0.015em;
+  letter-spacing: 0.012em;
   line-height: 1.25;
-  white-space: nowrap;
+  margin-top: 2px;
 }
 
-/* Nav links - Clean Typography without Background */
+/* 2. Navigation Area (Center) */
 .navbar-ppak .navbar-nav {
-  gap: 4px;
+  gap: 2px;
+  margin: 0 auto;
 }
 
 .navbar-ppak .nav-link {
-  font-size: 0.835rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.78);
-  padding: 0.35rem 0.65rem;
-  border-radius: 0 !important;
-  border-bottom: none !important;
+  font-size: 0.935rem; /* ~15px */
+  font-weight: 550;
+  color: var(--unesa-navy);
+  padding: 10px 13px;
+  border-radius: 8px;
   background: transparent !important;
   background-color: transparent !important;
   box-shadow: none !important;
-  transition: color 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   white-space: nowrap;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
 }
 
 .navbar-ppak .nav-link:hover {
-  color: #ffffff;
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
+  color: var(--unesa-blue);
+  background-color: rgba(10, 35, 66, 0.04) !important;
 }
 
 .navbar-ppak .nav-link:active {
@@ -511,72 +542,85 @@ a:hover {
 
 .navbar-ppak .nav-link.active,
 .navbar-ppak .nav-item.dropdown.active > .nav-link {
-  color: var(--unesa-gold) !important;
+  color: var(--unesa-navy) !important;
   font-weight: 650;
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
+  background-color: rgba(10, 35, 66, 0.06) !important;
+  border-radius: 8px !important;
 }
 
-/* Apple Dark Glassmorphic Dropdown */
-.navbar-ppak .dropdown-menu.dropdown-menu-apple,
+/* Dropdown Caret Chevron (Font Awesome icon) */
+.navbar-ppak .dropdown-toggle::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f078";
+  border: none;
+  font-size: 0.625rem;
+  opacity: 0.6;
+  color: var(--unesa-navy);
+  margin-left: 6px;
+  vertical-align: middle;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-ppak .dropdown-toggle:hover::after {
+  opacity: 0.85;
+}
+
+.navbar-ppak .show > .dropdown-toggle::after {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* Solid White Dropdown Cards */
 .navbar-ppak .dropdown-menu {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  background: rgba(12, 30, 55, 0.92);
-  -webkit-backdrop-filter: blur(48px) saturate(200%);
-  backdrop-filter: blur(48px) saturate(200%);
-  box-shadow:
-    0 20px 40px -8px rgba(0, 0, 0, 0.5),
-    0 4px 12px -2px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
-    inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
-  padding: 0.45rem;
-  margin-top: 0.65rem;
-  min-width: 250px;
-  animation: appleDropdownIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(10, 35, 66, 0.08);
+  border-radius: 14px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 32px rgba(10, 35, 66, 0.12);
+  padding: 8px 10px;
+  margin-top: 10px;
+  min-width: 260px;
+  animation: appleDropdownIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   transform-origin: top center;
 }
 
 @keyframes appleDropdownIn {
   from {
     opacity: 0;
-    transform: translateY(6px) scale(0.97);
-    filter: blur(2px);
+    transform: translateY(6px) scale(0.98);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-    filter: blur(0);
   }
 }
 
 .navbar-ppak .dropdown-item {
-  font-size: 0.845rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.82);
-  padding: 0.48rem 0.75rem;
-  border-radius: 10px;
-  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--unesa-navy);
+  padding: 10px 14px;
+  border-radius: 9px;
+  transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .navbar-ppak .dropdown-item i {
-  font-size: 0.78rem;
+  font-size: 0.825rem;
   color: var(--unesa-gold);
   width: 18px;
   text-align: center;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .navbar-ppak .dropdown-item:hover,
 .navbar-ppak .dropdown-item:focus {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background-color: rgba(10, 35, 66, 0.04);
+  color: var(--unesa-navy);
 }
 
 .navbar-ppak .dropdown-item:hover i {
@@ -584,114 +628,222 @@ a:hover {
   opacity: 1;
 }
 
-.navbar-ppak .dropdown-item:active {
-  transform: scale(0.98);
-}
-
 .navbar-ppak .dropdown-item.active {
-  background-color: rgba(216, 174, 71, 0.18);
-  color: var(--unesa-gold-light);
-  font-weight: 600;
+  background-color: rgba(216, 174, 71, 0.14);
+  color: var(--unesa-navy);
+  font-weight: 650;
 }
 
 .navbar-ppak .dropdown-item.active i {
-  color: var(--unesa-gold-light);
+  color: var(--unesa-gold);
 }
 
-.navbar-ppak .dropdown-toggle::after {
-  font-size: 0.6rem;
-  vertical-align: middle;
-  margin-left: 3px;
-  opacity: 0.6;
-  color: rgba(255, 255, 255, 0.7);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+/* 3. CTA & Search Area (Right) */
+.navbar-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
 }
 
-.navbar-ppak .dropdown-toggle:hover::after {
-  opacity: 1;
-}
-
-.navbar-ppak .show > .dropdown-toggle::after {
-  transform: rotate(180deg);
-}
-
-/* Apple Pill CTA Button */
-.btn-navbar-pill {
-  background: linear-gradient(135deg, #f0c55f 0%, #d8ae47 100%);
-  color: #071930 !important;
-  font-weight: 700;
-  font-size: 0.815rem;
-  padding: 0.4rem 1.1rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+.btn-navbar-search {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(10, 35, 66, 0.1);
+  background-color: #ffffff;
+  color: var(--unesa-navy);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  box-shadow:
-    0 2px 12px rgba(216, 174, 71, 0.35),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-navbar-search:hover {
+  background-color: rgba(10, 35, 66, 0.05);
+  border-color: rgba(10, 35, 66, 0.2);
+  color: var(--unesa-navy);
+}
+
+.btn-navbar-search:active {
+  transform: scale(0.96);
+}
+
+/* Main CTA Button "Pendaftaran" */
+.btn-navbar-cta,
+.btn-navbar-pill {
+  background-color: var(--unesa-gold); /* Solid #D8AE47 */
+  color: var(--unesa-navy) !important;
+  font-weight: 700;
+  font-size: 0.885rem;
+  padding: 11px 22px;
+  border-radius: 11px; /* 10px - 12px squircle, NOT 50px pill */
+  border: 1px solid var(--unesa-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(216, 174, 71, 0.35);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   white-space: nowrap;
   letter-spacing: -0.01em;
 }
 
+.btn-navbar-cta:hover,
 .btn-navbar-pill:hover {
-  background: linear-gradient(135deg, #f5d06a 0%, #e0b84f 100%);
-  color: #071930 !important;
-  transform: translateY(-1px) scale(1.02);
-  box-shadow:
-    0 4px 18px rgba(216, 174, 71, 0.5),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
+  background-color: var(--unesa-gold-hover); /* #C29B38 */
+  border-color: var(--unesa-gold-hover);
+  color: var(--unesa-navy) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(216, 174, 71, 0.45);
 }
 
+.btn-navbar-cta:active,
 .btn-navbar-pill:active {
-  transform: translateY(0) scale(0.98);
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(216, 174, 71, 0.3);
+}
+
+.btn-navbar-cta i,
+.btn-navbar-pill i {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.btn-navbar-cta:hover i,
+.btn-navbar-pill:hover i {
+  transform: translateX(2px);
 }
 
 /* Mobile Toggler */
 .navbar-toggler-apple {
-  border-radius: var(--radius-pill) !important;
-  padding: 0.35rem 0.65rem !important;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px !important;
+  padding: 0 !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(10, 35, 66, 0.12) !important;
+  color: var(--unesa-navy) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
 }
 
 .navbar-toggler-apple:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(10, 35, 66, 0.04) !important;
 }
 
 .navbar-toggler-apple:active {
   transform: scale(0.95);
 }
 
-/* Offcanvas Apple Glass (Mobile/Tablet Drawer Only) */
+/* Offcanvas Drawer (Mobile / Tablet) */
+.offcanvas-ppak,
+.offcanvas-apple-glass {
+  background-color: #ffffff !important;
+  color: var(--unesa-navy) !important;
+}
+
 @media (max-width: 1199.98px) {
+  .offcanvas-ppak,
   .offcanvas-apple-glass {
-    background: rgba(7, 20, 42, 0.95) !important;
-    -webkit-backdrop-filter: blur(48px) saturate(200%) !important;
-    backdrop-filter: blur(48px) saturate(200%) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
-    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.45) !important;
-    color: #ffffff !important;
-    border-top-left-radius: 22px;
-    border-bottom-left-radius: 22px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: -8px 0 32px rgba(10, 35, 66, 0.15) !important;
+    max-width: 360px;
+    width: 85%;
+  }
+
+  .offcanvas-ppak .navbar-nav,
+  .offcanvas-apple-glass .navbar-nav {
+    gap: 4px;
+    padding: 0.75rem 0;
+  }
+
+  .offcanvas-ppak .nav-link,
+  .offcanvas-apple-glass .nav-link {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--unesa-navy) !important;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent !important;
+  }
+
+  .offcanvas-ppak .nav-link:hover,
+  .offcanvas-apple-glass .nav-link:hover {
+    background-color: rgba(10, 35, 66, 0.04) !important;
+  }
+
+  .offcanvas-ppak .nav-link.active,
+  .offcanvas-apple-glass .nav-link.active {
+    background-color: rgba(10, 35, 66, 0.06) !important;
+    color: var(--unesa-navy) !important;
+  }
+
+  .offcanvas-ppak .dropdown-menu,
+  .offcanvas-apple-glass .dropdown-menu {
+    border: 1px solid rgba(10, 35, 66, 0.06) !important;
+    background-color: #F8FAFC !important;
+    box-shadow: none !important;
+    border-radius: 10px !important;
+    padding: 6px !important;
+    margin: 4px 0 8px 0 !important;
+  }
+
+  .offcanvas-ppak .dropdown-item,
+  .offcanvas-apple-glass .dropdown-item {
+    font-size: 0.9rem;
+    padding: 9px 12px;
+    color: var(--unesa-navy) !important;
+  }
+
+  .offcanvas-ppak .navbar-cta-group,
+  .offcanvas-apple-glass .navbar-cta-group {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(10, 35, 66, 0.08);
+    width: 100%;
+  }
+
+  .offcanvas-ppak .btn-navbar-cta,
+  .offcanvas-apple-glass .btn-navbar-cta {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.95rem;
   }
 }
 
 @media (min-width: 1200px) {
-  .navbar-ppak .offcanvas-apple-glass,
+  .offcanvas-ppak,
   .offcanvas-apple-glass {
     background: transparent !important;
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
     border: none !important;
     box-shadow: none !important;
     border-radius: 0 !important;
+    position: static !important;
+    visibility: visible !important;
+    transform: none !important;
+    width: auto !important;
+    display: flex !important;
+    flex-grow: 1 !important;
+  }
+
+  .offcanvas-ppak .offcanvas-body,
+  .offcanvas-apple-glass .offcanvas-body {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 !important;
+    overflow: visible !important;
   }
 }
 
@@ -902,7 +1054,7 @@ a:hover {
 .page-header-ppak {
   background-color: var(--unesa-navy);
   border-bottom: 2px solid var(--unesa-gold);
-  padding: clamp(5.25rem, 7.5vw, 6.75rem) 0 clamp(2.5rem, 4vw, 3.5rem);
+  padding: clamp(7.5rem, 9.5vw, 9rem) 0 clamp(2.5rem, 4vw, 3.5rem);
   color: #ffffff;
 }
 
@@ -934,7 +1086,7 @@ a:hover {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  padding: clamp(6.25rem, 9.5vw, 8.25rem) 0 clamp(4rem, 6vw, 6rem);
+  padding: clamp(8.75rem, 12vw, 11rem) 0 clamp(4.5rem, 6.5vw, 6rem);
   color: #ffffff;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -2150,67 +2302,51 @@ a:hover {
 
 /* Tablet & Mobile Adjustments (Navbar breakpoint is xl / 1200px) */
 @media (max-width: 1199.98px) {
-  .navbar-floating-header {
-    top: 8px;
-    padding: 6px 12px 0 12px;
-    margin-top: 0;
-    margin-bottom: -62px;
+  .top-infobar-container {
+    padding: 0 24px;
   }
 
-  .navbar-ppak.navbar-apple-pill,
+  .navbar-floating-header {
+    top: 10px;
+    padding: 0 16px;
+    margin-top: 10px;
+    margin-bottom: -68px;
+  }
+
   .navbar-ppak {
-    padding: 0.3rem 0.65rem 0.3rem 0.85rem;
-    border-radius: var(--radius-pill);
-    background: rgba(7, 25, 48, 0.82);
+    padding: 10px 18px;
+    border-radius: 16px;
+    min-height: 66px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 24px rgba(10, 35, 66, 0.1);
   }
 
   .navbar-brand-logo {
-    height: 30px;
+    height: 44px;
+    max-width: 130px;
   }
 
-  .offcanvas-apple-glass .navbar-nav {
-    gap: 4px;
+  .navbar-brand-divider {
+    height: 32px;
   }
 
-  .offcanvas-apple-glass .nav-link {
-    padding: 0.55rem 0.75rem;
-    border-radius: 0 !important;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.82);
-    background: transparent !important;
-    background-color: transparent !important;
+  .navbar-brand-title {
+    font-size: 0.95rem;
   }
 
-  .offcanvas-apple-glass .nav-link:hover {
-    color: #ffffff;
-    background: transparent !important;
-    background-color: transparent !important;
-  }
-
-  .offcanvas-apple-glass .nav-link.active {
-    color: var(--unesa-gold) !important;
-    background: transparent !important;
-    background-color: transparent !important;
-  }
-
-  .offcanvas-apple-glass .dropdown-menu {
-    box-shadow: none !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px !important;
-    padding: 0.35rem !important;
-    margin: 0.3rem 0 0.4rem 0.4rem !important;
+  .navbar-brand-subtitle {
+    font-size: 0.68rem;
   }
 }
 
-/* Mobile Adjustments */
+/* Mobile Adjustments (< 992px) */
 @media (max-width: 991.98px) {
   .hero-home {
-    padding: 5.5rem 0 3.5rem;
+    padding: 7rem 0 4rem;
   }
 
   .page-header-ppak {
-    padding: 4.75rem 0 2.5rem;
+    padding: 6.25rem 0 3rem;
   }
 
   .hero-brand-badge {
@@ -2256,11 +2392,42 @@ a:hover {
   .event-date-day {
     font-size: 1.1rem;
   }
+}
 
-  .navbar-ppak .dropdown-menu {
-    box-shadow: none;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background-color: rgba(255, 255, 255, 0.04);
-    padding-left: 0.75rem;
+/* Small Mobile Screens (< 576px) */
+@media (max-width: 575.98px) {
+  .top-infobar-container {
+    padding: 0 16px;
+  }
+
+  .navbar-floating-header {
+    top: 8px;
+    padding: 0 12px;
+    margin-top: 8px;
+    margin-bottom: -62px;
+  }
+
+  .navbar-ppak {
+    padding: 8px 14px;
+    border-radius: 14px;
+    min-height: 60px;
+  }
+
+  .navbar-brand-logo {
+    height: 36px;
+    max-width: 105px;
+  }
+
+  .navbar-brand-divider {
+    height: 26px;
+    margin: 0 4px;
+  }
+
+  .navbar-brand-title {
+    font-size: 0.835rem;
+  }
+
+  .navbar-brand-subtitle {
+    font-size: 0.62rem;
   }
 }
