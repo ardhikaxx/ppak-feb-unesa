@@ -9,8 +9,8 @@
    1. HERO SECTION (Apple-Inspired Institutional Refinement)
    ========================================================================= --}}
 <section class="hero-home" aria-label="Hero Banner Utama">
-    <div class="container">
-        <div class="row align-items-center g-5">
+    <div class="container-xl">
+        <div class="row align-items-center g-4 g-lg-5">
             <div class="col-lg-6">
                 <div class="mb-3">
                     <span class="badge-ppak badge-ppak-gold">
@@ -18,7 +18,7 @@
                     </span>
                 </div>
                 <h1 class="hero-headline">
-                    Membangun Profesional Akuntansi yang <span class="accent">Kompeten dan Berintegritas</span>
+                    Membangun Profesional Akuntansi yang <span class="accent">Kompeten & Berintegritas</span>
                 </h1>
                 <p class="hero-subheadline">
                     Program pendidikan profesi unggulan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya yang membina calon profesional akuntansi dengan penguasaan kompetensi akademik mutakhir, integritas etika luhur, skeptisisme profesional, serta kesiapan penuh menghadapi ekosistem kerja global.
@@ -35,7 +35,7 @@
                 </div>
 
                 {{-- Fast Feature Bullets --}}
-                <div class="d-flex flex-wrap gap-4 mt-5 pt-3 border-top border-light-subtle">
+                <div class="d-flex flex-wrap gap-3 gap-md-4 mt-4 pt-3 border-top border-light-subtle">
                     <div class="d-flex align-items-center gap-2">
                         <i class="fa-solid fa-circle-check text-gold"></i>
                         <span class="small fw-semibold text-secondary">Sebutan Akuntan (Ak.)</span>
@@ -53,13 +53,13 @@
 
             <div class="col-lg-6">
                 <div class="hero-visual-card">
-                    <img src="{{ asset('images/unesa_campus_hero.jpg') }}" alt="Aktivitas Akademik dan Kampus di PPAk FEB UNESA">
+                    <img src="{{ asset('images/unesa_campus_hero.jpg') }}" alt="Aktivitas Akademik dan Kampus di PPAk FEB UNESA" class="hero-main-img">
                     <div class="hero-floating-badge">
                         <div class="d-flex align-items-center gap-3">
-                            <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="42">
+                            <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" class="hero-badge-logo">
                             <div>
-                                <div class="fw-bold text-navy" style="font-size: 0.95rem;">Terakreditasi Baik Sekali [LAMEMBA]</div>
-                                <div class="text-secondary small">Universitas Negeri Surabaya &bull; Fakultas Ekonomika dan Bisnis</div>
+                                <div class="fw-bold text-navy" style="font-size: 0.9rem; line-height: 1.25;">Terakreditasi Baik Sekali [LAMEMBA]</div>
+                                <div class="text-secondary small" style="font-size: 0.74rem;">Fakultas Ekonomika dan Bisnis &bull; UNESA</div>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
    2. PENGENALAN SINGKAT (2-Column Editorial)
    ========================================================================= --}}
 <section class="section-py bg-subtle" aria-label="Pengenalan PPAk">
-    <div class="container">
+    <div class="container-xl">
         <div class="row g-5 align-items-center">
             <div class="col-lg-5">
                 <span class="badge-ppak badge-ppak-gold mb-2">TENTANG PPAk FEB UNESA</span>
@@ -96,7 +96,7 @@
    3. INDIKATOR & STATISTIK INSTITUSIONAL
    ========================================================================= --}}
 <section class="section-py-sm border-bottom border-top bg-white" aria-label="Statistik Institusional">
-    <div class="container">
+    <div class="container-xl">
         <div class="row g-4">
             @foreach($stats as $stat)
                 <div class="col-md-6 col-lg-3">
@@ -115,7 +115,7 @@
    4. KEUNGGULAN PPAK FEB UNESA (Editorial Minimalist)
    ========================================================================= --}}
 <section class="section-py bg-white" aria-label="Keunggulan Program PPAk">
-    <div class="container">
+    <div class="container-xl">
         <div class="text-center max-w-700 mx-auto mb-5">
             <span class="badge-ppak badge-ppak-gold mb-2">Mengapa Memilih Kami</span>
             <h2>Keunggulan Pendidikan Profesi di FEB UNESA</h2>
@@ -147,7 +147,7 @@
    5. AKADEMIK & PILAR KOMPETENSI PROFESIONAL
    ========================================================================= --}}
 <section class="section-py bg-subtle" aria-label="Kompetensi Utama Lulusan">
-    <div class="container">
+    <div class="container-xl">
         <div class="row align-items-end justify-content-between mb-5">
             <div class="col-lg-7">
                 <span class="badge-ppak badge-ppak-navy mb-2">Standar Pembelajaran</span>
@@ -188,7 +188,7 @@
    6. ADMISI & PENDAFTARAN MAHASISWA BARU (Solid Navy Institutional)
    ========================================================================= --}}
 <section class="section-py section-admisi-navy" aria-label="Alur Pendaftaran Admisi">
-    <div class="container">
+    <div class="container-xl">
         <div class="row g-5 align-items-center">
             <div class="col-lg-5">
                 <span class="badge-ppak badge-ppak-gold mb-2">ADMISI MAHASISWA BARU</span>
@@ -237,7 +237,7 @@
    7. BERITA & PENGUMUMAN TERBARU (Editorial Clean Cards)
    ========================================================================= --}}
 <section class="section-py bg-white" aria-label="Berita dan Pengumuman Terkini">
-    <div class="container">
+    <div class="container-xl">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
                 <span class="badge-ppak badge-ppak-gold mb-2">Publikasi Informasi</span>
@@ -292,7 +292,7 @@
    8. AGENDA & EVENT MENDATANG (Distinct Horizontal Editorial List)
    ========================================================================= --}}
 <section class="section-py bg-subtle" aria-label="Agenda dan Seminar Mendatang">
-    <div class="container">
+    <div class="container-xl">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
                 <span class="badge-ppak badge-ppak-gold mb-2">Kegiatan Ilmiah & Profesi</span>
@@ -343,7 +343,7 @@
    9. PROFIL DOSEN & PRAKTISI PENGAJAR (Curated Faculty Preview)
    ========================================================================= --}}
 <section class="section-py bg-white" aria-label="Pengajar PPAk">
-    <div class="container">
+    <div class="container-xl">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
                 <span class="badge-ppak badge-ppak-gold mb-2">Tenaga Pendidik</span>
@@ -385,7 +385,7 @@
    10. AKREDITASI & LEGALITAS RESMI (Credible Academic Quality)
    ========================================================================= --}}
 <section class="section-py bg-white border-top" aria-label="Akreditasi dan Legalitas">
-    <div class="container">
+    <div class="container-xl">
         <div class="p-4 p-lg-5 rounded-4 border bg-subtle">
             <div class="row align-items-center g-4">
                 <div class="col-lg-3 text-center">
@@ -422,7 +422,7 @@
    11. KERJA SAMA & MITRA STRATEGIS (Monochrome Minimalist)
    ========================================================================= --}}
 <section class="section-py bg-white" aria-label="Mitra Strategis dan Kerja Sama">
-    <div class="container">
+    <div class="container-xl">
         <div class="text-center max-w-700 mx-auto mb-5">
             <span class="badge-ppak badge-ppak-gold mb-2">Jejaring Kelembagaan</span>
             <h2>Mitra Strategis & Organisasi Profesi</h2>
@@ -450,7 +450,7 @@
    12. TESTIMONI ALUMNI & KARIER (Quotes & Pathways)
    ========================================================================= --}}
 <section class="section-py bg-subtle" aria-label="Testimoni Alumni dan Jejak Karier">
-    <div class="container">
+    <div class="container-xl">
         <div class="text-center max-w-700 mx-auto mb-5">
             <span class="badge-ppak badge-ppak-gold mb-2">Dampak Lulusan</span>
             <h2>Testimoni Alumni & Jejak Profesional</h2>

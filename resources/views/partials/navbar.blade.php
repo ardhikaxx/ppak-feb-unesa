@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-xl navbar-ppak" aria-label="Navigasi Utama">
-    <div class="container">
+    <div class="container-xl">
         {{-- Brand / Wordmark with Official UNESA Logo --}}
         <a class="navbar-brand-wrapper" href="{{ route('home') }}">
             <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" class="navbar-brand-logo">
             <div class="navbar-brand-divider d-none d-sm-block"></div>
             <div class="navbar-brand-text d-none d-sm-flex">
                 <span class="navbar-brand-title">Pendidikan Profesi Akuntansi</span>
-                <span class="navbar-brand-subtitle">Fakultas Ekonomika dan Bisnis &bull; Universitas Negeri Surabaya</span>
+                <span class="navbar-brand-subtitle">Fakultas Ekonomika dan Bisnis UNESA</span>
             </div>
         </a>
 
