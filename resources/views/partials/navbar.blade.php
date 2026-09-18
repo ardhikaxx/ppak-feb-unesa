@@ -3,11 +3,11 @@
         <div class="navbar-ppak-container">
             {{-- 1. Brand Area (Sisi Kiri) --}}
             <a class="navbar-brand-wrapper" href="{{ route('home') }}">
-                <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" class="navbar-brand-logo">
+                <img src="{{ asset('images/logo-unesa-emblem.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" class="navbar-brand-logo">
                 <div class="navbar-brand-divider"></div>
                 <div class="navbar-brand-text">
                     <span class="navbar-brand-title">Pendidikan Profesi Akuntansi</span>
-                    <span class="navbar-brand-subtitle">Fakultas Ekonomika dan Bisnis UNESA</span>
+                    <span class="navbar-brand-subtitle">Fakultas Ekonomika dan Bisnis &bull; Universitas Negeri Surabaya</span>
                 </div>
             </a>
 
@@ -20,10 +20,10 @@
             <div class="offcanvas offcanvas-end offcanvas-ppak" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
                 <div class="offcanvas-header border-bottom d-xl-none">
                     <div class="d-flex align-items-center gap-3">
-                        <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="42">
+                        <img src="{{ asset('images/logo-unesa-emblem.png') }}" alt="Logo UNESA" height="42">
                         <div>
                             <div class="fw-bold text-navy lh-sm" style="font-size: 0.95rem;">Pendidikan Profesi Akuntansi</div>
-                            <div class="text-muted" style="font-size: 0.75rem;">Fakultas Ekonomika dan Bisnis &bull; UNESA</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">Fakultas Ekonomika dan Bisnis &bull; Universitas Negeri Surabaya</div>
                         </div>
                     </div>
                     <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Tutup"></button>
@@ -114,7 +114,7 @@
                         {{-- 4. Admisi & Pendaftaran --}}
                         <li class="nav-item dropdown {{ request()->routeIs('admisi.*') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="{{ route('admisi.jalur-syarat') }}" id="admisiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span>Admisi</span>
+                                <span>Admisi & Pendaftaran</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="admisiDropdown">
                                 <li>
@@ -174,7 +174,7 @@
                         {{-- 6. Kemahasiswaan & Alumni --}}
                         <li class="nav-item dropdown {{ request()->routeIs('kemahasiswaan-alumni.*') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="{{ route('kemahasiswaan-alumni.alumni') }}" id="alumniDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span>Alumni & Mahasiswa</span>
+                                <span>Kemahasiswaan & Alumni</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="alumniDropdown">
                                 <li>
@@ -201,7 +201,7 @@
                         {{-- 7. Informasi & Publikasi --}}
                         <li class="nav-item dropdown {{ request()->routeIs('informasi.*') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="{{ route('informasi.berita') }}" id="infoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span>Informasi</span>
+                                <span>Informasi & Publikasi</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="infoDropdown">
                                 <li>
@@ -228,7 +228,7 @@
                         {{-- 8. Kontak & Layanan --}}
                         <li class="nav-item dropdown {{ request()->routeIs('kontak.*') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="{{ route('kontak.lokasi') }}" id="kontakDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span>Kontak</span>
+                                <span>Kontak & Layanan</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="kontakDropdown">
                                 <li>
@@ -256,9 +256,12 @@
                     {{-- 3. CTA & Search Area (Sisi Kanan) --}}
                     <div class="navbar-cta-group">
                         {{-- Search Trigger Button --}}
-                        <button type="button" class="btn-navbar-search d-none d-xxl-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Cari informasi program studi">
+                        <button type="button" class="btn-navbar-search d-none d-lg-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="Cari informasi program studi">
                             <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                         </button>
+
+                        {{-- Subtle vertical divider between search and CTA --}}
+                        <div class="navbar-action-divider d-none d-lg-block" aria-hidden="true"></div>
 
                         {{-- Action CTA Button Pendaftaran --}}
                         <a href="{{ route('admisi.jalur-syarat') }}" class="btn-navbar-cta w-100 w-xl-auto">

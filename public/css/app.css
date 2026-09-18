@@ -311,15 +311,16 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   4. Top Information Bar (Slim, Institutional Solid Navy, No Gradient)
+   4. Top Information Bar (Slim, Institutional Solid Navy, Matching Mockup)
    -------------------------------------------------------------------------- */
 .top-infobar {
   background-color: var(--unesa-navy-dark); /* Solid #071930 */
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.8125rem; /* ~13px */
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.85);
-  min-height: 38px;
+  color: rgba(255, 255, 255, 0.9);
+  min-height: 42px;
+  padding: 8px 0;
   display: flex;
   align-items: center;
   position: relative;
@@ -345,24 +346,24 @@ a:hover {
 .top-infobar-brand {
   font-size: 0.8125rem; /* 13px */
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.92);
   letter-spacing: 0.01em;
   white-space: nowrap;
 }
 
 .top-infobar-sep {
-  opacity: 0.4;
-  margin: 0 4px;
+  opacity: 0.55;
+  margin: 0 6px;
 }
 
 .top-infobar-utility {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
 }
 
 .top-infobar-link {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.88);
   font-size: 0.8125rem;
   font-weight: 500;
   text-decoration: none;
@@ -378,9 +379,9 @@ a:hover {
 }
 
 .top-infobar-link i {
-  font-size: 0.8rem;
-  color: var(--unesa-gold);
-  opacity: 0.9;
+  font-size: 0.82rem;
+  color: #ffffff; /* White icons per mockup */
+  opacity: 0.95;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
@@ -392,51 +393,51 @@ a:hover {
 .top-infobar-divider {
   display: inline-block;
   width: 1px;
-  height: 12px;
-  background-color: rgba(255, 255, 255, 0.15);
-  margin: 0 2px;
+  height: 13px;
+  background-color: rgba(255, 255, 255, 0.22);
+  margin: 0 3px;
   vertical-align: middle;
   flex-shrink: 0;
 }
 
 /* --------------------------------------------------------------------------
-   5. Modern Floating Squircle Navbar (Apple Design Inspired x UNESA Identity)
+   5. Floating Pill Navbar (Matching Image Reference UI)
    -------------------------------------------------------------------------- */
 .navbar-floating-header {
   position: sticky;
   top: 18px;
   z-index: 1030;
   width: 100%;
-  padding: 0 40px;
+  padding: 0 36px;
   pointer-events: none;
   margin-top: 18px;
-  margin-bottom: -102px;
+  margin-bottom: -98px;
   transition: top 0.3s ease, margin 0.3s ease;
 }
 
 .navbar-ppak {
   pointer-events: auto;
   margin: 0 auto;
-  max-width: 1440px;
+  max-width: 1460px;
   width: 100%;
-  background-color: #ffffff; /* Solid White Surface */
+  background-color: #ffffff; /* Pure Solid White Surface */
   border: 1px solid rgba(10, 35, 66, 0.08);
-  border-radius: var(--navbar-radius); /* 22px squircle */
-  box-shadow: var(--navbar-shadow); /* 0 8px 30px rgba(10, 35, 66, 0.08) */
-  padding: var(--navbar-padding-y) var(--navbar-padding-x); /* 14px 32px */
+  border-radius: var(--radius-pill); /* Full Pill Capsule per Mockup */
+  box-shadow: 0 10px 30px rgba(10, 35, 66, 0.08), 0 2px 8px rgba(10, 35, 66, 0.03);
+  padding: 10px 18px 10px 24px;
   transition: padding 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  min-height: var(--navbar-height); /* 82px */
+  min-height: 74px;
   display: flex;
   align-items: center;
 }
 
 .navbar-ppak.navbar-scrolled {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  box-shadow: var(--navbar-shadow-scrolled); /* 0 12px 36px rgba(10, 35, 66, 0.14) */
+  padding-top: 8px;
+  padding-bottom: 8px;
+  box-shadow: 0 12px 36px rgba(10, 35, 66, 0.12), 0 4px 12px rgba(10, 35, 66, 0.05);
   border-color: rgba(10, 35, 66, 0.12);
 }
 
@@ -451,7 +452,7 @@ a:hover {
 .navbar-brand-wrapper {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 0;
   text-decoration: none;
   flex-shrink: 0;
   padding: 2px 0;
@@ -463,9 +464,9 @@ a:hover {
 }
 
 .navbar-brand-logo {
-  height: 52px;
+  height: 48px;
   width: auto;
-  max-width: 155px;
+  max-width: 55px;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
@@ -478,8 +479,9 @@ a:hover {
 
 .navbar-brand-divider {
   width: 1px;
-  height: 38px;
-  background-color: rgba(10, 35, 66, 0.12);
+  height: 32px;
+  background-color: rgba(10, 35, 66, 0.14);
+  margin: 0 14px;
   flex-shrink: 0;
 }
 
@@ -491,19 +493,19 @@ a:hover {
 }
 
 .navbar-brand-title {
-  font-size: 1.075rem; /* ~17.2px */
+  font-size: 1.05rem; /* ~16.8px */
   font-weight: 700;
   color: var(--unesa-navy); /* #0A2342 */
-  letter-spacing: -0.022em;
-  line-height: 1.25;
+  letter-spacing: -0.02em;
+  line-height: 1.22;
 }
 
 .navbar-brand-subtitle {
-  font-size: 0.725rem; /* ~11.6px */
+  font-size: 0.72rem; /* ~11.5px */
   color: #64748B;
   font-weight: 500;
-  letter-spacing: 0.012em;
-  line-height: 1.25;
+  letter-spacing: 0.005em;
+  line-height: 1.22;
   margin-top: 2px;
 }
 
@@ -514,26 +516,27 @@ a:hover {
 }
 
 .navbar-ppak .nav-link {
-  font-size: 0.935rem; /* ~15px */
+  font-size: 0.885rem; /* ~14.2px */
   font-weight: 550;
   color: var(--unesa-navy);
-  padding: 10px 13px;
-  border-radius: 8px;
+  padding: 8px 10px;
+  border-radius: 0 !important;
   background: transparent !important;
   background-color: transparent !important;
   box-shadow: none !important;
-  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   white-space: nowrap;
   letter-spacing: -0.01em;
 }
 
 .navbar-ppak .nav-link:hover {
   color: var(--unesa-blue);
-  background-color: rgba(10, 35, 66, 0.04) !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 .navbar-ppak .nav-link:active {
@@ -541,11 +544,28 @@ a:hover {
 }
 
 .navbar-ppak .nav-link.active,
+.navbar-ppak .nav-item.active > .nav-link,
 .navbar-ppak .nav-item.dropdown.active > .nav-link {
   color: var(--unesa-navy) !important;
-  font-weight: 650;
-  background-color: rgba(10, 35, 66, 0.06) !important;
-  border-radius: 8px !important;
+  font-weight: 700;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Minimalist Gold Indicator Bar Directly Beneath Active Menu */
+.navbar-ppak .nav-item.active > .nav-link::before,
+.navbar-ppak .nav-link.active::before,
+.navbar-ppak .nav-item.dropdown.active > .nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 3px;
+  background-color: var(--unesa-gold);
+  border-radius: 2px;
+  pointer-events: none;
 }
 
 /* Dropdown Caret Chevron (Font Awesome icon) */
@@ -554,17 +574,17 @@ a:hover {
   font-weight: 900;
   content: "\f078";
   border: none;
-  font-size: 0.625rem;
-  opacity: 0.6;
+  font-size: 0.55rem;
+  opacity: 0.65;
   color: var(--unesa-navy);
-  margin-left: 6px;
+  margin-left: 4px;
   vertical-align: middle;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-ppak .dropdown-toggle:hover::after {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .navbar-ppak .show > .dropdown-toggle::after {
@@ -642,50 +662,55 @@ a:hover {
 .navbar-cta-group {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
 .btn-navbar-search {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  border: 1px solid rgba(10, 35, 66, 0.1);
-  background-color: #ffffff;
+  background: transparent;
+  border: none;
+  padding: 8px 10px;
   color: var(--unesa-navy);
+  font-size: 1.05rem;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease;
 }
 
 .btn-navbar-search:hover {
-  background-color: rgba(10, 35, 66, 0.05);
-  border-color: rgba(10, 35, 66, 0.2);
-  color: var(--unesa-navy);
+  color: var(--unesa-blue);
+  transform: scale(1.08);
 }
 
 .btn-navbar-search:active {
   transform: scale(0.96);
 }
 
-/* Main CTA Button "Pendaftaran" */
+.navbar-action-divider {
+  width: 1px;
+  height: 26px;
+  background-color: rgba(10, 35, 66, 0.14);
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+
+/* Main CTA Button "Pendaftaran" (Full Pill per Mockup) */
 .btn-navbar-cta,
 .btn-navbar-pill {
   background-color: var(--unesa-gold); /* Solid #D8AE47 */
   color: var(--unesa-navy) !important;
   font-weight: 700;
   font-size: 0.885rem;
-  padding: 11px 22px;
-  border-radius: 11px; /* 10px - 12px squircle, NOT 50px pill */
+  padding: 10px 22px;
+  border-radius: var(--radius-pill); /* Pill per Mockup */
   border: 1px solid var(--unesa-gold);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow: 0 4px 14px rgba(216, 174, 71, 0.35);
+  box-shadow: 0 2px 10px rgba(216, 174, 71, 0.25);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   white-space: nowrap;
@@ -698,13 +723,13 @@ a:hover {
   border-color: var(--unesa-gold-hover);
   color: var(--unesa-navy) !important;
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(216, 174, 71, 0.45);
+  box-shadow: 0 4px 14px rgba(216, 174, 71, 0.35);
 }
 
 .btn-navbar-cta:active,
 .btn-navbar-pill:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(216, 174, 71, 0.3);
+  box-shadow: 0 2px 6px rgba(216, 174, 71, 0.2);
 }
 
 .btn-navbar-cta i,
@@ -722,7 +747,7 @@ a:hover {
 .navbar-toggler-apple {
   width: 44px;
   height: 44px;
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   padding: 0 !important;
   background: #ffffff !important;
   border: 1px solid rgba(10, 35, 66, 0.12) !important;
@@ -2322,12 +2347,13 @@ a:hover {
   }
 
   .navbar-brand-logo {
-    height: 44px;
-    max-width: 130px;
+    height: 42px;
+    max-width: 48px;
   }
 
   .navbar-brand-divider {
-    height: 32px;
+    height: 30px;
+    margin: 0 10px;
   }
 
   .navbar-brand-title {
@@ -2415,12 +2441,12 @@ a:hover {
 
   .navbar-brand-logo {
     height: 36px;
-    max-width: 105px;
+    max-width: 40px;
   }
 
   .navbar-brand-divider {
-    height: 26px;
-    margin: 0 4px;
+    height: 24px;
+    margin: 0 8px;
   }
 
   .navbar-brand-title {
