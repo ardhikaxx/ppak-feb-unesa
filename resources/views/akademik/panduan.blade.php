@@ -16,9 +16,11 @@
 ])
 
 <section class="section-py bg-white">
-    <div class="container">
+    <div class="container-xl">
         <div class="text-center max-w-700 mx-auto mb-5">
-            <span class="badge-ppak badge-ppak-blue mb-2">Dokumen Resmi Mahasiswa</span>
+            <span class="badge-ppak badge-ppak-gold mb-2">
+                <i class="fa-solid fa-book me-1"></i> DOKUMEN RESMI MAHASISWA
+            </span>
             <h2>Daftar Pedoman Pembelajaran</h2>
             <p class="text-secondary">
                 Seluruh mahasiswa diwajibkan memahami dan memedomani buku panduan resmi guna menunjang kelancaran studi profesi.
@@ -26,16 +28,16 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-lg-11 col-xl-10">
                 <div class="table-ppak-wrapper">
                     <table class="table-ppak">
                         <thead>
                             <tr>
-                                <th style="width: 50%;">Nama Dokumen Panduan</th>
-                                <th style="width: 15%;">Kategori</th>
-                                <th style="width: 10%;">Tahun</th>
-                                <th style="width: 10%;">Ukuran</th>
-                                <th style="width: 15%;" class="text-end">Aksi</th>
+                                <th style="width: 46%;">Nama Dokumen Panduan</th>
+                                <th style="width: 18%;">Kategori</th>
+                                <th style="width: 10%;" class="text-center">Tahun</th>
+                                <th style="width: 12%;" class="text-center">Ukuran</th>
+                                <th style="width: 14%;" class="text-end">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,8 +45,8 @@
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center gap-3">
-                                            <div class="feature-icon-wrapper" style="width: 36px; height: 36px; font-size: 0.95rem;">
-                                                <i class="fa-solid fa-file-pdf text-danger"></i>
+                                            <div class="feature-icon-wrapper" style="width: 38px; height: 38px; font-size: 1rem; background-color: #fef2f2; color: #dc2626; border-color: #fee2e2;">
+                                                <i class="fa-solid fa-file-pdf"></i>
                                             </div>
                                             <div>
                                                 <div class="fw-semibold text-navy">{{ $doc['title'] }}</div>
@@ -53,13 +55,17 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="badge-ppak badge-ppak-blue" style="font-size: 0.7rem;">{{ $doc['kategori'] }}</span>
+                                        <span class="badge-ppak badge-ppak-blue text-nowrap" style="font-size: 0.725rem;">{{ $doc['kategori'] }}</span>
                                     </td>
-                                    <td>{{ $doc['tahun'] }}</td>
-                                    <td><span class="badge-ppak badge-ppak-navy" style="font-size: 0.675rem;">{{ $doc['size'] }}</span></td>
+                                    <td class="text-center">
+                                        <span class="text-secondary fw-semibold">{{ $doc['tahun'] }}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-light text-secondary border fw-medium px-2 py-1 text-nowrap" style="font-size: 0.75rem;">{{ $doc['size'] }}</span>
+                                    </td>
                                     <td class="text-end">
-                                        <a href="{{ route('kontak.unduhan') }}" class="btn-ppak-secondary btn-ppak-sm">
-                                            <i class="fa-solid fa-download me-1"></i>
+                                        <a href="{{ route('kontak.unduhan') }}" class="btn-ppak-secondary btn-ppak-sm text-nowrap">
+                                            <i class="fa-solid fa-download me-1 text-navy"></i>
                                             <span>Unduh</span>
                                         </a>
                                     </td>
@@ -74,13 +80,18 @@
                 </div>
 
                 {{-- Panduan Layanan Tambahan --}}
-                <div class="p-4 rounded-3 border bg-subtle mt-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
-                    <div>
-                        <h4 class="fs-6 fw-bold text-navy mb-1"><i class="fa-solid fa-circle-question text-primary me-2"></i>Butuh Dokumen Spesifik Lainnya?</h4>
-                        <p class="small text-secondary mb-0">Silakan telusuri repositori arsip berkas publik atau hubungi sekretariat akademik.</p>
+                <div class="p-4 rounded-4 border bg-white shadow-sm mt-4 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="feature-icon-wrapper" style="width: 44px; height: 44px; font-size: 1.15rem; background: var(--unesa-gold-light); color: var(--unesa-gold); border-color: rgba(216, 174, 71, 0.3);">
+                            <i class="fa-solid fa-circle-question"></i>
+                        </div>
+                        <div>
+                            <h4 class="fs-6 fw-bold text-navy mb-1">Butuh Dokumen Spesifik Lainnya?</h4>
+                            <p class="small text-secondary mb-0">Silakan telusuri repositori arsip berkas publik lengkap atau hubungi sekretariat akademik.</p>
+                        </div>
                     </div>
                     <div>
-                        <a href="{{ route('kontak.unduhan') }}" class="btn-ppak-primary btn-ppak-sm">
+                        <a href="{{ route('kontak.unduhan') }}" class="btn-ppak-primary btn-ppak-sm text-nowrap">
                             <span>Buka Semua Unduhan</span>
                             <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>

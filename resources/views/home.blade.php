@@ -198,17 +198,22 @@
                     Penerimaan mahasiswa baru PPAk dibuka pada semester gasal dan genap. Proses seleksi transparan, berbasis portofolio akademik dan verifikasi kualifikasi sarjana.
                 </p>
 
-                <div class="p-4 rounded-3 border border-white border-opacity-15 bg-white bg-opacity-10 mb-4">
-                    <div class="d-flex align-items-center gap-3 mb-2">
-                        <i class="fa-solid fa-calendar-check text-gold fs-5"></i>
-                        <span class="fw-bold text-white">Periode Gelombang Berjalan</span>
+                <div class="p-4 rounded-3 border border-white border-opacity-15 mb-4" style="background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(8px);">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-calendar-check text-gold fs-5"></i>
+                            <span class="fw-bold text-white">Periode Gelombang Berjalan</span>
+                        </div>
+                        <span class="badge-ppak badge-ppak-green" style="font-size: 0.7rem;">Aktif</span>
                     </div>
                     <div class="small text-white-50 mb-3">Pendaftaran daring sedang berlangsung untuk Semester Akademik 2024/2025.</div>
                     <div class="d-flex gap-2">
                         <a href="{{ route('admisi.jalur-syarat') }}" class="btn-ppak-gold btn-ppak-sm">
+                            <i class="fa-solid fa-clipboard-check me-1"></i>
                             <span>Syarat Masuk</span>
                         </a>
                         <a href="{{ route('admisi.biaya') }}" class="btn-ppak-secondary btn-ppak-sm">
+                            <i class="fa-solid fa-receipt me-1"></i>
                             <span>Rincian Biaya</span>
                         </a>
                     </div>
@@ -221,8 +226,11 @@
                         <div class="stepper-item">
                             <div class="stepper-circle">{{ $step['step'] }}</div>
                             <div class="stepper-content">
-                                <h4 class="fs-6 fw-bold mb-1">{{ $step['title'] }}</h4>
-                                <p class="small mb-0">{{ $step['desc'] }}</p>
+                                <div class="d-flex align-items-center justify-content-between mb-1">
+                                    <h4 class="fs-6 fw-bold mb-0 text-white">{{ $step['title'] }}</h4>
+                                    <span class="badge rounded-pill text-bg-warning px-2 py-1" style="font-size: 0.675rem; font-weight: 600; background-color: var(--unesa-gold) !important; color: var(--unesa-navy) !important;">Tahap {{ $step['step'] }}</span>
+                                </div>
+                                <p class="small mb-0" style="color: #cbd5e1; line-height: 1.55;">{{ $step['desc'] }}</p>
                             </div>
                             <div class="stepper-line"></div>
                         </div>
@@ -481,21 +489,22 @@
         </div>
 
         {{-- Karier Badges --}}
-        <div class="p-4 rounded-3 bg-white border">
-            <div class="text-center mb-4">
-                <h4 class="fs-6 fw-bold text-navy mb-1">Sebaran Karier Utama Alumni PPAk FEB UNESA</h4>
-                <p class="small text-muted mb-0">Peluang penyerapan kerja lulusan di ranah profesional multidisipliner</p>
+        <div class="p-4 p-lg-5 rounded-4 bg-white border shadow-sm">
+            <div class="text-center max-w-700 mx-auto mb-4">
+                <span class="badge-ppak badge-ppak-gold mb-2">PROSPEK KARIER UTAMA</span>
+                <h3 class="h4 fw-bold text-navy mb-1">Sebaran Karier Utama Alumni PPAk FEB UNESA</h3>
+                <p class="small text-secondary mb-0">Peluang penyerapan kerja lulusan bergelar Akuntan (Ak.) di ranah industri terkemuka, instansi pemerintahan, dan kantor akuntan publik.</p>
             </div>
-            <div class="row g-3">
+            <div class="row g-3 g-lg-4">
                 @foreach($karierSectors as $sector)
-                    <div class="col-md-4 col-6">
-                        <div class="d-flex align-items-center gap-3 p-3 rounded-2 bg-subtle border border-light-subtle h-100">
-                            <div class="feature-icon-wrapper" style="width: 36px; height: 36px; font-size: 0.9rem;">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="karier-item-card">
+                            <div class="karier-icon-box">
                                 <i class="fa-solid {{ $sector['icon'] }}"></i>
                             </div>
-                            <div>
-                                <div class="fw-bold text-navy small">{{ $sector['title'] }}</div>
-                                <div class="text-muted" style="font-size: 0.725rem;">{{ $sector['desc'] }}</div>
+                            <div class="flex-grow-1">
+                                <div class="fw-bold text-navy mb-1" style="font-size: 0.925rem; line-height: 1.35;">{{ $sector['title'] }}</div>
+                                <div class="text-secondary" style="font-size: 0.785rem; line-height: 1.45;">{{ $sector['desc'] }}</div>
                             </div>
                         </div>
                     </div>

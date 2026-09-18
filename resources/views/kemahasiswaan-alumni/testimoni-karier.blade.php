@@ -41,8 +41,9 @@
         {{-- SEBARAN SEKTOR KARIER --}}
         <div class="p-4 p-lg-5 rounded-4 border bg-subtle">
             <div class="text-center max-w-700 mx-auto mb-5">
-                <span class="badge-ppak badge-ppak-navy mb-2">Prospek Masa Depan</span>
-                <h2>Peta Sebaran Profesi Lulusan</h2>
+                <span class="badge-ppak badge-ppak-gold mb-2">PROSPEK MASA DEPAN</span>
+                <h2 class="mb-3">Peta Sebaran Profesi Lulusan</h2>
+                <div class="golden-line mx-auto mb-3"></div>
                 <p class="text-secondary">
                     Ijazah profesi dan sebutan Akuntan (Ak.) membuka pintu jenjang karier strategis pada berbagai domain profesi di Indonesia maupun kawasan regional.
                 </p>
@@ -51,15 +52,16 @@
             <div class="row g-4">
                 @foreach($karierSectors as $sector)
                     <div class="col-lg-4 col-md-6">
-                        <div class="card-ppak-flat h-100 bg-white">
-                            <div class="d-flex align-items-center gap-3 mb-2">
-                                <div class="feature-icon-wrapper" style="width: 42px; height: 42px; font-size: 1.1rem;">
+                        <div class="profesi-card">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <div class="profesi-icon mb-0">
                                     <i class="fa-solid {{ $sector['icon'] }}"></i>
                                 </div>
-                                <h3 class="fs-6 fw-bold text-navy mb-0">{{ $sector['title'] }}</h3>
+                                <span class="badge bg-light text-navy border fw-semibold px-2 py-1" style="font-size: 0.72rem;">Profesi Akuntan</span>
                             </div>
-                            <p class="small text-secondary mb-0" style="line-height: 1.6;">
-                                Lingkup kerja mencakup {{ $sector['desc'] }} dengan standar kualifikasi keprofesian tinggi dan kode etik independen.
+                            <h3 class="fs-6 fw-bold text-navy mb-2" style="line-height: 1.35;">{{ $sector['title'] }}</h3>
+                            <p class="small text-secondary mb-0 flex-grow-1" style="line-height: 1.65;">
+                                Lingkup kerja mencakup <strong class="text-navy">{{ $sector['desc'] }}</strong> dengan standar kualifikasi keprofesian tinggi dan kode etik independen.
                             </p>
                         </div>
                     </div>

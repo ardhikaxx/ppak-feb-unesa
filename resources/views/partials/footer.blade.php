@@ -4,12 +4,10 @@
             <div class="row g-4 g-lg-5">
                 {{-- Column 1: Identity & About --}}
                 <div class="col-lg-4 col-md-6">
-                    <div class="d-flex align-items-center gap-3 mb-3">
-                        <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" style="height: 44px; width: auto; max-width: 140px; object-fit: contain; flex-shrink: 0;">
-                        <div style="flex-shrink: 0;">
-                            <div class="fw-bold text-white fs-5 lh-1">PPAk FEB UNESA</div>
-                            <div class="text-secondary" style="font-size: 0.775rem;">Universitas Negeri Surabaya</div>
-                        </div>
+                    <div class="mb-3">
+                        <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" style="height: 48px; width: auto; max-width: 170px; object-fit: contain;" class="d-block mb-3">
+                        <div class="fw-bold text-white fs-5 lh-sm" style="letter-spacing: -0.015em;">Pendidikan Profesi Akuntansi</div>
+                        <div class="text-gold small fw-semibold">Fakultas Ekonomika dan Bisnis &bull; UNESA</div>
                     </div>
                     <p class="text-secondary small mb-4 pe-lg-3" style="line-height: 1.7;">
                         Program Pendidikan Profesi Akuntansi (PPAk) Fakultas Ekonomika dan Bisnis menyelenggarakan pendidikan keprofesian berstandar nasional dan global, berakar pada integritas, kepakaran teknis, dan etika profesi luhur.
@@ -77,12 +75,12 @@
                             <span>+62 812 3456 7890 (Helpdesk Mahasiswa)</span>
                         </li>
                     </ul>
-                    <div class="p-3 mt-3" style="background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px;">
-                        <div class="d-flex align-items-center gap-2 text-white small fw-bold">
-                            <i class="fa-solid fa-clock"></i>
+                    <div class="p-3 mt-3 rounded-3" style="background-color: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12);">
+                        <div class="d-flex align-items-center gap-2 text-white small fw-bold mb-1">
+                            <i class="fa-solid fa-clock text-gold"></i>
                             <span>Jam Operasional Layanan:</span>
                         </div>
-                        <div class="text-secondary" style="font-size: 0.8rem;">Senin – Jumat: 08.00 – 16.00 WIB</div>
+                        <div class="text-white-50 small">Senin – Jumat: 08.00 – 16.00 WIB</div>
                     </div>
                 </div>
             </div>

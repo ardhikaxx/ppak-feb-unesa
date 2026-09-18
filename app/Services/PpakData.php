@@ -478,7 +478,7 @@ class PpakData
             ['title' => 'Pemeriksa Keuangan Negara', 'icon' => 'fa-landmark', 'desc' => 'BPK RI, BPKP, Inspektorat Daerah & Kementerian'],
             ['title' => 'Konsultan Pajak & Transfer Pricing', 'icon' => 'fa-receipt', 'desc' => 'Kantor Konsultan Pajak & Kantor Advokat Pajak'],
             ['title' => 'Financial Controller & CFO', 'icon' => 'fa-briefcase', 'desc' => 'Perusahaan Terbuka (Tbk), BUMN & Multinasional'],
-            ['title' => 'Internal Auditor & Risk Manager', 'icon' => 'fa-user-shield', 'desc' => 'Sektor Perbankan, Fintech & Korporasi Global'],
+            ['title' => 'Internal Auditor & Risk Manager', 'icon' => 'fa-shield-halved', 'desc' => 'Sektor Perbankan, Fintech & Korporasi Global'],
             ['title' => 'Akademisi & Peneliti Akuntansi', 'icon' => 'fa-user-graduate', 'desc' => 'Perguruan Tinggi Negeri & Lembaga Kajian Kebijakan'],
         ];
     }
