@@ -6,23 +6,29 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="mb-3">
                         <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" style="height: 48px; width: auto; max-width: 170px; object-fit: contain;" class="d-block mb-3">
-                        <div class="fw-bold text-white fs-5 lh-sm" style="letter-spacing: -0.015em;">Pendidikan Profesi Akuntansi</div>
-                        <div class="text-gold small fw-semibold">Fakultas Ekonomika dan Bisnis &bull; UNESA</div>
+                        <div class="fw-bold text-white fs-5 lh-sm" style="letter-spacing: -0.015em;">Pendidikan Profesi Akuntan</div>
+                        <div class="text-gold small fw-semibold">Fakultas Ekonomika dan Bisnis &bull; UNESA (Kode: 62902)</div>
                     </div>
                     <p class="text-secondary small mb-4 pe-lg-3" style="line-height: 1.7;">
-                        Program Pendidikan Profesi Akuntansi (PPAk) Fakultas Ekonomika dan Bisnis menyelenggarakan pendidikan keprofesian berstandar nasional dan global, berakar pada integritas, kepakaran teknis, dan etika profesi luhur.
+                        Program Studi Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis menyelenggarakan pendidikan keprofesian berstandar mutu tinggi, berakar pada integritas, kepakaran teknis, dan etika profesi luhur.
                     </p>
-                    <div class="d-flex gap-2">
-                        <a href="https://instagram.com/unesa_official" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram Resmi">
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="{{ $ppakInstitution['socials']['instagram'] ?? 'https://www.instagram.com/official_unesa' }}" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram Resmi UNESA" title="Instagram Resmi UNESA (@official_unesa)">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="https://youtube.com/@unesaofficial" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="YouTube Resmi">
+                        <a href="{{ $ppakInstitution['socials']['instagram_feb'] ?? 'https://www.instagram.com/feb.unesa' }}" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram FEB UNESA" title="Instagram FEB UNESA (@feb.unesa)">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </a>
+                        <a href="{{ $ppakInstitution['socials']['youtube'] ?? 'https://www.youtube.com/@officialunesa' }}" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="YouTube Resmi UNESA" title="YouTube Resmi UNESA (@officialunesa)">
                             <i class="fa-brands fa-youtube"></i>
                         </a>
-                        <a href="https://facebook.com/unesa.surabaya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook Resmi">
+                        <a href="{{ $ppakInstitution['socials']['tiktok'] ?? 'https://www.tiktok.com/@unesaid' }}" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="TikTok Resmi UNESA" title="TikTok Resmi UNESA (@unesaid)">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="{{ $ppakInstitution['socials']['facebook'] ?? 'https://www.facebook.com/officialunesa' }}" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook Resmi UNESA" title="Facebook Resmi UNESA">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
-                        <a href="https://linkedin.com/school/universitas-negeri-surabaya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn Resmi">
+                        <a href="{{ $ppakInstitution['socials']['linkedin'] ?? 'https://www.linkedin.com/school/universitas-negeri-surabaya' }}" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn Resmi UNESA" title="LinkedIn Resmi UNESA">
                             <i class="fa-brands fa-linkedin-in"></i>
                         </a>
                     </div>
@@ -92,11 +98,11 @@
         <div class="container-xl">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center text-md-start">
                 <div>
-                    <span>&copy; {{ date('Y') }} <strong>Pendidikan Profesi Akuntansi (PPAk)</strong>. Fakultas Ekonomika dan Bisnis — Universitas Negeri Surabaya.</span>
+                    <span>&copy; {{ date('Y') }} <strong>Pendidikan Profesi Akuntan (PPAk)</strong>. Fakultas Ekonomika dan Bisnis — Universitas Negeri Surabaya.</span>
                 </div>
                 <div class="d-flex align-items-center gap-3">
                     <span class="badge-ppak" style="font-size: 0.725rem; text-transform: none; background: rgba(255,255,255,0.08); color: #ffffff; border: 1px solid rgba(255,255,255,0.15);">
-                        <i class="fa-solid fa-award text-warning"></i> Akreditasi Baik Sekali [LAMEMBA]
+                        <i class="fa-solid fa-award text-warning"></i> Akreditasi Baik [LAMEMBA]
                     </span>
                     <a href="#top-infobar" class="text-secondary hover-white" aria-label="Kembali ke atas">
                         <i class="fa-solid fa-arrow-up"></i>
