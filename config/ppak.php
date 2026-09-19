@@ -11,10 +11,11 @@ return [
     */
 
     'institution' => [
-        'name' => env('PPAK_NAME', 'Pendidikan Profesi Akuntansi'),
+        'name' => env('PPAK_NAME', 'Pendidikan Profesi Akuntan'),
         'faculty' => env('PPAK_FACULTY', 'Fakultas Ekonomika dan Bisnis'),
         'university' => env('PPAK_UNIVERSITY', 'Universitas Negeri Surabaya'),
         'short_name' => env('PPAK_SHORT', 'PPAk FEB UNESA'),
+        'program_code' => env('PPAK_CODE', '62902'),
         'email' => env('PPAK_EMAIL', 'ppak.feb@unesa.ac.id'),
         'phone' => env('PPAK_PHONE', '+62 31 828 0009'),
         'address' => env('PPAK_ADDRESS', 'Gedung G6 FEB Kampus Ketintang, Surabaya'),
@@ -42,9 +43,9 @@ return [
 
     'seo' => [
         'title_suffix' => ' | PPAk FEB UNESA',
-        'default_title' => 'Pendidikan Profesi Akuntansi FEB UNESA | Universitas Negeri Surabaya',
-        'default_description' => 'Pendidikan Profesi Akuntansi (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya mempersiapkan akuntan profesional beregister dengan standar global.',
-        'default_keywords' => 'PPAk, Pendidikan Profesi Akuntansi, FEB UNESA, Akuntan, CA Indonesia, CPA',
+        'default_title' => 'Pendidikan Profesi Akuntan FEB UNESA | Universitas Negeri Surabaya',
+        'default_description' => 'Program Studi Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya mempersiapkan akuntan profesional berkarakter, beretika, dan kompeten.',
+        'default_keywords' => 'PPAk, Pendidikan Profesi Akuntan, PPAk FEB UNESA, Pendidikan Profesi Akuntan UNESA, PPAk UNESA, Profesi Akuntan UNESA, FEB UNESA, Akuntan, CA Indonesia, CPA of Indonesia',
         'default_image' => '/images/og-ppak-unesa.jpg',
     ],
 
