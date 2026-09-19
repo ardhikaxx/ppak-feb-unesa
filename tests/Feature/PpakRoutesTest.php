@@ -277,3 +277,16 @@ test('unduhan download route throttled and validates', function () {
     $response->assertStatus(404);
 });
 
+test('all 6 official PDF documents exist and can be downloaded with 200 OK', function () {
+    $documents = PpakData::getUnduhan();
+    expect(count($documents))->toBe(6);
+
+    foreach ($documents as $doc) {
+        $filename = $doc['filename'];
+        $response = $this->get(route('kontak.unduhan.download', $filename));
+
+        $response->assertStatus(200);
+        $response->assertHeader('Content-Type', 'application/pdf');
+    }
+});
+
