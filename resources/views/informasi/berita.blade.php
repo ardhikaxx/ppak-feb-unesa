@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Berita & Pengumuman Resmi | PPAk FEB UNESA')
-@section('meta_description', 'Kumpulan berita kegiatan, siaran pers, pengumuman akademik, dan dinamika keprofesian Program Pendidikan Profesi Akuntansi FEB UNESA.')
+@section('meta_description', 'Kumpulan berita kegiatan, siaran pers, pengumuman akademik, dan dinamika keprofesian Program Pendidikan Profesi Akuntan FEB UNESA.')
 
 @section('content')
 
@@ -85,10 +85,10 @@
             @endif
         </div>
 
-        {{-- Scalable pagination - SEO friendly, preserves query string --}}
-        <nav aria-label="Navigasi Halaman Berita" class="d-flex justify-content-center">
-            {{ $berita->links('pagination::bootstrap-5') }}
-        </nav>
+        {{-- Scalable pagination - Numbers only --}}
+        <div class="d-flex justify-content-center">
+            {{ $berita->withQueryString()->links('vendor.pagination.numbers') }}
+        </div>
     </div>
 </section>
 
