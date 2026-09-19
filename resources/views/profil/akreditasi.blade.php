@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Akreditasi & Sertifikasi | PPAk FEB UNESA')
-@section('meta_description', 'Status legalitas dan sertifikat akreditasi resmi Program Pendidikan Profesi Akuntansi Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.')
+@section('title', 'Akreditasi & Sertifikasi Mutu | Pendidikan Profesi Akuntan FEB UNESA')
+@section('meta_description', 'Status legalitas dan keputusan akreditasi resmi LAMEMBA Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.')
 
 @section('content')
 
 @include('partials.page-header', [
     'title' => 'Akreditasi & Sertifikasi Mutu',
-    'badge' => 'Legalitas & Jaminan Kualitas',
-    'lead' => 'Dokumentasi resmi akreditasi program studi dari lembaga independen penjaminan mutu pendidikan tinggi ekonomi dan akuntansi.',
+    'badge' => 'Legalitas & Penjaminan Mutu',
+    'lead' => 'Dokumentasi ketetapan akreditasi resmi dari Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA).',
     'breadcrumbs' => [
         ['label' => 'Profil', 'url' => route('profil.sejarah')],
         ['label' => 'Akreditasi', 'url' => '']
@@ -27,90 +27,103 @@
                         </div>
                         <h3 class="h4 text-navy fw-bold mb-1">LAMEMBA</h3>
                         <div class="text-muted small mb-3">Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis & Akuntansi</div>
-                        <div class="badge-ppak badge-ppak-gold fs-6 px-3 py-2 w-100 justify-content-center">
-                            Terakreditasi Baik Sekali
+                        <div class="badge-ppak badge-ppak-gold fs-6 px-3 py-2 w-100 justify-content-center mb-2">
+                            Peringkat: Baik
                         </div>
+                        <span class="badge-ppak badge-ppak-green px-3 py-1">
+                            <i class="fa-solid fa-circle-check me-1"></i> Status: Aktif
+                        </span>
                     </div>
                 </div>
 
                 <div class="col-lg-8">
-                    <span class="badge-ppak badge-ppak-blue mb-2">Sertifikasi Resmi</span>
-                    <h2 class="h3 text-navy mb-3">Jaminan Mutu Pendidikan Profesi Akuntansi</h2>
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                        <span class="badge-ppak badge-ppak-navy">SK LAMEMBA</span>
+                        <span class="badge-ppak badge-ppak-blue">Periode 2025–2027</span>
+                    </div>
+                    <h2 class="h3 text-navy mb-3">Status Akreditasi Resmi: Baik</h2>
                     <p class="text-secondary mb-4">
-                        Pendidikan Profesi Akuntansi FEB UNESA menyelenggarakan perkuliahan sesuai dengan kriteria baku penjaminan mutu yang ditetapkan oleh LAMEMBA dan Kementerian Pendidikan Tinggi. Status akreditasi ini mencerminkan komitmen terhadap kurikulum yang relevan, rasio dosen-mahasiswa yang ideal, fasilitas komputasi yang memadai, serta luaran penelitian dan kepuasan pemangku kepentingan.
+                        Program Studi Pendidikan Profesi Akuntan (Kode Prodi: <strong>62902</strong>) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya telah terakreditasi dengan peringkat <strong>Baik</strong> berdasarkan Surat Keputusan Dewan Eksekutif LAMEMBA.
                     </p>
 
                     <div class="table-ppak-wrapper mb-4">
                         <table class="table-ppak">
                             <tbody>
                                 <tr>
-                                    <th style="width: 30%;">Status Peringkat</th>
-                                    <td><span class="badge-ppak badge-ppak-gold">Terakreditasi Baik Sekali</span></td>
+                                    <th style="width: 35%;">Nama Program Studi</th>
+                                    <td><strong>Pendidikan Profesi Akuntan</strong> (Kode: 62902)</td>
                                 </tr>
                                 <tr>
-                                    <th>Nomor Keputusan SK</th>
-                                    <td><code>{{ $info['sk_akreditasi'] }}</code></td>
+                                    <th>Status Peringkat</th>
+                                    <td><span class="badge-ppak badge-ppak-gold">Baik</span></td>
                                 </tr>
                                 <tr>
-                                    <th>Lembaga Pengakreditasi</th>
+                                    <th>Lembaga Akreditasi</th>
                                     <td>Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA)</td>
                                 </tr>
                                 <tr>
-                                    <th>Masa Berlaku Akreditasi</th>
-                                    <td>{{ $info['masa_berlaku'] }}</td>
+                                    <th>Nomor Keputusan</th>
+                                    <td><code class="fw-bold">611/DE/A.5/AR.11/II/2025</code></td>
                                 </tr>
                                 <tr>
-                                    <th>Gelar / Sebutan Lulusan</th>
-                                    <td><strong>Akuntan (Ak.)</strong> &bull; Beregister Negara (RNA Kemenkeu)</td>
+                                    <th>Tanggal Penetapan</th>
+                                    <td>26 Februari 2025</td>
+                                </tr>
+                                <tr>
+                                    <th>Masa Berlaku</th>
+                                    <td>26 Februari 2025 s.d. <strong>25 Februari 2027</strong></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <div>
-                        <a href="{{ route('kontak.unduhan') }}" class="btn-ppak-primary">
+                    {{-- Expiry / Period Notice --}}
+                    <div class="p-3 rounded-3 border bg-white mb-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <i class="fa-solid fa-clock-rotate-left text-warning fs-5 mt-1"></i>
+                            <div class="small">
+                                <div class="fw-bold text-navy">Periode Masa Berlaku Akreditasi:</div>
+                                <div class="text-secondary">Akreditasi berlaku aktif hingga <strong>25 Februari 2027</strong>. Unit Penjaminan Mutu FEB UNESA dan Gugus Penjaminan Mutu secara berkala memantau pemenuhan standar mutu instrumen akreditasi program studi.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="https://simutu.unesa.ac.id" target="_blank" rel="noopener noreferrer" class="btn-ppak-primary">
+                            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i>
+                            <span>Lihat Data Akreditasi (SIMUTU UNESA)</span>
+                        </a>
+                        <a href="{{ route('kontak.unduhan') }}" class="btn-ppak-secondary">
                             <i class="fa-solid fa-download me-1"></i>
-                            <span>Unduh Salinan Sertifikat Akreditasi (PDF)</span>
+                            <span>Unduhan Dokumen SK</span>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- Asosiasi & Sertifikasi Pendukung --}}
+        {{-- Landasan Mutu & Tata Kelola Standar --}}
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card-ppak-flat h-100">
+            <div class="col-md-6">
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
                     <div class="feature-icon-wrapper mb-3">
-                        <i class="fa-solid fa-handshake"></i>
+                        <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <h4 class="fs-6 fw-bold text-navy mb-2">Ikatan Akuntan Indonesia (IAI)</h4>
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Penjaminan Mutu Internal (SPMI)</h3>
                     <p class="small text-secondary mb-0">
-                        Kurikulum telah ditelaah dan memperoleh pengakuan waiver ujian sertifikasi Chartered Accountant (CA) tingkat profesi dari IAI.
+                        Evaluasi proses pembelajaran, pemenuhan Capaian Pembelajaran Lulusan (CPL), serta kualifikasi penugasan dosen pengampu mata kuliah dimonitor secara terstruktur oleh Badan Penjaminan Mutu UNESA.
                     </p>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card-ppak-flat h-100">
+            <div class="col-md-6">
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
                     <div class="feature-icon-wrapper mb-3">
-                        <i class="fa-solid fa-file-shield"></i>
+                        <i class="fa-solid fa-graduation-cap"></i>
                     </div>
-                    <h4 class="fs-6 fw-bold text-navy mb-2">Institut Akuntan Publik Indonesia</h4>
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Standar Pembelajaran Profesi</h3>
                     <p class="small text-secondary mb-0">
-                        Penyelarasan standar kompetensi audit berbasis Standar Profesional Akuntan Publik (SPAP) dan persiapan sertifikasi CPA.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card-ppak-flat h-100">
-                    <div class="feature-icon-wrapper mb-3">
-                        <i class="fa-solid fa-scale-balanced"></i>
-                    </div>
-                    <h4 class="fs-6 fw-bold text-navy mb-2">Kementerian Keuangan RI</h4>
-                    <p class="small text-secondary mb-0">
-                        Lulusan berhak mengajukan permohonan Register Negara Akuntan (RNA) pada Pusat Pembinaan Profesi Keuangan (PPPK) Kemenkeu.
+                        Kurikulum Pendidikan Profesi Akuntan dirancang memenuhi standar kurikulum pendidikan tinggi jenjang profesi (Level 7 KKNI) yang berorientasi pada penguasaan kompetensi keprofesian akuntan.
                     </p>
                 </div>
             </div>
