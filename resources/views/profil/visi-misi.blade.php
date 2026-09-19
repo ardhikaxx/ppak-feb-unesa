@@ -1,138 +1,97 @@
 @extends('layouts.app')
 
-@section('title', 'Visi, Misi & Tujuan | PPAk FEB UNESA')
-@section('meta_description', 'Visi, Misi, Tujuan, dan Nilai-Nilai Utama Program Pendidikan Profesi Akuntansi Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.')
+@section('title', 'Visi, Misi & Tujuan | Pendidikan Profesi Akuntan FEB UNESA')
+@section('meta_description', 'Informasi Visi, Misi, dan Tujuan Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.')
 
 @section('content')
 
 @include('partials.page-header', [
     'title' => 'Visi, Misi & Tujuan',
-    'badge' => 'Arah & Komitmen Strategis',
-    'lead' => 'Landasan filosofis dan komitmen strategis PPAk FEB UNESA dalam menyelenggarakan pendidikan keprofesian akuntan bertaraf internasional.',
+    'badge' => 'Arah & Komitmen Mutu',
+    'lead' => 'Komitmen penyelenggaraan Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
     'breadcrumbs' => [
         ['label' => 'Profil', 'url' => route('profil.sejarah')],
-        ['label' => 'Visi & Misi', 'url' => '']
+        ['label' => 'Visi, Misi & Tujuan', 'url' => '']
     ]
 ])
 
 <section class="section-py bg-white">
     <div class="container">
-        {{-- VISI (Typography Besar & Elegan) --}}
-        <div class="mb-5 p-5 rounded-4 bg-subtle border">
-            <span class="badge-ppak badge-ppak-blue mb-3">Visi Program Studi</span>
-            <div class="display-6 fw-bold text-navy mb-3" style="letter-spacing: -0.025em; line-height: 1.25;">
-                "Menjadi pusat pendidikan profesi akuntansi terkemuka di tingkat nasional dan berdaya saing global yang menghasilkan akuntan profesional berintegritas tinggi, adaptif terhadap teknologi informasi, serta berwawasan etika luhur pada tahun 2030."
-            </div>
-            <p class="text-secondary mb-0 small">
-                Diselaraskan dengan Rencana Strategis FEB dan Visi Universitas Negeri Surabaya sebagai universitas kependidikan dan sains berstandar internasional.
-            </p>
-        </div>
-
-        {{-- MISI --}}
-        <div class="mb-5">
-            <div class="text-center max-w-700 mx-auto mb-4">
-                <span class="badge-ppak badge-ppak-navy mb-2">Misi Utama</span>
-                <h2>Misi Penyelenggaraan Pendidikan</h2>
-                <p class="text-secondary">Empat pilar pelaksanaan mandat tridharma perguruan tinggi pada jenjang profesi akuntansi.</p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card-ppak-flat h-100">
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <div class="feature-icon-wrapper">
-                                <span class="fw-bold fs-6">01</span>
-                            </div>
-                            <h3 class="fs-6 fw-bold text-navy mb-0">Pendidikan Profesi Berstandar Internasional</h3>
-                        </div>
-                        <p class="small text-secondary mb-0">
-                            Menyelenggarakan proses pembelajaran profesi akuntansi berkualitas tinggi berbasis luaran (Outcome-Based Education) yang selaras dengan International Education Standards (IES) dan silabus Chartered Accountant (CA) Indonesia.
-                        </p>
-                    </div>
+        {{-- Status Notice Card --}}
+        <div class="mb-5 p-4 p-lg-5 rounded-4 bg-subtle border">
+            <div class="d-flex align-items-start gap-4">
+                <div class="feature-icon-wrapper flex-shrink-0" style="width: 54px; height: 54px; font-size: 1.5rem;">
+                    <i class="fa-solid fa-arrows-rotate text-navy"></i>
                 </div>
-
-                <div class="col-md-6">
-                    <div class="card-ppak-flat h-100">
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <div class="feature-icon-wrapper">
-                                <span class="fw-bold fs-6">02</span>
-                            </div>
-                            <h3 class="fs-6 fw-bold text-navy mb-0">Riset Terapan & Kajian Praktik Akuntansi</h3>
+                <div>
+                    <span class="badge-ppak badge-ppak-gold mb-2">Status Informasi Resmi</span>
+                    <h2 class="h3 text-navy mb-2">Informasi Visi, Misi, dan Tujuan Program Sedang Diperbarui</h2>
+                    <div class="golden-line"></div>
+                    <p class="text-secondary mb-3" style="line-height: 1.7;">
+                        Berdasarkan pangkalan data SINDIG UNESA, naskah rumusan definitif visi, misi, dan tujuan spesifik Program Studi Pendidikan Profesi Akuntan (Kode Prodi: <strong>62902</strong>) saat ini berada dalam tahapan finalisasi penjaminan mutu kelembagaan seiring proses penguatan tata kelola program profesi baru yang tercatat berdiri pada <strong>23 Mei 2025</strong>.
+                    </p>
+                    <div class="p-3 bg-white rounded-3 border">
+                        <div class="small text-muted mb-1">
+                            <i class="fa-solid fa-circle-info text-primary me-1"></i> Kebijakan Transparansi Informasi Akademik:
                         </div>
-                        <p class="small text-secondary mb-0">
-                            Mengembangkan penelitian terapan dan studi kasus riil dalam bidang auditing, tata kelola korporasi (GCG), analitika data keuangan, dan kepatuhan perpajakan guna memberikan sumbangsih pemikiran bagi profesi.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card-ppak-flat h-100">
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <div class="feature-icon-wrapper">
-                                <span class="fw-bold fs-6">03</span>
-                            </div>
-                            <h3 class="fs-6 fw-bold text-navy mb-0">Pengabdian & Literasi Akuntabilitas Publik</h3>
+                        <div class="small text-secondary">
+                            Program studi berkomitmen menyajikan informasi faktual yang bersumber langsung dari dokumen resmi kelembagaan PPAk FEB UNESA dan tidak menduplikasi visi-misi program studi sarjana maupun magister lainnya.
                         </div>
-                        <p class="small text-secondary mb-0">
-                            Melaksanakan pengabdian kepada masyarakat melalui pendampingan akuntansi UMKM, tata kelola keuangan badan usaha milik desa (BUMDes), serta asistensi kepatuhan perpajakan masyarakat luas.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card-ppak-flat h-100">
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <div class="feature-icon-wrapper">
-                                <span class="fw-bold fs-6">04</span>
-                            </div>
-                            <h3 class="fs-6 fw-bold text-navy mb-0">Jejaring Kemitraan Sektor Publik & Industri</h3>
-                        </div>
-                        <p class="small text-secondary mb-0">
-                            Membangun kerja sama strategis yang berkelanjutan dengan Kantor Akuntan Publik, organisasi profesi (IAI, IAPI), regulator (OJK, BPK, DJP), serta dunia usaha untuk mempercepat keterserapan lulusan.
-                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- TUJUAN PROGRAM --}}
-        <div class="p-5 rounded-4 border bg-subtle">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-4">
-                    <span class="badge-ppak badge-ppak-gold mb-2">Tujuan Program</span>
-                    <h3 class="text-navy">Profil Capaian Lulusan PPAk</h3>
-                    <p class="text-secondary small mb-0">
-                        Lulusan dirancang memiliki kesiapan prima dalam mengambil peran strategis kepemimpinan keuangan korporasi dan jasa asurans publik.
+        {{-- Landasan Penyelenggaraan Pendidikan Profesi --}}
+        <div class="row g-4 mb-5">
+            <div class="col-lg-4">
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
+                    <div class="feature-icon-wrapper mb-3">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Pilar Kurikulum SINDIG</h3>
+                    <p class="small text-secondary mb-0">
+                        Penyelenggaraan akademik berpedoman pada kurikulum 11 mata kuliah terpadu dan paket magang industri yang telah tercatat resmi pada sistem SINDIG UNESA.
                     </p>
                 </div>
-                <div class="col-lg-8">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white rounded-3 border h-100">
-                                <div class="fw-bold text-navy small mb-1"><i class="fa-solid fa-circle-check text-primary me-2"></i>Kompetensi Teknis Unggul</div>
-                                <div class="text-muted" style="font-size: 0.8rem;">Mampu menyusun, menganalisis, dan mengaudit laporan keuangan berbasis standar internasional (IFRS & ISA).</div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white rounded-3 border h-100">
-                                <div class="fw-bold text-navy small mb-1"><i class="fa-solid fa-circle-check text-primary me-2"></i>Integritas & Skeptisisme</div>
-                                <div class="text-muted" style="font-size: 0.8rem;">Menjunjung tinggi kode etik profesi akuntan dan bersikap independen dalam menghadapi dilema etika bisnis.</div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white rounded-3 border h-100">
-                                <div class="fw-bold text-navy small mb-1"><i class="fa-solid fa-circle-check text-primary me-2"></i>Kecakapan Analitika Data</div>
-                                <div class="text-muted" style="font-size: 0.8rem;">Mampu mengoperasikan audit assist software dan memanfaatkan data analytics dalam evaluasi risiko.</div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white rounded-3 border h-100">
-                                <div class="fw-bold text-navy small mb-1"><i class="fa-solid fa-circle-check text-primary me-2"></i>Kesiapan Sertifikasi CA/CPA</div>
-                                <div class="text-muted" style="font-size: 0.8rem;">Lulusan memenuhi syarat portofolio pembebasan ujian serta siap menempuh ujian tingkat lanjutan profesi.</div>
-                            </div>
-                        </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
+                    <div class="feature-icon-wrapper mb-3">
+                        <i class="fa-solid fa-award"></i>
                     </div>
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Akreditasi LAMEMBA</h3>
+                    <p class="small text-secondary mb-0">
+                        Telah memperoleh status akreditasi <strong>Baik</strong> berdasarkan Keputusan LAMEMBA No. 611/DE/A.5/AR.11/II/2025 dengan masa berlaku 2025–2027.
+                    </p>
                 </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
+                    <div class="feature-icon-wrapper mb-3">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Standar Profesi IAI & IAPI</h3>
+                    <p class="small text-secondary mb-0">
+                        Pembelajaran diarahkan pada pencapaian kompetensi standar keprofesian akuntan (Chartered Accountant & Certified Public Accountant of Indonesia).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {{-- Hubungi Sekretariat --}}
+        <div class="p-4 rounded-3 border bg-subtle text-center">
+            <h4 class="fs-6 fw-bold text-navy mb-1">Informasi Lebih Lanjut Mengenai Dokumen Akademik</h4>
+            <p class="small text-secondary mb-3">Untuk permintaan salinan naskah akademik atau konsultasi program, silakan menghubungi sekretariat program studi.</p>
+            <div class="d-flex justify-content-center gap-2">
+                <a href="{{ route('akademik.kurikulum') }}" class="btn-ppak-primary btn-ppak-sm">
+                    <span>Lihat Kurikulum Resmi</span>
+                    <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+                <a href="{{ route('kontak.helpdesk') }}" class="btn-ppak-secondary btn-ppak-sm">
+                    <span>Hubungi Sekretariat</span>
+                    <i class="fa-solid fa-envelope ms-1"></i>
+                </a>
             </div>
         </div>
     </div>
