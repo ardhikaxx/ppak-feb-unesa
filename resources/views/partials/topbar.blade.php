@@ -3,7 +3,7 @@
         {{-- Left: Institutional Identity --}}
         <div class="top-infobar-brand-wrapper">
             <span class="top-infobar-brand">
-                Pendidikan Profesi Akuntansi <span class="top-infobar-sep" aria-hidden="true">&bull;</span> Fakultas Ekonomika dan Bisnis <span class="top-infobar-sep" aria-hidden="true">&bull;</span> Universitas Negeri Surabaya
+                Pendidikan Profesi Akuntan <span class="top-infobar-sep" aria-hidden="true">&bull;</span> Fakultas Ekonomika dan Bisnis <span class="top-infobar-sep" aria-hidden="true">&bull;</span> Universitas Negeri Surabaya
             </span>
         </div>
 
