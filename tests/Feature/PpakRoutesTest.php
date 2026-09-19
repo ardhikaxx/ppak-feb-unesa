@@ -2,70 +2,123 @@
 
 use App\Services\PpakData;
 
-test('beranda homepage renders successfully with key content', function () {
+test('beranda homepage renders successfully with verified key content', function () {
     $response = $this->get(route('home'));
 
     $response->assertStatus(200);
-    $response->assertSee('Pendidikan Profesi Akuntansi');
+    $response->assertSee('Pendidikan Profesi Akuntan');
     $response->assertSee('FEB UNESA');
-    $response->assertSee('Daftar Sekarang');
-    $response->assertSee('Pelajari PPAk');
+    $response->assertSee('Informasi Pendaftaran');
+    $response->assertSee('Profil Program Studi');
+    $response->assertSee('62902');
+    $response->assertSee('Rediyanto Putra');
+    $response->assertSee('611/DE/A.5/AR.11/II/2025');
+    $response->assertSee('Rp5.500.000');
+    $response->assertSee('Arsip Seleksi 2026/2027');
+    $response->assertDontSee('Pendidikan Profesi Akuntansi');
 });
 
-test('all profil subpages render successfully', function () {
-    $routes = [
-        'profil.sejarah',
-        'profil.visi-misi',
-        'profil.struktur-organisasi',
-        'profil.dosen-pengajar',
-        'profil.akreditasi',
-    ];
+test('profil subpages render verified institutional data', function () {
+    // Sejarah
+    $resSejarah = $this->get(route('profil.sejarah'));
+    $resSejarah->assertStatus(200);
+    $resSejarah->assertSee('23 Mei 2025');
+    $resSejarah->assertSee('SINDIG UNESA');
+    $resSejarah->assertSee('62902');
 
-    foreach ($routes as $routeName) {
-        $response = $this->get(route($routeName));
-        $response->assertStatus(200);
-    }
+    // Visi Misi
+    $resVisi = $this->get(route('profil.visi-misi'));
+    $resVisi->assertStatus(200);
+    $resVisi->assertSee('Informasi Visi, Misi, dan Tujuan Program Sedang Diperbarui');
+
+    // Struktur Organisasi
+    $resStruktur = $this->get(route('profil.struktur-organisasi'));
+    $resStruktur->assertStatus(200);
+    $resStruktur->assertSee('Rediyanto Putra, S.E., M.S.A.');
+    $resStruktur->assertSee('Koordinator Program Studi');
+
+    // Dosen Pengajar
+    $resDosen = $this->get(route('profil.dosen-pengajar'));
+    $resDosen->assertStatus(200);
+    $resDosen->assertSee('Rediyanto Putra, S.E., M.S.A.');
+    $resDosen->assertSee('Pengajar pada Mata Kuliah PPAk');
+
+    // Akreditasi
+    $resAkreditasi = $this->get(route('profil.akreditasi'));
+    $resAkreditasi->assertStatus(200);
+    $resAkreditasi->assertSee('LAMEMBA');
+    $resAkreditasi->assertSee('Baik');
+    $resAkreditasi->assertSee('611/DE/A.5/AR.11/II/2025');
+    $resAkreditasi->assertSee('25 Februari 2027');
 });
 
-test('all akademik subpages render successfully', function () {
-    $routes = [
-        'akademik.kurikulum',
-        'akademik.kalender',
-        'akademik.gelar-sertifikasi',
-        'akademik.panduan',
-    ];
+test('akademik subpages render verified curriculum and calendar data', function () {
+    // Kurikulum
+    $resKurikulum = $this->get(route('akademik.kurikulum'));
+    $resKurikulum->assertStatus(200);
+    $resKurikulum->assertSee('Mata Kuliah Semester 1 (19 SKS)');
+    $resKurikulum->assertSee('Mata Kuliah Semester 2 (16 SKS)');
+    $resKurikulum->assertSee('CPL-1');
+    $resKurikulum->assertSee('CPL-4');
+    $resKurikulum->assertSee('Pelaporan Korporat');
 
-    foreach ($routes as $routeName) {
-        $response = $this->get(route($routeName));
-        $response->assertStatus(200);
-    }
+    // Kalender
+    $resKalender = $this->get(route('akademik.kalender'));
+    $resKalender->assertStatus(200);
+    $resKalender->assertSee('B/2322/UN38.I/TU.00.02/2026');
+    $resKalender->assertSee('2026/2027');
+    $resKalender->assertSee('1 Agustus 2026');
+
+    // Gelar & Sertifikasi
+    $resGelar = $this->get(route('akademik.gelar-sertifikasi'));
+    $resGelar->assertStatus(200);
+    $resGelar->assertSee('Akuntan (Ak.)');
+    $resGelar->assertSee('Chartered Accountant (CA)');
+    $resGelar->assertSee('Certified Public Accountant (CPA)');
+
+    // Panduan
+    $resPanduan = $this->get(route('akademik.panduan'));
+    $resPanduan->assertStatus(200);
+    $resPanduan->assertSee('B/2322/UN38.I/TU.00.02/2026');
 });
 
-test('all admisi subpages render successfully', function () {
-    $routes = [
-        'admisi.jalur-syarat',
-        'admisi.biaya',
-        'admisi.prosedur-jadwal',
-        'admisi.faq',
-    ];
+test('admisi subpages render verified admission data and archives', function () {
+    // Jalur & Syarat
+    $resSyarat = $this->get(route('admisi.jalur-syarat'));
+    $resSyarat->assertStatus(200);
+    $resSyarat->assertSee('Persyaratan Pendaftaran');
+    $resSyarat->assertSee('pmb.unesa.ac.id');
+    $resSyarat->assertSee('Admisi UNESA');
 
-    foreach ($routes as $routeName) {
-        $response = $this->get(route($routeName));
-        $response->assertStatus(200);
-    }
+    // Biaya
+    $resBiaya = $this->get(route('admisi.biaya'));
+    $resBiaya->assertStatus(200);
+    $resBiaya->assertSee('Rp5.500.000');
+    $resBiaya->assertSee('Admisi UNESA');
+
+    // Prosedur & Jadwal
+    $resJadwal = $this->get(route('admisi.prosedur-jadwal'));
+    $resJadwal->assertStatus(200);
+    $resJadwal->assertSee('Arsip Seleksi 2026/2027');
+    $resJadwal->assertSee('Gelombang 1');
+
+    // FAQ
+    $resFaq = $this->get(route('admisi.faq'));
+    $resFaq->assertStatus(200);
+    $resFaq->assertSee('FAQ');
 });
 
 test('all riset dan pengabdian subpages render successfully', function () {
-    $routes = [
-        'riset-pengabdian.riset-publikasi',
-        'riset-pengabdian.pengabdian',
-        'riset-pengabdian.kerja-sama',
-    ];
+    $resRiset = $this->get(route('riset-pengabdian.riset-publikasi'));
+    $resRiset->assertStatus(200);
+    $resRiset->assertSee('Rediyanto Putra');
+    $resRiset->assertSee('2026');
 
-    foreach ($routes as $routeName) {
-        $response = $this->get(route($routeName));
-        $response->assertStatus(200);
-    }
+    $resPkm = $this->get(route('riset-pengabdian.pengabdian'));
+    $resPkm->assertStatus(200);
+
+    $resKerjasama = $this->get(route('riset-pengabdian.kerja-sama'));
+    $resKerjasama->assertStatus(200);
 });
 
 test('all kemahasiswaan dan alumni subpages render successfully', function () {
@@ -184,9 +237,21 @@ test('canonical routes all return 200', function () {
 test('berita pagination returns correct structure', function () {
     $response = $this->get(route('informasi.berita', ['page' => 1]));
     $response->assertStatus(200);
-    // Empty search still returns paginated
     $response2 = $this->get(route('informasi.berita', ['q' => 'CA']));
     $response2->assertStatus(200);
+});
+
+test('dosen page pagination renders numbers only without text labels', function () {
+    config(['ppak.pagination.dosen' => 2]);
+    $response = $this->get(route('profil.dosen-pengajar'));
+    $response->assertStatus(200);
+    $response->assertSee('ppak-pagination');
+    $response->assertDontSee('Previous');
+    $response->assertDontSee('Next');
+    $response->assertDontSee('Sebelumnya');
+    $response->assertDontSee('Berikutnya');
+    $response->assertDontSee('&laquo;', false);
+    $response->assertDontSee('&raquo;', false);
 });
 
 test('berita search with pagination preserves query string', function () {
@@ -204,10 +269,11 @@ test('sitemap returns valid xml', function () {
 
 test('helpdesk rate limiting and validation', function () {
     $response = $this->post(route('kontak.helpdesk.submit'), []);
-    $response->assertStatus(302); // validation redirect
+    $response->assertStatus(302);
 });
 
 test('unduhan download route throttled and validates', function () {
     $response = $this->get(route('kontak.unduhan.download', 'not-exist.pdf'));
     $response->assertStatus(404);
 });
+
