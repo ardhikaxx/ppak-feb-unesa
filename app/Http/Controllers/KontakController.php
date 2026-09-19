@@ -77,33 +77,38 @@ class KontakController extends Controller
     }
 
     /**
-     * Secure file download - validates via signed route, streams via Filesystem.
-     * Ready for S3/CDN without changing business logic.
+     * Secure file download - streams via Filesystem or public storage.
+     * Ready for local/S3 without changing business logic.
      */
-    public function download(string $filename): StreamedResponse|\Illuminate\Http\RedirectResponse
+    public function download(string $filename): \Symfony\Component\HttpFoundation\Response
     {
         $all = $this->content->getUnduhan();
         $doc = collect($all)->firstWhere('filename', $filename);
 
         if (!$doc) {
-            abort(404);
+            abort(404, 'Informasi berkas tidak ditemukan.');
         }
 
-        // Files are stored in storage/app/public/documents or public/documents
-        // Use Filesystem abstraction - local now, S3 later
-        $disk = Storage::disk(config('filesystems.default') === 'local' ? 'public' : config('filesystems.default'));
+        $sanitizedName = preg_replace('/[^\w\s\-\.]/u', '', $doc['title'] ?? 'dokumen-resmi-ppak') . '.pdf';
+
+        // Check in public/documents first
+        $publicFilePath = public_path('documents/' . $filename);
+        if (file_exists($publicFilePath)) {
+            return response()->download($publicFilePath, $sanitizedName, [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="' . $sanitizedName . '"',
+            ]);
+        }
+
+        // Fallback check in storage/app/public/documents
+        $disk = Storage::disk('public');
         $path = 'documents/' . $filename;
-
-        if (!$disk->exists($path) && !file_exists(public_path('documents/' . $filename))) {
-            // Fallback: file not yet on storage, show 404 with empty state
-            abort(404, 'Dokumen tidak tersedia di storage.');
-        }
-
-        // Stream download - efficient for large files, not loading into memory
         if ($disk->exists($path)) {
-            return Storage::disk($disk === Storage::disk('public') ? 'public' : config('filesystems.default'))->download($path, $doc['title'] . '.pdf');
+            return $disk->download($path, $sanitizedName, [
+                'Content-Type' => 'application/pdf',
+            ]);
         }
 
-        return response()->download(public_path('documents/' . $filename), $doc['title'] . '.pdf');
+        abort(404, 'Dokumen fisik belum tersedia di repositori server.');
     }
 }
