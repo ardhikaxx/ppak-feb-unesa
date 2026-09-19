@@ -1,35 +1,35 @@
 @extends('layouts.app')
 
-@section('title', 'Pendidikan Profesi Akuntansi FEB UNESA | Universitas Negeri Surabaya')
-@section('meta_description', 'Website resmi Program Pendidikan Profesi Akuntansi (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya. Mempersiapkan akuntan profesional beregister dengan standar global.')
+@section('title', 'Pendidikan Profesi Akuntan FEB UNESA | Universitas Negeri Surabaya')
+@section('meta_description', 'Website resmi Program Studi Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya (Kode Prodi: 62902). Terakreditasi Baik oleh LAMEMBA.')
 
 @section('content')
 
 {{-- =========================================================================
-   1. HERO SECTION (Campus Photo Background with Primary Overlay & Glassmorphism)
+   1. HERO SECTION
    ========================================================================= --}}
-<section class="hero-home" style="background-image: linear-gradient(90deg, rgba(7, 25, 48, 0.86) 0%, rgba(7, 25, 48, 0.74) 28%, rgba(10, 35, 66, 0.38) 52%, rgba(10, 35, 66, 0.08) 72%, rgba(18, 63, 115, 0) 100%), url('{{ asset('images/background-hero.jpg') }}');" aria-label="Hero Banner Utama">
+<section class="hero-home" style="background-image: linear-gradient(90deg, rgba(7, 25, 48, 0.88) 0%, rgba(7, 25, 48, 0.78) 32%, rgba(10, 35, 66, 0.45) 55%, rgba(10, 35, 66, 0.15) 75%, rgba(18, 63, 115, 0) 100%), url('{{ asset('images/background-hero.jpg') }}');" aria-label="Hero Banner Utama">
     <div class="container-xl">
         <div class="row align-items-center">
             <div class="col-lg-9 col-xl-8">
                 <div class="hero-brand-badge">
                     <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi UNESA" class="hero-brand-badge-logo">
-                    <span class="hero-brand-badge-text">PENDIDIKAN PROFESI AKUNTANSI &bull; FEB UNESA</span>
+                    <span class="hero-brand-badge-text">PENDIDIKAN PROFESI AKUNTAN &bull; FEB UNESA</span>
                 </div>
                 <h1 class="hero-headline">
-                    Membangun Profesional Akuntansi yang <span class="accent">Kompeten & Berintegritas</span>
+                    Program Pendidikan Profesi Akuntan <span class="accent">Unggul & Berintegritas</span>
                 </h1>
                 <p class="hero-subheadline">
-                    Program pendidikan profesi unggulan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya yang membina calon profesional akuntansi dengan penguasaan kompetensi akademik mutakhir, integritas etika luhur, skeptisisme profesional, serta kesiapan penuh menghadapi ekosistem kerja global.
+                    Program pendidikan profesi di bawah naungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya (Kode Prodi: <strong>62902</strong>). Menyelenggarakan kurikulum profesional berbasis standar profesi akuntan (IAI & IAPI), tata kelola, dan etika keprofesian luhur.
                 </p>
                 <div class="d-flex flex-wrap gap-3">
-                    <a href="{{ route('admisi.jalur-syarat') }}" class="btn-hero-primary">
-                        <span>Daftar Sekarang</span>
+                    <a href="{{ route('admisi.prosedur-jadwal') }}" class="btn-hero-primary">
+                        <span>Informasi Pendaftaran</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
                     <a href="{{ route('profil.sejarah') }}" class="btn-hero-secondary">
                         <i class="fa-solid fa-circle-info text-gold"></i>
-                        <span>Pelajari PPAk</span>
+                        <span>Profil Program Studi</span>
                     </a>
                 </div>
 
@@ -37,19 +37,19 @@
                 <div class="hero-bullets">
                     <div class="hero-bullet-item">
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>Sebutan Akuntan (Ak.)</span>
+                        <span>Kode Prodi: 62902</span>
                     </div>
                     <div class="hero-bullet-item">
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>Skema Waiver Ujian CA</span>
+                        <span>Berdiri: 23 Mei 2025</span>
                     </div>
                     <div class="hero-bullet-item">
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>Kelas Reguler & Eksekutif</span>
+                        <span>Akreditasi Baik (LAMEMBA)</span>
                     </div>
                     <div class="hero-bullet-item">
                         <i class="fa-solid fa-certificate"></i>
-                        <span>Terakreditasi Baik Sekali (LAMEMBA)</span>
+                        <span>UKT: Rp5.500.000 / Semester</span>
                     </div>
                 </div>
             </div>
@@ -58,32 +58,50 @@
 </section>
 
 {{-- =========================================================================
-   2. PENGENALAN SINGKAT (2-Column Editorial)
+   2. PENGENALAN SINGKAT & IDENTITAS INSTITUSIONAL
    ========================================================================= --}}
-<section class="section-py bg-subtle" aria-label="Pengenalan PPAk">
+<section class="section-py bg-subtle" aria-label="Pengenalan Program Studi">
     <div class="container-xl">
         <div class="row g-5 align-items-center">
             <div class="col-lg-5">
-                <span class="badge-ppak badge-ppak-gold mb-2">TENTANG PPAk FEB UNESA</span>
-                <h2 class="mb-3">Mencetak Pemimpin Akuntansi Berintegritas & Berdaya Saing Global</h2>
+                <span class="badge-ppak badge-ppak-gold mb-2">IDENTITAS RESMI PROGRAM STUDI</span>
+                <h2 class="mb-3">Pendidikan Profesi Akuntan FEB UNESA</h2>
                 <div class="golden-line"></div>
+                <div class="p-3 bg-white rounded-3 border mt-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="fa-solid fa-user-tie text-navy fs-3"></i>
+                        <div>
+                            <div class="text-muted small">Koordinator Program Studi:</div>
+                            <div class="fw-bold text-navy">Rediyanto Putra, S.E., M.S.A.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-7">
                 <p class="lead mb-3 text-dark">
-                    Pendidikan Profesi Akuntansi (PPAk) pada Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya diselenggarakan untuk menjawab kebutuhan industri dan profesi terhadap akuntan yang tidak hanya menguasai teori, namun memiliki kecakapan analitis dan etika kerja standar internasional.
+                    Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya tercatat resmi berdiri pada <strong>23 Mei 2025</strong> sebagai wujud pengembangan strategis program pendidikan profesi di lingkungan FEB UNESA.
                 </p>
-                <p class="text-secondary mb-0">
-                    Dengan bimbingan dosen bereputasi, jejaring Kantor Akuntan Publik (KAP), dan kurikulum berbasis IFRS serta regulasi perpajakan terkini, lulusan PPAk UNESA siap berkarier di berbagai sektor strategis, baik sektor publik maupun swasta.
+                <p class="text-secondary mb-3">
+                    Program studi ini dirancang untuk membekali calon akuntan dengan kompetensi pelaporan korporat lanjutan, pengauditan dan asurans, manajemen perpajakan strategis, tata kelola korporat, serta sistem informasi dan pengendalian internal sesuai standar profesi.
                 </p>
+                <div class="d-flex flex-wrap gap-2 pt-2">
+                    <span class="badge-ppak badge-ppak-navy"><i class="fa-solid fa-shield-halved me-1"></i> SK LAMEMBA No. 611/DE/A.5/AR.11/II/2025</span>
+                    <span class="badge-ppak badge-ppak-blue"><i class="fa-solid fa-calendar me-1"></i> Berlaku s.d. 25 Februari 2027</span>
+                </div>
+                <div class="mt-2">
+                    <small class="text-muted">
+                        <i class="fa-solid fa-link me-1"></i> Sumber: <a href="https://sindig.unesa.ac.id" target="_blank" rel="noopener noreferrer" class="text-decoration-none">SINDIG UNESA</a> &bull; <a href="https://simutu.unesa.ac.id" target="_blank" rel="noopener noreferrer" class="text-decoration-none">SIMUTU UNESA</a>
+                    </small>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 {{-- =========================================================================
-   3. INDIKATOR & STATISTIK INSTITUSIONAL
+   3. DATA KUNCI INSTITUSIONAL RESMI
    ========================================================================= --}}
-<section class="section-py-sm border-bottom border-top bg-white" aria-label="Statistik Institusional">
+<section class="section-py-sm border-bottom border-top bg-white" aria-label="Fakta Institusional">
     <div class="container-xl">
         <div class="row g-4">
             @foreach($stats as $stat)
@@ -92,6 +110,11 @@
                         <div class="stat-number">{{ $stat['number'] }}</div>
                         <div class="stat-label">{{ $stat['label'] }}</div>
                         <p class="stat-desc">{{ $stat['desc'] }}</p>
+                        <div class="mt-2 pt-2 border-top">
+                            <span class="badge-ppak badge-ppak-navy" style="font-size: 0.65rem;">
+                                <i class="fa-solid fa-circle-check me-1 text-gold"></i> {{ $stat['source'] }}
+                            </span>
+                        </div>
                     </div>
                 </div>
             @endforeach
@@ -100,54 +123,71 @@
 </section>
 
 {{-- =========================================================================
-   4. KEUNGGULAN PPAK FEB UNESA (Editorial Minimalist)
+   4. KURIKULUM PROFESIONAL (Highlight 6 Mata Kuliah Semester 1 SINDIG)
    ========================================================================= --}}
-<section class="section-py bg-white" aria-label="Keunggulan Program PPAk">
+<section class="section-py bg-white" aria-label="Kurikulum Profesional Semester 1">
     <div class="container-xl">
-        <div class="text-center max-w-700 mx-auto mb-5">
-            <span class="badge-ppak badge-ppak-gold mb-2">Mengapa Memilih Kami</span>
-            <h2>Keunggulan Pendidikan Profesi di FEB UNESA</h2>
-            <div class="golden-line center"></div>
-            <p class="text-secondary">
-                Pendekatan holistik yang mengintegrasikan kecakapan teknis akuntansi, teknologi informasi analitika, dan etika profesi yang kokoh.
-            </p>
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
+            <div>
+                <span class="badge-ppak badge-ppak-gold mb-2">Struktur Kurikulum SINDIG</span>
+                <h2>Kurikulum Profesional (Semester 1)</h2>
+                <div class="golden-line"></div>
+                <p class="text-secondary mb-0">Enam mata kuliah inti semester pertama yang membentuk pondasi keahlian teknis dan etika akuntan profesional.</p>
+            </div>
+            <div>
+                <a href="{{ route('akademik.kurikulum') }}" class="btn-ppak-primary">
+                    <span>Lihat Seluruh Kurikulum (Sem 1 & 2)</span>
+                    <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
         </div>
 
-        <div class="row g-4 g-lg-5">
-            @foreach($keunggulan as $item)
+        <div class="row g-4">
+            @foreach($kurikulum['semester_1'] as $mk)
                 <div class="col-md-6 col-lg-4">
-                    <div class="feature-item">
-                        <div class="feature-icon-wrapper">
-                            <i class="fa-solid {{ $item['icon'] }}"></i>
+                    <div class="card-ppak-flat h-100 d-flex flex-column">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="badge-ppak badge-ppak-navy font-monospace" style="font-size: 0.75rem;">{{ $mk['kode'] }}</span>
+                            <span class="badge-ppak badge-ppak-gold">{{ $mk['sks'] }} SKS</span>
                         </div>
-                        <div>
-                            <h3 class="feature-title">{{ $item['title'] }}</h3>
-                            <p class="feature-desc">{{ $item['description'] }}</p>
+                        <h3 class="fs-6 fw-bold text-navy mb-2">{{ $mk['nama'] }}</h3>
+                        <p class="small text-secondary mb-3 flex-grow-1" style="line-height: 1.6;">{{ $mk['deskripsi'] }}</p>
+                        <div class="mt-auto pt-2 border-top">
+                            <div class="d-flex flex-wrap gap-1">
+                                @foreach($mk['cpl'] as $cplTag)
+                                    <span class="badge bg-light text-navy border" style="font-size: 0.65rem;">{{ $cplTag }}</span>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
+        <div class="mt-3 text-end">
+            <small class="text-muted">
+                <i class="fa-solid fa-database me-1"></i> Sumber Data: <a href="https://sindig.unesa.ac.id" target="_blank" rel="noopener noreferrer" class="text-decoration-none">SINDIG UNESA - Kurikulum Prodi 62902</a>
+            </small>
+        </div>
     </div>
 </section>
 
 {{-- =========================================================================
-   5. AKADEMIK & PILAR KOMPETENSI PROFESIONAL
+   5. CAPAIAN PEMBELAJARAN LULUSAN (4 CPL RESMI SINDIG)
    ========================================================================= --}}
-<section class="section-py bg-subtle" aria-label="Kompetensi Utama Lulusan">
+<section class="section-py bg-subtle" aria-label="Capaian Pembelajaran Lulusan">
     <div class="container-xl">
         <div class="row align-items-end justify-content-between mb-5">
             <div class="col-lg-7">
-                <span class="badge-ppak badge-ppak-navy mb-2">Standar Pembelajaran</span>
-                <h2>Pilar Kompetensi Profesional Akuntan</h2>
+                <span class="badge-ppak badge-ppak-navy mb-2">Standar Kompetensi Lulusan</span>
+                <h2>Capaian Pembelajaran Lulusan (CPL)</h2>
                 <div class="golden-line"></div>
                 <p class="text-secondary mb-0">
-                    Struktur capaian pembelajaran disusun mengacu pada standar International Education Standards (IES) oleh IFAC dan Kerangka Kualifikasi Nasional Indonesia (KKNI) Jenjang 7.
+                    Empat Capaian Pembelajaran Lulusan resmi yang ditetapkan pada sistem kurikulum SINDIG Pendidikan Profesi Akuntan FEB UNESA.
                 </p>
             </div>
             <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
                 <a href="{{ route('akademik.kurikulum') }}" class="btn-ppak-secondary">
-                    <span>Lihat Kurikulum Lengkap</span>
+                    <span>Pemetaan CPL ke Mata Kuliah</span>
                     <i class="fa-solid fa-arrow-right ms-1"></i>
                 </a>
             </div>
@@ -155,46 +195,96 @@
 
         <div class="row g-4">
             @foreach($kompetensi as $komp)
-                <div class="col-md-6 col-lg-4">
-                    <div class="card-ppak-flat h-100">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-ppak-flat h-100 bg-white shadow-sm">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="feature-icon-wrapper" style="width: 40px; height: 40px; font-size: 1rem;">
+                            <div class="feature-icon-wrapper" style="width: 42px; height: 42px; font-size: 1rem;">
                                 <i class="fa-solid {{ $komp['icon'] }}"></i>
                             </div>
-                            <span class="badge-ppak badge-ppak-navy" style="font-size: 0.725rem;">{{ $komp['code'] }}</span>
+                            <span class="badge-ppak badge-ppak-navy font-monospace">{{ $komp['code'] }}</span>
                         </div>
-                        <h4 class="fs-6 fw-bold text-navy mb-2">{{ $komp['title'] }}</h4>
+                        <div class="badge-ppak badge-ppak-gold mb-2" style="font-size: 0.65rem;">{{ $komp['category'] }}</div>
+                        <h3 class="fs-6 fw-bold text-navy mb-2">{{ $komp['title'] }}</h3>
                         <p class="small text-secondary mb-0" style="line-height: 1.65;">{{ $komp['desc'] }}</p>
                     </div>
                 </div>
             @endforeach
         </div>
+        <div class="mt-3 text-end">
+            <small class="text-muted">
+                <i class="fa-solid fa-shield-check me-1"></i> Sumber: SINDIG UNESA &bull; Kurikulum Pendidikan Profesi Akuntan (62902)
+            </small>
+        </div>
     </div>
 </section>
 
 {{-- =========================================================================
-   6. ADMISI & PENDAFTARAN MAHASISWA BARU (Solid Navy Institutional)
+   6. AKREDITASI & JAMINAN MUTU RESMI LAMEMBA
+   ========================================================================= --}}
+<section class="section-py bg-white border-top" aria-label="Akreditasi dan Legalitas">
+    <div class="container-xl">
+        <div class="p-4 p-lg-5 rounded-4 border bg-subtle">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-3 text-center">
+                    <div class="p-4 bg-white rounded-3 border d-inline-block shadow-sm w-100">
+                        <i class="fa-solid fa-building-columns text-navy display-4 mb-2"></i>
+                        <div class="fw-bold text-navy">LAMEMBA</div>
+                        <div class="badge-ppak badge-ppak-gold mt-2 px-3 py-1" style="font-size: 0.85rem;">Status: Baik</div>
+                        <div class="mt-2"><span class="badge-ppak badge-ppak-green" style="font-size: 0.7rem;">Aktif</span></div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <span class="badge-ppak badge-ppak-gold mb-2">Jaminan Mutu Nasional</span>
+                    <h3 class="h3 mb-2 text-navy">Akreditasi LAMEMBA: Baik</h3>
+                    <div class="golden-line"></div>
+                    <p class="text-secondary small mb-3">
+                        Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya telah terakreditasi dengan status <strong>Baik</strong> oleh Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA).
+                    </p>
+                    <div class="row g-2 small text-muted">
+                        <div class="col-sm-6"><i class="fa-solid fa-file-lines me-1 text-gold"></i> SK: <strong>611/DE/A.5/AR.11/II/2025</strong></div>
+                        <div class="col-sm-6"><i class="fa-solid fa-calendar-check me-1 text-gold"></i> Tanggal SK: <strong>26 Februari 2025</strong></div>
+                        <div class="col-12"><i class="fa-solid fa-hourglass-half me-1 text-gold"></i> Masa Berlaku: <strong>26 Februari 2025 s.d. 25 Februari 2027</strong></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-lg-end">
+                    <a href="{{ route('profil.akreditasi') }}" class="btn-ppak-primary w-100 text-center mb-2">
+                        <span>Detail Akreditasi</span>
+                        <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </a>
+                    <a href="https://simutu.unesa.ac.id" target="_blank" rel="noopener noreferrer" class="btn-ppak-secondary w-100 text-center btn-ppak-sm">
+                        <i class="fa-solid fa-arrow-up-right-from-square me-1"></i>
+                        <span>Sumber Resmi SIMUTU</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- =========================================================================
+   7. ADMISI & INFORMASI PENDAFTARAN (Data Resmi Admisi UNESA)
    ========================================================================= --}}
 <section class="section-py section-admisi-navy" aria-label="Alur Pendaftaran Admisi">
     <div class="container-xl">
         <div class="row g-5 align-items-center">
             <div class="col-lg-5">
                 <span class="badge-ppak badge-ppak-gold mb-2">ADMISI MAHASISWA BARU</span>
-                <h2 class="text-white mb-3">Jalur Pendaftaran & Alur Seleksi Masuk</h2>
+                <h2 class="text-white mb-3">Informasi Pendaftaran & Biaya Pendidikan</h2>
                 <div class="golden-line"></div>
                 <p class="text-secondary mb-4">
-                    Penerimaan mahasiswa baru PPAk dibuka pada semester gasal dan genap. Proses seleksi transparan, berbasis portofolio akademik dan verifikasi kualifikasi sarjana.
+                    Penerimaan mahasiswa baru Program Profesi diselenggarakan secara terpusat melalui portal Penerimaan Mahasiswa Baru Universitas Negeri Surabaya (PMB UNESA).
                 </p>
 
                 <div class="p-4 rounded-3 border border-white border-opacity-15 mb-4" style="background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(8px);">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="d-flex align-items-center gap-2">
-                            <i class="fa-solid fa-calendar-check text-gold fs-5"></i>
-                            <span class="fw-bold text-white">Periode Gelombang Berjalan</span>
+                            <i class="fa-solid fa-receipt text-gold fs-5"></i>
+                            <span class="fw-bold text-white">UKT Pendidikan Profesi Akuntan</span>
                         </div>
-                        <span class="badge-ppak badge-ppak-green" style="font-size: 0.7rem;">Aktif</span>
+                        <span class="badge-ppak badge-ppak-gold" style="font-size: 0.75rem;">Resmi Admisi</span>
                     </div>
-                    <div class="small text-white-50 mb-3">Pendaftaran daring sedang berlangsung untuk Semester Akademik 2024/2025.</div>
+                    <div class="display-6 fw-bold text-white mb-1">Rp5.500.000</div>
+                    <div class="small text-white-50 mb-3">Per Semester (Berdasarkan ketetapan UKT S2, S3, dan Profesi UNESA).</div>
                     <div class="d-flex gap-2">
                         <a href="{{ route('admisi.jalur-syarat') }}" class="btn-ppak-gold btn-ppak-sm">
                             <i class="fa-solid fa-clipboard-check me-1"></i>
@@ -206,23 +296,37 @@
                         </a>
                     </div>
                 </div>
+
+                {{-- Status Arsip Seleksi 2026/2027 --}}
+                <div class="p-3 rounded-3" style="background: rgba(255, 255, 255, 0.04); border: 1px dashed rgba(255, 255, 255, 0.2);">
+                    <div class="d-flex align-items-center gap-2 text-white-50 small">
+                        <i class="fa-solid fa-box-archive text-gold"></i>
+                        <span>Status Jadwal: <strong>Arsip Seleksi 2026/2027</strong> (Gelombang 1–3 telah terlaksana).</span>
+                    </div>
+                </div>
             </div>
 
             <div class="col-lg-7">
                 <div class="stepper-container">
-                    @foreach($admisiInfo['prosedur'] as $step)
+                    @foreach($admisiInfo['tahapan_pendaftaran'] as $step)
                         <div class="stepper-item">
-                            <div class="stepper-circle">{{ $step['step'] }}</div>
+                            <div class="stepper-circle">{{ $step['langkah'] }}</div>
                             <div class="stepper-content">
                                 <div class="d-flex align-items-center justify-content-between mb-1">
-                                    <h4 class="fs-6 fw-bold mb-0 text-white">{{ $step['title'] }}</h4>
-                                    <span class="badge rounded-pill text-bg-warning px-2 py-1" style="font-size: 0.675rem; font-weight: 600; background-color: var(--unesa-gold) !important; color: var(--unesa-navy) !important;">Tahap {{ $step['step'] }}</span>
+                                    <h4 class="fs-6 fw-bold mb-0 text-white">{{ $step['judul'] }}</h4>
+                                    <span class="badge rounded-pill px-2 py-1" style="font-size: 0.675rem; font-weight: 600; background-color: var(--unesa-gold) !important; color: var(--unesa-navy) !important;">Tahap {{ $step['langkah'] }}</span>
                                 </div>
-                                <p class="small mb-0" style="color: #cbd5e1; line-height: 1.55;">{{ $step['desc'] }}</p>
+                                <p class="small mb-0" style="color: #cbd5e1; line-height: 1.55;">{{ $step['deskripsi'] }}</p>
                             </div>
                             <div class="stepper-line"></div>
                         </div>
                     @endforeach
+                </div>
+                <div class="mt-3 text-end">
+                    <a href="https://pmb.unesa.ac.id" target="_blank" rel="noopener noreferrer" class="btn-ppak-gold btn-ppak-sm">
+                        <span>Akses Portal PMB UNESA</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -230,122 +334,70 @@
 </section>
 
 {{-- =========================================================================
-   7. BERITA & PENGUMUMAN TERBARU (Editorial Clean Cards)
+   8. RISET & PUBLIKASI DOSEN (Data Terverifikasi SINTA 2026)
    ========================================================================= --}}
-<section class="section-py bg-white" aria-label="Berita dan Pengumuman Terkini">
+<section class="section-py bg-white" aria-label="Publikasi Ilmiah Dosen">
     <div class="container-xl">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
-                <span class="badge-ppak badge-ppak-gold mb-2">Publikasi Informasi</span>
-                <h2>Berita & Pengumuman Terbaru</h2>
+                <span class="badge-ppak badge-ppak-gold mb-2">Aktivitas Ilmiah & Dosen</span>
+                <h2>Riset & Publikasi Dosen Pengajar</h2>
                 <div class="golden-line"></div>
-                <p class="text-secondary mb-0">Informasi teraktual seputar dinamika akademik, kerja sama, dan kegiatan keprofesian di PPAk FEB UNESA.</p>
+                <p class="text-secondary mb-0">Publikasi karya ilmiah dan kegiatan pengabdian dosen pengajar yang tercatat pada pangkalan data resmi.</p>
             </div>
             <div>
-                <a href="{{ route('informasi.berita') }}" class="btn-ppak-secondary">
-                    <span>Semua Berita</span>
+                <a href="{{ route('riset-pengabdian.riset-publikasi') }}" class="btn-ppak-secondary">
+                    <span>Lihat Halaman Publikasi</span>
                     <i class="fa-solid fa-arrow-right ms-1"></i>
                 </a>
             </div>
         </div>
 
         <div class="row g-4">
-            @forelse($berita as $item)
-                <div class="col-md-6 col-lg-4">
-                    <article class="news-card">
-                        <div class="news-card-img-wrapper">
-                            <img src="{{ $item['image'] }}" alt="{{ $item['title'] }}" class="news-card-img" loading="lazy">
-                        </div>
-                        <div class="news-card-body">
-                            <div class="news-card-meta">
-                                <span class="badge-ppak badge-ppak-navy" style="font-size: 0.7rem;">{{ $item['category'] }}</span>
-                                <span><i class="fa-regular fa-calendar me-1"></i> {{ $item['date'] }}</span>
-                            </div>
-                            <h3 class="news-card-title">
-                                <a href="{{ route('informasi.berita.detail', $item['slug']) }}">
-                                    {{ $item['title'] }}
-                                </a>
-                            </h3>
-                            <p class="news-card-excerpt">{{ $item['excerpt'] }}</p>
+            @foreach($riset as $r)
+                <div class="col-lg-12">
+                    <div class="p-4 rounded-3 border bg-subtle">
+                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-3">
                             <div>
-                                <a href="{{ route('informasi.berita.detail', $item['slug']) }}" class="small fw-bold text-navy text-decoration-none">
-                                    Baca Selengkapnya <i class="fa-solid fa-arrow-right ms-1 text-gold"></i>
+                                <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                    <span class="badge-ppak badge-ppak-navy" style="font-size: 0.725rem;">{{ $r['kategori'] }}</span>
+                                    <span class="badge-ppak badge-ppak-gold" style="font-size: 0.725rem;">{{ $r['tahun'] }}</span>
+                                    <span class="small text-muted"><i class="fa-regular fa-calendar me-1"></i> {{ $r['tanggal'] }}</span>
+                                </div>
+                                <h3 class="h5 text-navy fw-bold mb-2">{{ $r['judul'] }}</h3>
+                                <p class="text-secondary small mb-2"><i class="fa-solid fa-user-pen me-1 text-gold"></i> Penulis: <strong>{{ $r['penulis'] }}</strong></p>
+                                <p class="small text-muted mb-0">{{ $r['deskripsi'] }}</p>
+                            </div>
+                            <div class="flex-shrink-0 text-md-end">
+                                <a href="{{ $r['sinta_url'] }}" target="_blank" rel="noopener noreferrer" class="btn-ppak-secondary btn-ppak-sm">
+                                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i>
+                                    <span>Profil SINTA</span>
                                 </a>
                             </div>
                         </div>
-                    </article>
-                </div>
-            @empty
-                <div class="col-12 text-center py-5 text-muted">
-                    <p>Belum ada artikel berita yang dipublikasikan saat ini.</p>
-                </div>
-            @endforelse
-        </div>
-    </div>
-</section>
-
-{{-- =========================================================================
-   8. AGENDA & EVENT MENDATANG (Distinct Horizontal Editorial List)
-   ========================================================================= --}}
-<section class="section-py bg-subtle" aria-label="Agenda dan Seminar Mendatang">
-    <div class="container-xl">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
-            <div>
-                <span class="badge-ppak badge-ppak-gold mb-2">Kegiatan Ilmiah & Profesi</span>
-                <h2>Agenda & Event Mendatang</h2>
-                <div class="golden-line"></div>
-                <p class="text-secondary mb-0">Ikuti rangkaian seminar pakar, workshop CA/CPA, serta kuliah tamu dari praktisi industri.</p>
-            </div>
-            <div>
-                <a href="{{ route('informasi.agenda') }}" class="btn-ppak-secondary">
-                    <span>Lihat Seluruh Agenda</span>
-                    <i class="fa-solid fa-arrow-right ms-1"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-                @foreach($agenda as $event)
-                    <div class="event-item-card">
-                        <div class="event-date-box">
-                            <span class="event-date-day">{{ $event['day'] }}</span>
-                            <span class="event-date-month">{{ $event['month'] }}</span>
-                        </div>
-                        <div class="flex-grow-1">
-                            <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
-                                <span class="badge-ppak badge-ppak-navy" style="font-size: 0.725rem;">{{ $event['category'] }}</span>
-                                <span class="small text-muted"><i class="fa-regular fa-clock me-1"></i> {{ $event['time'] }}</span>
-                                <span class="small text-muted"><i class="fa-solid fa-location-dot me-1"></i> {{ $event['venue'] }}</span>
-                            </div>
-                            <h4 class="fs-6 fw-bold text-navy mb-1">{{ $event['title'] }}</h4>
-                            <p class="small text-secondary mb-0">{{ $event['desc'] }}</p>
-                        </div>
-                        <div class="ms-lg-auto flex-shrink-0">
-                            @if($event['is_upcoming'])
-                                <span class="badge-ppak badge-ppak-green">{{ $event['status'] }}</span>
-                            @else
-                                <span class="badge-ppak badge-ppak-navy">{{ $event['status'] }}</span>
-                            @endif
+                        <div class="mt-3 pt-2 border-top">
+                            <small class="text-muted">
+                                <i class="fa-solid fa-link me-1"></i> Sumber Data: {{ $r['source'] }}
+                            </small>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
 
 {{-- =========================================================================
-   9. PROFIL DOSEN & PRAKTISI PENGAJAR (Curated Faculty Preview)
+   9. PROFIL DOSEN & PENGAJAR MATA KULIAH PPAK
    ========================================================================= --}}
-<section class="section-py bg-white" aria-label="Pengajar PPAk">
+<section class="section-py bg-subtle" aria-label="Pengajar PPAk">
     <div class="container-xl">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
-                <span class="badge-ppak badge-ppak-gold mb-2">Tenaga Pendidik</span>
-                <h2>Profil Dosen & Praktisi Pengajar</h2>
+                <span class="badge-ppak badge-ppak-gold mb-2">Tenaga Pengajar</span>
+                <h2>Dosen & Pengajar Mata Kuliah PPAk</h2>
                 <div class="golden-line"></div>
-                <p class="text-secondary mb-0">Diajar oleh gabungan akademisi bergelar doktor/profesor dan praktisi senior pemegang sertifikasi profesi.</p>
+                <p class="text-secondary mb-0">Tenaga pengajar yang mengampu mata kuliah pada Program Studi Pendidikan Profesi Akuntan FEB UNESA.</p>
             </div>
             <div>
                 <a href="{{ route('profil.dosen-pengajar') }}" class="btn-ppak-secondary">
@@ -358,7 +410,7 @@
         <div class="row g-4">
             @foreach($dosen as $d)
                 <div class="col-md-6 col-lg-3">
-                    <div class="dosen-card">
+                    <div class="dosen-card bg-white">
                         <div class="dosen-photo-wrapper">
                             <img src="{{ $d['image'] }}" alt="{{ $d['name'] }}" class="dosen-photo" loading="lazy">
                         </div>
@@ -374,130 +426,109 @@
                 </div>
             @endforeach
         </div>
+        <div class="mt-3 text-end">
+            <small class="text-muted">
+                <i class="fa-solid fa-database me-1"></i> Sumber: SINDIG Course Assignment & Pangkalan Data Dosen UNESA
+            </small>
+        </div>
     </div>
 </section>
 
 {{-- =========================================================================
-   10. AKREDITASI & LEGALITAS RESMI (Credible Academic Quality)
+   10. BERITA & AGENDA PEMBELAJARAN
    ========================================================================= --}}
-<section class="section-py bg-white border-top" aria-label="Akreditasi dan Legalitas">
+<section class="section-py bg-white" aria-label="Berita dan Agenda Pembelajaran">
     <div class="container-xl">
-        <div class="p-4 p-lg-5 rounded-4 border bg-subtle">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-3 text-center">
-                    <div class="p-4 bg-white rounded-3 border d-inline-block shadow-sm">
-                        <i class="fa-solid fa-building-columns text-navy display-4 mb-2"></i>
-                        <div class="fw-bold text-navy small">LAMEMBA</div>
-                        <div class="badge-ppak badge-ppak-gold mt-2">Baik Sekali</div>
+        <div class="row g-5">
+            {{-- Berita & Informasi --}}
+            <div class="col-lg-6">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <span class="badge-ppak badge-ppak-gold mb-1">Publikasi</span>
+                        <h3 class="h4 text-navy mb-0">Berita & Informasi</h3>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <span class="badge-ppak badge-ppak-gold mb-2">Jaminan Mutu Akademik</span>
-                    <h3 class="h2 mb-2">Status Akreditasi Resmi Program Studi</h3>
-                    <div class="golden-line"></div>
-                    <p class="text-secondary small mb-3">
-                        Pendidikan Profesi Akuntansi (PPAk) Fakultas Ekonomika dan Bisnis UNESA telah memenuhi standar nasional penjaminan mutu pendidikan tinggi dengan predikat <strong>Baik Sekali</strong> berdasarkan asesmen Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA).
-                    </p>
-                    <div class="d-flex flex-wrap gap-3 small text-muted">
-                        <div><i class="fa-solid fa-file-lines me-1 text-gold"></i> SK: {{ $info['sk_akreditasi'] }}</div>
-                        <div><i class="fa-solid fa-calendar me-1 text-gold"></i> Masa Berlaku: {{ $info['masa_berlaku'] }}</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 text-lg-end">
-                    <a href="{{ route('profil.akreditasi') }}" class="btn-ppak-primary">
-                        <span>Detail Akreditasi</span>
-                        <i class="fa-solid fa-arrow-right"></i>
+                    <a href="{{ route('informasi.berita') }}" class="small fw-bold text-navy text-decoration-none">
+                        Semua <i class="fa-solid fa-arrow-right text-gold"></i>
                     </a>
                 </div>
+                <div class="golden-line mb-4"></div>
+
+                <div class="d-flex flex-column gap-3">
+                    @forelse($berita as $item)
+                        <article class="p-3 rounded-3 border bg-white shadow-sm">
+                            <div class="d-flex align-items-center gap-2 mb-1">
+                                <span class="badge-ppak badge-ppak-navy" style="font-size: 0.65rem;">{{ $item['category'] }}</span>
+                                <span class="small text-muted"><i class="fa-regular fa-calendar me-1"></i> {{ $item['date'] }}</span>
+                            </div>
+                            <h4 class="fs-6 fw-bold mb-1">
+                                <a href="{{ route('informasi.berita.detail', $item['slug']) }}" class="text-navy text-decoration-none hover-primary">
+                                    {{ $item['title'] }}
+                                </a>
+                            </h4>
+                            <p class="small text-secondary mb-0" style="line-height: 1.5;">{{ $item['excerpt'] }}</p>
+                        </article>
+                    @empty
+                        <div class="p-4 text-center text-muted border rounded-3">Belum ada berita yang dipublikasikan.</div>
+                    @endforelse
+                </div>
+            </div>
+
+            {{-- Agenda & Pembelajaran --}}
+            <div class="col-lg-6">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <span class="badge-ppak badge-ppak-gold mb-1">Akademik 2026/2027</span>
+                        <h3 class="h4 text-navy mb-0">Agenda Pembelajaran</h3>
+                    </div>
+                    <a href="{{ route('akademik.kalender') }}" class="small fw-bold text-navy text-decoration-none">
+                        Kalender <i class="fa-solid fa-arrow-right text-gold"></i>
+                    </a>
+                </div>
+                <div class="golden-line mb-4"></div>
+
+                <div class="d-flex flex-column gap-3">
+                    @foreach($agenda as $event)
+                        <div class="p-3 rounded-3 border bg-subtle">
+                            <div class="d-flex align-items-center justify-content-between mb-1">
+                                <span class="badge-ppak badge-ppak-gold" style="font-size: 0.65rem;">{{ $event['category'] }}</span>
+                                <span class="small text-muted"><i class="fa-regular fa-calendar-check me-1 text-primary"></i> {{ $event['date'] }}</span>
+                            </div>
+                            <h4 class="fs-6 fw-bold text-navy mb-1">{{ $event['title'] }}</h4>
+                            <p class="small text-secondary mb-0">{{ $event['description'] }}</p>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 {{-- =========================================================================
-   11. KERJA SAMA & MITRA STRATEGIS (Monochrome Minimalist)
+   11. PROSPEK KARIER BIDANG AKUNTANSI
    ========================================================================= --}}
-<section class="section-py bg-white" aria-label="Mitra Strategis dan Kerja Sama">
+<section class="section-py bg-subtle" aria-label="Prospek Karier Akuntan">
     <div class="container-xl">
         <div class="text-center max-w-700 mx-auto mb-5">
-            <span class="badge-ppak badge-ppak-gold mb-2">Jejaring Kelembagaan</span>
-            <h2>Mitra Strategis & Organisasi Profesi</h2>
+            <span class="badge-ppak badge-ppak-gold mb-2">PROSPEK PROFESI</span>
+            <h2>Bidang Karier & Jalur Profesi Akuntan</h2>
             <div class="golden-line center"></div>
             <p class="text-secondary">
-                Kolaborasi sinergis dalam kurikulum profesi, penempatan magang, riset asurans, serta penyelenggaraan ujian sertifikasi akuntansi.
+                Informasi bidang profesi yang relevan bagi lulusan sarjana akuntansi yang menempuh pendidikan profesi akuntan.
             </p>
         </div>
 
-        <div class="row g-3">
-            @foreach($mitra as $m)
+        <div class="row g-4">
+            @foreach($karierSectors as $sector)
                 <div class="col-lg-3 col-md-6">
-                    <div class="p-3 rounded-3 border bg-white h-100 text-center transition-hover">
-                        <div class="badge-ppak badge-ppak-navy mb-2" style="font-size: 0.675rem;">{{ $m['category'] }}</div>
-                        <h4 class="fs-6 fw-bold text-navy mb-1">{{ $m['name'] }}</h4>
-                        <div class="small text-secondary" style="font-size: 0.775rem;">{{ $m['type'] }}</div>
+                    <div class="card-ppak-flat h-100 bg-white shadow-sm text-center">
+                        <div class="feature-icon-wrapper mx-auto mb-3" style="width: 48px; height: 48px; font-size: 1.25rem;">
+                            <i class="fa-solid {{ $sector['icon'] }}"></i>
+                        </div>
+                        <h3 class="fs-6 fw-bold text-navy mb-2">{{ $sector['title'] }}</h3>
+                        <p class="small text-secondary mb-0" style="line-height: 1.55;">{{ $sector['desc'] }}</p>
                     </div>
                 </div>
             @endforeach
-        </div>
-    </div>
-</section>
-
-{{-- =========================================================================
-   12. TESTIMONI ALUMNI & KARIER (Quotes & Pathways)
-   ========================================================================= --}}
-<section class="section-py bg-subtle" aria-label="Testimoni Alumni dan Jejak Karier">
-    <div class="container-xl">
-        <div class="text-center max-w-700 mx-auto mb-5">
-            <span class="badge-ppak badge-ppak-gold mb-2">Dampak Lulusan</span>
-            <h2>Testimoni Alumni & Jejak Profesional</h2>
-            <div class="golden-line center"></div>
-            <p class="text-secondary">
-                Lulusan PPAk FEB UNESA telah meniti karier sebagai pemimpin keuangan, akuntan publik, dan pemeriksa negara di berbagai lembaga prestisius.
-            </p>
-        </div>
-
-        <div class="row g-4 mb-5">
-            @foreach(array_slice($testimoni, 0, 3) as $t)
-                <div class="col-lg-4 col-md-6">
-                    <div class="testi-card">
-                        <blockquote class="testi-quote">
-                            "{{ $t['quote'] }}"
-                        </blockquote>
-                        <div class="testi-author">
-                            <img src="{{ $t['avatar'] }}" alt="{{ $t['name'] }}" class="testi-avatar" loading="lazy">
-                            <div>
-                                <div class="testi-name">{{ $t['name'] }}</div>
-                                <div class="testi-role">{{ $t['role'] }} &bull; {{ $t['company'] }}</div>
-                                <div class="small text-muted" style="font-size: 0.725rem;">{{ $t['year'] }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-        {{-- Karier Badges --}}
-        <div class="p-4 p-lg-5 rounded-4 bg-white border shadow-sm">
-            <div class="text-center max-w-700 mx-auto mb-4">
-                <span class="badge-ppak badge-ppak-gold mb-2">PROSPEK KARIER UTAMA</span>
-                <h3 class="h4 fw-bold text-navy mb-1">Sebaran Karier Utama Alumni PPAk FEB UNESA</h3>
-                <p class="small text-secondary mb-0">Peluang penyerapan kerja lulusan bergelar Akuntan (Ak.) di ranah industri terkemuka, instansi pemerintahan, dan kantor akuntan publik.</p>
-            </div>
-            <div class="row g-3 g-lg-4">
-                @foreach($karierSectors as $sector)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="karier-item-card">
-                            <div class="karier-icon-box">
-                                <i class="fa-solid {{ $sector['icon'] }}"></i>
-                            </div>
-                            <div class="flex-grow-1">
-                                <div class="fw-bold text-navy mb-1" style="font-size: 0.925rem; line-height: 1.35;">{{ $sector['title'] }}</div>
-                                <div class="text-secondary" style="font-size: 0.785rem; line-height: 1.45;">{{ $sector['desc'] }}</div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
         </div>
     </div>
 </section>
