@@ -23,23 +23,23 @@
                 {{-- Metadata bar --}}
                 <div class="d-flex flex-wrap align-items-center justify-content-between pb-3 mb-4 border-bottom text-muted small">
                     <div class="d-flex align-items-center gap-3">
-                        <span><i class="fa-solid fa-user-pen me-1 text-primary"></i> {{ $article['author'] }}</span>
-                        <span><i class="fa-regular fa-calendar me-1 text-primary"></i> {{ $article['date'] }}</span>
-                        <span><i class="fa-regular fa-clock me-1 text-primary"></i> {{ $article['read_time'] }}</span>
+                        <span><i class="fa-solid fa-user-pen me-1 text-primary"></i> {{ $article['author'] ?? 'Humas PPAk FEB' }}</span>
+                        <span><i class="fa-regular fa-calendar me-1 text-primary"></i> {{ $article['date'] ?? '2026' }}</span>
+                        <span><i class="fa-regular fa-clock me-1 text-primary"></i> {{ $article['read_time'] ?? '3 Menit Baca' }}</span>
                     </div>
                     <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
-                        <span class="badge-ppak badge-ppak-blue" style="font-size: 0.7rem;">{{ $article['category'] }}</span>
+                        <span class="badge-ppak badge-ppak-blue" style="font-size: 0.7rem;">{{ $article['category'] ?? 'Informasi' }}</span>
                     </div>
                 </div>
 
                 {{-- Featured Image --}}
                 <div class="mb-4 rounded-4 overflow-hidden border shadow-sm">
-                    <img src="{{ $article['image'] }}" alt="{{ $article['title'] }}" class="img-fluid w-100" style="max-height: 480px; object-fit: cover;">
+                    <img src="{{ $article['image'] ?? '/images/default-img.png' }}" alt="{{ $article['title'] ?? 'Berita PPAk' }}" class="img-fluid w-100" style="max-height: 480px; object-fit: cover;">
                 </div>
 
                 {{-- Article Body --}}
                 <article class="article-content mb-5" style="font-size: 1.05rem; line-height: 1.8; color: var(--ppak-text-secondary);">
-                    {!! $article['content'] !!}
+                    {!! $article['content'] ?? '' !!}
                 </article>
 
                 {{-- Tags & Share Buttons --}}
@@ -48,7 +48,7 @@
                         <div class="col-md-6">
                             <div class="d-flex flex-wrap align-items-center gap-2">
                                 <span class="small fw-bold text-navy"><i class="fa-solid fa-tags me-1"></i> Tags:</span>
-                                @foreach($article['tags'] as $tag)
+                                @foreach($article['tags'] ?? ['PPAk', 'FEB UNESA'] as $tag)
                                     <span class="badge-ppak badge-ppak-navy" style="font-size: 0.7rem;">#{{ $tag }}</span>
                                 @endforeach
                             </div>
