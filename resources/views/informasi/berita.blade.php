@@ -19,10 +19,11 @@
                     <input type="text" name="q" value="{{ request('q') }}" class="form-control" placeholder="Cari berita (judul, excerpt)..." aria-label="Cari berita">
                 </div>
                 <div class="col-md-4">
-                    <select name="kategori" class="form-select" aria-label="Filter kategori">
+                    <select name="kategori" class="form-select" aria-label="Filter kategori" onchange="this.form.submit()">
                         <option value="">Semua Kategori</option>
-                        <option value="Admisi &amp; Pendaftaran" @selected(request('kategori')==='Admisi & Pendaftaran')>Admisi & Pendaftaran</option>
-                        <option value="Akademik & Seminar" @selected(request('kategori')==='Akademik & Seminar')>Akademik & Seminar</option>
+                        <option value="FEB" @selected(request('kategori')==='FEB')>Fakultas Ekonomika dan Bisnis</option>
+                        <option value="Informasi Universitas" @selected(request('kategori')==='Informasi Universitas')>Informasi Universitas</option>
+                        <option value="Admisi" @selected(request('kategori')==='Admisi')>Admisi & Pendaftaran</option>
                     </select>
                 </div>
                 <div class="col-md-2">
