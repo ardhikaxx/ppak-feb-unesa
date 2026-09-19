@@ -36,7 +36,17 @@
                 <div class="mb-5">
                     <h3 class="h5 fw-bold text-navy mb-3">Agenda ({{ count($results['agenda']) }})</h3>
                     @foreach($results['agenda'] as $ev)
-                        <x-event-card :day="$ev['day']" :month="$ev['month']" :category="$ev['category']" :time="$ev['time']" :venue="$ev['venue']" :title="$ev['title']" :desc="$ev['desc']" :status="$ev['status']" :isUpcoming="$ev['is_upcoming']" />
+                        <x-event-card 
+                            :day="$ev['day'] ?? ''" 
+                            :month="$ev['month'] ?? ''" 
+                            :category="$ev['category_label'] ?? $ev['category'] ?? ''" 
+                            :time="$ev['time'] ?? ''" 
+                            :venue="$ev['venue'] ?? ''" 
+                            :title="$ev['title'] ?? ''" 
+                            :desc="$ev['desc'] ?? $ev['description'] ?? ''" 
+                            :status="$ev['status'] ?? ($ev['is_upcoming'] ? 'Mendatang' : 'Selesai')" 
+                            :isUpcoming="$ev['is_upcoming'] ?? false" 
+                        />
                     @endforeach
                 </div>
             @endif
@@ -46,7 +56,13 @@
                     <div class="row g-4">
                         @foreach($results['dosen'] as $d)
                             <div class="col-md-6 col-lg-3">
-                                <x-dosen-card :image="$d['image']" :name="$d['name']" :gelar="$d['gelar']" :role="$d['role']" :categoryLabel="$d['category_label']" />
+                                <x-dosen-card 
+                                    :image="$d['image'] ?? '/images/default-img.png'" 
+                                    :name="$d['name'] ?? ''" 
+                                    :gelar="$d['gelar'] ?? ''" 
+                                    :role="$d['role'] ?? ''" 
+                                    :categoryLabel="$d['category_label'] ?? ''" 
+                                />
                             </div>
                         @endforeach
                     </div>
