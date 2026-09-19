@@ -24,9 +24,9 @@
                 <x-event-card :day="$event['day']" :month="$event['month']" :category="$event['category']" :time="$event['time']" :venue="$event['venue']" :title="$event['title']" :desc="$event['desc']" :status="$event['status']" :isUpcoming="$event['is_upcoming']" />
             @endforeach
 
-            <nav aria-label="Navigasi Agenda" class="d-flex justify-content-center mt-4">
-                {{ $agenda->withQueryString()->links('pagination::bootstrap-5') }}
-            </nav>
+            <div class="d-flex justify-content-center mt-4">
+                {{ $agenda->withQueryString()->links('vendor.pagination.numbers') }}
+            </div>
         @else
             <x-empty-state title="Belum ada agenda" message="Tidak ada agenda untuk filter ini." icon="fa-calendar" />
         @endif
