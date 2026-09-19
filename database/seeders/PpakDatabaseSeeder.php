@@ -327,16 +327,20 @@ class PpakDatabaseSeeder extends Seeder
         // 13. Documents
         $unduhans = PpakData::getUnduhan();
         foreach ($unduhans as $u) {
+            $filename = $u['filename'] ?? ($u['slug'] . '.' . strtolower($u['format']));
+            $filePath = public_path('documents/' . $filename);
+            $fileSize = file_exists($filePath) ? filesize($filePath) : 8500;
+
             Document::updateOrCreate(
                 ['slug' => $u['slug']],
                 [
-                    'title' => $u['judul'],
-                    'filename' => $u['slug'] . '.' . strtolower($u['format']),
-                    'path' => 'documents/' . $u['slug'] . '.' . strtolower($u['format']),
+                    'title' => $u['judul'] ?? $u['title'],
+                    'filename' => $filename,
+                    'path' => 'documents/' . $filename,
                     'mime_type' => 'application/pdf',
-                    'size' => 870400,
-                    'format' => $u['format'],
-                    'year' => 2026,
+                    'size' => $fileSize,
+                    'format' => $u['format'] ?? 'PDF',
+                    'year' => (int) ($u['tahun'] ?? 2026),
                     'status' => 'published',
                     'published_at' => now(),
                     'verified_at' => now(),
