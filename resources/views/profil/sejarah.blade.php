@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Sejarah Singkat | PPAk FEB UNESA')
-@section('meta_description', 'Sejarah berdirinya Program Pendidikan Profesi Akuntansi (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya dan perjalanannya mencetak akuntan profesional.')
+@section('title', 'Sejarah Singkat Program | Pendidikan Profesi Akuntan FEB UNESA')
+@section('meta_description', 'Sejarah berdirinya Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya yang tercatat berdiri pada 23 Mei 2025.')
 
 @section('content')
 
 @include('partials.page-header', [
     'title' => 'Sejarah Singkat Program',
     'badge' => 'Profil Program Studi',
-    'lead' => 'Perjalanan dedikasi Pendidikan Profesi Akuntansi FEB UNESA dalam membangun tradisi keunggulan akademik dan integritas keprofesian akuntan Indonesia.',
+    'lead' => 'Pendirian Pendidikan Profesi Akuntan sebagai wujud pengembangan program pendidikan profesi di lingkungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
     'breadcrumbs' => [
         ['label' => 'Profil', 'url' => route('profil.sejarah')],
         ['label' => 'Sejarah Singkat', 'url' => '']
@@ -18,88 +18,75 @@
 <section class="section-py bg-white">
     <div class="container">
         <div class="row g-5">
-            {{-- Left column: History narrative --}}
+            {{-- Left column: Factual History Narrative --}}
             <div class="col-lg-8">
                 <article class="pe-lg-4">
-                    <h2 class="h3 text-navy mb-4">Tonggak Pendirian & Dedikasi Berkelanjutan</h2>
-                    <p class="lead">
-                        Pendidikan Profesi Akuntansi (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya didirikan sebagai respons strategis terhadap dinamika kebutuhan nasional akan tenaga akuntan profesional beregister yang berintegritas tinggi.
+                    <span class="badge-ppak badge-ppak-gold mb-2">LATAR BELAKANG & PENDIRIAN</span>
+                    <h2 class="h3 text-navy mb-4">Pengembangan Program Pendidikan Profesi di FEB UNESA</h2>
+                    <p class="lead text-dark">
+                        Program Studi Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya tercatat resmi berdiri pada tanggal <strong>23 Mei 2025</strong> dengan kode program studi <strong>62902</strong>.
                     </p>
                     <p>
-                        Sejak berlakunya Undang-Undang Nomor 34 Tahun 1954 dan regulasi pembaruan dari Kementerian Keuangan Republik Indonesia, sebutan Akuntan (Ak.) diatur melalui penyelenggaraan pendidikan profesi terstruktur di bawah perguruan tinggi yang telah memperoleh rekomendasi dari organisasi profesi Ikatan Akuntan Indonesia (IAI) serta izin operasional dari kementerian yang berwenang.
+                        Pendirian program studi ini merupakan bagian integral dari implementasi dokumen rencana strategis Fakultas Ekonomika dan Bisnis (FEB) UNESA dalam memperluas cakupan layanan pendidikan tinggi, khususnya pada jenjang pendidikan keprofesian akuntansi setelah jenjang sarjana.
                     </p>
                     <p>
-                        FEB UNESA, yang memiliki rekam jejak panjang dalam pembinaan ilmu ekonomi dan akuntansi, mengambil prakarsa membentuk PPAk guna memfasilitasi para sarjana akuntansi melanjutkan pendidikan ke jenjang keprofesian. Kurikulum dirancang sejak awal agar adaptif dengan standar pelaporan internasional (IFRS) serta standar audit berbasis ISA.
+                        Sebagai institusi yang memiliki tradisi akademik di bidang ilmu ekonomi, manajemen, dan akuntansi, FEB UNESA mengembangkan program Pendidikan Profesi Akuntan untuk menjembatani kompetensi lulusan sarjana akuntansi dengan tuntutan standar kompetensi kerja profesional di bidang pelaporan keuangan, audit dan asurans, perpajakan, serta tata kelola korporat.
                     </p>
 
                     <div class="p-4 rounded-3 border bg-subtle my-4">
-                        <h4 class="fs-6 fw-bold text-navy mb-2"><i class="fa-solid fa-quote-left text-primary me-2"></i>Komitmen Pengabdian Profesi</h4>
-                        <p class="small text-secondary mb-0">
-                            "Keberadaan PPAk FEB UNESA bukan sekadar meluluskan peserta didik dengan gelar profesi, melainkan menanamkan nilai luhur independensi, etika kerja pantang kompromi, dan tanggung jawab sosial akuntan di hadapan publik dan negara."
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="fa-solid fa-landmark text-navy fs-4"></i>
+                            <h3 class="fs-6 fw-bold text-navy mb-0">Legalitas & Akreditasi Program</h3>
+                        </div>
+                        <p class="small text-secondary mb-2">
+                            Pendidikan Profesi Akuntan FEB UNESA telah memperoleh status akreditasi <strong>Baik</strong> dari Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA) berdasarkan Keputusan No. <strong>611/DE/A.5/AR.11/II/2025</strong> tanggal 26 Februari 2025 dengan masa berlaku hingga 25 Februari 2027.
                         </p>
+                        <div class="small text-muted">
+                            <i class="fa-solid fa-link me-1"></i> Sumber: SIMUTU UNESA & SINDIG UNESA (Kode Prodi: 62902)
+                        </div>
                     </div>
 
-                    <h3 class="h4 text-navy mt-5 mb-3">Fase Perkembangan Mutu & Akreditasi</h3>
+                    <h3 class="h4 text-navy mt-4 mb-3">Fokus Penyelenggaraan Pembelajaran</h3>
                     <p>
-                        Dalam perkembangannya, PPAk FEB UNESA terus meningkatkan kapasitas penjaminan mutu internal (SPMI). Kemitraan dengan Kantor Akuntan Publik (KAP) bertaraf nasional dan internasional dibuka seluas-luasnya, memungkinkan mahasiswa memperoleh pengalaman riil dalam simulasi audit dan studi kasus transaksi korporasi berskala besar.
-                    </p>
-                    <p>
-                        Saat ini, program studi telah terakreditasi <strong>Baik Sekali</strong> oleh Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA), menegaskan posisi PPAk FEB UNESA sebagai salah satu pusat pendidikan profesi akuntansi terpercaya di kawasan Indonesia Timur.
+                        Penyelenggaraan program studi diarahkan pada pemenuhan Capaian Pembelajaran Lulusan (CPL) yang mencakup integritas etika akademik, karakter tangguh dan kolaboratif, pemikiran logis dan kritis sesuai standar kerja, serta kemampuan pengembangan diri berkelanjutan dalam ekosistem profesi akuntan.
                     </p>
                 </article>
             </div>
 
-            {{-- Right column: Milestone timeline & Fast facts --}}
+            {{-- Right column: Key Institutional Facts Card --}}
             <div class="col-lg-4">
                 <div class="p-4 rounded-3 border bg-subtle sticky-top" style="top: 100px;">
                     <h3 class="fs-6 fw-bold text-navy text-uppercase tracking-wider mb-3">
-                        <i class="fa-solid fa-timeline text-primary me-2"></i>Milestone Perkembangan
+                        <i class="fa-solid fa-circle-info text-primary me-2"></i>Fakta Institusional
                     </h3>
                     
-                    <div class="stepper-container">
-                        <div class="stepper-item">
-                            <div class="stepper-circle" style="width: 36px; height: 36px; font-size: 0.8rem;">1</div>
-                            <div class="stepper-content py-2 px-3">
-                                <span class="badge-ppak badge-ppak-navy mb-1" style="font-size: 0.675rem;">Inisiasi Awal</span>
-                                <h5 class="fs-6 fw-bold mb-1">Kajian Pendirian</h5>
-                                <p class="small text-secondary mb-0">Penyusunan naskah akademik dan rekomendasi komisi IAI Pusat.</p>
-                            </div>
-                            <div class="stepper-line" style="left: 17px; top: 36px;"></div>
-                        </div>
+                    <ul class="list-unstyled d-flex flex-column gap-3 small mb-4">
+                        <li class="p-3 bg-white rounded-3 border">
+                            <div class="text-muted" style="font-size: 0.75rem;">Nama Resmi Program:</div>
+                            <div class="fw-bold text-navy">Pendidikan Profesi Akuntan</div>
+                        </li>
+                        <li class="p-3 bg-white rounded-3 border">
+                            <div class="text-muted" style="font-size: 0.75rem;">Kode Program Studi:</div>
+                            <div class="fw-bold text-navy font-monospace">62902</div>
+                        </li>
+                        <li class="p-3 bg-white rounded-3 border">
+                            <div class="text-muted" style="font-size: 0.75rem;">Tanggal Berdiri:</div>
+                            <div class="fw-bold text-navy">23 Mei 2025</div>
+                        </li>
+                        <li class="p-3 bg-white rounded-3 border">
+                            <div class="text-muted" style="font-size: 0.75rem;">Koordinator Program Studi:</div>
+                            <div class="fw-bold text-navy">Rediyanto Putra, S.E., M.S.A.</div>
+                        </li>
+                        <li class="p-3 bg-white rounded-3 border">
+                            <div class="text-muted" style="font-size: 0.75rem;">Status Akreditasi:</div>
+                            <div class="fw-bold text-navy">Baik (LAMEMBA)</div>
+                            <div class="text-muted" style="font-size: 0.72rem;">Masa Berlaku s.d. 25 Februari 2027</div>
+                        </li>
+                    </ul>
 
-                        <div class="stepper-item">
-                            <div class="stepper-circle" style="width: 36px; height: 36px; font-size: 0.8rem;">2</div>
-                            <div class="stepper-content py-2 px-3">
-                                <span class="badge-ppak badge-ppak-navy mb-1" style="font-size: 0.675rem;">Izin Operasional</span>
-                                <h5 class="fs-6 fw-bold mb-1">Penyelenggaraan Perdana</h5>
-                                <p class="small text-secondary mb-0">Penerimaan angkatan pertama mahasiswa profesi akuntan.</p>
-                            </div>
-                            <div class="stepper-line" style="left: 17px; top: 36px;"></div>
-                        </div>
-
-                        <div class="stepper-item">
-                            <div class="stepper-circle" style="width: 36px; height: 36px; font-size: 0.8rem;">3</div>
-                            <div class="stepper-content py-2 px-3">
-                                <span class="badge-ppak badge-ppak-blue mb-1" style="font-size: 0.675rem;">Integrasi Profesi</span>
-                                <h5 class="fs-6 fw-bold mb-1">Skema Waiver CA & MoU KAP</h5>
-                                <p class="small text-secondary mb-0">Kerja sama pembebasan ujian sertifikasi bersama IAI Jawa Timur.</p>
-                            </div>
-                            <div class="stepper-line" style="left: 17px; top: 36px;"></div>
-                        </div>
-
-                        <div class="stepper-item">
-                            <div class="stepper-circle" style="width: 36px; height: 36px; font-size: 0.8rem;">4</div>
-                            <div class="stepper-content py-2 px-3">
-                                <span class="badge-ppak badge-ppak-green mb-1" style="font-size: 0.675rem;">Kini & Masa Depan</span>
-                                <h5 class="fs-6 fw-bold mb-1">Akreditasi Baik Sekali LAMEMBA</h5>
-                                <p class="small text-secondary mb-0">Implementasi analitika data audit dan kurikulum pelaporan ESG.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 pt-3 border-top">
-                        <a href="{{ route('profil.visi-misi') }}" class="btn-ppak-secondary w-100 btn-ppak-sm">
-                            <span>Lihat Visi & Misi Program</span>
+                    <div class="pt-2 border-top">
+                        <a href="{{ route('profil.struktur-organisasi') }}" class="btn-ppak-secondary w-100 btn-ppak-sm text-center">
+                            <span>Struktur Organisasi</span>
                             <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
