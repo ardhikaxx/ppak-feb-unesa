@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Gelar & Sertifikasi Profesi | PPAk FEB UNESA')
-@section('meta_description', 'Informasi jalur penyetaraan gelar profesi Akuntan (Ak.), sertifikasi Chartered Accountant (CA) IAI, dan Certified Public Accountant (CPA) IAPI.')
+@section('title', 'Gelar Profesi & Sertifikasi Akuntan | Pendidikan Profesi Akuntan FEB UNESA')
+@section('meta_description', 'Informasi hubungan Pendidikan Profesi Akuntan dengan sertifikasi Chartered Accountant (CA) dari IAI dan Certified Public Accountant (CPA) dari IAPI.')
 
 @section('content')
 
 @include('partials.page-header', [
     'title' => 'Gelar Profesi & Sertifikasi Akuntan',
-    'badge' => 'Pengakuan Kualifikasi Nasional & Regional',
-    'lead' => 'Memahami jalur kualifikasi keprofesian akuntan: Sebutan Akuntan (Ak.), Chartered Accountant (CA), dan Certified Public Accountant (CPA).',
+    'badge' => 'Informasi Keprofesian & Sertifikasi',
+    'lead' => 'Memahami hubungan program Pendidikan Profesi Akuntan dengan sebutan profesi, sertifikasi Chartered Accountant (CA) IAI, dan CPA of Indonesia IAPI.',
     'breadcrumbs' => [
         ['label' => 'Akademik', 'url' => route('akademik.kurikulum')],
         ['label' => 'Gelar & Sertifikasi', 'url' => '']
@@ -17,119 +17,155 @@
 
 <section class="section-py bg-white">
     <div class="container">
-        {{-- Penjelasan Sebutan Akuntan --}}
+        {{-- Hubungan PPAk dengan Profesi Akuntan --}}
         <div class="p-4 p-lg-5 rounded-4 border bg-subtle mb-5">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-4">
                 <div class="col-lg-8">
-                    <span class="badge-ppak badge-ppak-blue mb-2">Gelar Profesi Resmi</span>
-                    <h2 class="h3 text-navy mb-3">Sebutan Profesi Akuntan (Ak.)</h2>
-                    <p class="lead mb-3">
-                        Lulusan Program Pendidikan Profesi Akuntansi (PPAk) berhak menyandang sebutan profesi <strong>Akuntan (Ak.)</strong> yang disematkan di belakang nama dan diakui secara legal oleh negara Republik Indonesia.
+                    <span class="badge-ppak badge-ppak-gold mb-2">Kerangka Pendidikan Profesi</span>
+                    <h2 class="h3 text-navy mb-3">Pendidikan Profesi & Hubungannya dengan Sertifikasi</h2>
+                    <p class="lead text-dark mb-3">
+                        Program Studi Pendidikan Profesi Akuntan (PPAk) FEB UNESA menyelenggarakan pendidikan profesi untuk membentuk lulusan yang menguasai kompetensi teoritis dan aplikatif di bidang akuntansi profesional.
                     </p>
                     <p class="text-secondary small mb-0">
-                        Sesuai Peraturan Menteri Keuangan, lulusan PPAk yang telah dinyatakan lulus berhak mengajukan permohonan pendaftaran ke Kementerian Keuangan RI untuk memperoleh <strong>Register Negara Akuntan (RNA)</strong> yang dikelola oleh Pusat Pembinaan Profesi Keuangan (PPPK).
+                        Pendidikan profesi merupakan tahapan akademik pascasarjana, sedangkan sebutan profesi dan sertifikasi keprofesian diselenggarakan oleh organisasi profesi resmi (IAI dan IAPI) yang memiliki regulasi, kurikulum ujian, dan persyaratan tersendiri.
                     </p>
                 </div>
                 <div class="col-lg-4 text-center">
                     <div class="p-4 rounded-3 bg-white border shadow-sm">
-                        <i class="fa-solid fa-graduation-cap text-primary display-4 mb-2"></i>
-                        <div class="fw-bold text-navy fs-5">Akuntan (Ak.)</div>
-                        <div class="small text-muted mb-2">Beregister Negara Kemenkeu</div>
-                        <span class="badge-ppak badge-ppak-navy" style="font-size: 0.725rem;">KKNI Jenjang 7</span>
+                        <i class="fa-solid fa-graduation-cap text-navy display-4 mb-2"></i>
+                        <div class="fw-bold text-navy fs-5">Jenjang Profesi</div>
+                        <div class="small text-muted mb-2">KKNI Jenjang 7</div>
+                        <span class="badge-ppak badge-ppak-navy" style="font-size: 0.725rem;">Kode Prodi: 62902</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- JALUR SERTIFIKASI PROFESI (CA, CPA, ASEAN CPA) --}}
-        <div class="row g-4 mb-5">
-            <div class="col-lg-4 col-md-6">
-                <div class="card-ppak-flat h-100">
-                    <div class="feature-icon-wrapper mb-3">
-                        <i class="fa-solid fa-certificate"></i>
-                    </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-1">Chartered Accountant (CA)</h3>
-                    <div class="badge-ppak badge-ppak-blue mb-3" style="font-size: 0.7rem;">Ikatan Akuntan Indonesia (IAI)</div>
-                    <p class="small text-secondary mb-3">
-                        Kualifikasi akuntan profesional terstandarisasi yang diakui secara luas di sektor korporasi, perbankan, BUMN, dan lembaga pemerintahan. Kurikulum PPAk FEB UNESA menyediakan skema penyetaraan (waiver) modul tertentu bagi mahasiswa.
-                    </p>
-                    <ul class="list-unstyled small text-muted mb-0">
-                        <li class="mb-1"><i class="fa-solid fa-check text-primary me-2"></i>Waiver modul ujian dasar/profesi</li>
-                        <li class="mb-1"><i class="fa-solid fa-check text-primary me-2"></i>Pengakuan standar IFAC</li>
-                        <li><i class="fa-solid fa-check text-primary me-2"></i>Kesiapan ujian studi kasus tingkat akhir</li>
-                    </ul>
-                </div>
+        {{-- VISUAL ALUR: PPAk -> Kelulusan -> Jalur Sertifikasi Sesuai Persyaratan --}}
+        <div class="p-4 p-lg-5 rounded-4 border bg-white shadow-sm mb-5">
+            <div class="text-center max-w-700 mx-auto mb-4">
+                <span class="badge-ppak badge-ppak-navy mb-2">ALUR KUALIFIKASI</span>
+                <h3 class="h4 text-navy fw-bold mb-1">Alur Pendidikan Menuju Sertifikasi & Registrasi Profesi</h3>
+                <div class="golden-line center"></div>
+                <p class="small text-secondary mb-0">
+                    Proses terstruktur dari penuntasan beban studi pendidikan profesi hingga keikutsertaan dalam ujian sertifikasi profesi masing-masing lembaga.
+                </p>
             </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="card-ppak-flat h-100">
-                    <div class="feature-icon-wrapper mb-3">
-                        <i class="fa-solid fa-magnifying-glass-dollar"></i>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-4 rounded-3 border bg-subtle h-100 text-center">
+                        <div class="feature-icon-wrapper mx-auto mb-3" style="width: 50px; height: 50px; font-size: 1.25rem;">
+                            <i class="fa-solid fa-book-open-reader text-navy"></i>
+                        </div>
+                        <span class="badge-ppak badge-ppak-navy mb-2">Tahap 1</span>
+                        <h4 class="fs-6 fw-bold text-navy mb-2">Pendidikan PPAk UNESA</h4>
+                        <p class="small text-secondary mb-0">
+                            Menempuh pembelajaran komprehensif 11 mata kuliah terpadu dan paket magang industri sesuai kurikulum SINDIG UNESA.
+                        </p>
                     </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-1">Certified Public Accountant (CPA)</h3>
-                    <div class="badge-ppak badge-ppak-gold mb-3" style="font-size: 0.7rem;">Institut Akuntan Publik Indonesia (IAPI)</div>
-                    <p class="small text-secondary mb-3">
-                        Sertifikasi tertinggi bagi para praktisi audit yang berkeinginan mendirikan atau menjadi partner pada Kantor Akuntan Publik (KAP) serta menandatangani laporan opini auditor independen.
-                    </p>
-                    <ul class="list-unstyled small text-muted mb-0">
-                        <li class="mb-1"><i class="fa-solid fa-check text-primary me-2"></i>Prasyarat izin praktik Akuntan Publik (AP)</li>
-                        <li class="mb-1"><i class="fa-solid fa-check text-primary me-2"></i>Penguasaan mendalam SPAP & ISA</li>
-                        <li><i class="fa-solid fa-check text-primary me-2"></i>Pelatihan audit praktik intensif di PPAk</li>
-                    </ul>
                 </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="card-ppak-flat h-100">
-                    <div class="feature-icon-wrapper mb-3">
-                        <i class="fa-solid fa-globe"></i>
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-4 rounded-3 border bg-subtle h-100 text-center">
+                        <div class="feature-icon-wrapper mx-auto mb-3" style="width: 50px; height: 50px; font-size: 1.25rem;">
+                            <i class="fa-solid fa-certificate text-navy"></i>
+                        </div>
+                        <span class="badge-ppak badge-ppak-blue mb-2">Tahap 2</span>
+                        <h4 class="fs-6 fw-bold text-navy mb-2">Kelulusan Pendidikan Profesi</h4>
+                        <p class="small text-secondary mb-0">
+                            Lulus dari program studi, memperoleh ijazah profesi, serta menyelesaikan seluruh persyaratan akademik dan praktika.
+                        </p>
                     </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-1">ASEAN CPA</h3>
-                    <div class="badge-ppak badge-ppak-navy mb-3" style="font-size: 0.7rem;">ASEAN Chartered Professional Accountant</div>
-                    <p class="small text-secondary mb-3">
-                        Fasilitasi mobilitas profesional akuntansi di kawasan negara-negara anggota ASEAN melalui skema Mutual Recognition Arrangement (MRA) on Accountancy Services.
-                    </p>
-                    <ul class="list-unstyled small text-muted mb-0">
-                        <li class="mb-1"><i class="fa-solid fa-check text-primary me-2"></i>Peluang karier regional Asia Tenggara</li>
-                        <li class="mb-1"><i class="fa-solid fa-check text-primary me-2"></i>Registrasi melalui ASEAN CPA Coordinating Committee</li>
-                        <li><i class="fa-solid fa-check text-primary me-2"></i>Pemberian jasa konsultansi lintas batas</li>
-                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-4 rounded-3 border bg-subtle h-100 text-center">
+                        <div class="feature-icon-wrapper mx-auto mb-3" style="width: 50px; height: 50px; font-size: 1.25rem;">
+                            <i class="fa-solid fa-award text-navy"></i>
+                        </div>
+                        <span class="badge-ppak badge-ppak-gold mb-2">Tahap 3</span>
+                        <h4 class="fs-6 fw-bold text-navy mb-2">Jalur Sertifikasi / Registrasi</h4>
+                        <p class="small text-secondary mb-0">
+                            Mengikuti ujian sertifikasi profesi (CA oleh IAI atau CPA of Indonesia oleh IAPI) serta registrasi sesuai persyaratan masing-masing lembaga.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        {{-- Alur Karier Profesi --}}
-        <div class="p-4 p-lg-5 rounded-4 border bg-subtle">
-            <h3 class="fs-6 fw-bold text-navy text-uppercase tracking-wider mb-4">
-                <i class="fa-solid fa-stairs text-primary me-2"></i>Alur Menjadi Akuntan Beregister & Praktisi
-            </h3>
-            <div class="row g-4">
-                <div class="col-md-3 col-6">
-                    <div class="p-3 bg-white rounded-3 border h-100">
-                        <span class="badge-ppak badge-ppak-navy mb-2">Langkah 1</span>
-                        <div class="fw-bold text-navy small mb-1">Sarjana (S1) Akuntansi</div>
-                        <div class="text-muted" style="font-size: 0.75rem;">Menyelesaikan program akademik sarjana terakreditasi.</div>
+        {{-- 2 SECTIONS: CHARTERED ACCOUNTANT (IAI) & CPA OF INDONESIA (IAPI) --}}
+        <div class="row g-5">
+            {{-- Bagian CA Indonesia (IAI) --}}
+            <div class="col-lg-6">
+                <div class="p-4 p-lg-5 rounded-4 border bg-white h-100 shadow-sm d-flex flex-column">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="badge-ppak badge-ppak-navy">Ikatan Akuntan Indonesia (IAI)</span>
+                        <i class="fa-solid fa-stamp text-primary fs-4"></i>
+                    </div>
+                    <h3 class="h4 text-navy fw-bold mb-3">Chartered Accountant (CA) Indonesia</h3>
+                    <p class="small text-secondary mb-3" style="line-height: 1.65;">
+                        Chartered Accountant (CA) Indonesia merupakan sebutan profesi akuntan yang ditetapkan oleh <strong>Ikatan Akuntan Indonesia (IAI)</strong> untuk akuntan profesional yang memenuhi standar kompetensi internasional.
+                    </p>
+                    <div class="p-3 bg-subtle rounded-3 border mb-3">
+                        <h4 class="fs-6 fw-bold text-navy mb-2">Ketentuan Ujian & Sertifikasi:</h4>
+                        <ul class="list-unstyled small text-secondary mb-0">
+                            <li class="d-flex align-items-start gap-2 mb-2">
+                                <i class="fa-solid fa-circle-check text-primary mt-1" style="font-size: 0.5rem;"></i>
+                                <span>Mahasiswa PPAk mengikuti Ujian Sertifikasi Akuntan Profesional yang diselenggarakan oleh IAI.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2 mb-2">
+                                <i class="fa-solid fa-circle-check text-primary mt-1" style="font-size: 0.5rem;"></i>
+                                <span>Pemberian sebutan CA memiliki persyaratan ujian, pengalaman kerja di bidang akuntansi, dan keanggotaan IAI tersendiri.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-primary mt-1" style="font-size: 0.5rem;"></i>
+                                <span>Kelulusan PPAk menjadi fondasi akademik yang relevan untuk menempuh tahapan sertifikasi CA.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto pt-3 border-top">
+                        <a href="https://iaiglobal.or.id" target="_blank" rel="noopener noreferrer" class="btn-ppak-primary w-100 text-center btn-ppak-sm">
+                            <span>Informasi Resmi Ujian CA (IAI)</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-3 col-6">
-                    <div class="p-3 bg-white rounded-3 border h-100">
-                        <span class="badge-ppak badge-ppak-blue mb-2">Langkah 2</span>
-                        <div class="fw-bold text-navy small mb-1">PPAk FEB UNESA</div>
-                        <div class="text-muted" style="font-size: 0.75rem;">Menuntaskan 24 SKS pendidikan profesi dan meraih sebutan Ak.</div>
+            </div>
+
+            {{-- Bagian CPA of Indonesia (IAPI) --}}
+            <div class="col-lg-6">
+                <div class="p-4 p-lg-5 rounded-4 border bg-white h-100 shadow-sm d-flex flex-column">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="badge-ppak badge-ppak-gold">Institut Akuntan Publik Indonesia (IAPI)</span>
+                        <i class="fa-solid fa-file-signature text-navy fs-4"></i>
                     </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="p-3 bg-white rounded-3 border h-100">
-                        <span class="badge-ppak badge-ppak-gold mb-2">Langkah 3</span>
-                        <div class="fw-bold text-navy small mb-1">Ujian CA / CPA</div>
-                        <div class="text-muted" style="font-size: 0.75rem;">Menempuh ujian modul sertifikasi profesi melalui skema waiver.</div>
+                    <h3 class="h4 text-navy fw-bold mb-3">Certified Public Accountant (CPA) of Indonesia</h3>
+                    <p class="small text-secondary mb-3" style="line-height: 1.65;">
+                        Certified Public Accountant (CPA) of Indonesia merupakan sertifikasi kompetensi yang diselenggarakan oleh <strong>Institut Akuntan Publik Indonesia (IAPI)</strong> melalui CPA of Indonesia Exam.
+                    </p>
+                    <div class="p-3 bg-subtle rounded-3 border mb-3">
+                        <h4 class="fs-6 fw-bold text-navy mb-2">Ketentuan Ujian & Sertifikasi:</h4>
+                        <ul class="list-unstyled small text-secondary mb-0">
+                            <li class="d-flex align-items-start gap-2 mb-2">
+                                <i class="fa-solid fa-circle-check text-warning mt-1" style="font-size: 0.5rem;"></i>
+                                <span>Sertifikasi CPA ditempuh melalui CPA of Indonesia Exam dengan tahapan ujian tingkat dasar, profesional, dan lanjutan.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2 mb-2">
+                                <i class="fa-solid fa-circle-check text-warning mt-1" style="font-size: 0.5rem;"></i>
+                                <span>Izin praktik sebagai Akuntan Publik (AP) memiliki persyaratan tambahan berupa pengalaman praktik audit dan izin dari Kementerian Keuangan RI.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="fa-solid fa-circle-check text-warning mt-1" style="font-size: 0.5rem;"></i>
+                                <span>Lulusan PPAk menempuh tahapan sertifikasi sesuai regulasi yang berlaku pada IAPI.</span>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="p-3 bg-white rounded-3 border h-100">
-                        <span class="badge-ppak badge-ppak-green mb-2">Langkah 4</span>
-                        <div class="fw-bold text-navy small mb-1">Izin Praktik & Karier</div>
-                        <div class="text-muted" style="font-size: 0.75rem;">Pengalaman praktik kerja profesional dan izin Akuntan Publik/CFO.</div>
+                    <div class="mt-auto pt-3 border-top">
+                        <a href="https://iapi.or.id" target="_blank" rel="noopener noreferrer" class="btn-ppak-secondary w-100 text-center btn-ppak-sm">
+                            <span>Informasi Sertifikasi CPA (IAPI)</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
+                        </a>
                     </div>
                 </div>
             </div>
