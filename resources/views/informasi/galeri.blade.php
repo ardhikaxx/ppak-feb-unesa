@@ -34,9 +34,9 @@
                 @endforeach
             </div>
 
-            <nav aria-label="Navigasi Galeri" class="d-flex justify-content-center mt-5">
-                {{ $galeri->withQueryString()->links('pagination::bootstrap-5') }}
-            </nav>
+            <div class="d-flex justify-content-center mt-5">
+                {{ $galeri->withQueryString()->links('vendor.pagination.numbers') }}
+            </div>
         @else
             <x-empty-state title="Belum ada foto" message="Galeri dokumentasi sedang diperbarui." icon="fa-images" />
         @endif
