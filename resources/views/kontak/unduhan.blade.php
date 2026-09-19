@@ -55,23 +55,23 @@
                             <td>
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="feature-icon-wrapper" style="width:36px; height:36px; font-size:0.95rem;">
-                                        @if($doc['format'] === 'PDF')
+                                        @if(($doc['format'] ?? 'PDF') === 'PDF')
                                             <i class="fa-solid fa-file-pdf text-danger"></i>
                                         @else
                                             <i class="fa-solid fa-file-word text-primary"></i>
                                         @endif
                                     </div>
                                     <div>
-                                        <div class="fw-semibold text-navy">{{ $doc['title'] }}</div>
-                                        <div class="small text-muted" style="font-size:0.75rem;">{{ $doc['filename'] }} &bull; {{ $doc['size'] }}</div>
+                                        <div class="fw-semibold text-navy">{{ $doc['title'] ?? $doc['judul'] ?? 'Dokumen' }}</div>
+                                        <div class="small text-muted" style="font-size:0.75rem;">{{ $doc['filename'] ?? ($doc['slug'] ?? 'doc') . '.pdf' }} &bull; {{ $doc['size'] ?? $doc['ukuran'] ?? 'PDF' }}</div>
                                     </div>
                                 </div>
                             </td>
-                            <td><x-badge variant="blue" style="font-size:0.7rem;">{{ $doc['kategori'] }}</x-badge></td>
-                            <td>{{ $doc['tahun'] }}</td>
-                            <td><x-badge variant="navy" style="font-size:0.675rem;">{{ $doc['format'] }}</x-badge></td>
+                            <td><x-badge variant="blue" style="font-size:0.7rem;">{{ $doc['kategori'] ?? 'Umum' }}</x-badge></td>
+                            <td>{{ $doc['tahun'] ?? $doc['tanggal'] ?? '2026' }}</td>
+                            <td><x-badge variant="navy" style="font-size:0.675rem;">{{ $doc['format'] ?? 'PDF' }}</x-badge></td>
                             <td class="text-end">
-                                <a href="{{ route('kontak.unduhan.download', $doc['filename']) }}" class="btn-ppak-primary btn-ppak-sm">
+                                <a href="{{ route('kontak.unduhan.download', $doc['filename'] ?? ($doc['slug'] ?? 'doc') . '.pdf') }}" class="btn-ppak-primary btn-ppak-sm">
                                     <i class="fa-solid fa-download me-1"></i> Unduh
                                 </a>
                             </td>
@@ -87,9 +87,9 @@
             </table>
         </div>
 
-        <nav aria-label="Navigasi Dokumen" class="d-flex justify-content-center mb-4">
-            {{ $unduhan->withQueryString()->links('pagination::bootstrap-5') }}
-        </nav>
+        <div class="d-flex justify-content-center mb-4">
+            {{ $unduhan->withQueryString()->links('vendor.pagination.numbers') }}
+        </div>
 
         <div class="p-4 rounded-3 border bg-subtle text-center">
             <h4 class="fs-6 fw-bold text-navy mb-1"><i class="fa-solid fa-shield-halved text-primary me-2"></i>Legalitas Dokumen Terverifikasi</h4>
