@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Struktur Organisasi | PPAk FEB UNESA')
-@section('meta_description', 'Bagan dan tata kelola struktur organisasi Program Pendidikan Profesi Akuntansi Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.')
+@section('title', 'Struktur Organisasi | Pendidikan Profesi Akuntan FEB UNESA')
+@section('meta_description', 'Bagan dan tata kelola struktur organisasi Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.')
 
 @section('content')
 
 @include('partials.page-header', [
     'title' => 'Struktur Organisasi',
-    'badge' => 'Tata Kelola Program',
-    'lead' => 'Susunan pimpinan pengelola, penjaminan mutu akademik, dan staf pendukung operasional Pendidikan Profesi Akuntansi FEB UNESA.',
+    'badge' => 'Tata Kelola Kelembagaan',
+    'lead' => 'Hierarki tata kelola kelembagaan Program Studi Pendidikan Profesi Akuntan di lingkungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
     'breadcrumbs' => [
         ['label' => 'Profil', 'url' => route('profil.sejarah')],
         ['label' => 'Struktur Organisasi', 'url' => '']
@@ -18,128 +18,109 @@
 <section class="section-py bg-white">
     <div class="container">
         <div class="text-center max-w-700 mx-auto mb-5">
-            <span class="badge-ppak badge-ppak-blue mb-2">Bagan Kepemimpinan</span>
-            <h2>Tata Kelola Program Studi PPAk</h2>
+            <span class="badge-ppak badge-ppak-gold mb-2">Hierarki Tata Kelola</span>
+            <h2>Struktur Organisasi & Kepemimpinan</h2>
+            <div class="golden-line center"></div>
             <p class="text-secondary">
-                Bagan struktural dirancang dengan garis koordinasi yang jelas guna menjamin mutu pelayanan akademik prima dan akuntabilitas penyelenggaraan profesi.
+                Hubungan kelembagaan Program Studi Pendidikan Profesi Akuntan dalam struktur tata kelola Universitas Negeri Surabaya dan Fakultas Ekonomika dan Bisnis.
             </p>
         </div>
 
-        {{-- ORGANIZATIONAL CHART (Pure Semantic Responsive HTML/CSS) --}}
+        {{-- ORGANIZATIONAL HIERARCHY CHART --}}
         <div class="p-4 p-md-5 rounded-4 border bg-subtle mb-5">
             <div class="org-tree">
-                {{-- Level 1: Pembina / Dekan --}}
+                {{-- Level 1: Universitas Negeri Surabaya --}}
                 <div class="org-level">
-                    <div class="org-card" style="border-top: 4px solid var(--ppak-navy);">
-                        <div class="org-role">Pembina Program</div>
-                        <div class="org-name">Prof. Dr. [Nama Dekan], S.E., M.Si.</div>
-                        <div class="org-subtext">Dekan Fakultas Ekonomika dan Bisnis</div>
+                    <div class="org-card" style="border-top: 4px solid var(--unesa-navy); min-width: 300px;">
+                        <div class="org-role">Tingkat Universitas</div>
+                        <div class="org-name">Universitas Negeri Surabaya</div>
+                        <div class="org-subtext">Perguruan Tinggi Negeri Badan Hukum (PTN-BH)</div>
                     </div>
                 </div>
 
-                {{-- Connecting line indicator --}}
+                {{-- Connector --}}
                 <div class="text-muted small"><i class="fa-solid fa-arrow-down"></i></div>
 
-                {{-- Level 2: Ketua Program Studi --}}
+                {{-- Level 2: Fakultas Ekonomika dan Bisnis --}}
                 <div class="org-level">
-                    <div class="org-card org-card-leader" style="min-width: 280px; box-shadow: var(--shadow-md);">
-                        <div class="org-role">Ketua Program Studi PPAk</div>
-                        <div class="org-name">Dr. [Nama Kaprodi], S.E., M.Ak., Ak., CA., CPA.</div>
-                        <div class="org-subtext text-light opacity-75">NIP/NIDN: [Nomor Identitas Dosen]</div>
+                    <div class="org-card" style="border-top: 4px solid var(--unesa-blue); min-width: 320px;">
+                        <div class="org-role">Tingkat Fakultas</div>
+                        <div class="org-name">Fakultas Ekonomika dan Bisnis (FEB)</div>
+                        <div class="org-subtext">Dekan, Wakil Dekan, Senat Fakultas & Kantor Tata Usaha</div>
                     </div>
                 </div>
 
-                {{-- Connecting line indicator --}}
+                {{-- Connector --}}
                 <div class="text-muted small"><i class="fa-solid fa-arrow-down"></i></div>
 
-                {{-- Level 3: Sekretaris Prodi & Penjaminan Mutu --}}
+                {{-- Level 3: Program Studi Pendidikan Profesi Akuntan --}}
                 <div class="org-level">
-                    <div class="org-card" style="border-top: 4px solid var(--ppak-blue);">
-                        <div class="org-role">Sekretaris Program Studi</div>
-                        <div class="org-name">Dr. [Nama Sekprodi], S.Pd., M.Ak., CMA.</div>
-                        <div class="org-subtext">Pengelolaan Operasional & Kemahasiswaan</div>
-                    </div>
-
-                    <div class="org-card" style="border-top: 4px solid var(--ppak-gold);">
-                        <div class="org-role">Gugus Penjaminan Mutu (GPM)</div>
-                        <div class="org-name">[Nama Dosen GPM], S.E., M.Sc., Ak., CA.</div>
-                        <div class="org-subtext">Pengendalian Mutu Akademik & Akreditasi</div>
+                    <div class="org-card" style="border-top: 4px solid var(--unesa-gold); min-width: 320px; background: #ffffff;">
+                        <div class="org-role">Tingkat Program Studi</div>
+                        <div class="org-name">Pendidikan Profesi Akuntan (PPAk)</div>
+                        <div class="org-subtext">Kode Program Studi: 62902 &bull; Berdiri: 23 Mei 2025</div>
                     </div>
                 </div>
 
-                {{-- Connecting line indicator --}}
+                {{-- Connector --}}
                 <div class="text-muted small"><i class="fa-solid fa-arrow-down"></i></div>
 
-                {{-- Level 4: Koordinator Bidang --}}
+                {{-- Level 4: Koordinator Program Studi --}}
                 <div class="org-level">
-                    <div class="org-card">
-                        <div class="org-role">Koordinator Kurikulum & Ujian Profesi</div>
-                        <div class="org-name">[Nama Dosen], S.E., M.Ak., Ak., CA.</div>
-                        <div class="org-subtext">Integrasi Silabus IAI & Ujian CA</div>
-                    </div>
-
-                    <div class="org-card">
-                        <div class="org-role">Koordinator Kerja Sama & Kemitraan KAP</div>
-                        <div class="org-name">[Nama Dosen / Praktisi], M.M., CPA.</div>
-                        <div class="org-subtext">Penempatan Magang & Rekrutmen Kerja</div>
-                    </div>
-
-                    <div class="org-card">
-                        <div class="org-role">Koordinator Laboratorium & TI</div>
-                        <div class="org-name">[Nama Dosen TI], M.Kom., CertDA.</div>
-                        <div class="org-subtext">Audit Software & Analitika Data</div>
+                    <div class="org-card org-card-leader" style="min-width: 320px; box-shadow: var(--shadow-md);">
+                        <div class="org-role">Koordinator Program Studi</div>
+                        <div class="org-name">Rediyanto Putra, S.E., M.S.A.</div>
+                        <div class="org-subtext text-light opacity-75">Koordinator Program Studi Pendidikan Profesi Akuntan</div>
                     </div>
                 </div>
+            </div>
 
-                {{-- Connecting line indicator --}}
-                <div class="text-muted small"><i class="fa-solid fa-arrow-down"></i></div>
-
-                {{-- Level 5: Staf Sekretariat & Teknis --}}
-                <div class="org-level">
-                    <div class="org-card" style="min-width: 200px;">
-                        <div class="org-role">Staf Administrasi Akademik</div>
-                        <div class="org-name">[Nama Tenaga Kependidikan 1]</div>
-                        <div class="org-subtext">Layanan Mahasiswa & Registrasi</div>
-                    </div>
-
-                    <div class="org-card" style="min-width: 200px;">
-                        <div class="org-role">Staf Administrasi Keuangan</div>
-                        <div class="org-name">[Nama Tenaga Kependidikan 2]</div>
-                        <div class="org-subtext">Verifikasi UKT & Administrasi VA</div>
-                    </div>
-
-                    <div class="org-card" style="min-width: 200px;">
-                        <div class="org-role">Teknisi Laboratorium Komputer</div>
-                        <div class="org-name">[Nama Pranata Komputer]</div>
-                        <div class="org-subtext">Pemeliharaan Software Audit & Jaringan</div>
-                    </div>
-                </div>
+            <div class="text-center mt-4 pt-3 border-top">
+                <a href="https://feb.unesa.ac.id" target="_blank" rel="noopener noreferrer" class="btn-ppak-secondary btn-ppak-sm">
+                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i>
+                    <span>Kunjungi Laman Struktur Organisasi FEB UNESA</span>
+                </a>
             </div>
         </div>
 
-        {{-- Uraian Tugas Pokok & Fungsi --}}
+        {{-- Tata Kelola Fakultas & Layanan Pendukung --}}
         <div class="row g-4">
             <div class="col-md-4">
-                <div class="card-ppak-flat h-100">
-                    <h3 class="fs-6 fw-bold text-navy mb-2"><i class="fa-solid fa-user-check text-primary me-2"></i>Pimpinan Program Studi</h3>
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <h3 class="fs-6 fw-bold text-navy mb-0">Pimpinan Fakultas</h3>
+                    </div>
                     <p class="small text-secondary mb-0">
-                        Bertanggung jawab atas kepemimpinan akademis, perencanaan kurikulum, manajemen sumber daya pengajar, serta menjalin kerja sama strategis dengan asosiasi profesi dan regulator.
+                        Tata kelola fakultas dipimpin oleh Dekan bersama para Wakil Dekan bidang akademik, keuangan & sumber daya, serta kemahasiswaan dan alumni yang menetapkan kebijakan strategis bagi seluruh program studi di FEB UNESA.
                     </p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card-ppak-flat h-100">
-                    <h3 class="fs-6 fw-bold text-navy mb-2"><i class="fa-solid fa-shield-halved text-primary me-2"></i>Gugus Penjaminan Mutu</h3>
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-user-gear"></i>
+                        </div>
+                        <h3 class="fs-6 fw-bold text-navy mb-0">Koordinasi Program Studi</h3>
+                    </div>
                     <p class="small text-secondary mb-0">
-                        Melakukan monitoring dan evaluasi berkala terhadap proses belajar mengajar, survei kepuasan mahasiswa, audit mutu internal, serta pemenuhan standar akreditasi LAMEMBA.
+                        Penyelenggaraan operasional kurikulum, penugasan dosen pengampu, evaluasi proses pembelajaran, dan layanan mahasiswa dikoordinasikan secara langsung oleh Koordinator Program Studi.
                     </p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card-ppak-flat h-100">
-                    <h3 class="fs-6 fw-bold text-navy mb-2"><i class="fa-solid fa-headset text-primary me-2"></i>Sekretariat & Helpdesk</h3>
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                        <h3 class="fs-6 fw-bold text-navy mb-0">Laboratorium & Layanan Terpadu</h3>
+                    </div>
                     <p class="small text-secondary mb-0">
-                        Menyelenggarakan layanan prima bagi mahasiswa, pendaftaran ujian sertifikasi, legalisir dokumen akademik, serta dukungan teknis laboratorium perpajakan dan audit.
+                        Didukung oleh fasilitas Laboratorium Akuntansi Komputer FEB UNESA, sarana perpustakaan fakultas, serta unit tata usaha FEB untuk administrasi persuratan dan bantuan teknis perkuliahan.
                     </p>
                 </div>
             </div>
