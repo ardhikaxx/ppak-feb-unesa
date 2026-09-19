@@ -192,18 +192,21 @@ class ArrayContentRepository implements ContentRepositoryInterface
 
         // Efficient server-side search (when DB: use fulltext index)
         $berita = array_filter($this->getBerita(), fn($item) =>
-            str_contains(mb_strtolower($item['title']), $lower) ||
-            str_contains(mb_strtolower($item['excerpt']), $lower)
+            str_contains(mb_strtolower($item['title'] ?? ''), $lower) ||
+            str_contains(mb_strtolower($item['excerpt'] ?? ''), $lower) ||
+            str_contains(mb_strtolower($item['content'] ?? ''), $lower)
         );
 
         $agenda = array_filter($this->getAgenda(), fn($item) =>
-            str_contains(mb_strtolower($item['title']), $lower) ||
-            str_contains(mb_strtolower($item['desc']), $lower)
+            str_contains(mb_strtolower($item['title'] ?? ''), $lower) ||
+            str_contains(mb_strtolower($item['desc'] ?? $item['description'] ?? ''), $lower) ||
+            str_contains(mb_strtolower($item['venue'] ?? ''), $lower)
         );
 
         $dosen = array_filter($this->getDosen(), fn($item) =>
-            str_contains(mb_strtolower($item['name']), $lower) ||
-            str_contains(mb_strtolower($item['bidang']), $lower)
+            str_contains(mb_strtolower($item['name'] ?? ''), $lower) ||
+            str_contains(mb_strtolower($item['role'] ?? $item['bidang'] ?? ''), $lower) ||
+            str_contains(mb_strtolower($item['category_label'] ?? ''), $lower)
         );
 
         return [
