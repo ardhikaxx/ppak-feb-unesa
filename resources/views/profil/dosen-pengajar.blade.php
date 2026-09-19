@@ -1,60 +1,62 @@
 @extends('layouts.app')
 
-@section('title', 'Profil Dosen & Pengajar | PPAk FEB UNESA')
-@section('meta_description', 'Daftar dosen akademisi dan praktisi pengajar Program Pendidikan Profesi Akuntansi Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.')
+@section('title', 'Profil Dosen & Pengajar | Pendidikan Profesi Akuntan FEB UNESA')
+@section('meta_description', 'Daftar dosen dan tenaga pengajar mata kuliah Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.')
 
 @section('content')
 
-<x-page-header title="Profil Dosen & Pengajar" badge="Tenaga Pendidik Profesional" lead="Kombinasi pendidik bergelar doktor/profesor dan praktisi senior pemegang sertifikasi profesi CA, CPA, BKP, dan CFE yang berpengalaman luas." :breadcrumbs="[
+<x-page-header title="Profil Dosen & Pengajar" badge="Tenaga Pengajar Terverifikasi" lead="Daftar dosen aktif dan pengajar mata kuliah Program Studi Pendidikan Profesi Akuntan FEB UNESA yang tercatat pada sistem penugasan akademik SINDIG UNESA." :breadcrumbs="[
     ['label' => 'Profil', 'url' => route('profil.sejarah')],
     ['label' => 'Dosen & Pengajar', 'url' => '']
 ]" />
 
 <section class="section-py bg-white">
     <div class="container">
-        {{-- Server-side category filter - scalable, bookmarkable, no JS needed for large datasets --}}
+        {{-- Source Info Notice --}}
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center p-3 rounded-3 border bg-subtle mb-4 gap-2">
+            <div class="small text-secondary">
+                <i class="fa-solid fa-circle-check text-success me-1"></i> Data pengajar mata kuliah dihimpun berdasarkan catatan penugasan kurikulum pada <strong>SINDIG UNESA</strong> dan Pangkalan Data Dosen UNESA.
+            </div>
+            <div class="small text-muted">
+                <i class="fa-solid fa-database me-1"></i> Sumber: SINDIG UNESA (Prodi 62902)
+            </div>
+        </div>
+
+        {{-- Server-side category filter --}}
         <div class="d-flex flex-wrap align-items-center justify-content-center gap-2 mb-5">
-            <a href="{{ route('profil.dosen-pengajar', ['kategori' => 'all']) }}" class="btn-{{ request('kategori', 'all')==='all' ? 'ppak-primary' : 'ppak-secondary' }} btn-ppak-sm">Semua Bidang ({{ $dosen->total() }})</a>
-            <a href="{{ route('profil.dosen-pengajar', ['kategori' => 'auditing']) }}" class="btn-{{ request('kategori')==='auditing' ? 'ppak-primary' : 'ppak-secondary' }} btn-ppak-sm">Auditing & Asurans</a>
-            <a href="{{ route('profil.dosen-pengajar', ['kategori' => 'keuangan']) }}" class="btn-{{ request('kategori')==='keuangan' ? 'ppak-primary' : 'ppak-secondary' }} btn-ppak-sm">Akuntansi Keuangan & IFRS</a>
-            <a href="{{ route('profil.dosen-pengajar', ['kategori' => 'perpajakan']) }}" class="btn-{{ request('kategori')==='perpajakan' ? 'ppak-primary' : 'ppak-secondary' }} btn-ppak-sm">Perpajakan</a>
-            <a href="{{ route('profil.dosen-pengajar', ['kategori' => 'manajemen']) }}" class="btn-{{ request('kategori')==='manajemen' ? 'ppak-primary' : 'ppak-secondary' }} btn-ppak-sm">Manajemen & Analitika Data</a>
+            <a href="{{ route('profil.dosen-pengajar', ['kategori' => 'all']) }}" class="btn-{{ request('kategori', 'all')==='all' ? 'ppak-primary' : 'ppak-secondary' }} btn-ppak-sm">Semua Pengajar ({{ $dosen->total() }})</a>
+            <a href="{{ route('profil.dosen-pengajar', ['kategori' => 'auditing']) }}" class="btn-{{ request('kategori')==='auditing' ? 'ppak-primary' : 'ppak-secondary' }} btn-ppak-sm">Auditing & GRC</a>
+            <a href="{{ route('profil.dosen-pengajar', ['kategori' => 'keuangan']) }}" class="btn-{{ request('kategori')==='keuangan' ? 'ppak-primary' : 'ppak-secondary' }} btn-ppak-sm">Akuntansi Keuangan & Stratejik</a>
+            <a href="{{ route('profil.dosen-pengajar', ['kategori' => 'manajemen']) }}" class="btn-{{ request('kategori')==='manajemen' ? 'ppak-primary' : 'ppak-secondary' }} btn-ppak-sm">Manajemen & Perpajakan</a>
         </div>
 
         <div class="row g-4" id="dosenGridContainer">
             @forelse($dosen as $d)
-                <div class="col-lg-4 col-md-6">
-                    <div class="dosen-card h-100">
-                        <div class="dosen-photo-wrapper">
-                            <img src="{{ $d['image'] }}" alt="{{ $d['name'] }}" class="dosen-photo" loading="lazy" width="400" height="420" style="aspect-ratio:1/1.05; object-fit:cover;">
-                        </div>
-                        <div class="dosen-info">
-                            <div class="d-flex align-items-center justify-content-between mb-2">
-                                <x-badge variant="blue" style="font-size:0.7rem;">{{ $d['category_label'] }}</x-badge>
-                                <span class="text-muted" style="font-size:0.725rem;">NIDN: [Terverifikasi]</span>
-                            </div>
-                            <h3 class="dosen-name">{{ $d['name'] }}</h3>
-                            <div class="dosen-gelar mb-2">{{ $d['gelar'] }}</div>
-                            <div class="dosen-role mb-3">{{ $d['role'] }}</div>
-                            <div class="mb-3">
-                                <div class="small fw-bold text-navy mb-1" style="font-size:0.785rem;">Bidang Keahlian:</div>
-                                <p class="small text-secondary mb-0" style="line-height:1.5;">{{ $d['bidang'] }}</p>
-                            </div>
-                            @if(!empty($d['sertifikasi']))
-                                <div class="mb-3">
-                                    <div class="small fw-bold text-navy mb-1" style="font-size:0.785rem;">Sertifikasi Profesi:</div>
-                                    <div class="d-flex flex-wrap gap-1">
-                                        @foreach($d['sertifikasi'] as $cert)
-                                            <x-badge variant="gold" style="font-size:0.65rem;">{{ $cert }}</x-badge>
-                                        @endforeach
-                                    </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="dosen-card h-100 bg-white border shadow-sm p-3 rounded-4">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-sm-4 text-center">
+                                <div class="dosen-photo-wrapper mx-auto" style="width: 130px; height: 140px; border-radius: 12px; overflow: hidden;">
+                                    <img src="{{ $d['image'] }}" alt="{{ $d['name'] }}" class="dosen-photo w-100 h-100" loading="lazy" style="object-fit:cover;">
                                 </div>
-                            @endif
-                            <div class="mt-auto pt-3 border-top d-flex align-items-center justify-content-between">
-                                <a href="mailto:{{ $d['email'] }}" class="small text-muted text-decoration-none">
-                                    <i class="fa-regular fa-envelope me-1"></i> {{ $d['email'] }}
-                                </a>
-                                <x-badge variant="navy" style="font-size:0.65rem;">FEB UNESA</x-badge>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                                    <span class="badge-ppak badge-ppak-navy" style="font-size:0.65rem;">{{ $d['category_label'] }}</span>
+                                    <span class="badge-ppak badge-ppak-gold" style="font-size:0.65rem;">{{ $d['status_label'] ?? $d['role'] }}</span>
+                                </div>
+                                <h3 class="h6 text-navy fw-bold mb-1">{{ $d['name'] }}</h3>
+                                <div class="small text-muted mb-2">{{ $d['gelar'] }}</div>
+                                <div class="small text-secondary mb-2" style="font-size:0.8rem;">
+                                    <strong>Mata Kuliah Diampu:</strong>
+                                    <div class="text-navy">{{ implode(', ', $d['matkul'] ?? []) }}</div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                                    <a href="mailto:{{ $d['email'] }}" class="small text-muted text-decoration-none">
+                                        <i class="fa-regular fa-envelope me-1 text-primary"></i> {{ $d['email'] }}
+                                    </a>
+                                    <span class="badge bg-light text-secondary border" style="font-size: 0.65rem;">FEB UNESA</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -66,9 +68,10 @@
             @endforelse
         </div>
 
-        <nav aria-label="Navigasi Dosen" class="d-flex justify-content-center mt-5">
-            {{ $dosen->withQueryString()->links('pagination::bootstrap-5') }}
-        </nav>
+        {{-- Numbers-only pagination --}}
+        <div class="d-flex justify-content-center mt-5">
+            {{ $dosen->withQueryString()->links('vendor.pagination.numbers') }}
+        </div>
     </div>
 </section>
 
