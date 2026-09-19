@@ -45,8 +45,11 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->index(['status', 'published_at']);
-            $table->index(['category_id', 'status']);
-            $table->fullText(['title', 'excerpt']); // MySQL fulltext for search
+            if (Schema::getConnection()->getDriverName() === 'mysql') {
+                $table->fullText(['title', 'excerpt']);
+            } else {
+                $table->index('title');
+            }
         });
 
         // Agenda / Events
@@ -64,6 +67,10 @@ return new class extends Migration
             $table->boolean('is_upcoming')->default(true)->index();
             $table->text('description')->nullable();
             $table->timestamp('published_at')->nullable()->index();
+            $table->string('source_url')->nullable();
+            $table->string('source_name')->nullable();
+            $table->timestamp('verified_at')->nullable();
+            $table->string('data_status')->default('verified')->index();
             $table->timestamps();
             $table->softDeletes();
 
@@ -88,6 +95,10 @@ return new class extends Migration
             $table->json('sertifikasi')->nullable();
             $table->string('status')->default('active')->index();
             $table->unsignedInteger('sort_order')->default(0);
+            $table->string('source_url')->nullable();
+            $table->string('source_name')->nullable();
+            $table->timestamp('verified_at')->nullable();
+            $table->string('data_status')->default('verified')->index();
             $table->timestamps();
             $table->softDeletes();
 
@@ -108,6 +119,10 @@ return new class extends Migration
             $table->year('year')->nullable()->index();
             $table->string('status')->default('published')->index();
             $table->timestamp('published_at')->nullable()->index();
+            $table->string('source_url')->nullable();
+            $table->string('source_name')->nullable();
+            $table->timestamp('verified_at')->nullable();
+            $table->string('data_status')->default('verified')->index();
             $table->timestamps();
             $table->softDeletes();
 
@@ -126,6 +141,10 @@ return new class extends Migration
             $table->string('image_medium')->nullable();
             $table->date('event_date')->nullable()->index();
             $table->string('status')->default('published')->index();
+            $table->string('source_url')->nullable();
+            $table->string('source_name')->nullable();
+            $table->timestamp('verified_at')->nullable();
+            $table->string('data_status')->default('verified')->index();
             $table->timestamps();
             $table->softDeletes();
 
@@ -143,6 +162,10 @@ return new class extends Migration
             $table->text('quote');
             $table->string('status')->default('published')->index();
             $table->unsignedInteger('sort_order')->default(0);
+            $table->string('source_url')->nullable();
+            $table->string('source_name')->nullable();
+            $table->timestamp('verified_at')->nullable();
+            $table->string('data_status')->default('verified')->index();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -157,6 +180,10 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('logo')->nullable();
             $table->string('status')->default('active')->index();
+            $table->string('source_url')->nullable();
+            $table->string('source_name')->nullable();
+            $table->timestamp('verified_at')->nullable();
+            $table->string('data_status')->default('verified')->index();
             $table->timestamps();
         });
 
@@ -186,8 +213,6 @@ return new class extends Migration
             $table->json('new_values')->nullable();
             $table->string('ip_address')->nullable();
             $table->timestamps();
-
-            $table->index(['auditable_type', 'auditable_id']);
             $table->index(['action', 'created_at']);
         });
     }
