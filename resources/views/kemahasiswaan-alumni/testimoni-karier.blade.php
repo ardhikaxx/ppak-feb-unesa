@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Testimoni Alumni & Jejak Karier | PPAk FEB UNESA')
-@section('meta_description', 'Kisah sukses, pengalaman studi, dan testimoni para alumni Pendidikan Profesi Akuntansi FEB UNESA di berbagai bidang profesi terkemuka.')
+@section('title', 'Testimoni & Informasi Karier Alumni | Pendidikan Profesi Akuntan FEB UNESA')
+@section('meta_description', 'Informasi prospek bidang profesi akuntan dan portal direktori testimoni lulusan Program Studi Pendidikan Profesi Akuntan FEB UNESA.')
 
 @section('content')
 
 @include('partials.page-header', [
     'title' => 'Testimoni & Jejaring Karier Alumni',
-    'badge' => 'Kisah Inspiratif Lulusan',
-    'lead' => 'Simak penuturan langsung dari para profesional akuntan mengenai pengalaman mereka menempuh pendidikan keprofesian di PPAk FEB UNESA.',
+    'badge' => 'Prospek Profesi & Alumni',
+    'lead' => 'Informasi bidang profesi akuntan dan direktori testimoni pengalaman studi Program Studi Pendidikan Profesi Akuntan FEB UNESA.',
     'breadcrumbs' => [
         ['label' => 'Kemahasiswaan & Alumni', 'url' => route('kemahasiswaan-alumni.alumni')],
         ['label' => 'Testimoni & Karier', 'url' => '']
@@ -17,55 +17,62 @@
 
 <section class="section-py bg-white">
     <div class="container">
-        {{-- TESTIMONIALS GRID --}}
-        <div class="row g-4 mb-5">
-            @foreach($testimoni as $t)
-                <div class="col-lg-6">
-                    <div class="testi-card h-100">
-                        <blockquote class="testi-quote" style="font-size: 0.985rem; line-height: 1.75;">
-                            "{{ $t['quote'] }}"
-                        </blockquote>
-                        <div class="testi-author pt-3 border-top">
-                            <img src="{{ $t['avatar'] }}" alt="{{ $t['name'] }}" class="testi-avatar" loading="lazy">
-                            <div>
-                                <div class="testi-name">{{ $t['name'] }}</div>
-                                <div class="testi-role text-primary fw-semibold">{{ $t['role'] }} &bull; {{ $t['company'] }}</div>
-                                <div class="small text-muted">{{ $t['year'] }}</div>
-                            </div>
+        {{-- Status Notification: CMS-Ready Placeholder for Testimonials --}}
+        <div class="p-4 p-lg-5 rounded-4 border bg-subtle mb-5">
+            <div class="d-flex align-items-start gap-4">
+                <div class="feature-icon-wrapper flex-shrink-0" style="width: 52px; height: 52px; font-size: 1.4rem;">
+                    <i class="fa-solid fa-quote-left text-navy"></i>
+                </div>
+                <div>
+                    <span class="badge-ppak badge-ppak-gold mb-2">STATUS DIREKTORI TESTIMONI</span>
+                    <h2 class="h4 text-navy fw-bold mb-2">Testimoni Pengalaman Studi Mahasiswa & Alumni</h2>
+                    <p class="text-secondary small mb-3" style="line-height: 1.7;">
+                        Program Studi Pendidikan Profesi Akuntan FEB UNESA tercatat resmi berdiri pada <strong>23 Mei 2025</strong>. Direktori penuturan pengalaman studi dan testimoni lulusan dipersiapkan untuk dipublikasikan secara terstruktur bersama kelulusan mahasiswa program profesi.
+                    </p>
+                    <div class="p-3 bg-white rounded-3 border">
+                        <div class="small text-muted">
+                            <i class="fa-solid fa-circle-info text-primary me-1"></i> Data testimoni pada website ini hanya akan menampilkan testimoni yang secara resmi diverifikasi dan disetujui oleh alumni bersangkutan melalui modul CMS.
                         </div>
                     </div>
                 </div>
-            @endforeach
+            </div>
         </div>
 
-        {{-- SEBARAN SEKTOR KARIER --}}
-        <div class="p-4 p-lg-5 rounded-4 border bg-subtle">
+        {{-- PROSPEK DAN BIDANG KARIER PROFESIONAL AKUNTANSI (Faktual Umum) --}}
+        <div class="p-4 p-lg-5 rounded-4 border bg-white shadow-sm">
             <div class="text-center max-w-700 mx-auto mb-5">
-                <span class="badge-ppak badge-ppak-gold mb-2">PROSPEK MASA DEPAN</span>
-                <h2 class="mb-3">Peta Sebaran Profesi Lulusan</h2>
-                <div class="golden-line mx-auto mb-3"></div>
-                <p class="text-secondary">
-                    Ijazah profesi dan sebutan Akuntan (Ak.) membuka pintu jenjang karier strategis pada berbagai domain profesi di Indonesia maupun kawasan regional.
+                <span class="badge-ppak badge-ppak-navy mb-2">PROSPEK PROFESI</span>
+                <h3 class="h3 text-navy fw-bold mb-2">Bidang Profesi Akuntansi</h3>
+                <div class="golden-line center"></div>
+                <p class="small text-secondary mb-0">
+                    Informasi bidang profesi yang relevan bagi lulusan sarjana akuntansi yang menempuh pendidikan profesi akuntan:
                 </p>
             </div>
 
             <div class="row g-4">
                 @foreach($karierSectors as $sector)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="profesi-card">
-                            <div class="d-flex align-items-center justify-content-between mb-3">
-                                <div class="profesi-icon mb-0">
+                    <div class="col-lg-6">
+                        <div class="card-ppak-flat h-100 bg-subtle p-4 rounded-3 border">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="feature-icon-wrapper flex-shrink-0" style="width: 44px; height: 44px; font-size: 1.15rem;">
                                     <i class="fa-solid {{ $sector['icon'] }}"></i>
                                 </div>
-                                <span class="badge bg-light text-navy border fw-semibold px-2 py-1" style="font-size: 0.72rem;">Profesi Akuntan</span>
+                                <div>
+                                    <h4 class="fs-6 fw-bold text-navy mb-2">{{ $sector['title'] }}</h4>
+                                    <p class="small text-secondary mb-0" style="line-height: 1.6;">
+                                        {{ $sector['desc'] }}
+                                    </p>
+                                </div>
                             </div>
-                            <h3 class="fs-6 fw-bold text-navy mb-2" style="line-height: 1.35;">{{ $sector['title'] }}</h3>
-                            <p class="small text-secondary mb-0 flex-grow-1" style="line-height: 1.65;">
-                                Lingkup kerja mencakup <strong class="text-navy">{{ $sector['desc'] }}</strong> dengan standar kualifikasi keprofesian tinggi dan kode etik independen.
-                            </p>
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <div class="mt-4 pt-3 border-top text-center">
+                <small class="text-muted">
+                    <i class="fa-solid fa-circle-info text-primary me-1"></i> Data karier di atas merupakan deskripsi umum prospek bidang keprofesian akuntan berdasarkan standar kualifikasi profesi akuntansi Indonesia.
+                </small>
             </div>
         </div>
     </div>
