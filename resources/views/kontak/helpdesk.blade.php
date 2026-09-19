@@ -125,12 +125,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="miniFaqH{{ $idx }}">
                                     <button class="accordion-button {{ $idx === 0 ? '' : 'collapsed' }} py-2 px-3 small" type="button" data-bs-toggle="collapse" data-bs-target="#miniFaqC{{ $idx }}" aria-expanded="{{ $idx === 0 ? 'true' : 'false' }}">
-                                        {{ $f['q'] }}
+                                        {{ $f['tanya'] ?? $f['q'] ?? '' }}
                                     </button>
                                 </h2>
                                 <div id="miniFaqC{{ $idx }}" class="accordion-collapse collapse {{ $idx === 0 ? 'show' : '' }}" data-bs-parent="#helpdeskMiniFaq">
                                     <div class="accordion-body small py-2 px-3 text-secondary">
-                                        {{ $f['a'] }}
+                                        {{ $f['jawab'] ?? $f['a'] ?? '' }}
                                     </div>
                                 </div>
                             </div>
@@ -143,6 +143,95 @@
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        {{-- Official Social Media Channels Section --}}
+        <div class="row mt-5 pt-4 border-top">
+            <div class="col-12 text-center mb-4">
+                <span class="badge-ppak badge-ppak-gold mb-2">Koneksi & Media</span>
+                <h3 class="h4 text-navy fw-bold">Kanal Media Sosial & Informasi Resmi</h3>
+                <p class="text-secondary small mx-auto" style="max-width: 600px;">
+                    Ikuti perkembangan berita, agenda wisuda, pendaftaran profesi akuntansi, dan informasi akademik terbaru melalui kanal resmi UNESA dan FEB.
+                </p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <a href="{{ $info['socials']['instagram'] ?? 'https://www.instagram.com/official_unesa' }}" target="_blank" rel="noopener noreferrer" class="card-ppak-flat p-3 text-decoration-none d-flex align-items-center gap-3 h-100">
+                    <div class="feature-icon-wrapper flex-shrink-0" style="width: 44px; height: 44px; font-size: 1.15rem; background: rgba(225, 48, 108, 0.1); color: #E1306C;">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold text-navy small mb-0">Instagram UNESA</div>
+                        <div class="text-secondary" style="font-size: 0.78rem;">@official_unesa</div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square ms-auto text-muted small"></i>
+                </a>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <a href="{{ $info['socials']['instagram_feb'] ?? 'https://www.instagram.com/feb.unesa' }}" target="_blank" rel="noopener noreferrer" class="card-ppak-flat p-3 text-decoration-none d-flex align-items-center gap-3 h-100">
+                    <div class="feature-icon-wrapper flex-shrink-0" style="width: 44px; height: 44px; font-size: 1.15rem; background: rgba(13, 110, 253, 0.1); color: #0d6efd;">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold text-navy small mb-0">Instagram FEB UNESA</div>
+                        <div class="text-secondary" style="font-size: 0.78rem;">@feb.unesa</div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square ms-auto text-muted small"></i>
+                </a>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <a href="{{ $info['socials']['youtube'] ?? 'https://www.youtube.com/@officialunesa' }}" target="_blank" rel="noopener noreferrer" class="card-ppak-flat p-3 text-decoration-none d-flex align-items-center gap-3 h-100">
+                    <div class="feature-icon-wrapper flex-shrink-0" style="width: 44px; height: 44px; font-size: 1.15rem; background: rgba(255, 0, 0, 0.1); color: #FF0000;">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold text-navy small mb-0">YouTube Official</div>
+                        <div class="text-secondary" style="font-size: 0.78rem;">@officialunesa</div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square ms-auto text-muted small"></i>
+                </a>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <a href="{{ $info['socials']['tiktok'] ?? 'https://www.tiktok.com/@unesaid' }}" target="_blank" rel="noopener noreferrer" class="card-ppak-flat p-3 text-decoration-none d-flex align-items-center gap-3 h-100">
+                    <div class="feature-icon-wrapper flex-shrink-0" style="width: 44px; height: 44px; font-size: 1.15rem; background: rgba(0, 0, 0, 0.08); color: #000000;">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold text-navy small mb-0">TikTok UNESA</div>
+                        <div class="text-secondary" style="font-size: 0.78rem;">@unesaid</div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square ms-auto text-muted small"></i>
+                </a>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <a href="{{ $info['socials']['facebook'] ?? 'https://www.facebook.com/officialunesa' }}" target="_blank" rel="noopener noreferrer" class="card-ppak-flat p-3 text-decoration-none d-flex align-items-center gap-3 h-100">
+                    <div class="feature-icon-wrapper flex-shrink-0" style="width: 44px; height: 44px; font-size: 1.15rem; background: rgba(24, 119, 242, 0.1); color: #1877F2;">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold text-navy small mb-0">Facebook UNESA</div>
+                        <div class="text-secondary" style="font-size: 0.78rem;">officialunesa</div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square ms-auto text-muted small"></i>
+                </a>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <a href="{{ $info['socials']['linkedin'] ?? 'https://www.linkedin.com/school/universitas-negeri-surabaya' }}" target="_blank" rel="noopener noreferrer" class="card-ppak-flat p-3 text-decoration-none d-flex align-items-center gap-3 h-100">
+                    <div class="feature-icon-wrapper flex-shrink-0" style="width: 44px; height: 44px; font-size: 1.15rem; background: rgba(10, 102, 194, 0.1); color: #0A66C2;">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold text-navy small mb-0">LinkedIn UNESA</div>
+                        <div class="text-secondary" style="font-size: 0.78rem;">Universitas Negeri Surabaya</div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square ms-auto text-muted small"></i>
+                </a>
             </div>
         </div>
     </div>
