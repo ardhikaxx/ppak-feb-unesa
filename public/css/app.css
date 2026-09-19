@@ -2561,3 +2561,79 @@ a:hover {
     font-size: 0.615rem;
   }
 }
+
+/* --------------------------------------------------------------------------
+   25. PPAk Custom Theme Pagination (Numbers Only)
+   -------------------------------------------------------------------------- */
+.ppak-pagination,
+.pagination {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 6px 12px;
+  margin: 0 auto;
+  list-style: none;
+  background: #ffffff;
+  border: 1px solid rgba(10, 35, 66, 0.08);
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(10, 35, 66, 0.04);
+}
+
+.ppak-page-item,
+.page-item {
+  display: inline-block;
+  margin: 0;
+}
+
+.ppak-page-link,
+.page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ppak-navy);
+  text-decoration: none;
+  background-color: #f8fafc;
+  border: 1px solid rgba(10, 35, 66, 0.08);
+  border-radius: 9999px !important;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ppak-page-link:hover,
+.page-link:hover {
+  background-color: var(--ppak-blue-soft, #eef4fa);
+  color: var(--ppak-blue);
+  border-color: var(--ppak-blue-border, #d2e4f3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(18, 63, 115, 0.12);
+}
+
+.ppak-page-item.active .ppak-page-link,
+.page-item.active .page-link {
+  background: linear-gradient(135deg, var(--ppak-navy) 0%, var(--ppak-blue) 100%) !important;
+  color: #ffffff !important;
+  border-color: var(--ppak-navy) !important;
+  box-shadow: 0 4px 12px rgba(10, 35, 66, 0.28);
+  font-weight: 700;
+  cursor: default;
+  transform: scale(1.05);
+}
+
+.ppak-page-item.disabled .ppak-page-link,
+.page-item.disabled .page-link,
+.ppak-page-dots {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: #94a3b8 !important;
+  cursor: default;
+  pointer-events: none;
+  min-width: 28px;
+}
+
