@@ -1,115 +1,133 @@
 @extends('layouts.app')
 
-@section('title', 'Komunitas & Aktivitas Mahasiswa | PPAk FEB UNESA')
-@section('meta_description', 'Aktivitas akademik, forum kajian keprofesian, workshop kompetensi, dan jejaring komunitas mahasiswa Pendidikan Profesi Akuntansi FEB UNESA.')
+@section('title', 'Aktivitas Akademik & Pembelajaran | Pendidikan Profesi Akuntan FEB UNESA')
+@section('meta_description', 'Aktivitas akademik, perkuliahan terstruktur, magang praktik kerja industri, dan kegiatan pembelajaran mahasiswa Pendidikan Profesi Akuntan FEB UNESA.')
 
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Komunitas & Aktivitas Mahasiswa',
-    'badge' => 'Dinamika Akademik & Kemahasiswaan',
-    'lead' => 'Keluarga besar mahasiswa PPAk FEB UNESA aktif dalam pengayaan wawasan profesional, riset studi kasus, dan pembinaan soft skill kepemimpinan.',
+    'title' => 'Aktivitas Akademik & Pembelajaran',
+    'badge' => 'Dinamika Pembelajaran Profesi',
+    'lead' => 'Rangkaian kegiatan perkuliahan terstruktur, praktika kertas kerja, magang industri, dan diskusi keprofesian mahasiswa Pendidikan Profesi Akuntan.',
     'breadcrumbs' => [
         ['label' => 'Kemahasiswaan & Alumni', 'url' => route('kemahasiswaan-alumni.alumni')],
-        ['label' => 'Komunitas Mahasiswa', 'url' => '']
+        ['label' => 'Aktivitas Pembelajaran', 'url' => '']
     ]
 ])
 
 <section class="section-py bg-white">
     <div class="container">
-        {{-- Aktivitas Kemahasiswaan Grid --}}
+        {{-- Section Intro --}}
+        <div class="text-center max-w-700 mx-auto mb-5">
+            <span class="badge-ppak badge-ppak-gold mb-2">DINAMIKA AKADEMIK</span>
+            <h2>Aktivitas Pembelajaran Pendidikan Profesi</h2>
+            <div class="golden-line center"></div>
+            <p class="text-secondary">
+                Aktivitas perkuliahan dirancang komprehensif mengintegrasikan penguasaan teori lanjutan dan aplikasi praktik nyata di bidang akuntansi profesional.
+            </p>
+        </div>
+
+        {{-- Aktivitas Pembelajaran Grid --}}
         <div class="row g-4 mb-5">
             <div class="col-lg-4 col-md-6">
-                <div class="card-ppak-flat h-100">
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
                     <div class="feature-icon-wrapper mb-3">
-                        <i class="fa-solid fa-users-rectangle"></i>
+                        <i class="fa-solid fa-chalkboard-user"></i>
                     </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-2">IFRS & PSAK Discussion Forum</h3>
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Perkuliahan Tatap Muka Terstruktur</h3>
                     <p class="small text-secondary mb-0">
-                        Kelompok diskusi mingguan yang mengupas implementasi standar pelaporan keuangan terkini, studi kasus transaksi antarperusahaan berelasi, serta instrumen lindung nilai (hedging).
+                        Pendalaman materi mata kuliah inti seperti Pelaporan Korporat, Audit dan Asurans, serta Manajemen Pajak dengan pendekatan studi kasus nyata.
                     </p>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card-ppak-flat h-100">
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
+                    <div class="feature-icon-wrapper mb-3">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Magang Praktik Profesi (Internship)</h3>
+                    <p class="small text-secondary mb-0">
+                        Pelaksanaan penugasan magang industri (4 SKS) pada kantor akuntan publik, divisi keuangan korporasi, atau konsultan perpajakan dengan bimbingan mentor.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
                     <div class="feature-icon-wrapper mb-3">
                         <i class="fa-solid fa-laptop-code"></i>
                     </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-2">Audit Analytics Working Group</h3>
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Praktika Laboratorium Akuntansi</h3>
                     <p class="small text-secondary mb-0">
-                        Komunitas praktika penggunaan software pengujian data audit berbasis CAATs, simulasi kertas kerja audit elektronik, serta visualisasi data keuangan menggunakan Power BI.
+                        Simulasi pengolahan data transaksi keuangan, kertas kerja audit elektronik, serta analisis sistem informasi pengendalian internal berbasis komputer.
                     </p>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card-ppak-flat h-100">
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
                     <div class="feature-icon-wrapper mb-3">
-                        <i class="fa-solid fa-receipt"></i>
+                        <i class="fa-solid fa-comments"></i>
                     </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-2">Tax Law Study Club</h3>
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Diskusi Standar & Regulasi Terkini</h3>
                     <p class="small text-secondary mb-0">
-                        Kelompok telaah regulasi perpajakan yang aktif mengkaji putusan pengadilan pajak, strategi mitigasi dispute transfer pricing, dan simulasi pengoperasian sistem Coretax.
+                        Forum telaah implementasi Standar Akuntansi Keuangan (SAK), regulasi administrasi perpajakan, dan tata kelola risiko korporasi (GRC).
                     </p>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card-ppak-flat h-100">
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
                     <div class="feature-icon-wrapper mb-3">
-                        <i class="fa-solid fa-trophy"></i>
+                        <i class="fa-solid fa-scale-balanced"></i>
                     </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-2">Kompetisi Kasus Bisnis & Audit</h3>
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Pembinaan Etika & Skeptisisme</h3>
                     <p class="small text-secondary mb-0">
-                        Delegasi mahasiswa PPAk rutin berpartisipasi dalam kompetisi studi kasus audit tingkat nasional dan konferensi ilmiah akuntansi yang diselenggarakan oleh universitas mitra.
+                        Penanaman integritas dan independensi akuntan dalam menghadapi dilema etika pelaporan keuangan dan penugasan perikatan asurans.
                     </p>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card-ppak-flat h-100">
+                <div class="card-ppak-flat h-100 bg-white shadow-sm">
                     <div class="feature-icon-wrapper mb-3">
-                        <i class="fa-solid fa-hand-holding-heart"></i>
+                        <i class="fa-solid fa-calendar-check"></i>
                     </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-2">Bakti Sosial & Literasi Keuangan</h3>
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Evaluasi Formatif & Sumatif</h3>
                     <p class="small text-secondary mb-0">
-                        Program sosial edukasi pembukuan sederhana dan pengelolaan keuangan keluarga bagi masyarakat prasejahtera serta pelaku usaha mikro di wilayah sekitar kampus.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="card-ppak-flat h-100">
-                    <div class="feature-icon-wrapper mb-3">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-2">CA Exam Preparation Buddy</h3>
-                    <p class="small text-secondary mb-0">
-                        Sistem belajar kelompok terstruktur untuk saling mereview modul ujian sertifikasi Chartered Accountant Indonesia dengan bimbingan tutor dosen pendamping.
+                        Pengukuran capaian kompetensi secara berkala melalui ujian formatif (UTS) dan sumatif (UAS) sesuai Kalender Akademik UNESA 2026/2027.
                     </p>
                 </div>
             </div>
         </div>
 
-        {{-- Suasana Kampus & Fasilitas --}}
+        {{-- Fasilitas Pembelajaran FEB UNESA --}}
         <div class="p-4 p-lg-5 rounded-4 border bg-subtle">
             <div class="row align-items-center g-4">
-                <div class="col-lg-6">
-                    <span class="badge-ppak badge-ppak-gold mb-2">Fasilitas Penunjang</span>
-                    <h3 class="h4 text-navy mb-3">Lingkungan Akademik yang Nyaman & Modern</h3>
+                <div class="col-lg-7">
+                    <span class="badge-ppak badge-ppak-gold mb-2">Sarana Perkuliahan</span>
+                    <h3 class="h4 text-navy mb-3">Fasilitas Pembelajaran Kampus Ketintang</h3>
                     <p class="text-secondary small mb-3">
-                        Perkuliahan didukung ruang kelas eksekutif ber-AC, proyektor interaktif, laboratorium komputasi audit terlisensi, perpustakaan dengan akses jurnal internasional terindeks Scopus, serta koneksi internet berkecepatan tinggi di Gedung G6 FEB UNESA Kampus Ketintang.
+                        Aktivitas perkuliahan dipusatkan di Gedung G6 Fakultas Ekonomika dan Bisnis UNESA Kampus Ketintang Surabaya, didukung ruang kelas representatif, perpustakaan fakultas, dan Laboratorium Akuntansi Komputer Terpadu.
                     </p>
-                    <div class="d-flex gap-3">
+                    <div class="d-flex gap-2">
+                        <a href="{{ route('akademik.kurikulum') }}" class="btn-ppak-primary btn-ppak-sm">
+                            <span>Lihat Kurikulum</span>
+                            <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </a>
                         <a href="{{ route('informasi.galeri') }}" class="btn-ppak-secondary btn-ppak-sm">
                             <i class="fa-solid fa-images me-1"></i>
-                            <span>Lihat Galeri Fasilitas & Kegiatan</span>
+                            <span>Galeri Dokumentasi</span>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <img src="{{ asset('images/accounting_lecture.jpg') }}" alt="Ruang Perkuliahan dan Diskusi Mahasiswa FEB UNESA" class="img-fluid rounded-3 border shadow-sm">
+                <div class="col-lg-5">
+                    <div class="p-3 bg-white rounded-3 border shadow-sm text-center">
+                        <i class="fa-solid fa-building-columns text-navy display-4 mb-2"></i>
+                        <div class="fw-bold text-navy small">Gedung G6 FEB UNESA</div>
+                        <div class="text-muted small">Kampus Ketintang, Surabaya</div>
+                    </div>
                 </div>
             </div>
         </div>
