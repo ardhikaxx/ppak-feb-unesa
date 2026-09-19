@@ -33,8 +33,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Use Bootstrap 5 pagination styling
-        Paginator::useBootstrapFive();
+        // Use custom numbers-only pagination styling
+        Paginator::defaultView('vendor.pagination.numbers');
 
         // Rate limiters - prevent abuse on public endpoints
         RateLimiter::for('search', fn(Request $request) => Limit::perMinute(30)->by($request->ip()));
