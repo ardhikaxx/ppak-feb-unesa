@@ -46,9 +46,13 @@ class ArrayContentRepository implements ContentRepositoryInterface
 
     public function getBeritaPaginated(int $perPage = 6, ?string $search = null, ?string $category = null): LengthAwarePaginator
     {
-        $cacheKey = CacheKeys::paginated(CacheKeys::BERITA_PAGINATED, request()->get('page', 1), $perPage, (string) $search . (string) $category);
+        // Never cache LengthAwarePaginator objects directly when
+        // config/cache.php 'serializable_classes' is false (Laravel 13 default).
+        // Unserializing then returns __PHP_Incomplete_Class and breaks the
+        // return type. Cache only the filtered array and paginate per-request.
+        $filteredKey = CacheKeys::paginated(CacheKeys::BERITA_PAGINATED . ':filtered', 1, 1, (string) $search . (string) $category);
 
-        return Cache::remember($cacheKey, 600, function () use ($perPage, $search, $category) {
+        $filtered = Cache::remember($filteredKey, 600, function () use ($search, $category) {
             $items = PpakData::getBerita();
 
             // Server-side filtering (DB-ready: where like)
@@ -65,8 +69,10 @@ class ArrayContentRepository implements ContentRepositoryInterface
                 $items = array_filter($items, fn($item) => $item['category'] === $category);
             }
 
-            return ArrayPaginator::paginate(array_values($items), $perPage);
+            return array_values($items);
         });
+
+        return ArrayPaginator::paginate($filtered, $perPage);
     }
 
     public function findBeritaBySlug(string $slug): ?array
