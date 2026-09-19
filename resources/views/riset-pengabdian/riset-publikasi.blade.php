@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Riset & Publikasi Ilmiah | PPAk FEB UNESA')
-@section('meta_description', 'Publikasi karya ilmiah, riset terapan auditing, akuntansi keuangan, dan perpajakan oleh dosen dan mahasiswa PPAk FEB UNESA.')
+@section('title', 'Riset & Publikasi Dosen | Pendidikan Profesi Akuntan FEB UNESA')
+@section('meta_description', 'Publikasi ilmiah dan karya pengabdian dosen pengajar Program Studi Pendidikan Profesi Akuntan FEB UNESA terindeks pangkalan data resmi.')
 
 @section('content')
 
 @include('partials.page-header', [
     'title' => 'Riset & Publikasi Ilmiah',
-    'badge' => 'Tridharma & Pengembangan Keilmuan',
-    'lead' => 'Karya penelitian terapan dan telaah empiris mutakhir yang dihasilkan sivitas akademika PPAk FEB UNESA pada jurnal nasional bereputasi dan internasional.',
+    'badge' => 'Karya Dosen Pengajar',
+    'lead' => 'Daftar publikasi artikel ilmiah dan kegiatan ilmiah dosen pengajar Program Studi Pendidikan Profesi Akuntan FEB UNESA yang tercatat pada database resmi.',
     'breadcrumbs' => [
         ['label' => 'Riset & Pengabdian', 'url' => route('riset-pengabdian.riset-publikasi')],
         ['label' => 'Riset & Publikasi', 'url' => '']
@@ -17,73 +17,59 @@
 
 <section class="section-py bg-white">
     <div class="container">
-        {{-- Research Clusters --}}
-        <div class="row g-4 mb-5">
-            <div class="col-md-3 col-6">
-                <div class="p-3 rounded-3 border bg-subtle text-center h-100">
-                    <i class="fa-solid fa-microchip text-primary fs-3 mb-2"></i>
-                    <h3 class="fs-6 fw-bold text-navy mb-1">Audit & AI Analytics</h3>
-                    <div class="text-muted" style="font-size: 0.75rem;">Continuous audit & deteksi anomali digital</div>
-                </div>
+        {{-- Source Attribution Notice --}}
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center p-3 rounded-3 border bg-subtle mb-5 gap-2">
+            <div class="small text-secondary">
+                <i class="fa-solid fa-circle-check text-success me-1"></i> Data publikasi ilmiah dihimpun dari pangkalan data <strong>SINTA Kemendikbudristek</strong> dan repositori publikasi dosen Universitas Negeri Surabaya.
             </div>
-            <div class="col-md-3 col-6">
-                <div class="p-3 rounded-3 border bg-subtle text-center h-100">
-                    <i class="fa-solid fa-leaf text-success fs-3 mb-2"></i>
-                    <h3 class="fs-6 fw-bold text-navy mb-1">ESG & Sustainability</h3>
-                    <div class="text-muted" style="font-size: 0.75rem;">Pelaporan keberlanjutan & tata kelola</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="p-3 rounded-3 border bg-subtle text-center h-100">
-                    <i class="fa-solid fa-receipt text-warning fs-3 mb-2"></i>
-                    <h3 class="fs-6 fw-bold text-navy mb-1">Perpajakan Digital</h3>
-                    <div class="text-muted" style="font-size: 0.75rem;">Kepatuhan CTAS & transfer pricing</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="p-3 rounded-3 border bg-subtle text-center h-100">
-                    <i class="fa-solid fa-landmark text-primary fs-3 mb-2"></i>
-                    <h3 class="fs-6 fw-bold text-navy mb-1">Akuntabilitas Publik</h3>
-                    <div class="text-muted" style="font-size: 0.75rem;">Audit SPKN, BPK & mitigasi fraud</div>
-                </div>
-            </div>
+            <a href="https://sinta.kemdikbud.go.id" target="_blank" rel="noopener noreferrer" class="small text-navy fw-semibold text-decoration-none">
+                <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Buka Portal SINTA
+            </a>
         </div>
 
-        {{-- DAFTAR PUBLIKASI RISET --}}
+        {{-- DAFTAR PUBLIKASI DOSEN --}}
         <div class="mb-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
-                    <span class="badge-ppak badge-ppak-blue mb-1">Arsip Penelitian</span>
-                    <h2 class="h4 text-navy mb-0">Publikasi Karya Ilmiah Terpilih</h2>
+                    <span class="badge-ppak badge-ppak-gold mb-1">Publikasi Terverifikasi</span>
+                    <h2 class="h4 text-navy mb-0">Publikasi Dosen Pengajar (Periode 2026)</h2>
                 </div>
-                <span class="small text-muted">{{ count($riset) }} Dokumen Terindeks</span>
+                <span class="badge-ppak badge-ppak-navy">{{ count($riset) }} Publikasi</span>
             </div>
 
             <div class="row g-4">
                 @foreach($riset as $item)
-                    <div class="col-lg-6">
-                        <div class="card-ppak-flat h-100 d-flex flex-column justify-content-between">
-                            <div>
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge-ppak badge-ppak-navy" style="font-size: 0.675rem;">{{ $item['bidang'] }}</span>
-                                    <span class="badge-ppak badge-ppak-gold" style="font-size: 0.675rem;">Tahun {{ $item['tahun'] }}</span>
+                    <div class="col-lg-12">
+                        <div class="p-4 rounded-4 border bg-white shadow-sm">
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-3">
+                                <div>
+                                    <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                        <span class="badge-ppak badge-ppak-navy">{{ $item['kategori'] ?? 'Publikasi Dosen PPAk/FEB' }}</span>
+                                        <span class="badge-ppak badge-ppak-gold">Tahun {{ $item['tahun'] ?? '2026' }}</span>
+                                        <span class="small text-muted"><i class="fa-regular fa-calendar me-1"></i> {{ $item['tanggal'] ?? '12 Februari 2026' }}</span>
+                                    </div>
+                                    <h3 class="h5 text-navy fw-bold mb-2">{{ $item['judul'] ?? $item['title'] }}</h3>
+                                    <div class="small text-secondary mb-2">
+                                        <i class="fa-solid fa-user-pen me-1 text-primary"></i> Penulis: <strong>{{ $item['penulis'] ?? $item['peneliti'] }}</strong>
+                                    </div>
+                                    <div class="small text-muted mb-3">
+                                        <i class="fa-solid fa-book-bookmark me-1 text-gold"></i> Media / Jurnal: {{ $item['jurnal'] }} &bull; <span class="text-success">{{ $item['sitasi'] ?? 'Terindeks SINTA' }}</span>
+                                    </div>
+                                    <p class="small text-secondary mb-0" style="line-height: 1.65;">
+                                        {{ $item['deskripsi'] ?? $item['abstrak'] }}
+                                    </p>
                                 </div>
-                                <h3 class="fs-6 fw-bold text-navy mb-2" style="line-height: 1.4;">{{ $item['title'] }}</h3>
-                                <div class="small text-primary fw-semibold mb-2">
-                                    <i class="fa-solid fa-user-pen me-1"></i> {{ $item['peneliti'] }}
+                                <div class="flex-shrink-0 text-md-end">
+                                    <a href="{{ $item['sinta_url'] ?? 'https://sinta.kemdikbud.go.id' }}" target="_blank" rel="noopener noreferrer" class="btn-ppak-primary btn-ppak-sm text-nowrap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square me-1"></i>
+                                        <span>Profil Peneliti SINTA</span>
+                                    </a>
                                 </div>
-                                <div class="small text-muted mb-3">
-                                    <i class="fa-solid fa-book-bookmark me-1"></i> {{ $item['jurnal'] }}
-                                </div>
-                                <p class="small text-secondary mb-3" style="line-height: 1.6;">
-                                    {{ $item['abstrak'] }}
-                                </p>
                             </div>
-                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
-                                <span class="small text-muted" style="font-size: 0.75rem;">DOI: 10.1234/ppak-feb.{{ $item['tahun'] }}.{{ $item['id'] }}</span>
-                                <a href="https://ejournal.unesa.ac.id" target="_blank" rel="noopener noreferrer" class="small text-primary fw-bold text-decoration-none">
-                                    Baca Jurnal <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
-                                </a>
+                            <div class="mt-3 pt-2 border-top">
+                                <small class="text-muted">
+                                    <i class="fa-solid fa-database me-1"></i> Sumber: {{ $item['source'] ?? 'SINTA & Database Dosen UNESA' }}
+                                </small>
                             </div>
                         </div>
                     </div>
