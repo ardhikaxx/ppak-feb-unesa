@@ -22,7 +22,7 @@
                         <tr>
                             <td class="fw-semibold">{{ $item->program_name }}</td>
                             <td><span class="badge text-bg-success">{{ $item->agency }} — {{ $item->status }}</span></td>
-                            <td class="small">{{ $item->decree_number }}<br><span class="text-muted">{{ $item->effective_from?->format('d M Y') }} s.d. {{ $item->effective_until?->format('d M Y') }}</span></td>
+                            <td class="small">{{ $item->decree_number }}<br><span class="text-muted">{{ \App\Support\Tanggal::indo($item->effective_from) }} s.d. {{ \App\Support\Tanggal::indo($item->effective_until) }}</span></td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('admin.accreditations.edit', $item) }}" class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></a>
