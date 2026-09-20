@@ -909,6 +909,27 @@ class EloquentContentRepository implements ContentRepositoryInterface
         return $paginator;
     }
 
+    /**
+     * Konten section halaman statis dari tabel page_contents.
+     * Baris yang dihapus admin otomatis kembali ke teks bawaan Blade (fallback).
+     */
+    public function getPageContent(string $page): array
+    {
+        return Cache::remember(CacheKeys::PAGE_CONTENT . $page, $this->ttlStatic, function () use ($page) {
+            return \App\Models\PageContent::ofPage($page)
+                ->published()
+                ->ordered()
+                ->get()
+                ->mapWithKeys(fn ($r) => [$r->section_key => [
+                    'heading' => $r->heading,
+                    'subtitle' => $r->subtitle,
+                    'body' => $r->body,
+                    'link_url' => $r->link_url,
+                ]])
+                ->all();
+        });
+    }
+
     public function search(string $keyword, int $perPage = 6): array
     {
         if (mb_strlen(trim($keyword)) < 2) {
