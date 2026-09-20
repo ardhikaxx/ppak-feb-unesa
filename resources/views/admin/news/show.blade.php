@@ -24,7 +24,7 @@
             <span class="badge {{ $news->status === 'published' ? 'text-bg-success' : 'text-bg-secondary' }}">{{ $news->status }}</span>
             <span class="badge text-bg-light border">{{ $news->category?->name ?? 'Tanpa kategori' }}</span>
             <h2 class="h5 fw-bold mt-2">{{ $news->title }}</h2>
-            <p class="text-muted small">Slug: /{{ $news->slug }} &bull; Terbit: {{ $news->published_at?->format('d M Y H:i') ?? '—' }} &bull; Dilihat: {{ $news->view_count }}</p>
+            <p class="text-muted small">Slug: /{{ $news->slug }} &bull; Terbit: {{ \App\Support\Tanggal::datetime($news->published_at) ?? '—' }} &bull; Dilihat: {{ $news->view_count }}</p>
             @if($news->image)
                 <img src="{{ $news->image }}" alt="" class="img-fluid rounded mb-3" style="max-height:320px;">
             @endif
