@@ -65,7 +65,7 @@
                                 <div class="fw-semibold">{{ $item->title }}</div>
                                 <div class="small text-muted">/{{ $item->slug }}</div>
                             </td>
-                            <td class="small">{{ $item->event_date?->format('d M Y') }}@if($item->event_end_date)<br><span class="text-muted">s.d. {{ $item->event_end_date->format('d M Y') }}</span>@endif</td>
+                            <td class="small">{{ \App\Support\Tanggal::indo($item->event_date) }}@if($item->event_end_date)<br><span class="text-muted">s.d. {{ \App\Support\Tanggal::indo($item->event_end_date) }}</span>@endif</td>
                             <td class="small">{{ $item->venue ?? '—' }}</td>
                             <td>
                                 <span class="badge {{ $item->is_upcoming ? 'text-bg-success' : 'text-bg-secondary' }}">{{ $item->is_upcoming ? 'Mendatang' : 'Selesai' }}</span>
