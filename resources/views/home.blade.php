@@ -130,9 +130,9 @@
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
                 <span class="badge-ppak badge-ppak-gold mb-2">Struktur Kurikulum SINDIG</span>
-                <h2>Kurikulum Profesional (Semester 1)</h2>
+                <h2>{{ $pg['sec_kurikulum_heading']['heading'] ?? 'Kurikulum Profesional (Semester 1)' }}</h2>
                 <div class="golden-line"></div>
-                <p class="text-secondary mb-0">Enam mata kuliah inti semester pertama yang membentuk pondasi keahlian teknis dan etika akuntan profesional.</p>
+                <p class="text-secondary mb-0">{{ $pg['sec_kurikulum_lead']['body'] ?? 'Enam mata kuliah inti semester pertama yang membentuk pondasi keahlian teknis dan etika akuntan profesional.' }}</p>
             </div>
             <div>
                 <a href="{{ route('akademik.kurikulum') }}" class="btn-ppak-primary">
@@ -179,10 +179,10 @@
         <div class="row align-items-end justify-content-between mb-5">
             <div class="col-lg-7">
                 <span class="badge-ppak badge-ppak-navy mb-2">Standar Kompetensi Lulusan</span>
-                <h2>Capaian Pembelajaran Lulusan (CPL)</h2>
+                <h2>{{ $pg['sec_cpl_heading']['heading'] ?? 'Capaian Pembelajaran Lulusan (CPL)' }}</h2>
                 <div class="golden-line"></div>
                 <p class="text-secondary mb-0">
-                    Empat Capaian Pembelajaran Lulusan resmi yang ditetapkan pada sistem kurikulum SINDIG Pendidikan Profesi Akuntan FEB UNESA.
+                    {{ $pg['sec_cpl_lead']['body'] ?? 'Empat Capaian Pembelajaran Lulusan resmi yang ditetapkan pada sistem kurikulum SINDIG Pendidikan Profesi Akuntan FEB UNESA.' }}
                 </p>
             </div>
             <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
@@ -269,10 +269,10 @@
         <div class="row g-5 align-items-center">
             <div class="col-lg-5">
                 <span class="badge-ppak badge-ppak-gold mb-2">ADMISI MAHASISWA BARU</span>
-                <h2 class="text-white mb-3">Informasi Pendaftaran & Biaya Pendidikan</h2>
+                <h2 class="text-white mb-3">{{ $pg['sec_admisi_heading']['heading'] ?? 'Informasi Pendaftaran & Biaya Pendidikan' }}</h2>
                 <div class="golden-line"></div>
                 <p class="text-secondary mb-4">
-                    Penerimaan mahasiswa baru Program Profesi diselenggarakan secara terpusat melalui portal Penerimaan Mahasiswa Baru Universitas Negeri Surabaya (PMB UNESA).
+                    {{ $pg['sec_admisi_lead']['body'] ?? 'Penerimaan mahasiswa baru Program Profesi diselenggarakan secara terpusat melalui portal Penerimaan Mahasiswa Baru Universitas Negeri Surabaya (PMB UNESA).' }}
                 </p>
 
                 <div class="p-4 rounded-3 border border-white border-opacity-15 mb-4" style="background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(8px);">
@@ -341,9 +341,9 @@
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
                 <span class="badge-ppak badge-ppak-gold mb-2">Aktivitas Ilmiah & Dosen</span>
-                <h2>Riset & Publikasi Dosen Pengajar</h2>
+                <h2>{{ $pg['sec_riset_heading']['heading'] ?? 'Riset & Publikasi Dosen Pengajar' }}</h2>
                 <div class="golden-line"></div>
-                <p class="text-secondary mb-0">Publikasi karya ilmiah dan kegiatan pengabdian dosen pengajar yang tercatat pada pangkalan data resmi.</p>
+                <p class="text-secondary mb-0">{{ $pg['sec_riset_lead']['body'] ?? 'Publikasi karya ilmiah dan kegiatan pengabdian dosen pengajar yang tercatat pada pangkalan data resmi.' }}</p>
             </div>
             <div>
                 <a href="{{ route('riset-pengabdian.riset-publikasi') }}" class="btn-ppak-secondary">
@@ -395,9 +395,9 @@
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
                 <span class="badge-ppak badge-ppak-gold mb-2">Tenaga Pengajar</span>
-                <h2>Dosen & Pengajar Mata Kuliah PPAk</h2>
+                <h2>{{ $pg['sec_dosen_heading']['heading'] ?? 'Dosen & Pengajar Mata Kuliah PPAk' }}</h2>
                 <div class="golden-line"></div>
-                <p class="text-secondary mb-0">Tenaga pengajar yang mengampu mata kuliah pada Program Studi Pendidikan Profesi Akuntan FEB UNESA.</p>
+                <p class="text-secondary mb-0">{{ $pg['sec_dosen_lead']['body'] ?? 'Tenaga pengajar yang mengampu mata kuliah pada Program Studi Pendidikan Profesi Akuntan FEB UNESA.' }}</p>
             </div>
             <div>
                 <a href="{{ route('profil.dosen-pengajar') }}" class="btn-ppak-secondary">
@@ -445,7 +445,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div>
                         <span class="badge-ppak badge-ppak-gold mb-1">Publikasi</span>
-                        <h3 class="h4 text-navy mb-0">Berita & Informasi</h3>
+                        <h3 class="h4 text-navy mb-0">{{ $pg['sec_berita_heading']['heading'] ?? 'Berita & Informasi' }}</h3>
                     </div>
                     <a href="{{ route('informasi.berita') }}" class="small fw-bold text-navy text-decoration-none">
                         Semua <i class="fa-solid fa-arrow-right text-gold"></i>
@@ -478,7 +478,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div>
                         <span class="badge-ppak badge-ppak-gold mb-1">Akademik 2026/2027</span>
-                        <h3 class="h4 text-navy mb-0">Agenda Pembelajaran</h3>
+                        <h3 class="h4 text-navy mb-0">{{ $pg['sec_agenda_heading']['heading'] ?? 'Agenda Pembelajaran' }}</h3>
                     </div>
                     <a href="{{ route('akademik.kalender') }}" class="small fw-bold text-navy text-decoration-none">
                         Kalender <i class="fa-solid fa-arrow-right text-gold"></i>
@@ -510,10 +510,10 @@
     <div class="container-xl">
         <div class="text-center max-w-700 mx-auto mb-5">
             <span class="badge-ppak badge-ppak-gold mb-2">PROSPEK PROFESI</span>
-            <h2>Bidang Karier & Jalur Profesi Akuntan</h2>
+            <h2>{{ $pg['sec_karier_heading']['heading'] ?? 'Bidang Karier & Jalur Profesi Akuntan' }}</h2>
             <div class="golden-line center"></div>
             <p class="text-secondary">
-                Informasi bidang profesi yang relevan bagi lulusan sarjana akuntansi yang menempuh pendidikan profesi akuntan.
+                {{ $pg['sec_karier_lead']['body'] ?? 'Informasi bidang profesi yang relevan bagi lulusan sarjana akuntansi yang menempuh pendidikan profesi akuntan.' }}
             </p>
         </div>
 
@@ -534,3 +534,4 @@
 </section>
 
 @endsection
+
