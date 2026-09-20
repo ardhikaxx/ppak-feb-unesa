@@ -44,7 +44,7 @@
                             <td><img src="{{ $item->image }}" alt="" class="rounded" style="width:64px;height:48px;object-fit:cover;"></td>
                             <td>
                                 <div class="fw-semibold">{{ $item->title }}</div>
-                                <div class="small text-muted">/{{ $item->slug }} &bull; {{ $item->event_date?->format('d M Y') ?? '—' }}</div>
+                                <div class="small text-muted">/{{ $item->slug }} &bull; {{ \App\Support\Tanggal::indo($item->event_date) ?? '—' }}</div>
                             </td>
                             <td class="small">{{ $item->category?->name ?? '—' }}</td>
                             <td>
