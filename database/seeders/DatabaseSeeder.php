@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $this->call(PpakDatabaseSeeder::class);
+        $this->call(AdminSeeder::class);
+        $this->call(SiteSettingSeeder::class);
     }
 }
