@@ -142,9 +142,13 @@ class NewsController extends BaseAdminController
         return redirect()->route('admin.news.index')->with('success', 'Berita diarsipkan (soft delete) dan tidak tampil di publik.');
     }
 
-    public function restore(int $news): RedirectResponse
+    public function restore(string|int $news): RedirectResponse
     {
-        $article = News::withTrashed()->findOrFail($news);
+        $article = News::withTrashed()
+            ->where('id', $news)
+            ->orWhere('slug', (string) $news)
+            ->firstOrFail();
+
         $article->restore();
 
         $this->audit('restored', $article, $article->toArray());
