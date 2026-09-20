@@ -1,8 +1,19 @@
 @extends('layouts.app')
 
-@section('title', $article['title'] . ' | PPAk FEB UNESA')
-@section('meta_description', $article['excerpt'])
-@section('og_image', $article['image'])
+@php($seo = \App\Services\SeoService::forNews($article, url()->current()))
+@section('title', $seo['title'])
+@section('meta_description', $seo['description'])
+@section('meta_robots', $seo['robots'])
+@section('canonical', $seo['canonical'])
+@section('og_type', 'article')
+@section('og_title', $seo['og_title'])
+@section('og_description', $seo['og_description'])
+@section('og_image', $seo['og_image'])
+@section('og_url', $seo['og_url'])
+
+@push('jsonld')
+<script type="application/ld+json">{!! json_encode(\App\Services\SeoService::articleJsonLd($article, url()->current()), JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}</script>
+@endpush
 
 @section('content')
 
