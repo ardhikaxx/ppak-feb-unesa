@@ -14,13 +14,13 @@
             <div class="col-lg-9 col-xl-8">
                 <div class="hero-brand-badge">
                     <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi UNESA" class="hero-brand-badge-logo">
-                    <span class="hero-brand-badge-text">PENDIDIKAN PROFESI AKUNTAN &bull; FEB UNESA</span>
+                    <span class="hero-brand-badge-text">{{ strtoupper($info['name'] ?? 'PENDIDIKAN PROFESI AKUNTAN') }} &bull; {{ strtoupper($info['short_name'] ?? 'FEB UNESA') }}</span>
                 </div>
                 <h1 class="hero-headline">
-                    Program Pendidikan Profesi Akuntan <span class="accent">Unggul & Berintegritas</span>
+                    {{ $info['name'] ?? 'Program Pendidikan Profesi Akuntan' }} <span class="accent">{{ $info['tagline'] ?? 'Unggul & Berintegritas' }}</span>
                 </h1>
                 <p class="hero-subheadline">
-                    Program pendidikan profesi di bawah naungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya (Kode Prodi: <strong>62902</strong>). Menyelenggarakan kurikulum profesional berbasis standar profesi akuntan (IAI & IAPI), tata kelola, dan etika keprofesian luhur.
+                    Program pendidikan profesi di bawah naungan {{ $info['faculty'] ?? 'Fakultas Ekonomika dan Bisnis' }} {{ $info['university'] ?? 'Universitas Negeri Surabaya' }} (Kode Prodi: <strong>{{ $info['program_code'] ?? '62902' }}</strong>). Menyelenggarakan kurikulum profesional berbasis standar profesi akuntan (IAI & IAPI), tata kelola, dan etika keprofesian luhur.
                 </p>
                 <div class="d-flex flex-wrap gap-3">
                     <a href="{{ route('admisi.prosedur-jadwal') }}" class="btn-hero-primary">
@@ -37,19 +37,19 @@
                 <div class="hero-bullets">
                     <div class="hero-bullet-item">
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>Kode Prodi: 62902</span>
+                        <span>Kode Prodi: {{ $info['program_code'] ?? '62902' }}</span>
                     </div>
                     <div class="hero-bullet-item">
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>Berdiri: 23 Mei 2025</span>
+                        <span>Berdiri: {{ $info['established_date'] ?? '23 Mei 2025' }}</span>
                     </div>
                     <div class="hero-bullet-item">
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>Akreditasi Baik (LAMEMBA)</span>
+                        <span>Akreditasi {{ $info['akreditasi_status'] ?? 'Baik' }} ({{ $info['akreditasi_lembaga'] ?? 'LAMEMBA' }})</span>
                     </div>
                     <div class="hero-bullet-item">
                         <i class="fa-solid fa-certificate"></i>
-                        <span>UKT: Rp5.500.000 / Semester</span>
+                        <span>UKT: {{ $info['ukt_formatted'] ?? 'Rp5.500.000' }} / Semester</span>
                     </div>
                 </div>
             </div>
@@ -65,28 +65,28 @@
         <div class="row g-5 align-items-center">
             <div class="col-lg-5">
                 <span class="badge-ppak badge-ppak-gold mb-2">IDENTITAS RESMI PROGRAM STUDI</span>
-                <h2 class="mb-3">Pendidikan Profesi Akuntan FEB UNESA</h2>
+                <h2 class="mb-3">{{ $info['name'] ?? 'Pendidikan Profesi Akuntan' }} {{ $info['short_name'] ?? 'FEB UNESA' }}</h2>
                 <div class="golden-line"></div>
                 <div class="p-3 bg-white rounded-3 border mt-3">
                     <div class="d-flex align-items-center gap-3">
                         <i class="fa-solid fa-user-tie text-navy fs-3"></i>
                         <div>
                             <div class="text-muted small">Koordinator Program Studi:</div>
-                            <div class="fw-bold text-navy">Rediyanto Putra, S.E., M.S.A.</div>
+                            <div class="fw-bold text-navy">{{ $info['coordinator'] ?? 'Rediyanto Putra, S.E., M.S.A.' }}</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-7">
                 <p class="lead mb-3 text-dark">
-                    Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya tercatat resmi berdiri pada <strong>23 Mei 2025</strong> sebagai wujud pengembangan strategis program pendidikan profesi di lingkungan FEB UNESA.
+                    Pendidikan Profesi Akuntan ({{ $info['short_name'] ?? 'PPAk FEB UNESA' }}) {{ $info['faculty'] ?? 'Fakultas Ekonomika dan Bisnis' }} {{ $info['university'] ?? 'Universitas Negeri Surabaya' }} tercatat resmi berdiri pada <strong>{{ $info['established_date'] ?? '23 Mei 2025' }}</strong> sebagai wujud pengembangan strategis program pendidikan profesi di lingkungan FEB UNESA.
                 </p>
                 <p class="text-secondary mb-3">
                     Program studi ini dirancang untuk membekali calon akuntan dengan kompetensi pelaporan korporat lanjutan, pengauditan dan asurans, manajemen perpajakan strategis, tata kelola korporat, serta sistem informasi dan pengendalian internal sesuai standar profesi.
                 </p>
                 <div class="d-flex flex-wrap gap-2 pt-2">
-                    <span class="badge-ppak badge-ppak-navy"><i class="fa-solid fa-shield-halved me-1"></i> SK LAMEMBA No. 611/DE/A.5/AR.11/II/2025</span>
-                    <span class="badge-ppak badge-ppak-blue"><i class="fa-solid fa-calendar me-1"></i> Berlaku s.d. 25 Februari 2027</span>
+                    <span class="badge-ppak badge-ppak-navy"><i class="fa-solid fa-shield-halved me-1"></i> SK {{ $info['akreditasi_lembaga'] ?? 'LAMEMBA' }} No. {{ $info['sk_akreditasi'] ?? '611/DE/A.5/AR.11/II/2025' }}</span>
+                    <span class="badge-ppak badge-ppak-blue"><i class="fa-solid fa-calendar me-1"></i> Berlaku s.d. {{ $info['masa_berlaku_akreditasi'] ?? '25 Februari 2027' }}</span>
                 </div>
                 <div class="mt-2">
                     <small class="text-muted">
@@ -228,22 +228,22 @@
                 <div class="col-lg-3 text-center">
                     <div class="p-4 bg-white rounded-3 border d-inline-block shadow-sm w-100">
                         <i class="fa-solid fa-building-columns text-navy display-4 mb-2"></i>
-                        <div class="fw-bold text-navy">LAMEMBA</div>
-                        <div class="badge-ppak badge-ppak-gold mt-2 px-3 py-1" style="font-size: 0.85rem;">Status: Baik</div>
+                        <div class="fw-bold text-navy">{{ $info['akreditasi_lembaga'] ?? 'LAMEMBA' }}</div>
+                        <div class="badge-ppak badge-ppak-gold mt-2 px-3 py-1" style="font-size: 0.85rem;">Status: {{ $info['akreditasi_status'] ?? 'Baik' }}</div>
                         <div class="mt-2"><span class="badge-ppak badge-ppak-green" style="font-size: 0.7rem;">Aktif</span></div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <span class="badge-ppak badge-ppak-gold mb-2">Jaminan Mutu Nasional</span>
-                    <h3 class="h3 mb-2 text-navy">Akreditasi LAMEMBA: Baik</h3>
+                    <h3 class="h3 mb-2 text-navy">Akreditasi {{ $info['akreditasi_lembaga'] ?? 'LAMEMBA' }}: {{ $info['akreditasi_status'] ?? 'Baik' }}</h3>
                     <div class="golden-line"></div>
                     <p class="text-secondary small mb-3">
-                        Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya telah terakreditasi dengan status <strong>Baik</strong> oleh Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA).
+                        Program Studi {{ $info['name'] ?? 'Pendidikan Profesi Akuntan' }} {{ $info['faculty'] ?? 'Fakultas Ekonomika dan Bisnis' }} {{ $info['university'] ?? 'Universitas Negeri Surabaya' }} telah terakreditasi dengan status <strong>{{ $info['akreditasi_status'] ?? 'Baik' }}</strong> oleh {{ $info['akreditasi_lembaga'] ?? 'LAMEMBA' }}.
                     </p>
                     <div class="row g-2 small text-muted">
-                        <div class="col-sm-6"><i class="fa-solid fa-file-lines me-1 text-gold"></i> SK: <strong>611/DE/A.5/AR.11/II/2025</strong></div>
-                        <div class="col-sm-6"><i class="fa-solid fa-calendar-check me-1 text-gold"></i> Tanggal SK: <strong>26 Februari 2025</strong></div>
-                        <div class="col-12"><i class="fa-solid fa-hourglass-half me-1 text-gold"></i> Masa Berlaku: <strong>26 Februari 2025 s.d. 25 Februari 2027</strong></div>
+                        <div class="col-sm-6"><i class="fa-solid fa-file-lines me-1 text-gold"></i> SK: <strong>{{ $info['sk_akreditasi'] ?? '611/DE/A.5/AR.11/II/2025' }}</strong></div>
+                        <div class="col-sm-6"><i class="fa-solid fa-calendar-check me-1 text-gold"></i> Tanggal SK: <strong>{{ $info['tanggal_sk_akreditasi'] ?? '26 Februari 2025' }}</strong></div>
+                        <div class="col-12"><i class="fa-solid fa-hourglass-half me-1 text-gold"></i> Masa Berlaku: <strong>{{ $info['tanggal_sk_akreditasi'] ?? '26 Februari 2025' }} s.d. {{ $info['masa_berlaku_akreditasi'] ?? '25 Februari 2027' }}</strong></div>
                     </div>
                 </div>
                 <div class="col-lg-3 text-lg-end">
@@ -279,11 +279,11 @@
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <div class="d-flex align-items-center gap-2">
                             <i class="fa-solid fa-receipt text-gold fs-5"></i>
-                            <span class="fw-bold text-white">UKT Pendidikan Profesi Akuntan</span>
+                            <span class="fw-bold text-white">UKT {{ $info['short_name'] ?? 'Pendidikan Profesi Akuntan' }}</span>
                         </div>
                         <span class="badge-ppak badge-ppak-gold" style="font-size: 0.75rem;">Resmi Admisi</span>
                     </div>
-                    <div class="display-6 fw-bold text-white mb-1">Rp5.500.000</div>
+                    <div class="display-6 fw-bold text-white mb-1">{{ $admisiInfo['ukt_label'] ?? ($info['ukt_formatted'] ?? 'Rp5.500.000') }}</div>
                     <div class="small text-white-50 mb-3">Per Semester (Berdasarkan ketetapan UKT S2, S3, dan Profesi UNESA).</div>
                     <div class="d-flex gap-2">
                         <a href="{{ route('admisi.jalur-syarat') }}" class="btn-ppak-gold btn-ppak-sm">
@@ -297,11 +297,11 @@
                     </div>
                 </div>
 
-                {{-- Status Arsip Seleksi 2026/2027 --}}
+                {{-- Status Arsip / Jadwal Seleksi --}}
                 <div class="p-3 rounded-3" style="background: rgba(255, 255, 255, 0.04); border: 1px dashed rgba(255, 255, 255, 0.2);">
                     <div class="d-flex align-items-center gap-2 text-white-50 small">
                         <i class="fa-solid fa-box-archive text-gold"></i>
-                        <span>Status Jadwal: <strong>Arsip Seleksi 2026/2027</strong> (Gelombang 1–3 telah terlaksana).</span>
+                        <span>Status Jadwal: <strong>{{ $admisiInfo['status_label'] ?? 'Arsip Seleksi 2026/2027' }}</strong></span>
                     </div>
                 </div>
             </div>
