@@ -30,6 +30,12 @@ class AgendaRequest extends FormRequest
             'description' => ['nullable', 'string'],
             'source_url' => ['nullable', 'url', 'max:500'],
             'source_name' => ['nullable', 'string', 'max:255'],
+            'seo_title' => ['nullable', 'string', 'max:255'],
+            'seo_description' => ['nullable', 'string', 'max:500'],
+            'canonical_url' => ['nullable', 'url', 'max:500'],
+            'og_title' => ['nullable', 'string', 'max:255'],
+            'og_description' => ['nullable', 'string', 'max:500'],
+            'robots_index' => ['nullable', 'boolean'],
         ];
     }
 
