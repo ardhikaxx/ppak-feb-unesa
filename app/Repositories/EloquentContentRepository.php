@@ -539,19 +539,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
 
     public function getKarierSectors(): array
     {
-        return Cache::remember(CacheKeys::KARIER_SECTORS, $this->ttlStatic, function () {
-            $rows = ContentBlock::ofGroup('karier')->published()->ordered()->get();
-
-            if ($rows->isEmpty()) {
-                return PpakData::getKarierSectors();
-            }
-
-            return $rows->map(fn ($b) => [
-                'icon' => $b->icon ?? 'fa-briefcase',
-                'title' => $b->title,
-                'desc' => $b->description ?? '',
-            ])->all();
-        });
+        return Cache::remember(CacheKeys::KARIER_SECTORS, $this->ttlStatic, fn () => PpakData::getKarierSectors());
     }
 
     // ------------------------------------------------------------------
@@ -706,40 +694,10 @@ class EloquentContentRepository implements ContentRepositoryInterface
                 'status' => $hasActive ? 'dibuka' : 'arsip',
                 'status_label' => $hasActive ? 'Pendaftaran Dibuka' : 'Arsip Seleksi '.($waves->first()?->academic_year ?? '2026/2027'),
                 'jadwal_2026' => $jadwal,
-                'persyaratan_umum' => $this->getPersyaratan(),
-                'tahapan_pendaftaran' => $this->getTahapan(),
+                'persyaratan_umum' => $fallback['persyaratan_umum'],
+                'tahapan_pendaftaran' => $fallback['tahapan_pendaftaran'],
             ];
         });
-    }
-
-    /**
-     * Tahapan pendaftaran & persyaratan: dari content blocks bila sudah
-     * diambil alih admin, selain itu data master (tampilan tidak berubah).
-     */
-    private function getTahapan(): array
-    {
-        $rows = ContentBlock::ofGroup('tahapan')->published()->ordered()->get();
-
-        if ($rows->isEmpty()) {
-            return PpakData::getAdmisiInfo()['tahapan_pendaftaran'];
-        }
-
-        return $rows->values()->map(fn ($b, $i) => [
-            'langkah' => $i + 1,
-            'judul' => $b->title,
-            'deskripsi' => $b->description ?? '',
-        ])->all();
-    }
-
-    private function getPersyaratan(): array
-    {
-        $rows = ContentBlock::ofGroup('persyaratan')->published()->ordered()->get();
-
-        if ($rows->isEmpty()) {
-            return PpakData::getAdmisiInfo()['persyaratan_umum'];
-        }
-
-        return $rows->map(fn ($b) => $b->title)->all();
     }
 
     public function getFaq(): array
@@ -907,27 +865,6 @@ class EloquentContentRepository implements ContentRepositoryInterface
         ]);
 
         return $paginator;
-    }
-
-    /**
-     * Konten section halaman statis dari tabel page_contents.
-     * Baris yang dihapus admin otomatis kembali ke teks bawaan Blade (fallback).
-     */
-    public function getPageContent(string $page): array
-    {
-        return Cache::remember(CacheKeys::PAGE_CONTENT . $page, $this->ttlStatic, function () use ($page) {
-            return \App\Models\PageContent::ofPage($page)
-                ->published()
-                ->ordered()
-                ->get()
-                ->mapWithKeys(fn ($r) => [$r->section_key => [
-                    'heading' => $r->heading,
-                    'subtitle' => $r->subtitle,
-                    'body' => $r->body,
-                    'link_url' => $r->link_url,
-                ]])
-                ->all();
-        });
     }
 
     public function search(string $keyword, int $perPage = 6): array
