@@ -1,6 +1,7 @@
 <?php
 
 use App\Services\PpakData;
+use Database\Seeders\AdminSeeder;
 
 test('beranda homepage renders successfully with verified key content', function () {
     $response = $this->get(route('home'));
@@ -290,3 +291,35 @@ test('all 6 official PDF documents exist and can be downloaded with 200 OK', fun
     }
 });
 
+test('form helpdesk menyimpan pesan ke database dan tampil di panel admin', function () {
+    $payload = [
+        'name' => 'Penguji Helpdesk',
+        'email' => 'penguji@example.com',
+        'phone' => '08123456789',
+        'subject' => 'Uji simpan helpdesk',
+        'message' => 'Isi pesan pengujian helpdesk minimal dua puluh karakter.',
+        'category' => 'admisi',
+    ];
+
+    $response = $this->post(route('kontak.helpdesk.submit'), $payload);
+    $response->assertRedirect();
+    $response->assertSessionHas('success');
+
+    $this->assertDatabaseHas('helpdesk_inquiries', [
+        'email' => 'penguji@example.com',
+        'subject' => 'Uji simpan helpdesk',
+        'status' => 'open',
+    ]);
+
+    // Terlihat di panel admin CMS
+    $this->seed(AdminSeeder::class);
+    $this->post(route('admin.login.store'), ['email' => 'admin@gmail.com', 'password' => 'password']);
+    $this->get(route('admin.helpdesk.index'))->assertStatus(200)->assertSee('Uji simpan helpdesk');
+});
+
+test('form helpdesk menolak input tidak valid tanpa menyimpan', function () {
+    $response = $this->post(route('kontak.helpdesk.submit'), ['email' => 'bukan-email']);
+    $response->assertSessionHasErrors(['name', 'email', 'subject', 'message']);
+
+    $this->assertDatabaseCount('helpdesk_inquiries', 0);
+});
