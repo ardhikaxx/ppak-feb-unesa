@@ -120,7 +120,14 @@ Menu **Pengaturan Website** adalah satu-satunya tempat untuk data global:
 - **SEO**: judul situs, deskripsi meta, gambar Open Graph.
 - **Admisi**: tautan portal PMB & Admisi.
 
-Perubahan di sini langsung berlaku di seluruh website — periksa kembali sebelum menyimpan.
+Perubahan di sini langsung berlaku di seluruh website — periksa kembali sebelum menyimpan
+(kontak tampil di topbar, footer, halaman biaya & lokasi; SEO tampil di tab browser & pratinjau tautan).
+
+Menu **Blok Konten** mengelola teks section sederhana per grup (Bidang Karier, Tahapan
+Pendaftaran, Persyaratan). Selama grup kosong, website memakai data bawaan. Klik
+**Impor Bawaan** untuk menyalin data saat ini menjadi baris yang bisa diedit, lalu ubah
+dan simpan — perubahan langsung tampil di Beranda/Admisi. Hapus semua baris grup untuk
+kembali ke bawaan.
 
 ## 10. Helpdesk, Audit Log & Akun
 
