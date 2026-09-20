@@ -111,9 +111,9 @@ class AgendaController extends BaseAdminController
         return redirect()->route('admin.agendas.index')->with('success', 'Agenda diarsipkan dan tidak tampil di publik.');
     }
 
-    public function restore(int $agenda): RedirectResponse
+    public function restore(string|int $agenda): RedirectResponse
     {
-        $item = Agenda::withTrashed()->findOrFail($agenda);
+        $item = Agenda::withTrashed()->where('id', $agenda)->orWhere('slug', (string) $agenda)->firstOrFail();
         $item->restore();
 
         $this->audit('restored', $item, $item->toArray());
