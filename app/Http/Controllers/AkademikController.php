@@ -29,6 +29,7 @@ class AkademikController extends Controller
     {
         return view('akademik.gelar-sertifikasi', [
             'info' => $this->content->getGeneralInfo(),
+            'pg' => $this->content->getPageContent('gelar-sertifikasi'),
         ]);
     }
 
