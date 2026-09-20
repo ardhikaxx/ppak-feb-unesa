@@ -33,6 +33,7 @@ class HomeController extends Controller
             'mitra' => $this->content->getMitra(),
             'karierSectors' => $this->content->getKarierSectors(),
             'admisiInfo' => $this->content->getAdmisiInfo(),
+            'pg' => $this->content->getPageContent('home'),
         ]);
     }
 }
