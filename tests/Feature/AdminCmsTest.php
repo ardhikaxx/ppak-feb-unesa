@@ -278,6 +278,20 @@ test('konten halaman statis via CMS tampil di halaman publik', function () {
     $this->get(route('profil.sejarah'))->assertStatus(200)->assertSee('Fokus Uji Propagasi CMS');
 });
 
+test('judul halaman via CMS tampil di landing page', function () {
+    loginAdmin($this);
+
+    $row = PageContent::ofPage('berita')->where('section_key', 'header_title')->first();
+    $this->put(route('admin.page-contents.update', $row), [
+        'page' => 'berita',
+        'section_key' => 'header_title',
+        'heading' => 'Kabar Uji Propagasi CMS',
+        'status' => 'published',
+    ])->assertRedirect(route('admin.page-contents.index', ['page' => 'berita']));
+
+    $this->get(route('informasi.berita'))->assertStatus(200)->assertSee('Kabar Uji Propagasi CMS');
+});
+
 test('hapus section halaman kembali ke teks bawaan tanpa error', function () {
     loginAdmin($this);
 
