@@ -14,7 +14,8 @@ class LecturerRequest extends FormRequest
 
     public function rules(): array
     {
-        $id = $this->route('lecturer')?->id ?? $this->route('lecturer')?->id;
+        $lecturer = $this->route('lecturer');
+        $id = is_object($lecturer) ? $lecturer->id : (is_numeric($lecturer) ? (int) $lecturer : ($lecturer ? \App\Models\Lecturer::where('slug', $lecturer)->value('id') : null));
 
         return [
             'name' => ['required', 'string', 'max:255'],
