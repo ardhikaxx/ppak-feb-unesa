@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/PHP-%5E8.3-777BB4?logo=php&logoColor=white" alt="PHP">
   <img src="https://img.shields.io/badge/Laravel-13-FF2D20?logo=laravel&logoColor=white" alt="Laravel">
   <img src="https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white" alt="Bootstrap">
-  <img src="https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite&logoColor=white" alt="SQLite">
+  <img src="https://img.shields.io/badge/Database-MySQL_%2F_MariaDB-4479A1?logo=mysql&logoColor=white" alt="MySQL">
   <img src="https://img.shields.io/badge/Tested-Pest_5-4CAF50?logo=pest&logoColor=white" alt="Pest">
   <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT">
 </p>
@@ -75,8 +75,8 @@ Akses di `/admin/login` → `/admin/dashboard`. Selengkapnya di [docs/CMS.md](do
 
 - **Backend**: PHP ^8.3, Laravel 13, Eloquent ORM, Blade.
 - **Frontend publik & CMS**: Bootstrap 5.3.3 CDN, Font Awesome 6.6.0 CDN (tanpa framework JS tambahan).
-- **Database**: SQLite untuk pengembangan (siap migrasi ke MySQL untuk produksi).
-- **Testing**: Pest 5 + PHPUnit (30 test, 271 assertion).
+- **Database**: MySQL / MariaDB (XAMPP & Server Produksi).
+- **Testing**: Pest 5 + PHPUnit (39 test, 310 assertion).
 - **Lainnya**: `dompdf/dompdf` (cetak PDF), Vite + Tailwind CSS (build aset).
 
 ## Sumber Data Resmi
