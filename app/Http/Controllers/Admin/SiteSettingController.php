@@ -11,7 +11,9 @@ class SiteSettingController extends BaseAdminController
 {
     public function index(): View
     {
-        $settings = SiteSetting::orderBy('group')->orderBy('sort_order')->get()->groupBy('group');
+        // og_image disembunyikan: OG institusional statis, bukan kelolaan admin.
+        $settings = SiteSetting::where('key', '!=', 'og_image')
+            ->orderBy('group')->orderBy('sort_order')->get()->groupBy('group');
 
         $groups = [
             'general' => 'Umum (nama website, footer)',
@@ -26,7 +28,7 @@ class SiteSettingController extends BaseAdminController
 
     public function update(Request $request): RedirectResponse
     {
-        $settings = SiteSetting::all();
+        $settings = SiteSetting::where('key', '!=', 'og_image')->get();
 
         $rules = [];
         foreach ($settings as $setting) {
