@@ -29,18 +29,36 @@ class KontakController extends Controller
     }
 
     /**
-     * Helpdesk submit - validated, rate limited, queue-ready.
-     * Heavy work (email, logging) should be queued, not blocking request.
+     * Helpdesk submit - validated, rate limited, persisted to database
+     * so it appears in the admin Helpdesk panel + sidebar badge.
      */
     public function submitHelpdesk(HelpdeskRequest $request)
     {
         $validated = $request->validated();
 
-        // Dispatch job for email/notification (queue-ready)
-        // HelpdeskMessageJob::dispatch($validated);
+        try {
+            $inquiry = \App\Models\HelpdeskInquiry::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'phone' => $validated['phone'] ?? null,
+                'subject' => $validated['subject'],
+                'message' => $validated['message'],
+                'category' => $validated['category'] ?? null,
+                'status' => 'open',
+                'ip_address' => $request->ip(),
+            ]);
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::error('Helpdesk inquiry failed to save', [
+                'error' => $e->getMessage(),
+                'email' => $validated['email'] ?? null,
+            ]);
 
-        // For now, log and return with success (scalable to queue)
-        \Illuminate\Support\Facades\Log::info('Helpdesk inquiry received', $validated);
+            return back()
+                ->withInput()
+                ->with('error', 'Pesan gagal dikirim karena gangguan sistem. Silakan coba lagi beberapa saat.');
+        }
+
+        \Illuminate\Support\Facades\Log::info('Helpdesk inquiry received', ['id' => $inquiry->id]);
 
         return back()->with('success', 'Pesan Anda berhasil dikirim. Tim helpdesk akan merespons dalam 1x24 jam kerja.');
     }
