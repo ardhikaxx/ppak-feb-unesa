@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Contracts\ContentRepositoryInterface;
-use App\Repositories\ArrayContentRepository;
+use App\Repositories\EloquentContentRepository;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -15,11 +15,12 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     * Binds abstraction to array implementation now, Eloquent later without changing consumers.
+     * Frontend publik membaca dari DATABASE via EloquentContentRepository
+     * dengan bentuk array yang identik seperti sebelumnya (tanpa ubah Blade).
      */
     public function register(): void
     {
-        $this->app->singleton(ContentRepositoryInterface::class, ArrayContentRepository::class);
+        $this->app->singleton(ContentRepositoryInterface::class, EloquentContentRepository::class);
 
         // Cache store abstraction - allows Redis swap without changing business logic
         $this->app->singleton('ppak.cache', fn() => app('cache'));
@@ -40,12 +41,29 @@ class AppServiceProvider extends ServiceProvider
         RateLimiter::for('search', fn(Request $request) => Limit::perMinute(30)->by($request->ip()));
         RateLimiter::for('helpdesk', fn(Request $request) => Limit::perMinute(10)->by($request->ip()));
         RateLimiter::for('download', fn(Request $request) => Limit::perMinute(60)->by($request->ip()));
+        // Admin login: 5 percobaan/menit per email+IP (anti brute force)
+        RateLimiter::for('admin-login', function (Request $request) {
+            $key = mb_strtolower((string) $request->input('email')) . '|' . $request->ip();
+
+            return Limit::perMinute(5)->by($key)->response(function () {
+                return back()->withErrors(['email' => 'Terlalu banyak percobaan login. Coba lagi dalam 1 menit.'])->onlyInput('email');
+            });
+        });
 
         // Shared institution info for topbar/footer - cached, not queried per view
         // Only for layouts that need it; lazy via View::composer to avoid running on every request unnecessarily
         View::composer(['partials.topbar', 'partials.footer', 'layouts.app'], function ($view) {
             // Lightweight, cached via repository
             $view->with('ppakInstitution', app(ContentRepositoryInterface::class)->getGeneralInfo());
+        });
+
+        // Badge helpdesk terbuka pada sidebar CMS (hanya saat admin login)
+        View::composer('admin.layouts.app', function ($view) {
+            $open = 0;
+            if (auth('admin')->check()) {
+                $open = \App\Models\HelpdeskInquiry::where('status', 'open')->count();
+            }
+            $view->with('helpdeskOpenCount', $open);
         });
     }
 }
