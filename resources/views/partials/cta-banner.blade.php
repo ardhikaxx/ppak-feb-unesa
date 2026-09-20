@@ -15,12 +15,12 @@
                 <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
                     <div class="d-flex flex-column flex-sm-row flex-lg-column gap-3 justify-content-lg-end">
                         <a href="{{ route('admisi.jalur-syarat') }}" class="btn-ppak-gold btn-ppak-lg">
-                            <span>{{ $pgGlobal['cta_btn1']['heading'] ?? 'Informasi Pendaftaran' }}</span>
+                            <span>Informasi Pendaftaran</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
                         <a href="{{ route('kontak.helpdesk') }}" class="btn-ppak-secondary btn-ppak-lg">
                             <i class="fa-solid fa-headset me-1"></i>
-                            <span>{{ $pgGlobal['cta_btn2']['heading'] ?? 'Hubungi Sekretariat' }}</span>
+                            <span>Hubungi Sekretariat</span>
                         </a>
                     </div>
                 </div>
