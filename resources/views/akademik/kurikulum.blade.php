@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Kurikulum & Capaian Pembelajaran',
-    'badge' => 'Kurikulum Resmi SINDIG UNESA',
-    'lead' => 'Struktur mata kuliah, distribusi SKS semester, dan pemetaan Capaian Pembelajaran Lulusan (CPL) Program Studi Pendidikan Profesi Akuntan (Kode: 62902).',
+    'title' => $pg['header_title']['heading'] ?? 'Kurikulum & Capaian Pembelajaran',
+    'badge' => $pg['header_badge']['heading'] ?? 'Kurikulum Resmi SINDIG UNESA',
+    'lead' => $pg['header_lead']['body'] ?? 'Struktur mata kuliah, distribusi SKS semester, dan pemetaan Capaian Pembelajaran Lulusan (CPL) Program Studi Pendidikan Profesi Akuntan (Kode: 62902).',
     'breadcrumbs' => [
         ['label' => 'Akademik', 'url' => route('akademik.kurikulum')],
         ['label' => 'Kurikulum & CPL', 'url' => '']
@@ -32,7 +32,7 @@
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
                 <div>
                     <span class="badge-ppak badge-ppak-blue mb-1">Tahap 1</span>
-                    <h3 class="h4 text-navy mb-0">Mata Kuliah Semester 1 (19 SKS)</h3>
+                    <h3 class="h4 text-navy mb-0">Mata Kuliah Semester 1 ({{ $sks1 }} SKS)</h3>
                 </div>
                 <span class="badge-ppak badge-ppak-navy">Semester Gasal</span>
             </div>
@@ -83,7 +83,7 @@
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
                 <div>
                     <span class="badge-ppak badge-ppak-gold mb-1">Tahap 2</span>
-                    <h3 class="h4 text-navy mb-0">Mata Kuliah Semester 2 (16 SKS)</h3>
+                    <h3 class="h4 text-navy mb-0">Mata Kuliah Semester 2 ({{ $sks2 }} SKS)</h3>
                 </div>
                 <span class="badge-ppak badge-ppak-navy">Semester Genap</span>
             </div>
@@ -220,3 +220,4 @@
 </section>
 
 @endsection
+
