@@ -22,7 +22,7 @@
                         <tr>
                             <td class="fw-semibold">{{ $item->partner_name }}</td>
                             <td class="small">{{ $item->partner_category ?? '—' }}@if($item->collaboration_type)<br><span class="text-muted">{{ $item->collaboration_type }}</span>@endif</td>
-                            <td class="small">{{ $item->valid_from?->format('d M Y') ?? '—' }} s.d. {{ $item->valid_until?->format('d M Y') ?? '—' }}</td>
+                            <td class="small">{{ \App\Support\Tanggal::indo($item->valid_from) ?? '—' }} s.d. {{ \App\Support\Tanggal::indo($item->valid_until) ?? '—' }}</td>
                             <td><span class="badge {{ $item->status === 'active' ? 'text-bg-success' : 'text-bg-secondary' }}">{{ $item->status }}</span></td>
                             <td>
                                 <div class="btn-group btn-group-sm">
