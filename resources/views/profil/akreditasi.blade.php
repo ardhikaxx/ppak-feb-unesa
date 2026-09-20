@@ -25,10 +25,10 @@
                         <div class="navbar-brand-emblem mx-auto mb-3" style="width: 72px; height: 72px; font-size: 1.8rem;">
                             <i class="fa-solid fa-award"></i>
                         </div>
-                        <h3 class="h4 text-navy fw-bold mb-1">LAMEMBA</h3>
+                        <h3 class="h4 text-navy fw-bold mb-1">{{ $accreditation?->agency ?? 'LAMEMBA' }}</h3>
                         <div class="text-muted small mb-3">Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis & Akuntansi</div>
                         <div class="badge-ppak badge-ppak-gold fs-6 px-3 py-2 w-100 justify-content-center mb-2">
-                            Peringkat: Baik
+                            Peringkat: {{ $accreditation?->status ?? 'Baik' }}
                         </div>
                         <span class="badge-ppak badge-ppak-green px-3 py-1">
                             <i class="fa-solid fa-circle-check me-1"></i> Status: Aktif
@@ -38,12 +38,12 @@
 
                 <div class="col-lg-8">
                     <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                        <span class="badge-ppak badge-ppak-navy">SK LAMEMBA</span>
-                        <span class="badge-ppak badge-ppak-blue">Periode 2025–2027</span>
+                        <span class="badge-ppak badge-ppak-navy">SK {{ $accreditation?->agency ?? 'LAMEMBA' }}</span>
+                        <span class="badge-ppak badge-ppak-blue">Periode {{ $accreditation?->effective_from?->format('Y') ?? '2025' }}–{{ $accreditation?->effective_until?->format('Y') ?? '2027' }}</span>
                     </div>
-                    <h2 class="h3 text-navy mb-3">Status Akreditasi Resmi: Baik</h2>
+                    <h2 class="h3 text-navy mb-3">Status Akreditasi Resmi: {{ $accreditation?->status ?? 'Baik' }}</h2>
                     <p class="text-secondary mb-4">
-                        Program Studi Pendidikan Profesi Akuntan (Kode Prodi: <strong>62902</strong>) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya telah terakreditasi dengan peringkat <strong>Baik</strong> berdasarkan Surat Keputusan Dewan Eksekutif LAMEMBA.
+                        Program Studi {{ $accreditation?->program_name ?? 'Pendidikan Profesi Akuntan' }} (Kode Prodi: <strong>62902</strong>) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya telah terakreditasi dengan peringkat <strong>{{ $accreditation?->status ?? 'Baik' }}</strong> berdasarkan Surat Keputusan Dewan Eksekutif {{ $accreditation?->agency ?? 'LAMEMBA' }}.
                     </p>
 
                     <div class="table-ppak-wrapper mb-4">
@@ -51,27 +51,27 @@
                             <tbody>
                                 <tr>
                                     <th style="width: 35%;">Nama Program Studi</th>
-                                    <td><strong>Pendidikan Profesi Akuntan</strong> (Kode: 62902)</td>
+                                    <td><strong>{{ $accreditation?->program_name ?? 'Pendidikan Profesi Akuntan' }}</strong> (Kode: 62902)</td>
                                 </tr>
                                 <tr>
                                     <th>Status Peringkat</th>
-                                    <td><span class="badge-ppak badge-ppak-gold">Baik</span></td>
+                                    <td><span class="badge-ppak badge-ppak-gold">{{ $accreditation?->status ?? 'Baik' }}</span></td>
                                 </tr>
                                 <tr>
                                     <th>Lembaga Akreditasi</th>
-                                    <td>Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA)</td>
+                                    <td>Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi ({{ $accreditation?->agency ?? 'LAMEMBA' }})</td>
                                 </tr>
                                 <tr>
                                     <th>Nomor Keputusan</th>
-                                    <td><code class="fw-bold">611/DE/A.5/AR.11/II/2025</code></td>
+                                    <td><code class="fw-bold">{{ $accreditation?->decree_number ?? '611/DE/A.5/AR.11/II/2025' }}</code></td>
                                 </tr>
                                 <tr>
                                     <th>Tanggal Penetapan</th>
-                                    <td>26 Februari 2025</td>
+                                    <td>{{ $accreditation?->decree_date ? \App\Support\Tanggal::indo($accreditation->decree_date) : '26 Februari 2025' }}</td>
                                 </tr>
                                 <tr>
                                     <th>Masa Berlaku</th>
-                                    <td>26 Februari 2025 s.d. <strong>25 Februari 2027</strong></td>
+                                    <td>{{ $accreditation?->effective_from ? \App\Support\Tanggal::indo($accreditation->effective_from) : '26 Februari 2025' }} s.d. <strong>{{ $accreditation?->effective_until ? \App\Support\Tanggal::indo($accreditation->effective_until) : '25 Februari 2027' }}</strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -83,7 +83,7 @@
                             <i class="fa-solid fa-clock-rotate-left text-warning fs-5 mt-1"></i>
                             <div class="small">
                                 <div class="fw-bold text-navy">Periode Masa Berlaku Akreditasi:</div>
-                                <div class="text-secondary">Akreditasi berlaku aktif hingga <strong>25 Februari 2027</strong>. Unit Penjaminan Mutu FEB UNESA dan Gugus Penjaminan Mutu secara berkala memantau pemenuhan standar mutu instrumen akreditasi program studi.</div>
+                                <div class="text-secondary">Akreditasi berlaku aktif hingga <strong>{{ $accreditation?->effective_until ? \App\Support\Tanggal::indo($accreditation->effective_until) : '25 Februari 2027' }}</strong>. Unit Penjaminan Mutu FEB UNESA dan Gugus Penjaminan Mutu secara berkala memantau pemenuhan standar mutu instrumen akreditasi program studi.</div>
                             </div>
                         </div>
                     </div>
