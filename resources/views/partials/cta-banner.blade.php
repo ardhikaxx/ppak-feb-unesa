@@ -6,10 +6,10 @@
                     <span class="badge-ppak badge-ppak-gold mb-3">
                         <i class="fa-solid fa-graduation-cap"></i> Penerimaan Mahasiswa Baru
                     </span>
-                    <h2 class="text-white">{{ $pgGlobal['cta_heading']['heading'] ?? 'Bangun Kompetensi Profesional Anda di PPAk FEB UNESA' }}</h2>
+                    <h2 class="text-white">Bangun Kompetensi Profesional Anda di PPAk FEB UNESA</h2>
                     <div class="golden-line"></div>
                     <p class="mb-lg-0 text-white-50">
-                        {{ $pgGlobal['cta_body']['body'] ?? 'Tingkatkan kualifikasi keprofesian akuntansi Anda dengan bimbingan akademisi dan praktisi terkemuka. Tempuh jalur terpadu meraih gelar Akuntan (Ak.), pembebasan ujian sertifikasi Chartered Accountant (CA), dan keunggulan karier global.' }}
+                        Tingkatkan kualifikasi keprofesian akuntansi Anda dengan bimbingan akademisi dan praktisi terkemuka. Tempuh jalur terpadu meraih gelar Akuntan (Ak.), pembebasan ujian sertifikasi Chartered Accountant (CA), dan keunggulan karier global.
                     </p>
                 </div>
                 <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
@@ -28,3 +28,4 @@
         </div>
     </div>
 </section>
+
