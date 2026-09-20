@@ -3,6 +3,10 @@
 @section('title', 'Pendidikan Profesi Akuntan FEB UNESA | Universitas Negeri Surabaya')
 @section('meta_description', 'Website resmi Program Studi Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya (Kode Prodi: 62902). Terakreditasi Baik oleh LAMEMBA.')
 
+@push('jsonld')
+<script type="application/ld+json">{!! json_encode(\App\Services\SeoService::websiteJsonLd(), JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}</script>
+@endpush
+
 @section('content')
 
 {{-- =========================================================================
