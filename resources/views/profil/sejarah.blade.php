@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Sejarah Singkat Program',
-    'badge' => 'Profil Program Studi',
-    'lead' => 'Pendirian Pendidikan Profesi Akuntan sebagai wujud pengembangan program pendidikan profesi di lingkungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
+    'title' => $pg['header_title']['heading'] ?? 'Sejarah Singkat Program',
+    'badge' => $pg['header_badge']['heading'] ?? 'Profil Program Studi',
+    'lead' => $pg['header_lead']['body'] ?? 'Pendirian Pendidikan Profesi Akuntan sebagai wujud pengembangan program pendidikan profesi di lingkungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
     'breadcrumbs' => [
         ['label' => 'Profil', 'url' => route('profil.sejarah')],
         ['label' => 'Sejarah Singkat', 'url' => '']
@@ -85,3 +85,4 @@
 </section>
 
 @endsection
+
