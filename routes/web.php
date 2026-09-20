@@ -100,6 +100,7 @@ Route::prefix('kontak')->name('kontak.')->group(function () {
 
 // Scalable extras - SEO & performance
 Route::get('/sitemap.xml', [InformasiController::class, 'sitemap'])->name('sitemap');
+Route::get('/robots.txt', [InformasiController::class, 'robots'])->name('robots');
 Route::get('/search', [InformasiController::class, 'search'])
     ->middleware('throttle:search')
     ->name('search');
