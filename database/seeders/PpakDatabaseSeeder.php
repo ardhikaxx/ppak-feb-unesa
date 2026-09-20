@@ -56,7 +56,7 @@ class PpakDatabaseSeeder extends Seeder
                 'faculty' => $info['faculty'],
                 'university' => $info['university'],
                 'level' => $info['level'],
-                'established_date' => '2025-04-15',
+                'established_date' => '2025-05-23',
                 'coordinator_name' => $info['coordinator'],
                 'tagline' => $info['tagline'],
                 'email' => $info['email'],
@@ -67,7 +67,7 @@ class PpakDatabaseSeeder extends Seeder
                 'social_links' => $info['socials'],
                 'source_url' => 'https://sindig.unesa.ac.id',
                 'source_name' => 'SK Rektor UNESA No. 645/UN38/HK/2025 & SINDIG UNESA',
-                'source_published_at' => '2025-04-15',
+                'source_published_at' => '2025-05-23',
                 'verified_at' => now(),
                 'data_status' => 'verified',
             ]
