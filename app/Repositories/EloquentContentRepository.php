@@ -489,7 +489,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
                     'name' => $p->partner_name,
                     'category' => $p->partner_category,
                     'type' => $p->collaboration_type,
-                    'description' => '',
+                    'description' => $p->collaboration_type ?? '',
                     'logo' => $p->logo,
                     'source' => $p->source_name,
                 ])->all(),
@@ -750,6 +750,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
                     'leader' => $p->leader_name,
                     'location' => $p->location,
                     'year' => $p->year,
+                    'tahun' => $p->year,
                     'description' => $p->description,
                 ])->all(),
             ];
