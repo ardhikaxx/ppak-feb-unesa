@@ -109,6 +109,12 @@
                 </a>
             </div>
         </div>
+
+        @include('partials.related-links', ['links' => [
+            ['label' => 'Dokumen persyaratan seleksi', 'url' => route('admisi.jalur-syarat'), 'desc' => 'Pastikan berkas lengkap sebelum jadwal berakhir.'],
+            ['label' => 'Besaran UKT dan pembayaran', 'url' => route('admisi.biaya'), 'desc' => 'Biaya yang dibayar setelah dinyatakan lolos seleksi.'],
+            ['label' => 'Kalender akademik berjalan', 'url' => route('akademik.kalender'), 'desc' => 'Acuan jadwal perkuliahan setelah registrasi.'],
+        ]])
     </div>
 </section>
 
