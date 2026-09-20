@@ -28,6 +28,12 @@ class NewsRequest extends FormRequest
             'published_at' => ['nullable', 'date'],
             'read_time' => ['nullable', 'string', 'max:50'],
             'tags' => ['nullable', 'string', 'max:255'],
+            'seo_title' => ['nullable', 'string', 'max:255'],
+            'seo_description' => ['nullable', 'string', 'max:500'],
+            'canonical_url' => ['nullable', 'url', 'max:500'],
+            'og_title' => ['nullable', 'string', 'max:255'],
+            'og_description' => ['nullable', 'string', 'max:500'],
+            'robots_index' => ['nullable', 'boolean'],
         ];
     }
 
