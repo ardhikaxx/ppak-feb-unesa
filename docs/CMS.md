@@ -109,7 +109,6 @@ Dokumen & Media · Website · Akun.
 | Dokumen | Upload PDF/DOC/XLS/PPT/ZIP ≤10 MB; update mengganti file **tanpa menghapus file lama**; filter kategori/tahun/status; arsip/restore |
 | Kategori | Tipe (berita/agenda/dokumen/galeri); **tidak bisa dihapus selama dipakai konten** |
 | Media Manager | Daftar file `storage/` + ukuran + pemakaian di konten; file terpakai **tidak bisa dihapus** |
-| Blok Konten | Section sederhana (bidang karier, tahapan & persyaratan admisi): status, urutan, tombol impor bawaan; grup kosong = fallback data master |
 | Pengaturan Website | 25 key global (nama, footer, kontak, maps, sosmed, SEO, tautan admisi) per grup; kontak & SEO dipakai layout/topbar/footer/lokasi |
 | Helpdesk | Daftar pesan masuk (rate-limited di publik) + ubah status tiket |
 | Audit Log | Read-only: admin pelaksana, aksi, entitas, waktu, IP |
@@ -129,7 +128,6 @@ Prefix `/admin`, nama `admin.*`, middleware `admin.auth:admin` + `admin.active`
 | Resource `news`, `agendas` + `POST .../restore` | CRUD + `show` + restore soft delete |
 | Resource `lecturers`, `galleries`, `documents` + `POST .../restore` | CRUD + restore (`lecturers` juga `show`) |
 | `GET /admin/media`, `DELETE /admin/media` | Media manager |
-| Resource `content-blocks` (tanpa `show`) + `POST .../import/{group}` | Blok konten + impor bawaan |
 | `GET+PUT /admin/site-settings` | Pengaturan website |
 | `GET /admin/helpdesk`, `GET/PATCH /admin/helpdesk/{inquiry}` | Helpdesk |
 | `GET /admin/audit-logs` | Audit log |
