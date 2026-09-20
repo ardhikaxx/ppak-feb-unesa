@@ -69,39 +69,62 @@
                         Isi formulir di bawah ini untuk menyampaikan pertanyaan Anda. Tim administrasi kami akan merespons melalui email dalam kurun waktu 1x24 jam kerja.
                     </p>
 
-                    <div id="helpdeskSuccessAlert" class="alert alert-success d-none mb-4" role="alert">
-                        <i class="fa-solid fa-circle-check me-2"></i>
-                        Terima kasih! Pesan Anda telah berhasil dikirimkan. Tim sekretariat PPAk akan segera menghubungi Anda melalui email yang didaftarkan.
-                    </div>
+                    @if(session('success'))
+                        <div class="alert alert-success mb-4" role="alert">
+                            <i class="fa-solid fa-circle-check me-2"></i>
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger mb-4" role="alert">
+                            <i class="fa-solid fa-circle-exclamation me-2"></i>
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    @if($errors->any())
+                        <div class="alert alert-danger mb-4" role="alert">
+                            <strong>Mohon periksa kembali isian berikut:</strong>
+                            <ul class="mb-0 mt-1 ps-3">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-                    <form id="helpdeskInquiryForm">
+                    <form id="helpdeskInquiryForm" method="POST" action="{{ route('kontak.helpdesk.submit') }}">
+                        @csrf
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="senderName" class="form-label small fw-semibold text-navy">Nama Lengkap *</label>
-                                <input type="text" class="form-control rounded-2" id="senderName" placeholder="Contoh: Budi Santoso" required>
+                                <input type="text" class="form-control rounded-2 @error('name') is-invalid @enderror" id="senderName" name="name" value="{{ old('name') }}" placeholder="Contoh: Budi Santoso" required maxlength="100">
                             </div>
                             <div class="col-md-6">
                                 <label for="senderEmail" class="form-label small fw-semibold text-navy">Alamat Email *</label>
-                                <input type="email" class="form-control rounded-2" id="senderEmail" placeholder="nama@email.com" required>
+                                <input type="email" class="form-control rounded-2 @error('email') is-invalid @enderror" id="senderEmail" name="email" value="{{ old('email') }}" placeholder="nama@email.com" required maxlength="150">
                             </div>
                             <div class="col-md-6">
                                 <label for="senderPhone" class="form-label small fw-semibold text-navy">Nomor WhatsApp / HP *</label>
-                                <input type="tel" class="form-control rounded-2" id="senderPhone" placeholder="08123456789" required>
+                                <input type="tel" class="form-control rounded-2 @error('phone') is-invalid @enderror" id="senderPhone" name="phone" value="{{ old('phone') }}" placeholder="08123456789" required maxlength="20">
                             </div>
                             <div class="col-md-6">
                                 <label for="senderCategory" class="form-label small fw-semibold text-navy">Topik Pertanyaan *</label>
-                                <select class="form-select rounded-2" id="senderCategory" required>
-                                    <option value="" selected disabled>Pilih Topik Pertanyaan</option>
-                                    <option value="admisi">Informasi Pendaftaran & Syarat Masuk</option>
-                                    <option value="biaya">Biaya Pendidikan & Pembayaran</option>
-                                    <option value="kurikulum">Kurikulum & Penyetaraan (Waiver) CA</option>
-                                    <option value="legalisir">Legalisir Ijazah & Transkrip Profesi</option>
-                                    <option value="lainnya">Lain-lain / Kerja Sama</option>
+                                <select class="form-select rounded-2 @error('category') is-invalid @enderror" id="senderCategory" name="category" required>
+                                    <option value="" @selected(!old('category')) disabled>Pilih Topik Pertanyaan</option>
+                                    <option value="admisi" @selected(old('category') === 'admisi')>Informasi Pendaftaran & Syarat Masuk</option>
+                                    <option value="biaya" @selected(old('category') === 'biaya')>Biaya Pendidikan & Pembayaran</option>
+                                    <option value="kurikulum" @selected(old('category') === 'kurikulum')>Kurikulum & Penyetaraan (Waiver) CA</option>
+                                    <option value="legalisir" @selected(old('category') === 'legalisir')>Legalisir Ijazah & Transkrip Profesi</option>
+                                    <option value="lainnya" @selected(old('category') === 'lainnya')>Lain-lain / Kerja Sama</option>
                                 </select>
                             </div>
                             <div class="col-12">
+                                <label for="senderSubject" class="form-label small fw-semibold text-navy">Subjek Pesan *</label>
+                                <input type="text" class="form-control rounded-2 @error('subject') is-invalid @enderror" id="senderSubject" name="subject" value="{{ old('subject') }}" placeholder="Contoh: Jadwal pendaftaran gelombang 2" required maxlength="150">
+                            </div>
+                            <div class="col-12">
                                 <label for="senderMessage" class="form-label small fw-semibold text-navy">Isi Pesan / Pertanyaan *</label>
-                                <textarea class="form-control rounded-2" id="senderMessage" rows="4" placeholder="Tuliskan pertanyaan Anda secara jelas..." required></textarea>
+                                <textarea class="form-control rounded-2 @error('message') is-invalid @enderror" id="senderMessage" name="message" rows="4" placeholder="Tuliskan pertanyaan Anda secara jelas..." required maxlength="2000">{{ old('message') }}</textarea>
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn-ppak-primary btn-ppak-sm">
