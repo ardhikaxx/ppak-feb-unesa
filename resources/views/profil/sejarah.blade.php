@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => $pg['header_title']['heading'] ?? 'Sejarah Singkat Program',
-    'badge' => $pg['header_badge']['heading'] ?? 'Profil Program Studi',
-    'lead' => $pg['header_lead']['body'] ?? 'Pendirian Pendidikan Profesi Akuntan sebagai wujud pengembangan program pendidikan profesi di lingkungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
+    'title' => 'Sejarah Singkat Program',
+    'badge' => 'Profil Program Studi',
+    'lead' => 'Pendirian Pendidikan Profesi Akuntan sebagai wujud pengembangan program pendidikan profesi di lingkungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
     'breadcrumbs' => [
         ['label' => 'Profil', 'url' => route('profil.sejarah')],
         ['label' => 'Sejarah Singkat', 'url' => '']
@@ -22,22 +22,22 @@
             <div class="col-lg-8">
                 <article class="pe-lg-4">
                     <span class="badge-ppak badge-ppak-gold mb-2">LATAR BELAKANG & PENDIRIAN</span>
-                    <h2 class="h3 text-navy mb-4">{{ $pg['narasi_heading']['heading'] ?? 'Pengembangan Program Pendidikan Profesi di FEB UNESA' }}</h2>
-                    {!! $pg['narasi_body']['body'] ?? '<p class="lead text-dark">Program Studi Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya tercatat resmi berdiri pada tanggal <strong>23 Mei 2025</strong> dengan kode program studi <strong>62902</strong>.</p><p>Pendirian program studi ini merupakan bagian integral dari implementasi dokumen rencana strategis Fakultas Ekonomika dan Bisnis (FEB) UNESA dalam memperluas cakupan layanan pendidikan tinggi, khususnya pada jenjang pendidikan keprofesian akuntansi setelah jenjang sarjana.</p><p>Sebagai institusi yang memiliki tradisi akademik di bidang ilmu ekonomi, manajemen, dan akuntansi, FEB UNESA mengembangkan program Pendidikan Profesi Akuntan untuk menjembatani kompetensi lulusan sarjana akuntansi dengan tuntutan standar kompetensi kerja profesional di bidang pelaporan keuangan, audit dan asurans, perpajakan, serta tata kelola korporat.</p>' !!}
+                    <h2 class="h3 text-navy mb-4">Pengembangan Program Pendidikan Profesi di FEB UNESA</h2>
+                    <p class="lead text-dark">Program Studi Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya tercatat resmi berdiri pada tanggal <strong>23 Mei 2025</strong> dengan kode program studi <strong>62902</strong>.</p><p>Pendirian program studi ini merupakan bagian integral dari implementasi dokumen rencana strategis Fakultas Ekonomika dan Bisnis (FEB) UNESA dalam memperluas cakupan layanan pendidikan tinggi, khususnya pada jenjang pendidikan keprofesian akuntansi setelah jenjang sarjana.</p><p>Sebagai institusi yang memiliki tradisi akademik di bidang ilmu ekonomi, manajemen, dan akuntansi, FEB UNESA mengembangkan program Pendidikan Profesi Akuntan untuk menjembatani kompetensi lulusan sarjana akuntansi dengan tuntutan standar kompetensi kerja profesional di bidang pelaporan keuangan, audit dan asurans, perpajakan, serta tata kelola korporat.</p>
 
                     <div class="p-4 rounded-3 border bg-subtle my-4">
                         <div class="d-flex align-items-center gap-3 mb-2">
                             <i class="fa-solid fa-landmark text-navy fs-4"></i>
-                            <h3 class="fs-6 fw-bold text-navy mb-0">{{ $pg['legal_heading']['heading'] ?? 'Legalitas & Akreditasi Program' }}</h3>
+                            <h3 class="fs-6 fw-bold text-navy mb-0">Legalitas & Akreditasi Program</h3>
                         </div>
-                        {!! $pg['legal_body']['body'] ?? '<p class="small text-secondary mb-2">Pendidikan Profesi Akuntan FEB UNESA telah memperoleh status akreditasi <strong>Baik</strong> dari Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA) berdasarkan Keputusan No. <strong>611/DE/A.5/AR.11/II/2025</strong> tanggal 26 Februari 2025 dengan masa berlaku hingga 25 Februari 2027.</p>' !!}
+                        <p class="small text-secondary mb-2">Pendidikan Profesi Akuntan FEB UNESA telah memperoleh status akreditasi <strong>Baik</strong> dari Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA) berdasarkan Keputusan No. <strong>611/DE/A.5/AR.11/II/2025</strong> tanggal 26 Februari 2025 dengan masa berlaku hingga 25 Februari 2027.</p>
                         <div class="small text-muted">
-                            {!! $pg['legal_source']['body'] ?? '<i class="fa-solid fa-link me-1"></i> Sumber: SIMUTU UNESA & SINDIG UNESA (Kode Prodi: 62902)' !!}
+                            <i class="fa-solid fa-link me-1"></i> Sumber: SIMUTU UNESA & SINDIG UNESA (Kode Prodi: 62902)
                         </div>
                     </div>
 
-                    <h3 class="h4 text-navy mt-4 mb-3">{{ $pg['fokus_heading']['heading'] ?? 'Fokus Penyelenggaraan Pembelajaran' }}</h3>
-                    {!! $pg['fokus_body']['body'] ?? '<p>Penyelenggaraan program studi diarahkan pada pemenuhan Capaian Pembelajaran Lulusan (CPL) yang mencakup integritas etika akademik, karakter tangguh dan kolaboratif, pemikiran logis dan kritis sesuai standar kerja, serta kemampuan pengembangan diri berkelanjutan dalam ekosistem profesi akuntan.</p>' !!}
+                    <h3 class="h4 text-navy mt-4 mb-3">Fokus Penyelenggaraan Pembelajaran</h3>
+                    <p>Penyelenggaraan program studi diarahkan pada pemenuhan Capaian Pembelajaran Lulusan (CPL) yang mencakup integritas etika akademik, karakter tangguh dan kolaboratif, pemikiran logis dan kritis sesuai standar kerja, serta kemampuan pengembangan diri berkelanjutan dalam ekosistem profesi akuntan.</p>
                 </article>
             </div>
 
@@ -85,4 +85,5 @@
 </section>
 
 @endsection
+
 
