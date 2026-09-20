@@ -14,7 +14,6 @@ class AdmisiController extends Controller
         return view('admisi.jalur-syarat', [
             'admisi' => $this->content->getAdmisiInfo(),
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('jalur-syarat'),
         ]);
     }
 
@@ -23,7 +22,6 @@ class AdmisiController extends Controller
         return view('admisi.biaya', [
             'admisi' => $this->content->getAdmisiInfo(),
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('biaya'),
         ]);
     }
 
@@ -33,7 +31,6 @@ class AdmisiController extends Controller
             'admisi' => $this->content->getAdmisiInfo(),
             'kalender' => $this->content->getKalender(),
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('prosedur-jadwal'),
         ]);
     }
 
@@ -42,7 +39,7 @@ class AdmisiController extends Controller
         return view('admisi.faq', [
             'faqs' => $this->content->getFaq(),
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('faq'),
         ]);
     }
 }
+
