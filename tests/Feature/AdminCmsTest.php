@@ -6,6 +6,7 @@ use App\Models\Accreditation;
 use App\Models\Agenda;
 use App\Models\Lecturer;
 use App\Models\News;
+use App\Models\PageContent;
 use App\Models\SiteSetting;
 use App\Models\TuitionFee;
 use Database\Seeders\AdminSeeder;
@@ -263,6 +264,29 @@ test('blok konten tahapan via CMS mengambil alih beranda', function () {
     $response->assertDontSee('Pembuatan Akun PMB');
 });
 
+test('konten halaman statis via CMS tampil di halaman publik', function () {
+    loginAdmin($this);
+
+    $row = PageContent::ofPage('sejarah')->where('section_key', 'fokus_heading')->first();
+    $this->put(route('admin.page-contents.update', $row), [
+        'page' => 'sejarah',
+        'section_key' => 'fokus_heading',
+        'heading' => 'Fokus Uji Propagasi CMS',
+        'status' => 'published',
+    ])->assertRedirect(route('admin.page-contents.index', ['page' => 'sejarah']));
+
+    $this->get(route('profil.sejarah'))->assertStatus(200)->assertSee('Fokus Uji Propagasi CMS');
+});
+
+test('hapus section halaman kembali ke teks bawaan tanpa error', function () {
+    loginAdmin($this);
+
+    $row = PageContent::ofPage('mahasiswa')->where('section_key', 'aktivitas_1_heading')->first();
+    $this->delete(route('admin.page-contents.destroy', $row))->assertRedirect();
+
+    $this->get(route('kemahasiswaan-alumni.mahasiswa'))->assertStatus(200)->assertSee('Perkuliahan Tatap Muka Terstruktur');
+});
+
 test('halaman panduan mengambil dokumen dari database', function () {
     $response = $this->get(route('akademik.panduan'));
     $response->assertStatus(200);
@@ -312,6 +336,8 @@ test('seluruh halaman index dan form CMS dapat dibuka admin', function () {
         'admin.media.index',
         'admin.content-blocks.index',
         'admin.content-blocks.create',
+        'admin.page-contents.index',
+        'admin.page-contents.create',
         'admin.site-settings.index',
         'admin.helpdesk.index',
         'admin.audit-logs.index',
