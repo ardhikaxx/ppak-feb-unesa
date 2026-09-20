@@ -103,3 +103,6 @@ Route::get('/sitemap.xml', [InformasiController::class, 'sitemap'])->name('sitem
 Route::get('/search', [InformasiController::class, 'search'])
     ->middleware('throttle:search')
     ->name('search');
+
+// CMS Admin PPAk FEB UNESA - route terpisah, lihat routes/admin.php
+require __DIR__.'/admin.php';
