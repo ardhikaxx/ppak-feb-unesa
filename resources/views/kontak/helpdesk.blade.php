@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Sekretariat & Helpdesk Layanan Mahasiswa',
-    'badge' => 'Pusat Bantuan & Komunikasi',
-    'lead' => 'Silakan hubungi staf sekretariat untuk konsultasi pendaftaran, persyaratan matrikulasi, dan administrasi akademik profesi.',
+    'title' => $pg['header_title']['heading'] ?? 'Sekretariat & Helpdesk Layanan Mahasiswa',
+    'badge' => $pg['header_badge']['heading'] ?? 'Pusat Bantuan & Komunikasi',
+    'lead' => $pg['header_lead']['body'] ?? 'Silakan hubungi staf sekretariat untuk konsultasi pendaftaran, persyaratan matrikulasi, dan administrasi akademik profesi.',
     'breadcrumbs' => [
         ['label' => 'Kontak', 'url' => route('kontak.lokasi')],
         ['label' => 'Helpdesk', 'url' => '']
@@ -26,8 +26,8 @@
                     </div>
                     <h3 class="fs-6 fw-bold text-navy mb-1">Helpdesk WhatsApp</h3>
                     <p class="small text-secondary mb-3">Layanan pesan cepat untuk konsultasi syarat pendaftaran dan seleksi masuk.</p>
-                    <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="btn-ppak-primary btn-ppak-sm w-100">
-                        <span>Chat WhatsApp (0812-3456-7890)</span>
+                    <a href="https://wa.me/{{ preg_replace('/\D/', '', $info['whatsapp'] ?? '6281234567890') }}" target="_blank" rel="noopener noreferrer" class="btn-ppak-primary btn-ppak-sm w-100">
+                        <span>Chat WhatsApp ({{ $info['whatsapp'] ?? '0812-3456-7890' }})</span>
                     </a>
                 </div>
             </div>
@@ -39,8 +39,8 @@
                     </div>
                     <h3 class="fs-6 fw-bold text-navy mb-1">Email Resmi</h3>
                     <p class="small text-secondary mb-3">Kirimkan surat permohonan, legalisir ijazah, atau kerja sama kelembagaan.</p>
-                    <a href="mailto:ppak.feb@unesa.ac.id" class="btn-ppak-secondary btn-ppak-sm w-100">
-                        <span>ppak.feb@unesa.ac.id</span>
+                    <a href="mailto:{{ $info['email'] ?? 'ppak.feb@unesa.ac.id' }}" class="btn-ppak-secondary btn-ppak-sm w-100">
+                        <span>{{ $info['email'] ?? 'ppak.feb@unesa.ac.id' }}</span>
                     </a>
                 </div>
             </div>
@@ -52,8 +52,8 @@
                     </div>
                     <h3 class="fs-6 fw-bold text-navy mb-1">Telepon Kantor</h3>
                     <p class="small text-secondary mb-3">Layanan suara langsung pada jam kerja operasional kantor.</p>
-                    <a href="tel:+62318280009" class="btn-ppak-secondary btn-ppak-sm w-100">
-                        <span>+62 31 828 0009 Ext. 312</span>
+                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', $info['phone'] ?? '+62 31 828 0009') }}" class="btn-ppak-secondary btn-ppak-sm w-100">
+                        <span>{{ $info['phone'] ?? '+62 31 828 0009' }} Ext. 312</span>
                     </a>
                 </div>
             </div>
@@ -238,3 +238,4 @@
 </section>
 
 @endsection
+
