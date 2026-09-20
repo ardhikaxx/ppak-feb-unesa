@@ -117,9 +117,9 @@ class DocumentController extends BaseAdminController
         return redirect()->route('admin.documents.index')->with('success', 'Dokumen diarsipkan. File fisik tetap tersimpan dan dapat dipulihkan.');
     }
 
-    public function restore(int $document): RedirectResponse
+    public function restore(string|int $document): RedirectResponse
     {
-        $item = Document::withTrashed()->findOrFail($document);
+        $item = Document::withTrashed()->where('id', $document)->orWhere('slug', (string) $document)->firstOrFail();
         $item->restore();
 
         $this->audit('restored', $item, $item->toArray());
