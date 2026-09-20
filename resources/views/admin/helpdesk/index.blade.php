@@ -43,7 +43,7 @@
                                 <div class="small text-muted">{{ $item->email }}</div>
                             </td>
                             <td class="small">{{ $item->subject }}</td>
-                            <td class="small">{{ $item->created_at->format('d M Y H:i') }}</td>
+                            <td class="small">{{ \App\Support\Tanggal::datetime($item->created_at) }}</td>
                             <td>
                                 <span class="badge {{ $item->status === 'open' ? 'text-bg-danger' : ($item->status === 'in_progress' ? 'text-bg-warning' : 'text-bg-success') }}">{{ $item->status }}</span>
                             </td>
