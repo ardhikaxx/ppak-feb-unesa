@@ -67,13 +67,12 @@ Semua seeder idempotent (`updateOrCreate`) sehingga aman dijalankan ulang:
 | `AdminSeeder` | Akun admin awal |
 | `SiteSettingSeeder` | 25 pengaturan global (umum, kontak, sosmed, SEO, admisi) |
 
-Migrasi tambahan CMS:
-
-| Migrasi | Isi |
-|---|---|
-| `2026_02_01_000001_create_admins_table` | `admins` + `admin_password_reset_tokens` |
-| `2026_02_01_000002_create_site_settings_table` | `site_settings` (key-value per grup, satu sumber kebenaran) |
-| `2026_02_01_000003_add_period_label_to_academic_calendars` | Kolom aditif `period_label` (label resmi mis. "1 Agustus 2026 – 31 Januari 2027"; fallback ke rentang tanggal bila kosong) |
+Migrasi database hanya **satu file**: `2026_02_01_000001_create_all_tables.php —
+mencakup seluruh tabel framework (users, cache, jobs, sessions), tabel CMS
+(`admins`, `site_settings`), dan seluruh tabel konten. Dijalankan via
+`php artisan migrate:fresh --seed`. Kolom display tambahan (`period_label`,
+`author_name`, `display_date`, `summary`, label admisi) sudah termasuk
+langsung di definisi tabel.
 
 Catatan data: satu baris berita duplikat lawas (`sosialisasi-kurikulum-...`, tidak
 ditampilkan frontend saat ini) diarsipkan via soft delete agar daftar publik tetap
