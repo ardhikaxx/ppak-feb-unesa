@@ -211,7 +211,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
                     'source' => 'SIMUTU UNESA',
                 ],
                 [
-                    'number' => 'Rp'.number_format((int) ($info['ukt_amount'] / 1000000), 1, ',', '.').' Jt',
+                    'number' => 'Rp'.number_format(((float) $info['ukt_amount']) / 1000000, 1, ',', '.').' Jt',
                     'label' => 'UKT per Semester',
                     'desc' => 'Biaya pendidikan resmi berdasarkan ketetapan Admisi UNESA.',
                     'source' => 'Admisi UNESA',
