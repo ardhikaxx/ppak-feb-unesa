@@ -15,7 +15,6 @@ class ProfilController extends Controller
     {
         return view('profil.sejarah', [
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('sejarah'),
         ]);
     }
 
@@ -23,7 +22,6 @@ class ProfilController extends Controller
     {
         return view('profil.visi-misi', [
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('visi-misi'),
         ]);
     }
 
@@ -31,7 +29,6 @@ class ProfilController extends Controller
     {
         return view('profil.struktur-organisasi', [
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('struktur-organisasi'),
         ]);
     }
 
@@ -53,7 +50,6 @@ class ProfilController extends Controller
         return view('profil.dosen-pengajar', [
             'dosen' => $dosen,
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('dosen'),
         ]);
     }
 
@@ -63,7 +59,7 @@ class ProfilController extends Controller
             'info' => $this->content->getGeneralInfo(),
             'unduhan' => $this->content->getUnduhan(),
             'accreditation' => Accreditation::orderByDesc('effective_until')->first(),
-            'pg' => $this->content->getPageContent('akreditasi'),
         ]);
     }
 }
+
