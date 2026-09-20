@@ -4,6 +4,12 @@
     'badge' => null,
     'breadcrumbs' => []
 ])
+{{-- BreadcrumbList JSON-LD otomatis dari breadcrumb visual yang sama --}}
+@if(!empty($breadcrumbs))
+@push('jsonld')
+<script type="application/ld+json">{!! json_encode(\App\Services\SeoService::breadcrumbJsonLd(array_merge([['label' => 'Beranda', 'url' => route('home')]], array_filter($breadcrumbs, fn ($b) => !empty($b['label'])))), JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}</script>
+@endpush
+@endif
 
 <header class="page-header-ppak">
     <div class="container">
