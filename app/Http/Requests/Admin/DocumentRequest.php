@@ -14,7 +14,8 @@ class DocumentRequest extends FormRequest
 
     public function rules(): array
     {
-        $id = $this->route('document')?->id;
+        $document = $this->route('document');
+        $id = is_object($document) ? $document->id : (is_numeric($document) ? (int) $document : ($document ? \App\Models\Document::where('slug', $document)->value('id') : null));
         $isCreate = $this->isMethod('post');
 
         return [
