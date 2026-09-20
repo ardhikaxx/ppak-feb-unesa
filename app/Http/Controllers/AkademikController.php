@@ -16,10 +16,8 @@ class AkademikController extends Controller
         return view('akademik.kurikulum', [
             'kurikulum' => $kurikulum,
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('kurikulum'),
             'sks1' => collect($kurikulum['semester_1'] ?? [])->sum('sks'),
             'sks2' => collect($kurikulum['semester_2'] ?? [])->sum('sks'),
-            'pg' => $this->content->getPageContent('kurikulum'),
         ]);
     }
 
@@ -28,7 +26,6 @@ class AkademikController extends Controller
         return view('akademik.kalender', [
             'kalender' => $this->content->getKalender(),
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('kalender'),
         ]);
     }
 
@@ -36,7 +33,6 @@ class AkademikController extends Controller
     {
         return view('akademik.gelar-sertifikasi', [
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('gelar-sertifikasi'),
         ]);
     }
 
@@ -47,7 +43,7 @@ class AkademikController extends Controller
         return view('akademik.panduan', [
             'panduanList' => array_values($docs),
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('panduan'),
         ]);
     }
 }
+
