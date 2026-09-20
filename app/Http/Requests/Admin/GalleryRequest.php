@@ -14,7 +14,8 @@ class GalleryRequest extends FormRequest
 
     public function rules(): array
     {
-        $id = $this->route('gallery')?->id;
+        $gallery = $this->route('gallery');
+        $id = is_object($gallery) ? $gallery->id : (is_numeric($gallery) ? (int) $gallery : ($gallery ? \App\Models\Gallery::where('slug', $gallery)->value('id') : null));
 
         return [
             'title' => ['required', 'string', 'max:255'],
