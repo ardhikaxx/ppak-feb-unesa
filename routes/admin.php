@@ -2,14 +2,15 @@
 
 use App\Http\Controllers\Admin\AcademicCalendarController;
 use App\Http\Controllers\Admin\AccreditationController;
-use App\Http\Controllers\Admin\AdmissionScheduleController;
 use App\Http\Controllers\Admin\AdminAccountController;
+use App\Http\Controllers\Admin\AdmissionScheduleController;
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\AlumniController;
 use App\Http\Controllers\Admin\AuditLogController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CommunityServiceController;
+use App\Http\Controllers\Admin\ContentBlockController;
 use App\Http\Controllers\Admin\CurriculumController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DocumentController;
@@ -92,6 +93,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/media', [MediaController::class, 'destroy'])->name('media.destroy');
 
         // Website & sistem
+        Route::resource('content-blocks', ContentBlockController::class)->except(['show']);
+        Route::post('/content-blocks/import/{group}', [ContentBlockController::class, 'import'])->name('content-blocks.import');
         Route::get('/site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
         Route::put('/site-settings', [SiteSettingController::class, 'update'])->name('site-settings.update');
         Route::get('/helpdesk', [HelpdeskController::class, 'index'])->name('helpdesk.index');
