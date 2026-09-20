@@ -46,15 +46,5 @@ final class ContentCache
         foreach ($keys as $key) {
             Cache::forget($key);
         }
-
-        try {
-            $pages = \App\Models\PageContent::select('page')->distinct()->pluck('page');
-        } catch (\Throwable) {
-            $pages = collect(array_keys(\App\Models\PageContent::PAGES));
-        }
-
-        foreach ($pages as $page) {
-            Cache::forget(CacheKeys::PAGE_CONTENT . $page);
-        }
     }
 }
