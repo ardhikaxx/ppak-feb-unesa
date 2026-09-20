@@ -5,7 +5,7 @@
 
 @section('content')
 
-<x-page-header :title="$pg['header_title']['heading'] ?? 'Berita & Pengumuman'" :badge="$pg['header_badge']['heading'] ?? 'Informasi & Publikasi Resmi'" :lead="$pg['header_lead']['body'] ?? 'Kabar teraktual mengenai aktivitas perkuliahan, kerja sama industri, kuliah tamu pakar, dan pengumuman administratif PPAk FEB UNESA.'" :breadcrumbs="[
+<x-page-header title="Berita & Pengumuman" badge="Informasi & Publikasi Resmi" lead="Kabar teraktual mengenai aktivitas perkuliahan, kerja sama industri, kuliah tamu pakar, dan pengumuman administratif PPAk FEB UNESA." :breadcrumbs="[
     ['label' => 'Informasi', 'url' => route('informasi.berita')],
     ['label' => 'Berita', 'url' => '']
 ]" />
@@ -94,4 +94,5 @@
 </section>
 
 @endsection
+
 
