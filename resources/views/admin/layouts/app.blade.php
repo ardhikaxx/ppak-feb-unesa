@@ -7,7 +7,7 @@
     {{-- Area internal: jangan diindeks search engine --}}
     <meta name="robots" content="noindex,nofollow">
     <title>@yield('title', 'CMS Admin') | PPAk FEB UNESA</title>
-    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-single.png') }}">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -56,7 +56,7 @@
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
     <aside class="sidebar" id="adminSidebar" aria-label="Navigasi CMS">
         <div class="sidebar-brand d-flex align-items-center gap-2">
-            <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA">
+            <img src="{{ asset('images/logo-single.png') }}" alt="Logo PPAk FEB UNESA">
             <div>
                 <div class="fw-bold" style="font-size:.95rem;">CMS PPAk</div>
                 <div class="small" style="color:#8fa3bd;">FEB UNESA</div>
