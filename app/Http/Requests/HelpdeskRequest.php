@@ -16,10 +16,10 @@ class HelpdeskRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:150'],
-            'phone' => ['nullable', 'string', 'max:20', 'regex:/^[0-9+\-\s]+$/'],
+            'phone' => ['required', 'string', 'max:20', 'regex:/^[0-9+\-\s]+$/'],
             'subject' => ['required', 'string', 'max:150'],
             'message' => ['required', 'string', 'max:2000'],
-            'category' => ['nullable', 'string', 'in:akademik,admisi,keuangan,umum'],
+            'category' => ['required', 'string', 'in:admisi,biaya,kurikulum,legalisir,lainnya'],
         ];
     }
 
