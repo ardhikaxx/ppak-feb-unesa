@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Struktur Organisasi',
-    'badge' => 'Tata Kelola Kelembagaan',
-    'lead' => 'Hierarki tata kelola kelembagaan Program Studi Pendidikan Profesi Akuntan di lingkungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
+    'title' => $pg['header_title']['heading'] ?? 'Struktur Organisasi',
+    'badge' => $pg['header_badge']['heading'] ?? 'Tata Kelola Kelembagaan',
+    'lead' => $pg['header_lead']['body'] ?? 'Hierarki tata kelola kelembagaan Program Studi Pendidikan Profesi Akuntan di lingkungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
     'breadcrumbs' => [
         ['label' => 'Profil', 'url' => route('profil.sejarah')],
         ['label' => 'Struktur Organisasi', 'url' => '']
@@ -121,3 +121,4 @@
 </section>
 
 @endsection
+
