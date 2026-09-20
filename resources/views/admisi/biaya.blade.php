@@ -37,7 +37,7 @@
                     <p class="text-secondary small mb-3">
                         Besaran Uang Kuliah Tunggal (UKT) Program Studi Pendidikan Profesi Akuntan (Kode: <strong>62902</strong>) pada Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya:
                     </p>
-                    <div class="display-5 fw-bold text-navy mb-2">Rp5.500.000 <span class="fs-6 text-muted fw-normal">/ semester</span></div>
+                    <div class="display-5 fw-bold text-navy mb-2">Rp{{ number_format($admisi['ukt'] ?? 5500000, 0, ',', '.') }} <span class="fs-6 text-muted fw-normal">/ semester</span></div>
                     <div class="small text-muted">
                         <i class="fa-solid fa-check text-success me-1"></i> Tarif berlaku per semester untuk mahasiswa Program Studi Pendidikan Profesi Akuntan.
                     </div>
@@ -86,11 +86,11 @@
                     <ul class="list-unstyled small text-secondary mb-0">
                         <li class="mb-2 d-flex align-items-center gap-2">
                             <i class="fa-solid fa-envelope text-gold"></i>
-                            <span>Email: <a href="mailto:ppak.feb@unesa.ac.id" class="text-navy text-decoration-none">ppak.feb@unesa.ac.id</a></span>
+                            <span>Email: <a href="mailto:{{ $info['email'] ?? 'ppak.feb@unesa.ac.id' }}" class="text-navy text-decoration-none">{{ $info['email'] ?? 'ppak.feb@unesa.ac.id' }}</a></span>
                         </li>
                         <li class="mb-2 d-flex align-items-center gap-2">
                             <i class="fa-solid fa-phone text-gold"></i>
-                            <span>Telepon: +62 31 828 0009</span>
+                            <span>Telepon: {{ $info['phone'] ?? '+62 31 828 0009' }}</span>
                         </li>
                         <li class="d-flex align-items-center gap-2">
                             <i class="fa-solid fa-location-dot text-gold"></i>
