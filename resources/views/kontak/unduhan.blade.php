@@ -5,7 +5,7 @@
 
 @section('content')
 
-<x-page-header :title="$pg['header_title']['heading'] ?? 'Unduhan Dokumen Publik & Formulir'" :badge="$pg['header_badge']['heading'] ?? 'Repositori Berkas Resmi'" :lead="$pg['header_lead']['body'] ?? 'Akses berkas digital resmi seperti brosur program, formulir permohonan waiver CA, kalender studi, dan surat keputusan akreditasi.'" :breadcrumbs="[
+<x-page-header title="Unduhan Dokumen Publik & Formulir" badge="Repositori Berkas Resmi" lead="Akses berkas digital resmi seperti brosur program, formulir permohonan waiver CA, kalender studi, dan surat keputusan akreditasi." :breadcrumbs="[
     ['label' => 'Kontak', 'url' => route('kontak.lokasi')],
     ['label' => 'Unduhan Dokumen', 'url' => '']
 ]" />
@@ -99,4 +99,5 @@
 </section>
 
 @endsection
+
 
