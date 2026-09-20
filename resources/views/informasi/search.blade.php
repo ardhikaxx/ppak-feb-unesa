@@ -2,6 +2,8 @@
 
 @section('title', 'Pencarian: ' . $keyword . ' | PPAk FEB UNESA')
 @section('meta_description', 'Hasil pencarian untuk ' . $keyword . ' di PPAk FEB UNESA.')
+{{-- Hasil pencarian internal bukan landing page: jangan diindeks, tetap ikuti link --}}
+@section('meta_robots', 'noindex,follow')
 
 @section('content')
 
