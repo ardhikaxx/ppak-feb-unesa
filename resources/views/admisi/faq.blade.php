@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Pertanyaan yang Sering Diajukan (FAQ)',
-    'badge' => 'Pusat Bantuan & Tanya Jawab',
-    'lead' => 'Jawaban atas pertanyaan umum seputar pendaftaran akun PMB, verifikasi dokumen, pembayaran UKT, dan layanan akademik.',
+    'title' => $pg['header_title']['heading'] ?? 'Pertanyaan yang Sering Diajukan (FAQ)',
+    'badge' => $pg['header_badge']['heading'] ?? 'Pusat Bantuan & Tanya Jawab',
+    'lead' => $pg['header_lead']['body'] ?? 'Jawaban atas pertanyaan umum seputar pendaftaran akun PMB, verifikasi dokumen, pembayaran UKT, dan layanan akademik.',
     'breadcrumbs' => [
         ['label' => 'Admisi', 'url' => route('admisi.jalur-syarat')],
         ['label' => 'FAQ', 'url' => '']
@@ -68,3 +68,4 @@
 </section>
 
 @endsection
+
