@@ -5,8 +5,10 @@ namespace App\Support;
 use Carbon\Carbon;
 
 /**
- * Format tanggal Bahasa Indonesia untuk tampilan publik.
+ * Format tanggal & waktu Bahasa Indonesia (WIB) untuk seluruh tampilan.
  * Nol di depan dipertahankan (01 September 2026) sesuai dokumen resmi.
+ * Semua Carbon/Eloquent sudah berada di zona APP_TIMEZONE (Asia/Jakarta),
+ * sehingga jam yang tampil adalah WIB tanpa konversi tambahan di Blade.
  */
 final class Tanggal
 {
@@ -30,5 +32,19 @@ final class Tanggal
     public static function bulan(int $month): string
     {
         return self::BULAN[$month] ?? '';
+    }
+
+    /**
+     * Format tanggal + jam lengkap: "20 September 2026, 14.30 WIB".
+     */
+    public static function datetime(string|Carbon|\DateTimeInterface|null $date): string
+    {
+        if (! $date) {
+            return '-';
+        }
+
+        $d = $date instanceof Carbon ? $date : Carbon::parse($date);
+
+        return $d->format('d').' '.self::BULAN[$d->month].' '.$d->year.', '.$d->format('H.i').' WIB';
     }
 }
