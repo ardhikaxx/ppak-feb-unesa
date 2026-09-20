@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Visi, Misi & Tujuan',
-    'badge' => 'Arah & Komitmen Mutu',
-    'lead' => 'Komitmen penyelenggaraan Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
+    'title' => $pg['header_title']['heading'] ?? 'Visi, Misi & Tujuan',
+    'badge' => $pg['header_badge']['heading'] ?? 'Arah & Komitmen Mutu',
+    'lead' => $pg['header_lead']['body'] ?? 'Komitmen penyelenggaraan Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
     'breadcrumbs' => [
         ['label' => 'Profil', 'url' => route('profil.sejarah')],
         ['label' => 'Visi, Misi & Tujuan', 'url' => '']
@@ -88,3 +88,4 @@
 </section>
 
 @endsection
+
