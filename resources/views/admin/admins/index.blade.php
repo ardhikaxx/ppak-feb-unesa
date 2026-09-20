@@ -23,7 +23,7 @@
                             <td class="fw-semibold">{{ $account->name }} @if($account->id === auth('admin')->id()) <span class="badge text-bg-info">Anda</span> @endif</td>
                             <td class="small">{{ $account->email }}</td>
                             <td><span class="badge {{ $account->is_active ? 'text-bg-success' : 'text-bg-secondary' }}">{{ $account->is_active ? 'Aktif' : 'Nonaktif' }}</span></td>
-                            <td class="small">{{ $account->last_login_at?->format('d M Y H:i') ?? '—' }}</td>
+                            <td class="small">{{ \App\Support\Tanggal::datetime($account->last_login_at) ?? '—' }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('admin.admins.edit', $account) }}" class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></a>
