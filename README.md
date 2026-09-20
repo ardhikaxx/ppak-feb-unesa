@@ -188,6 +188,9 @@ php artisan test
 - [docs/CMS.md](docs/CMS.md) — dokumentasi teknis CMS (arsitektur, tabel, route, keamanan).
 - [docs/PANDUAN-ADMIN.md](docs/PANDUAN-ADMIN.md) — panduan penggunaan CMS untuk admin.
 - [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) — panduan deployment (XAMPP & shared hosting).
+- [CONTRIBUTING.md](CONTRIBUTING.md) — panduan kontribusi.
+- [SECURITY.md](SECURITY.md) — kebijakan keamanan & pelaporan kerentanan.
+- [CHANGELOG.md](CHANGELOG.md) — riwayat perubahan per versi.
 
 ## Deployment
 
@@ -205,6 +208,6 @@ Dikembangkan oleh **Yanuar Ardhika Rahmadhani Ubaidillah**.
 
 ## Lisensi
 
-Proyek ini menggunakan lisensi [MIT](https://opensource.org/licenses/MIT). Data dan dokumen
+Proyek ini menggunakan lisensi MIT — lihat file [LICENSE](LICENSE). Data dan dokumen
 institusi di dalamnya adalah milik Universitas Negeri Surabaya dan digunakan untuk
 keperluan informasi akademik.
