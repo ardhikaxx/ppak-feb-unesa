@@ -15,4 +15,9 @@ class Gallery extends Model
         'event_date' => 'date',
         'verified_at' => 'datetime',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
