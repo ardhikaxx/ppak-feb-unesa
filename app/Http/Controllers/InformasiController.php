@@ -44,7 +44,6 @@ class InformasiController extends Controller
             'berita' => $paginated,
             'allBerita' => $allForCount,
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('berita'),
         ]);
     }
 
@@ -95,7 +94,6 @@ class InformasiController extends Controller
         return view('informasi.agenda', [
             'agenda' => $agenda,
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('agenda'),
         ]);
     }
 
@@ -109,7 +107,6 @@ class InformasiController extends Controller
         return view('informasi.galeri', [
             'galeri' => $paginated,
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('galeri'),
         ]);
     }
 
@@ -181,3 +178,4 @@ class InformasiController extends Controller
         return response($xml, 200, ['Content-Type' => 'application/xml']);
     }
 }
+
