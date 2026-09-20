@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => $pg['header_title']['heading'] ?? 'Lokasi Kampus & Peta Sekretariat',
-    'badge' => $pg['header_badge']['heading'] ?? 'Kampus Ketintang Surabaya',
-    'lead' => $pg['header_lead']['body'] ?? 'Kunjungi sekretariat PPAk di Gedung G6 Fakultas Ekonomika dan Bisnis, Universitas Negeri Surabaya.',
+    'title' => 'Lokasi Kampus & Peta Sekretariat',
+    'badge' => 'Kampus Ketintang Surabaya',
+    'lead' => 'Kunjungi sekretariat PPAk di Gedung G6 Fakultas Ekonomika dan Bisnis, Universitas Negeri Surabaya.',
     'breadcrumbs' => [
         ['label' => 'Kontak', 'url' => route('kontak.lokasi')],
         ['label' => 'Lokasi & Peta', 'url' => '']
@@ -42,7 +42,7 @@
                     <div>
                         <div class="fw-bold text-navy small mb-1">Jam Pelayanan Kantor:</div>
                         <p class="small text-secondary mb-0">
-                            {!! $pg['schedule_body']['body'] ?? 'Senin – Kamis: 08.00 – 16.00 WIB<br>Jumat: 08.00 – 16.30 WIB (Istirahat 11.30 – 13.00 WIB)<br>Sabtu & Minggu: Layanan Khusus Kelas Eksekutif' !!}
+                            Senin – Kamis: 08.00 – 16.00 WIB<br>Jumat: 08.00 – 16.30 WIB (Istirahat 11.30 – 13.00 WIB)<br>Sabtu & Minggu: Layanan Khusus Kelas Eksekutif
                         </p>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     <div>
                         <div class="fw-bold text-navy small mb-1">Akses Transportasi Publik:</div>
                         <p class="small text-secondary mb-0">
-                            {!! $pg['transport_body']['body'] ?? 'Terhubung langsung dengan rute feeder WiraWiri Suroboyo (Halte UNESA Ketintang), Suroboyo Bus Koridor R1/R2, serta berjarak 1.5 km dari Stasiun Kereta Api Wonokromo.' !!}
+                            Terhubung langsung dengan rute feeder WiraWiri Suroboyo (Halte UNESA Ketintang), Suroboyo Bus Koridor R1/R2, serta berjarak 1.5 km dari Stasiun Kereta Api Wonokromo.
                         </p>
                     </div>
                 </div>
@@ -99,4 +99,5 @@
 </section>
 
 @endsection
+
 
