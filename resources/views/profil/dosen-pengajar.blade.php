@@ -3,6 +3,10 @@
 @section('title', 'Profil Dosen & Pengajar | Pendidikan Profesi Akuntan FEB UNESA')
 @section('meta_description', 'Daftar dosen dan tenaga pengajar mata kuliah Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.')
 
+@push('jsonld')
+<script type="application/ld+json">{!! json_encode(\App\Services\SeoService::lecturersJsonLd($dosen), JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}</script>
+@endpush
+
 @section('content')
 
 <x-page-header title="Profil Dosen & Pengajar" badge="Tenaga Pengajar Terverifikasi" lead="Daftar dosen aktif dan pengajar mata kuliah Program Studi Pendidikan Profesi Akuntan FEB UNESA yang tercatat pada sistem penugasan akademik SINDIG UNESA." :breadcrumbs="[
