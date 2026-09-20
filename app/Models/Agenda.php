@@ -18,4 +18,9 @@ class Agenda extends Model
         'published_at' => 'datetime',
         'verified_at' => 'datetime',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
