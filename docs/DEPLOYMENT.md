@@ -17,9 +17,9 @@ hosting/cPanel, termasuk lingkungan XAMPP). Target pembaca: administrator server
 
 | Kebutuhan | Versi minimum |
 |---|---|
-| PHP (+ ekstensi standar Laravel: BCMath, Ctype, Fileinfo, JSON, Mbstring, OpenSSL, PDO, Tokenizer, XML, SQLite/MySQL driver) | ^8.3 |
+| PHP (+ ekstensi standar Laravel: BCMath, Ctype, Fileinfo, JSON, Mbstring, OpenSSL, PDO, Tokenizer, XML, driver PDO MySQL) | ^8.3 |
 | Composer | 2.x |
-| Database | SQLite (bawaan, cukup untuk trafik institusi kecil) atau MySQL 8+ |
+| Database | MySQL 8+ / MariaDB 10.4+ (satu-satunya database yang didukung; SQLite sudah dihapus dari proyek) |
 | Web server | Nginx / Apache (mod_rewrite) |
 | Node.js + NPM | Hanya bila perlu build ulang aset (opsional — hasil build sudah ada di `public/build`) |
 
