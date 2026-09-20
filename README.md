@@ -1,58 +1,210 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/images/logo-unesa.png" width="120" alt="Logo UNESA">
 </p>
 
-## About Laravel
+<h1 align="center">Website Profil PPAk FEB UNESA + CMS Admin</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  Website profil resmi <strong>Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya</strong>
+  yang dilengkapi <strong>CMS (Content Management System)</strong> khusus admin untuk mengelola seluruh konten website secara dinamis.
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-%5E8.3-777BB4?logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/Laravel-13-FF2D20?logo=laravel&logoColor=white" alt="Laravel">
+  <img src="https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white" alt="Bootstrap">
+  <img src="https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite&logoColor=white" alt="SQLite">
+  <img src="https://img.shields.io/badge/Tested-Pest_5-4CAF50?logo=pest&logoColor=white" alt="Pest">
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT">
+</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Daftar Isi
 
-## Learning Laravel
+- [Tentang Proyek](#tentang-proyek)
+- [Fitur Website Publik](#fitur-website-publik)
+- [Fitur CMS Admin](#fitur-cms-admin)
+- [Teknologi](#teknologi)
+- [Sumber Data Resmi](#sumber-data-resmi)
+- [Struktur Proyek](#struktur-proyek)
+- [Instalasi](#instalasi)
+- [Akun Demo](#akun-demo)
+- [Pengujian](#pengujian)
+- [Keamanan](#keamanan)
+- [Dokumentasi](#dokumentasi)
+- [Deployment](#deployment)
+- [Penulis](#penulis)
+- [Lisensi](#lisensi)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Tentang Proyek
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Aplikasi web profil Program Studi Pendidikan Profesi Akuntan (Kode Prodi **62902**)
+FEB UNESA. Bagian frontend publik menampilkan informasi program, akademik, admisi,
+riset, kemahasiswaan, berita, agenda, galeri, dokumen, dan kontak — semuanya dibaca
+dari **database** melalui CMS admin, sehingga pengelola dapat memperbarui konten
+tanpa menyentuh source code dan tanpa mengubah tampilan website.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Fitur Website Publik
 
-## Agentic Development
+| Halaman | Route |
+|---|---|
+| Beranda (hero, identitas, statistik, keunggulan, kurikulum ringkas, berita, agenda) | `/` |
+| Sejarah, Visi-Misi, Struktur Organisasi, Dosen & Pengajar, Akreditasi | `/profil/*` |
+| Kurikulum, Kalender Akademik, Gelar & Sertifikasi, Panduan | `/akademik/*` |
+| Jalur & Syarat, Biaya, Prosedur & Jadwal, FAQ | `/admisi/*` |
+| Riset & Publikasi, Pengabdian, Kerja Sama | `/riset-pengabdian/*` |
+| Alumni, Mahasiswa, Testimoni & Karier | `/kemahasiswaan-alumni/*` |
+| Berita (paginasi, pencarian, filter kategori, detail slug), Agenda, Galeri | `/informasi/*` |
+| Lokasi, Helpdesk, Unduhan (6 dokumen PDF resmi) | `/kontak/*` |
+| Pencarian global & Sitemap XML | `/search`, `/sitemap.xml` |
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Fitur CMS Admin
 
-```bash
-composer require laravel/boost --dev
+Akses di `/admin/login` → `/admin/dashboard`. Selengkapnya di [docs/CMS.md](docs/CMS.md).
 
-php artisan boost:install
+- **Dashboard** dengan statistik konten real dari database, konten terakhir diubah, dan audit log terakhir.
+- **Profil PPAk**: profil program (satu sumber kebenaran), akreditasi, dosen/pengajar (foto, urutan tampil, aktif/nonaktif, arsip + restore).
+- **Akademik**: kurikulum/mata kuliah (per semester, pemetaan CPL), CPL, kalender akademik (per tahun akademik & semester, arsip otomatis).
+- **Admisi**: gelombang pendaftaran (aktif/segera dibuka/arsip), biaya pendidikan per periode (historis dipertahankan), FAQ berkategori.
+- **Riset & Pengabdian**: publikasi, riset, PKM, kerja sama/mitra.
+- **Kemahasiswaan & Alumni**: testimoni terverifikasi, data alumni.
+- **Informasi & Publikasi**: berita (draft/terbit/terjadwal/arsip, slug unik, preview publik, restore), agenda/event, galeri foto.
+- **Dokumen & Media**: upload dokumen (file lama tidak dihapus saat update), kategori (proteksi hapus), media manager (info pemakaian file).
+- **Website**: pengaturan global (kontak, media sosial, SEO), helpdesk masuk, audit log, kelola akun admin, profil & password sendiri.
+
+## Teknologi
+
+- **Backend**: PHP ^8.3, Laravel 13, Eloquent ORM, Blade.
+- **Frontend publik & CMS**: Bootstrap 5.3.3 CDN, Font Awesome 6.6.0 CDN (tanpa framework JS tambahan).
+- **Database**: SQLite untuk pengembangan (siap migrasi ke MySQL untuk produksi).
+- **Testing**: Pest 5 + PHPUnit (30 test, 271 assertion).
+- **Lainnya**: `dompdf/dompdf` (cetak PDF), Vite + Tailwind CSS (build aset).
+
+## Sumber Data Resmi
+
+Seluruh data awal terverifikasi dari dokumen resmi dan dimuat melalui seeder idempotent
+(`updateOrCreate`, aman dijalankan ulang):
+
+- SK Rektor UNESA No. 645/UN38/HK/2025
+- SK LAMEMBA No. 611/DE/A.5/AR.11/II/2025 (Peringkat **Baik**, berlaku s.d. 25 Februari 2027)
+- Kalender Akademik UNESA 2026/2027 (Surat No. B/2322/UN38.I/TU.00.02/2026)
+- UKT Admisi UNESA **Rp5.500.000/semester** (Kode Prodi 62902)
+- Kurikulum & CPL SINDIG UNESA, portal PMB `pmb.unesa.ac.id`
+
+> File seeder bersifat final dan hanya dibaca/di-seed ulang oleh AI maupun pengembang.
+> Perubahan data operasional dilakukan lewat CMS `/admin`, bukan dengan mengedit seeder.
+
+## Struktur Proyek
+
+```text
+app/
+├── Contracts/            # Kontrak repository konten (frontend)
+├── Http/
+│   ├── Controllers/      # Controller publik (per domain)
+│   │   └── Admin/        # Controller CMS (per modul, terpisah dari publik)
+│   ├── Middleware/       # admin.auth, admin.active
+│   └── Requests/Admin/   # Validasi server-side tiap form CMS
+├── Models/               # Eloquent (News, Lecturer, Document, Admin, ...)
+├── Repositories/
+│   ├── EloquentContentRepository.php  # Sumber data frontend (database) — aktif
+│   └── ArrayContentRepository.php     # Implementasi statis lama (referensi)
+├── Services/PpakData.php # Data master statis (read-only, acuan seeder)
+└── Support/              # CacheKeys, ContentCache, ArrayPaginator
+database/
+├── migrations/           # Termasuk admins & site_settings
+└── seeders/              # PpakDatabaseSeeder, AdminSeeder, SiteSettingSeeder
+docs/                     # CMS.md, PANDUAN-ADMIN.md, DEPLOYMENT.md
+resources/views/
+├── <publik>              # Blade frontend (tidak diubah oleh CMS)
+└── admin/                # Blade CMS (layout, dashboard, CRUD per modul)
+routes/
+├── web.php               # Route publik
+└── admin.php             # Route CMS prefix /admin
+tests/Feature/           # PpakRoutesTest, AdminCmsTest
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## Instalasi
 
-## Contributing
+Kebutuhan: PHP ^8.3 (ekstensi standar Laravel), Composer, Node.js (opsional, untuk build aset).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+# 1. Clone & masuk direktori
+git clone https://github.com/ardhikaxx/ppak-feb-unesa.git
+cd ppak-feb-unesa
 
-## Code of Conduct
+# 2. Dependensi PHP
+composer install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# 3. Environment
+cp .env.example .env
+php artisan key:generate
 
-## Security Vulnerabilities
+# 4. Database + data awal
+php artisan migrate --force
+php artisan db:seed --force
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# 5. Storage untuk upload CMS (wajib)
+php artisan storage:link
 
-## License
+# 6. Jalankan
+php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Buka `http://localhost:8000` untuk website dan `http://localhost:8000/admin/login` untuk CMS.
+Untuk XAMPP, arahkan virtual host/document root ke folder `public/`.
+
+## Akun Demo
+
+Kredensial demo (khusus pengembangan, didefinisikan di `database/seeders/AdminSeeder.php`):
+
+| Item | Nilai |
+|---|---|
+| URL | `/admin/login` |
+| Email | `admin@gmail.com` |
+| Password | `password` |
+
+> Untuk produksi, ganti kredensial ini dan kelola akun lewat menu **Kelola Admin** di CMS.
+
+## Pengujian
+
+```bash
+php artisan test
+```
+
+- `tests/Feature/PpakRoutesTest.php` — 21 test yang memastikan seluruh halaman publik
+  (termasuk 6 unduhan PDF resmi dan redirect alias 301) tetap tampil dengan data yang benar.
+- `tests/Feature/AdminCmsTest.php` — autentikasi, guard route, siklus CRUD berita
+  (draft → terbit → arsip → restore) yang tercermin di frontend, validasi, logout,
+  rate limiting, dan smoke test 50+ halaman CMS.
+
+## Keamanan
+
+- Guard `admin` terpisah dari pengguna publik; password di-hash (bcrypt).
+- Throttle login 5x/menit per email+IP; CSRF di semua form; regenerasi session saat login/logout.
+- Validasi server-side (Form Request) + sanitasi HTML konten; upload dibatasi tipe & ukuran.
+- Soft delete + restore untuk data penting; audit log mencatat setiap perubahan (tanpa password).
+
+## Dokumentasi
+
+- [docs/CMS.md](docs/CMS.md) — dokumentasi teknis CMS (arsitektur, tabel, route, keamanan).
+- [docs/PANDUAN-ADMIN.md](docs/PANDUAN-ADMIN.md) — panduan penggunaan CMS untuk admin.
+- [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) — panduan deployment (XAMPP & shared hosting).
+
+## Deployment
+
+Ringkasan: upload file (tanpa `node_modules`), set document root ke `public/`,
+salin `.env` produksi, `composer install --no-dev`, `php artisan migrate --force`,
+`php artisan db:seed --force`, `php artisan storage:link`, lalu cache config/route/view.
+Panduan lengkap di [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
+## Penulis
+
+Dikembangkan oleh **Yanuar Ardhika Rahmadhani Ubaidillah**.
+
+- GitHub: [@ardhikaxx](https://github.com/ardhikaxx)
+- Repository: [ardhikaxx/ppak-feb-unesa](https://github.com/ardhikaxx/ppak-feb-unesa)
+
+## Lisensi
+
+Proyek ini menggunakan lisensi [MIT](https://opensource.org/licenses/MIT). Data dan dokumen
+institusi di dalamnya adalah milik Universitas Negeri Surabaya dan digunakan untuk
+keperluan informasi akademik.
