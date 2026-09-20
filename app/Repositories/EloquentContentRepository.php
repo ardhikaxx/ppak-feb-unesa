@@ -9,6 +9,7 @@ use App\Models\Accreditation;
 use App\Models\AdmissionSchedule;
 use App\Models\Agenda;
 use App\Models\CommunityService;
+use App\Models\ContentBlock;
 use App\Models\Document;
 use App\Models\FAQ;
 use App\Models\Gallery;
@@ -18,10 +19,12 @@ use App\Models\News;
 use App\Models\Partnership;
 use App\Models\ProgramProfile;
 use App\Models\Publication;
+use App\Models\SiteSetting;
 use App\Models\Testimonial;
 use App\Models\TuitionFee;
 use App\Services\PpakData;
 use App\Support\CacheKeys;
+use App\Support\Tanggal;
 use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Cache;
@@ -57,9 +60,8 @@ class EloquentContentRepository implements ContentRepositoryInterface
 
     private function tglIndo(string|Carbon $date): string
     {
-        $d = $date instanceof Carbon ? $date : Carbon::parse($date);
-
-        return $d->day.' '.self::BULAN[$d->month].' '.$d->year;
+        // Nol di depan dipertahankan (01 September 2026) sesuai dokumen resmi.
+        return Tanggal::indo($date);
     }
 
     /**
@@ -146,6 +148,19 @@ class EloquentContentRepository implements ContentRepositoryInterface
 
             $uktAmount = $ukt?->amount ?? $fallback['ukt_amount'];
 
+            // Site Settings adalah single source of truth untuk kontak global
+            // (email, telepon, alamat, jam layanan, sosmed, maps). Nilai di sini
+            // menimpa profil sehingga perubahan CMS langsung berlaku global.
+            $settings = SiteSetting::allKeyed();
+            $socials = array_filter([
+                'instagram' => $settings['instagram'] ?? null,
+                'instagram_feb' => $settings['instagram_feb'] ?? null,
+                'youtube' => $settings['youtube'] ?? null,
+                'tiktok' => $settings['tiktok'] ?? null,
+                'facebook' => $settings['facebook'] ?? null,
+                'linkedin' => $settings['linkedin'] ?? null,
+            ]) ?: $socials;
+
             return [
                 'name' => $profile?->program_name ?? $fallback['name'],
                 'program_code' => $profile?->program_code ?? $fallback['program_code'],
@@ -159,12 +174,13 @@ class EloquentContentRepository implements ContentRepositoryInterface
                 'coordinator' => $profile?->coordinator_name ?? $fallback['coordinator'],
                 'coordinator_role' => $fallback['coordinator_role'],
                 'tagline' => $profile?->tagline ?? $fallback['tagline'],
-                'email' => $profile?->email ?? $fallback['email'],
-                'phone' => $profile?->phone ?? $fallback['phone'],
-                'whatsapp' => $profile?->whatsapp ?? $fallback['whatsapp'],
-                'address' => $profile?->address ?? $fallback['address'],
-                'office_hours' => $profile?->office_hours ?? $fallback['office_hours'],
+                'email' => $settings['email'] ?? $profile?->email ?? $fallback['email'],
+                'phone' => $settings['phone'] ?? $profile?->phone ?? $fallback['phone'],
+                'whatsapp' => $settings['whatsapp'] ?? $profile?->whatsapp ?? $fallback['whatsapp'],
+                'address' => $settings['address'] ?? $profile?->address ?? $fallback['address'],
+                'office_hours' => $settings['office_hours'] ?? $profile?->office_hours ?? $fallback['office_hours'],
                 'socials' => $socials,
+                'maps_url' => $settings['maps_url'] ?? 'https://maps.google.com/?q=Gedung+G6+FEB+UNESA',
                 'akreditasi_status' => $accred?->status ?? $fallback['akreditasi_status'],
                 'akreditasi_lembaga' => $accred?->agency ?? $fallback['akreditasi_lembaga'],
                 'sk_akreditasi' => $accred?->decree_number ?? $fallback['sk_akreditasi'],
@@ -222,7 +238,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
 
     public function getKeunggulan(): array
     {
-        // Salinan institusional statis (tidak ada tabel; sama seperti sebelumnya).
+        // Tidak dirender di Blade mana pun (disimpan untuk pengembangan).
         return Cache::remember(CacheKeys::KEUNGGULAN, $this->ttlStatic, fn () => PpakData::getKeunggulan());
     }
 
@@ -276,7 +292,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
             'date' => $pub ? $this->tglIndo($pub) : '-',
             'date_raw' => $pub ? $pub->format('Y-m-d') : null,
             'read_time' => $n->read_time ?? '3 Menit Baca',
-            'author' => $n->author?->name ?? 'Humas FEB UNESA',
+            'author' => $n->author_name ?? $n->author?->name ?? 'Humas FEB UNESA',
             'image' => $n->image ?? '/images/default-img.png',
             'tags' => $n->tags ?? [],
             'source' => $n->author?->name ?? 'Humas FEB UNESA',
@@ -523,7 +539,19 @@ class EloquentContentRepository implements ContentRepositoryInterface
 
     public function getKarierSectors(): array
     {
-        return Cache::remember(CacheKeys::KARIER_SECTORS, $this->ttlStatic, fn () => PpakData::getKarierSectors());
+        return Cache::remember(CacheKeys::KARIER_SECTORS, $this->ttlStatic, function () {
+            $rows = ContentBlock::ofGroup('karier')->published()->ordered()->get();
+
+            if ($rows->isEmpty()) {
+                return PpakData::getKarierSectors();
+            }
+
+            return $rows->map(fn ($b) => [
+                'icon' => $b->icon ?? 'fa-briefcase',
+                'title' => $b->title,
+                'desc' => $b->description ?? '',
+            ])->all();
+        });
     }
 
     // ------------------------------------------------------------------
@@ -657,9 +685,9 @@ class EloquentContentRepository implements ContentRepositoryInterface
                 ? $waves->map(fn ($w) => [
                     'gelombang' => $w->wave_name,
                     'pendaftaran' => $w->period_label ?? ($this->tglIndo($w->start_date).' – '.$this->tglIndo($w->end_date)),
-                    'seleksi' => $w->exam_date ? $this->tglIndo($w->exam_date) : 'Menyesuaikan pengumuman resmi',
-                    'pengumuman' => $w->announcement_date ? $this->tglIndo($w->announcement_date) : 'Menyesuaikan pengumuman resmi',
-                    'registrasi' => $w->registration_deadline ? $this->tglIndo($w->registration_deadline) : 'Menyesuaikan pengumuman resmi',
+                    'seleksi' => $w->exam_label ?? ($w->exam_date ? $this->tglIndo($w->exam_date) : 'Menyesuaikan pengumuman resmi'),
+                    'pengumuman' => $w->announcement_label ?? ($w->announcement_date ? $this->tglIndo($w->announcement_date) : 'Menyesuaikan pengumuman resmi'),
+                    'registrasi' => $w->registration_label ?? ($w->registration_deadline ? $this->tglIndo($w->registration_deadline) : 'Menyesuaikan pengumuman resmi'),
                     'status' => $w->status === 'active' ? 'Dibuka' : ($w->status === 'upcoming' ? 'Segera Dibuka' : 'Selesai (Arsip)'),
                 ])->all()
                 : $fallback['jadwal_2026'];
@@ -678,10 +706,40 @@ class EloquentContentRepository implements ContentRepositoryInterface
                 'status' => $hasActive ? 'dibuka' : 'arsip',
                 'status_label' => $hasActive ? 'Pendaftaran Dibuka' : 'Arsip Seleksi '.($waves->first()?->academic_year ?? '2026/2027'),
                 'jadwal_2026' => $jadwal,
-                'persyaratan_umum' => $fallback['persyaratan_umum'],
-                'tahapan_pendaftaran' => $fallback['tahapan_pendaftaran'],
+                'persyaratan_umum' => $this->getPersyaratan(),
+                'tahapan_pendaftaran' => $this->getTahapan(),
             ];
         });
+    }
+
+    /**
+     * Tahapan pendaftaran & persyaratan: dari content blocks bila sudah
+     * diambil alih admin, selain itu data master (tampilan tidak berubah).
+     */
+    private function getTahapan(): array
+    {
+        $rows = ContentBlock::ofGroup('tahapan')->published()->ordered()->get();
+
+        if ($rows->isEmpty()) {
+            return PpakData::getAdmisiInfo()['tahapan_pendaftaran'];
+        }
+
+        return $rows->values()->map(fn ($b, $i) => [
+            'langkah' => $i + 1,
+            'judul' => $b->title,
+            'deskripsi' => $b->description ?? '',
+        ])->all();
+    }
+
+    private function getPersyaratan(): array
+    {
+        $rows = ContentBlock::ofGroup('persyaratan')->published()->ordered()->get();
+
+        if ($rows->isEmpty()) {
+            return PpakData::getAdmisiInfo()['persyaratan_umum'];
+        }
+
+        return $rows->map(fn ($b) => $b->title)->all();
     }
 
     public function getFaq(): array
@@ -727,7 +785,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
                 'doi' => $p->doi_or_url,
                 'sinta_url' => $p->doi_or_url ?? 'https://sinta.kemdikbud.go.id',
                 'sitasi' => 'Terindeks SINTA Kemendikbudristek',
-                'deskripsi' => $p->journal_or_publisher ?? '',
+                'deskripsi' => $p->summary ?? $p->journal_or_publisher ?? '',
                 'source' => $p->source_name ?? 'SINTA & Database Publikasi Dosen UNESA',
             ])->all();
         });
@@ -764,6 +822,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
                 ->with('category:id,name')
                 ->where('status', 'published')
                 ->orderByDesc('event_date')
+                ->orderBy('id')
                 ->get();
 
             if ($rows->isEmpty()) {
@@ -790,6 +849,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
                 ->with('category:id,name')
                 ->where('status', 'published')
                 ->orderByDesc('year')
+                ->orderBy('id')
                 ->get();
 
             if ($rows->isEmpty()) {
@@ -804,7 +864,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
                 'filename' => $d->filename,
                 'kategori' => $d->category?->name ?? 'Dokumen',
                 'nomor_sk' => $d->source_name ?? '-',
-                'tanggal' => (string) ($d->year ?? '-'),
+                'tanggal' => $d->display_date ?? (string) ($d->year ?? '-'),
                 'tahun' => (string) ($d->year ?? '-'),
                 'ukuran' => $this->humanSize((int) $d->size),
                 'size' => $this->humanSize((int) $d->size),
@@ -836,7 +896,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
             'filename' => $d->filename,
             'kategori' => $d->category?->name ?? 'Dokumen',
             'nomor_sk' => $d->source_name ?? '-',
-            'tanggal' => (string) ($d->year ?? '-'),
+            'tanggal' => $d->display_date ?? (string) ($d->year ?? '-'),
             'tahun' => (string) ($d->year ?? '-'),
             'ukuran' => $this->humanSize((int) $d->size),
             'size' => $this->humanSize((int) $d->size),
