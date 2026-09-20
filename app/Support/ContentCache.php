@@ -46,5 +46,9 @@ final class ContentCache
         foreach ($keys as $key) {
             Cache::forget($key);
         }
+
+        foreach (['sejarah', 'visi-misi', 'struktur-organisasi', 'gelar-sertifikasi', 'mahasiswa'] as $page) {
+            Cache::forget(CacheKeys::PAGE_CONTENT . $page);
+        }
     }
 }
