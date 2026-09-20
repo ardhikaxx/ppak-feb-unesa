@@ -17,7 +17,6 @@ class KontakController extends Controller
     {
         return view('kontak.lokasi', [
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('lokasi'),
         ]);
     }
 
@@ -26,7 +25,6 @@ class KontakController extends Controller
         return view('kontak.helpdesk', [
             'info' => $this->content->getGeneralInfo(),
             'faqs' => array_slice($this->content->getFaq(), 0, 4),
-            'pg' => $this->content->getPageContent('helpdesk'),
         ]);
     }
 
@@ -75,7 +73,6 @@ class KontakController extends Controller
         return view('kontak.unduhan', [
             'unduhan' => $paginated,
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('unduhan'),
         ]);
     }
 
@@ -115,3 +112,4 @@ class KontakController extends Controller
         abort(404, 'Dokumen fisik belum tersedia di repositori server.');
     }
 }
+
