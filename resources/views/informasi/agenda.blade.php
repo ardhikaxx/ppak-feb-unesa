@@ -3,6 +3,12 @@
 @section('title', 'Agenda & Seminar Ilmiah | PPAk FEB UNESA')
 @section('meta_description', 'Kalender agenda kegiatan ilmiah, workshop sertifikasi CA, webinar perpajakan, dan seremoni akademik PPAk FEB UNESA.')
 
+@push('jsonld')
+@if(count($agenda) > 0)
+<script type="application/ld+json">{!! json_encode(\App\Services\SeoService::eventsJsonLd($agenda), JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}</script>
+@endif
+@endpush
+
 @section('content')
 
 <x-page-header title="Agenda, Seminar & Kuliah Tamu" badge="Kegiatan Sivitas Akademika" lead="Ikuti rangkaian seminar berkala, workshop teknis sertifikasi CA, dan forum diskusi pakar akuntansi terkini." :breadcrumbs="[
