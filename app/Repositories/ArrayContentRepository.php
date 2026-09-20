@@ -188,6 +188,12 @@ class ArrayContentRepository implements ContentRepositoryInterface
         return ArrayPaginator::paginate(array_values($items), $perPage);
     }
 
+    public function getPageContent(string $page): array
+    {
+        // Implementasi statis tidak memiliki halaman dinamis; Blade memakai fallback.
+        return [];
+    }
+
     public function search(string $keyword, int $perPage = 6): array
     {
         if (mb_strlen(trim($keyword)) < 2) {
