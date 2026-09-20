@@ -5,7 +5,7 @@
 
 @section('content')
 
-<x-page-header title="Agenda, Seminar & Kuliah Tamu" badge="Kegiatan Sivitas Akademika" lead="Ikuti rangkaian seminar berkala, workshop teknis sertifikasi CA, dan forum diskusi pakar akuntansi terkini." :breadcrumbs="[
+<x-page-header :title="$pg['header_title']['heading'] ?? 'Agenda, Seminar & Kuliah Tamu'" :badge="$pg['header_badge']['heading'] ?? 'Kegiatan Sivitas Akademika'" :lead="$pg['header_lead']['body'] ?? 'Ikuti rangkaian seminar berkala, workshop teknis sertifikasi CA, dan forum diskusi pakar akuntansi terkini.'" :breadcrumbs="[
     ['label' => 'Informasi', 'url' => route('informasi.berita')],
     ['label' => 'Agenda & Seminar', 'url' => '']
 ]" />
@@ -34,3 +34,4 @@
 </section>
 
 @endsection
+
