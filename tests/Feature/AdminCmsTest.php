@@ -1,10 +1,16 @@
 <?php
 
 use App\Contracts\ContentRepositoryInterface;
+use App\Models\AcademicCurriculum;
+use App\Models\Accreditation;
 use App\Models\Agenda;
 use App\Models\Lecturer;
 use App\Models\News;
+use App\Models\SiteSetting;
+use App\Models\TuitionFee;
 use Database\Seeders\AdminSeeder;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 beforeEach(function () {
     $this->seed(AdminSeeder::class);
@@ -131,6 +137,153 @@ test('login rate limiting menolak brute force', function () {
     $response->assertSessionHasErrors('email');
 });
 
+test('perubahan dosen via CMS tampil di halaman publik', function () {
+    loginAdmin($this);
+
+    $dosen = Lecturer::first();
+    $this->put(route('admin.lecturers.update', $dosen), [
+        'name' => $dosen->name,
+        'slug' => $dosen->slug,
+        'gelar' => 'Gelar Uji Propagasi CMS',
+        'category' => $dosen->category,
+        'status' => 'active',
+    ])->assertRedirect(route('admin.lecturers.index'));
+
+    $this->get(route('profil.dosen-pengajar'))->assertStatus(200)->assertSee('Gelar Uji Propagasi CMS');
+});
+
+test('perubahan kurikulum dan CPL via CMS tampil di halaman publik', function () {
+    loginAdmin($this);
+
+    $mk = AcademicCurriculum::first();
+    $this->put(route('admin.curricula.update', $mk), [
+        'course_code' => $mk->course_code,
+        'name_id' => 'Mata Kuliah Uji Propagasi',
+        'semester' => $mk->semester,
+        'credits' => $mk->credits,
+        'course_type' => $mk->course_type,
+    ])->assertRedirect(route('admin.curricula.index'));
+
+    $this->get(route('akademik.kurikulum'))->assertStatus(200)->assertSee('Mata Kuliah Uji Propagasi');
+});
+
+test('kalender baru via CMS tampil di halaman publik', function () {
+    loginAdmin($this);
+
+    $this->post(route('admin.academic-calendars.store'), [
+        'academic_year' => '2026/2027',
+        'semester' => 'Gasal',
+        'activity' => 'Kegiatan Uji Propagasi CMS',
+        'start_date' => '2026-09-01',
+    ])->assertRedirect(route('admin.academic-calendars.index'));
+
+    $this->get(route('akademik.kalender'))->assertStatus(200)->assertSee('Kegiatan Uji Propagasi CMS');
+});
+
+test('perubahan biaya via CMS tampil di halaman publik', function () {
+    loginAdmin($this);
+
+    $fee = TuitionFee::where('fee_type', 'UKT')->first();
+    $this->put(route('admin.tuition-fees.update', $fee), [
+        'program_name' => $fee->program_name,
+        'fee_type' => 'UKT',
+        'amount' => 6000000,
+        'academic_year' => $fee->academic_year,
+    ])->assertRedirect(route('admin.tuition-fees.index'));
+
+    $this->get(route('admisi.biaya'))->assertStatus(200)->assertSee('Rp6.000.000');
+});
+
+test('agenda dan FAQ baru via CMS tampil di halaman publik', function () {
+    loginAdmin($this);
+
+    $this->post(route('admin.agendas.store'), [
+        'title' => 'Agenda Uji Propagasi',
+        'slug' => 'agenda-uji-propagasi',
+        'event_date' => '2026-11-01',
+        'status' => 'upcoming',
+    ])->assertRedirect(route('admin.agendas.index'));
+
+    $this->post(route('admin.faqs.store'), [
+        'category' => 'Pendaftaran',
+        'question' => 'Pertanyaan Uji Propagasi?',
+        'answer' => 'Jawaban uji propagasi CMS.',
+    ])->assertRedirect(route('admin.faqs.index'));
+
+    $this->get(route('informasi.agenda'))->assertStatus(200)->assertSee('Agenda Uji Propagasi');
+    $this->get(route('admisi.faq'))->assertStatus(200)->assertSee('Pertanyaan Uji Propagasi?');
+});
+
+test('dokumen baru via CMS tampil di halaman unduhan', function () {
+    loginAdmin($this);
+    Storage::fake('public');
+
+    $this->post(route('admin.documents.store'), [
+        'title' => 'Dokumen Uji Propagasi',
+        'slug' => 'dokumen-uji-propagasi',
+        'file' => UploadedFile::fake()->create('uji.pdf', 100, 'application/pdf'),
+        'year' => 2026,
+        'status' => 'published',
+    ])->assertRedirect(route('admin.documents.index'));
+
+    $this->get(route('kontak.unduhan'))->assertStatus(200)->assertSee('Dokumen Uji Propagasi');
+});
+
+test('pengaturan website via CMS tampil di footer publik', function () {
+    loginAdmin($this);
+
+    SiteSetting::updateOrCreate(['key' => 'email'], [
+        'group' => 'contact', 'value' => 'ppak.feb@unesa.ac.id', 'type' => 'email', 'label' => 'Email',
+    ]);
+    $this->put(route('admin.site-settings.update'), [
+        'settings' => ['email' => 'uji.propagasi@unesa.ac.id'],
+    ])->assertRedirect(route('admin.site-settings.index'));
+
+    $this->get(route('home'))->assertStatus(200)->assertSee('uji.propagasi@unesa.ac.id');
+});
+
+test('blok konten tahapan via CMS mengambil alih beranda', function () {
+    loginAdmin($this);
+
+    // Awal: fallback bawaan tampil
+    $this->get(route('home'))->assertStatus(200)->assertSee('Pembuatan Akun PMB');
+
+    $this->post(route('admin.content-blocks.store'), [
+        'group' => 'tahapan',
+        'title' => 'Tahap Uji Propagasi CMS',
+        'description' => 'Deskripsi tahap uji.',
+        'sort_order' => 1,
+        'status' => 'published',
+    ])->assertRedirect(route('admin.content-blocks.index', ['group' => 'tahapan']));
+
+    // Setelah diambil alih: hanya baris CMS yang tampil
+    $response = $this->get(route('home'));
+    $response->assertStatus(200);
+    $response->assertSee('Tahap Uji Propagasi CMS');
+    $response->assertDontSee('Pembuatan Akun PMB');
+});
+
+test('halaman panduan mengambil dokumen dari database', function () {
+    $response = $this->get(route('akademik.panduan'));
+    $response->assertStatus(200);
+    $response->assertSee('Kalender Akademik Universitas Negeri Surabaya 2026/2027');
+    $response->assertSee('SK LAMEMBA No. 611/DE/A.5/AR.11/II/2025');
+});
+
+test('akreditasi via CMS tampil di halaman publik', function () {
+    loginAdmin($this);
+
+    $ak = Accreditation::first();
+    $this->put(route('admin.accreditations.update', $ak), [
+        'program_name' => $ak->program_name,
+        'agency' => $ak->agency,
+        'status' => 'Unggul Uji',
+        'decree_number' => $ak->decree_number,
+    ])->assertRedirect(route('admin.accreditations.index'));
+
+    $this->get(route('profil.akreditasi'))->assertStatus(200)->assertSee('Unggul Uji');
+});
+
 test('seluruh halaman index dan form CMS dapat dibuka admin', function () {
     loginAdmin($this);
 
@@ -157,6 +310,8 @@ test('seluruh halaman index dan form CMS dapat dibuka admin', function () {
         'admin.documents.index', 'admin.documents.create',
         'admin.categories.index', 'admin.categories.create',
         'admin.media.index',
+        'admin.content-blocks.index',
+        'admin.content-blocks.create',
         'admin.site-settings.index',
         'admin.helpdesk.index',
         'admin.audit-logs.index',
