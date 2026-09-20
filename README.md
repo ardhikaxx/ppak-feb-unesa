@@ -27,7 +27,7 @@
 - [Sumber Data Resmi](#sumber-data-resmi)
 - [Struktur Proyek](#struktur-proyek)
 - [Instalasi](#instalasi)
-- [Akun Demo](#akun-demo)
+- [Akun Admin](#akun-admin)
 - [Pengujian](#pengujian)
 - [Keamanan](#keamanan)
 - [Dokumentasi](#dokumentasi)
@@ -152,17 +152,12 @@ php artisan serve
 Buka `http://localhost:8000` untuk website dan `http://localhost:8000/admin/login` untuk CMS.
 Untuk XAMPP, arahkan virtual host/document root ke folder `public/`.
 
-## Akun Demo
+## Akun Admin
 
-Kredensial demo (khusus pengembangan, didefinisikan di `database/seeders/AdminSeeder.php`):
+CMS diakses melalui `/admin/login`. Akun administrator dibuat otomatis oleh
+seeder saat instalasi; kelola akun selanjutnya lewat menu **Kelola Admin** di CMS.
 
-| Item | Nilai |
-|---|---|
-| URL | `/admin/login` |
-| Email | `admin@gmail.com` |
-| Password | `password` |
-
-> Untuk produksi, ganti kredensial ini dan kelola akun lewat menu **Kelola Admin** di CMS.
+> Untuk produksi, pastikan kredensial bawaan sudah diganti dengan akun resmi.
 
 ## Pengujian
 
