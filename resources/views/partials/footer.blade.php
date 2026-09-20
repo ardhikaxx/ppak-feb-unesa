@@ -66,19 +66,19 @@
                     <ul class="list-unstyled small text-secondary mb-3">
                         <li class="d-flex align-items-start gap-3 mb-2">
                             <i class="fa-solid fa-location-dot mt-1 text-gold"></i>
-                            <span>Gedung G6 FEB, Kampus Ketintang, Jl. Ketintang, Surabaya, Jawa Timur 60231</span>
+                            <span>{{ $ppakInstitution['address'] ?? 'Gedung G6 FEB, Kampus Ketintang, Jl. Ketintang, Surabaya, Jawa Timur 60231' }}</span>
                         </li>
                         <li class="d-flex align-items-center gap-3 mb-2">
                             <i class="fa-solid fa-envelope text-gold"></i>
-                            <a href="mailto:ppak.feb@unesa.ac.id" class="text-secondary text-decoration-none hover-white">ppak.feb@unesa.ac.id</a>
+                            <a href="mailto:{{ $ppakInstitution['email'] ?? 'ppak.feb@unesa.ac.id' }}" class="text-secondary text-decoration-none hover-white">{{ $ppakInstitution['email'] ?? 'ppak.feb@unesa.ac.id' }}</a>
                         </li>
                         <li class="d-flex align-items-center gap-3 mb-2">
                             <i class="fa-solid fa-phone text-gold"></i>
-                            <span>+62 31 828 0009 / Ext. 312</span>
+                            <span>{{ $ppakInstitution['phone'] ?? '+62 31 828 0009' }} / Ext. 312</span>
                         </li>
                         <li class="d-flex align-items-center gap-3 mb-2">
                             <i class="fa-brands fa-whatsapp text-success"></i>
-                            <span>+62 812 3456 7890 (Helpdesk Mahasiswa)</span>
+                            <span>{{ $ppakInstitution['whatsapp'] ?? '+62 812 3456 7890' }} (Helpdesk Mahasiswa)</span>
                         </li>
                     </ul>
                     <div class="p-3 mt-3 rounded-3" style="background-color: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12);">
@@ -86,7 +86,7 @@
                             <i class="fa-solid fa-clock text-gold"></i>
                             <span>Jam Operasional Layanan:</span>
                         </div>
-                        <div class="text-white-50 small">Senin – Jumat: 08.00 – 16.00 WIB</div>
+                        <div class="text-white-50 small">{{ $ppakInstitution['office_hours'] ?? 'Senin – Jumat: 08.00 – 16.00 WIB' }}</div>
                     </div>
                 </div>
             </div>
