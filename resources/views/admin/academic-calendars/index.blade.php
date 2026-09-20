@@ -54,7 +54,7 @@
                         <tr>
                             <td><span class="badge text-bg-primary">{{ $item->academic_year }}</span> <span class="badge text-bg-light border">{{ $item->semester }}</span></td>
                             <td class="fw-semibold">{{ $item->activity }}</td>
-                            <td class="small">{{ $item->start_date?->format('d M Y') }}@if($item->end_date)<br><span class="text-muted">s.d. {{ $item->end_date->format('d M Y') }}</span>@endif</td>
+                            <td class="small">{{ \App\Support\Tanggal::indo($item->start_date) }}@if($item->end_date)<br><span class="text-muted">s.d. {{ \App\Support\Tanggal::indo($item->end_date) }}</span>@endif</td>
                             <td class="small">{{ $item->category }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
