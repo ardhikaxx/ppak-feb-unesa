@@ -76,6 +76,35 @@
                 @endforeach
             </div>
         </div>
+
+        {{-- DAFTAR KEGIATAN RISET (dari CMS; kosong = tidak tampil) --}}
+        @if($researchList->isNotEmpty())
+            <div class="mb-2">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <span class="badge-ppak badge-ppak-navy mb-1">Kegiatan Riset</span>
+                        <h2 class="h4 text-navy mb-0">Riset Dosen & Peneliti</h2>
+                    </div>
+                    <span class="badge-ppak badge-ppak-gold">{{ $researchList->count() }} Riset</span>
+                </div>
+
+                <div class="row g-4">
+                    @foreach($researchList as $rs)
+                        <div class="col-lg-12">
+                            <div class="p-4 rounded-4 border bg-subtle">
+                                <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                    <span class="badge-ppak badge-ppak-navy">{{ $rs->scheme ?? 'Riset' }}</span>
+                                    <span class="badge-ppak badge-ppak-gold">Tahun {{ $rs->year ?? '-' }}</span>
+                                </div>
+                                <h3 class="h5 text-navy fw-bold mb-2">{{ $rs->title }}</h3>
+                                <p class="text-secondary small mb-2"><i class="fa-solid fa-user-pen me-1 text-gold"></i> Ketua Peneliti: <strong>{{ $rs->principal_investigator ?? '-' }}</strong></p>
+                                <p class="small text-muted mb-0">{{ $rs->description }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
     </div>
 </section>
 
