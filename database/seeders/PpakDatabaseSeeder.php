@@ -522,64 +522,7 @@ class PpakDatabaseSeeder extends Seeder
             ]
         );
 
-        // 12. Alumni Records & Testimonials
-        AlumniRecord::updateOrCreate(
-            ['full_name' => 'Ahmad Fauzi, S.E., Ak.'],
-            [
-                'graduation_year' => '2026',
-                'current_company' => 'Kantor Akuntan Publik (KAP) Rekan Surabaya',
-                'current_position' => 'Senior Auditor & Assurance Specialist',
-                'status' => 'published',
-                'source_name' => 'Tracer Study Alumni FEB UNESA',
-                'source_published_at' => '2026-02-01',
-                'verified_at' => now(),
-                'data_status' => 'verified',
-            ]
-        );
-
-        AlumniRecord::updateOrCreate(
-            ['full_name' => 'Siti Nurhaliza, S.E., Ak., CA.'],
-            [
-                'graduation_year' => '2026',
-                'current_company' => 'PT Semen Indonesia (Persero) Tbk',
-                'current_position' => 'Corporate Accounting & Financial Controller',
-                'status' => 'published',
-                'source_name' => 'Tracer Study Alumni FEB UNESA',
-                'source_published_at' => '2026-02-15',
-                'verified_at' => now(),
-                'data_status' => 'verified',
-            ]
-        );
-
-        Testimonial::updateOrCreate(
-            ['name' => 'Dimas Prasetyo, S.E., Ak.'],
-            [
-                'role' => 'Senior Auditor',
-                'company' => 'KAP Surabaya & Rekan',
-                'year' => '2026',
-                'quote' => 'Kurikulum terpadu PPAk FEB UNESA dengan fokus pada pelaporan korporat dan audit berbasis risiko sangat aplikatif dalam dunia kerja profesional.',
-                'status' => 'published',
-                'sort_order' => 1,
-                'source_name' => 'Dokumentasi Alumni FEB UNESA',
-                'verified_at' => now(),
-                'data_status' => 'verified',
-            ]
-        );
-
-        Testimonial::updateOrCreate(
-            ['name' => 'Rina Kartika, S.E., Ak., CA.'],
-            [
-                'role' => 'Tax Compliance Specialist',
-                'company' => 'Konsultan Pajak & Bisnis Jawa Timur',
-                'year' => '2026',
-                'quote' => 'Fasilitas pembelajaran komputasi akuntansi dan pendampingan dosen berintegritas tinggi memberikan bekal yang solid dalam menempuh sertifikasi CA IAI.',
-                'status' => 'published',
-                'sort_order' => 2,
-                'source_name' => 'Dokumentasi Alumni FEB UNESA',
-                'verified_at' => now(),
-                'data_status' => 'verified',
-            ]
-        );
+        // 12. Alumni Records & Testimonials (Kosong secara default karena prodi baru berdiri Mei 2025; siap diisi melalui CMS saat ada lulusan)
 
         // 13. FAQs
         $faqs = PpakData::getFaq();
