@@ -14,7 +14,8 @@ class AgendaRequest extends FormRequest
 
     public function rules(): array
     {
-        $id = $this->route('agenda')?->id;
+        $agenda = $this->route('agenda');
+        $id = is_object($agenda) ? $agenda->id : (is_numeric($agenda) ? (int) $agenda : ($agenda ? \App\Models\Agenda::where('slug', $agenda)->value('id') : null));
 
         return [
             'title' => ['required', 'string', 'max:255'],
