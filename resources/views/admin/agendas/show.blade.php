@@ -19,7 +19,7 @@
             <h2 class="h5 fw-bold mt-2">{{ $agenda->title }}</h2>
             <dl class="row small mt-3 mb-0">
                 <dt class="col-sm-3">Slug</dt><dd class="col-sm-9">/{{ $agenda->slug }}</dd>
-                <dt class="col-sm-3">Tanggal</dt><dd class="col-sm-9">{{ $agenda->event_date?->format('d M Y') }} @if($agenda->event_end_date) s.d. {{ $agenda->event_end_date->format('d M Y') }} @endif</dd>
+                <dt class="col-sm-3">Tanggal</dt><dd class="col-sm-9">{{ \App\Support\Tanggal::indo($agenda->event_date) }} @if($agenda->event_end_date) s.d. {{ \App\Support\Tanggal::indo($agenda->event_end_date) }} @endif</dd>
                 <dt class="col-sm-3">Waktu</dt><dd class="col-sm-9">{{ $agenda->time ?? '—' }}</dd>
                 <dt class="col-sm-3">Lokasi</dt><dd class="col-sm-9">{{ $agenda->venue ?? '—' }}</dd>
                 <dt class="col-sm-3">Pembicara</dt><dd class="col-sm-9">{{ $agenda->speaker ?? '—' }}</dd>
