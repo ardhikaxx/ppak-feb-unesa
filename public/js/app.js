@@ -145,15 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 7. Helpdesk Form Interaction
-  const helpdeskForm = document.getElementById('helpdeskInquiryForm');
-  const helpdeskAlert = document.getElementById('helpdeskSuccessAlert');
-  if (helpdeskForm && helpdeskAlert) {
-    helpdeskForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      helpdeskAlert.classList.remove('d-none');
-      helpdeskForm.reset();
-      window.scrollTo({ top: helpdeskAlert.offsetTop - 100, behavior: 'smooth' });
-    });
-  }
+  // 7. Helpdesk Form: native POST to server (CSRF + rate limited).
+  // Success/error feedback is rendered server-side from session flash,
+  // so no fake client-side success here - the form must really be saved.
 });
