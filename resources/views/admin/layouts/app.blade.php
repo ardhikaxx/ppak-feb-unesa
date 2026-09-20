@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- Area internal: jangan diindeks search engine --}}
+    <meta name="robots" content="noindex,nofollow">
     <title>@yield('title', 'CMS Admin') | PPAk FEB UNESA</title>
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -143,6 +145,9 @@
             </a>
 
             <div class="sidebar-group">Website</div>
+            <a href="{{ route('admin.seo-health.index') }}" class="sidebar-link {{ request()->routeIs('admin.seo-health.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-gauge-high"></i> Kesehatan SEO
+            </a>
             <a href="{{ route('admin.site-settings.index') }}" class="sidebar-link {{ request()->routeIs('admin.site-settings.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-gear"></i> Pengaturan Website
             </a>
