@@ -72,7 +72,7 @@
                                 </span>
                                 @if($item->trashed()) <span class="badge text-bg-danger">Arsip</span> @endif
                             </td>
-                            <td class="small">{{ $item->published_at?->format('d M Y') ?? '—' }}</td>
+                            <td class="small">{{ \App\Support\Tanggal::indo($item->published_at) ?? '—' }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     @if($item->trashed())
