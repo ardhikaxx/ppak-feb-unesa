@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => $pg['header_title']['heading'] ?? 'Kalender Akademik 2026/2027',
-    'badge' => $pg['header_badge']['heading'] ?? 'Jadwal & Agenda Resmi UNESA',
-    'lead' => $pg['header_lead']['body'] ?? 'Kalender Akademik Universitas Negeri Surabaya Tahun Akademik 2026/2027 yang menjadi pedoman perkuliahan dan evaluasi studi.',
+    'title' => 'Kalender Akademik 2026/2027',
+    'badge' => 'Jadwal & Agenda Resmi UNESA',
+    'lead' => 'Kalender Akademik Universitas Negeri Surabaya Tahun Akademik 2026/2027 yang menjadi pedoman perkuliahan dan evaluasi studi.',
     'breadcrumbs' => [
         ['label' => 'Akademik', 'url' => route('akademik.kurikulum')],
         ['label' => 'Kalender Akademik', 'url' => '']
