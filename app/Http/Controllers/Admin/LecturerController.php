@@ -122,9 +122,9 @@ class LecturerController extends BaseAdminController
         return redirect()->route('admin.lecturers.index')->with('success', 'Data dosen diarsipkan dan tidak tampil di publik.');
     }
 
-    public function restore(int $lecturer): RedirectResponse
+    public function restore(string|int $lecturer): RedirectResponse
     {
-        $item = Lecturer::withTrashed()->findOrFail($lecturer);
+        $item = Lecturer::withTrashed()->where('id', $lecturer)->orWhere('slug', (string) $lecturer)->firstOrFail();
         $item->restore();
 
         $this->audit('restored', $item, $item->toArray());
