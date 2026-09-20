@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\ContentRepositoryInterface;
+use App\Models\AlumniRecord;
 use Illuminate\View\View;
 
 class KemahasiswaanAlumniController extends Controller
@@ -15,6 +16,8 @@ class KemahasiswaanAlumniController extends Controller
             'stats' => $this->content->getStats(),
             'karierSectors' => $this->content->getKarierSectors(),
             'info' => $this->content->getGeneralInfo(),
+            'alumniList' => AlumniRecord::where('status', 'published')
+                ->orderByDesc('graduation_year')->orderBy('full_name')->get(),
         ]);
     }
 
