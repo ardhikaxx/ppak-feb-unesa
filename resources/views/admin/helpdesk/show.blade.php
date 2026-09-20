@@ -17,7 +17,7 @@
                 <dt class="col-sm-3">Nama</dt><dd class="col-sm-9">{{ $inquiry->name }}</dd>
                 <dt class="col-sm-3">Email / Telepon</dt><dd class="col-sm-9">{{ $inquiry->email }} / {{ $inquiry->phone ?? '—' }}</dd>
                 <dt class="col-sm-3">Kategori</dt><dd class="col-sm-9">{{ $inquiry->category ?? '—' }}</dd>
-                <dt class="col-sm-3">Masuk</dt><dd class="col-sm-9">{{ $inquiry->created_at->format('d M Y H:i') }} (IP: {{ $inquiry->ip_address ?? '—' }})</dd>
+                <dt class="col-sm-3">Masuk</dt><dd class="col-sm-9">{{ \App\Support\Tanggal::datetime($inquiry->created_at) }} (IP: {{ $inquiry->ip_address ?? '—' }})</dd>
                 <dt class="col-sm-3">Isi pesan</dt><dd class="col-sm-9">{{ $inquiry->message }}</dd>
             </dl>
         </div>
