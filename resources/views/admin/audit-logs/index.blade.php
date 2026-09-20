@@ -39,7 +39,7 @@
                 <tbody>
                     @forelse($logs as $log)
                         <tr>
-                            <td>{{ $log->created_at->format('d M Y H:i') }}</td>
+                            <td>{{ \App\Support\Tanggal::datetime($log->created_at) }}</td>
                             <td>{{ $log->new_values['_admin']['name'] ?? ($log->old_values['_admin']['name'] ?? 'sistem') }}</td>
                             <td><span class="badge text-bg-light border">{{ $log->action }}</span></td>
                             <td>{{ class_basename($log->auditable_type ?? '—') }} #{{ $log->auditable_id ?? '—' }}</td>
