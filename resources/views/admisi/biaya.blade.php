@@ -98,6 +98,12 @@
                 </div>
             </div>
         </div>
+
+        @include('partials.related-links', ['links' => [
+            ['label' => 'Syarat dokumen pendaftaran', 'url' => route('admisi.jalur-syarat'), 'desc' => 'Berkas yang perlu disiapkan sebelum membayar biaya seleksi.'],
+            ['label' => 'Jadwal gelombang dan pengumuman', 'url' => route('admisi.prosedur-jadwal'), 'desc' => 'Batas waktu pembayaran dan daftar ulang tiap gelombang.'],
+            ['label' => 'Pertanyaan seputar biaya', 'url' => route('admisi.faq'), 'desc' => 'Klarifikasi umum mengenai UKT dan pembayaran.'],
+        ]])
     </div>
 </section>
 
