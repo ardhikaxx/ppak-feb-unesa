@@ -18,7 +18,6 @@ class KemahasiswaanAlumniController extends Controller
             'info' => $this->content->getGeneralInfo(),
             'alumniList' => AlumniRecord::where('status', 'published')
                 ->orderByDesc('graduation_year')->orderBy('full_name')->get(),
-            'pg' => $this->content->getPageContent('alumni'),
         ]);
     }
 
@@ -26,7 +25,6 @@ class KemahasiswaanAlumniController extends Controller
     {
         return view('kemahasiswaan-alumni.mahasiswa', [
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('mahasiswa'),
         ]);
     }
 
@@ -36,7 +34,7 @@ class KemahasiswaanAlumniController extends Controller
             'testimoni' => $this->content->getTestimoni(),
             'karierSectors' => $this->content->getKarierSectors(),
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('testimoni-karier'),
         ]);
     }
 }
+
