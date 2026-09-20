@@ -30,7 +30,7 @@
                     <div>
                         <div class="fw-bold text-navy small mb-1">Gedung G6 Fakultas Ekonomika dan Bisnis</div>
                         <p class="small text-secondary mb-0">
-                            Kampus Ketintang UNESA, Jl. Ketintang, Kelurahan Ketintang, Kecamatan Gayungan, Kota Surabaya, Jawa Timur 60231.
+                            {{ $info['address'] ?? 'Kampus Ketintang UNESA, Jl. Ketintang, Kelurahan Ketintang, Kecamatan Gayungan, Kota Surabaya, Jawa Timur 60231.' }}
                         </p>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="d-flex gap-2 pt-2">
-                    <a href="https://maps.google.com/?q=Gedung+G6+FEB+UNESA" target="_blank" rel="noopener noreferrer" class="btn-ppak-primary btn-ppak-sm">
+                    <a href="{{ $info['maps_url'] ?? 'https://maps.google.com/?q=Gedung+G6+FEB+UNESA' }}" target="_blank" rel="noopener noreferrer" class="btn-ppak-primary btn-ppak-sm">
                         <i class="fa-solid fa-diamond-turn-right me-1"></i>
                         <span>Buka di Google Maps</span>
                     </a>
@@ -77,7 +77,7 @@
                 <div class="p-3 rounded-4 border bg-white shadow-sm h-100 d-flex flex-column">
                     <div class="d-flex justify-content-between align-items-center mb-3 px-1">
                         <span class="small fw-bold text-navy"><i class="fa-solid fa-map-location-dot me-1 text-gold"></i> Peta Lokasi Gedung G6 FEB UNESA</span>
-                        <a href="https://maps.google.com/?q=Gedung+G6+FEB+UNESA" target="_blank" rel="noopener noreferrer" class="badge-ppak badge-ppak-gold text-decoration-none" style="font-size: 0.72rem;">
+                        <a href="{{ $info['maps_url'] ?? 'https://maps.google.com/?q=Gedung+G6+FEB+UNESA' }}" target="_blank" rel="noopener noreferrer" class="badge-ppak badge-ppak-gold text-decoration-none" style="font-size: 0.72rem;">
                             <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Buka Peta Penuh
                         </a>
                     </div>
