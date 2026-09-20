@@ -38,6 +38,33 @@
             </div>
         </div>
 
+        {{-- Direktori Testimoni Terverifikasi (dari CMS; kosong = hanya status di atas yang tampil) --}}
+        @if(!empty($testimoni['items']))
+            <div class="row g-4 mb-5">
+                @foreach($testimoni['items'] as $t)
+                    <div class="col-lg-6">
+                        <div class="card-ppak-flat h-100 bg-subtle p-4 rounded-3 border">
+                            <div class="d-flex align-items-start gap-3">
+                                @if(!empty($t['avatar']))
+                                    <img src="{{ $t['avatar'] }}" alt="{{ $t['name'] }}" class="rounded-circle flex-shrink-0" style="width:52px;height:52px;object-fit:cover;">
+                                @else
+                                    <div class="feature-icon-wrapper flex-shrink-0" style="width: 52px; height: 52px; font-size: 1.3rem;">
+                                        <i class="fa-solid fa-quote-left"></i>
+                                    </div>
+                                @endif
+                                <div>
+                                    <p class="small text-secondary mb-2" style="line-height: 1.65;">"{{ $t['quote'] }}"</p>
+                                    <div class="fw-bold text-navy small">{{ $t['name'] }}</div>
+                                    @php($tMeta = array_filter([$t['role'] ?? null, $t['company'] ?? null, $t['year'] ?? null]))
+                                    <div class="small text-muted">{{ implode(' • ', $tMeta) }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+
         {{-- PROSPEK DAN BIDANG KARIER PROFESIONAL AKUNTANSI (Faktual Umum) --}}
         <div class="p-4 p-lg-5 rounded-4 border bg-white shadow-sm">
             <div class="text-center max-w-700 mx-auto mb-5">
