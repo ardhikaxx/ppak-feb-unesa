@@ -39,11 +39,15 @@ class InformasiController extends Controller
             // Remove featured from list is handled in view by slicing, but we provide paginated without featured for clean UI
         }
 
+        // URL filter/pencarian berita bukan landing page: noindex agar tidak duplikat.
+        $robots = ($search || $category) ? 'noindex,follow' : 'index,follow';
+
         return view('informasi.berita', [
             'featured' => $featured,
             'berita' => $paginated,
             'allBerita' => $allForCount,
             'info' => $this->content->getGeneralInfo(),
+            'robots' => $robots,
         ]);
     }
 
@@ -131,47 +135,96 @@ class InformasiController extends Controller
     }
 
     /**
-     * XML sitemap - chunked generation, cached, scalable to thousands of URLs.
+     * robots.txt dinamis: izinkan publik + aset, tutup /admin/* dan /search,
+     * rujuk sitemap absolut sesuai APP_URL production.
+     */
+    public function robots(): Response
+    {
+        $sitemap = rtrim(config('app.url'), '/') . '/sitemap.xml';
+
+        $content = "User-agent: *\n"
+            . "Allow: /\n"
+            . "Disallow: /admin/\n"
+            . "Disallow: /admin\n"
+            . "Disallow: /search\n"
+            . "\n"
+            . "Sitemap: {$sitemap}\n";
+
+        return response($content, 200, ['Content-Type' => 'text/plain']);
+    }
+
+    /**
+     * XML sitemap dari database: hanya URL kanonis HTTP 200 yang layak indeks
+     * (tanpa admin/login/draft/noindex/duplikat). lastmod = perubahan nyata.
      */
     public function sitemap(): Response
     {
         $xml = Cache::remember(CacheKeys::SITEMAP, config('ppak.cache.ttl.sitemap', 3600), function () {
+            $entry = fn (string $loc, ?string $lastmod = null, string $freq = 'weekly', string $priority = '0.7') => [
+                'loc' => $loc, 'lastmod' => $lastmod, 'changefreq' => $freq, 'priority' => $priority,
+            ];
+
             $urls = collect([
-                route('home'),
-                route('profil.sejarah'),
-                route('profil.visi-misi'),
-                route('profil.struktur-organisasi'),
-                route('profil.dosen-pengajar'),
-                route('profil.akreditasi'),
-                route('akademik.kurikulum'),
-                route('akademik.kalender'),
-                route('akademik.gelar-sertifikasi'),
-                route('akademik.panduan'),
-                route('admisi.jalur-syarat'),
-                route('admisi.biaya'),
-                route('admisi.prosedur-jadwal'),
-                route('admisi.faq'),
-                route('riset-pengabdian.riset-publikasi'),
-                route('riset-pengabdian.pengabdian'),
-                route('riset-pengabdian.kerja-sama'),
-                route('kemahasiswaan-alumni.alumni'),
-                route('kemahasiswaan-alumni.mahasiswa'),
-                route('kemahasiswaan-alumni.testimoni-karier'),
-                route('informasi.berita'),
-                route('informasi.agenda'),
-                route('informasi.galeri'),
-                route('kontak.lokasi'),
-                route('kontak.helpdesk'),
-                route('kontak.unduhan'),
+                $entry(route('home'), null, 'daily', '1.0'),
+                $entry(route('profil.sejarah')),
+                $entry(route('profil.visi-misi')),
+                $entry(route('profil.struktur-organisasi')),
+                $entry(route('profil.dosen-pengajar')),
+                $entry(route('profil.akreditasi')),
+                $entry(route('akademik.kurikulum')),
+                $entry(route('akademik.kalender')),
+                $entry(route('akademik.gelar-sertifikasi')),
+                $entry(route('akademik.panduan')),
+                $entry(route('admisi.jalur-syarat')),
+                $entry(route('admisi.biaya')),
+                $entry(route('admisi.prosedur-jadwal')),
+                $entry(route('admisi.faq')),
+                $entry(route('riset-pengabdian.riset-publikasi')),
+                $entry(route('riset-pengabdian.pengabdian')),
+                $entry(route('riset-pengabdian.kerja-sama')),
+                $entry(route('kemahasiswaan-alumni.alumni')),
+                $entry(route('kemahasiswaan-alumni.mahasiswa')),
+                $entry(route('kemahasiswaan-alumni.testimoni-karier')),
+                $entry(route('informasi.berita'), null, 'daily', '0.9'),
+                $entry(route('informasi.agenda')),
+                $entry(route('informasi.galeri')),
+                $entry(route('kontak.lokasi')),
+                $entry(route('kontak.helpdesk')),
+                $entry(route('kontak.unduhan')),
             ]);
 
-            // Dynamic URLs - chunked, only published
-            $berita = $this->content->getBerita(['slug']);
-            foreach ($berita as $item) {
-                $urls->push(route('informasi.berita.detail', $item['slug']));
-            }
+            // Berita terbit saja (chunked, siap ribuan URL).
+            \App\Models\News::where('status', 'published')
+                ->select(['slug', 'updated_at'])
+                ->orderByDesc('published_at')
+                ->chunk(500, function ($items) use ($urls) {
+                    foreach ($items as $item) {
+                        $urls->push([
+                            'loc' => route('informasi.berita.detail', $item->slug),
+                            'lastmod' => $item->updated_at?->toAtomString(),
+                            'changefreq' => 'weekly',
+                            'priority' => '0.7',
+                        ]);
+                    }
+                });
+
+            // PDF publik (nama deskriptif, URL stabil) beserta lastmod file.
+            \App\Models\Document::where('status', 'published')
+                ->select(['filename', 'updated_at'])
+                ->orderByDesc('year')
+                ->chunk(500, function ($items) use ($urls) {
+                    foreach ($items as $item) {
+                        $urls->push([
+                            'loc' => route('kontak.unduhan.download', $item->filename),
+                            'lastmod' => $item->updated_at?->toAtomString(),
+                            'changefreq' => 'monthly',
+                            'priority' => '0.5',
+                        ]);
+                    }
+                });
 
             $xmlContent = view('sitemap', ['urls' => $urls])->render();
+
             return $xmlContent;
         });
 
