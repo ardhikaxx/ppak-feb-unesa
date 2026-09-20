@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => $pg['header_title']['heading'] ?? 'Akreditasi & Sertifikasi Mutu',
-    'badge' => $pg['header_badge']['heading'] ?? 'Legalitas & Penjaminan Mutu',
-    'lead' => $pg['header_lead']['body'] ?? 'Dokumentasi ketetapan akreditasi resmi dari Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA).',
+    'title' => 'Akreditasi & Sertifikasi Mutu',
+    'badge' => 'Legalitas & Penjaminan Mutu',
+    'lead' => 'Dokumentasi ketetapan akreditasi resmi dari Lembaga Akreditasi Mandiri Ekonomi Manajemen Bisnis dan Akuntansi (LAMEMBA).',
     'breadcrumbs' => [
         ['label' => 'Profil', 'url' => route('profil.sejarah')],
         ['label' => 'Akreditasi', 'url' => '']
