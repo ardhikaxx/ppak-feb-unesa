@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\ContentRepositoryInterface;
+use App\Models\Accreditation;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -57,6 +58,7 @@ class ProfilController extends Controller
         return view('profil.akreditasi', [
             'info' => $this->content->getGeneralInfo(),
             'unduhan' => $this->content->getUnduhan(),
+            'accreditation' => Accreditation::orderByDesc('effective_until')->first(),
         ]);
     }
 }
