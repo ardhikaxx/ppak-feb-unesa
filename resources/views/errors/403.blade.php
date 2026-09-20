@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', '403 - Akses Ditolak | PPAk FEB UNESA')
+@section('meta_robots', 'noindex,nofollow')
 @section('hide_cta', true)
 @section('content')
 <div class="container">
