@@ -5,7 +5,7 @@
 
 @section('content')
 
-<x-page-header :title="$pg['header_title']['heading'] ?? 'Profil Dosen & Pengajar'" :badge="$pg['header_badge']['heading'] ?? 'Tenaga Pengajar Terverifikasi'" :lead="$pg['header_lead']['body'] ?? 'Daftar dosen aktif dan pengajar mata kuliah Program Studi Pendidikan Profesi Akuntan FEB UNESA yang tercatat pada sistem penugasan akademik SINDIG UNESA.'" :breadcrumbs="[
+<x-page-header title="Profil Dosen & Pengajar" badge="Tenaga Pengajar Terverifikasi" lead="Daftar dosen aktif dan pengajar mata kuliah Program Studi Pendidikan Profesi Akuntan FEB UNESA yang tercatat pada sistem penugasan akademik SINDIG UNESA." :breadcrumbs="[
     ['label' => 'Profil', 'url' => route('profil.sejarah')],
     ['label' => 'Dosen & Pengajar', 'url' => '']
 ]" />
@@ -76,4 +76,5 @@
 </section>
 
 @endsection
+
 
