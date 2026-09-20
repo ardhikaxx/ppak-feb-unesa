@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => $pg['header_title']['heading'] ?? 'Sekretariat & Helpdesk Layanan Mahasiswa',
-    'badge' => $pg['header_badge']['heading'] ?? 'Pusat Bantuan & Komunikasi',
-    'lead' => $pg['header_lead']['body'] ?? 'Silakan hubungi staf sekretariat untuk konsultasi pendaftaran, persyaratan matrikulasi, dan administrasi akademik profesi.',
+    'title' => 'Sekretariat & Helpdesk Layanan Mahasiswa',
+    'badge' => 'Pusat Bantuan & Komunikasi',
+    'lead' => 'Silakan hubungi staf sekretariat untuk konsultasi pendaftaran, persyaratan matrikulasi, dan administrasi akademik profesi.',
     'breadcrumbs' => [
         ['label' => 'Kontak', 'url' => route('kontak.lokasi')],
         ['label' => 'Helpdesk', 'url' => '']
