@@ -2,6 +2,7 @@
 
 @section('title', 'Berita & Pengumuman Resmi | PPAk FEB UNESA')
 @section('meta_description', 'Kumpulan berita kegiatan, siaran pers, pengumuman akademik, dan dinamika keprofesian Program Pendidikan Profesi Akuntan FEB UNESA.')
+@section('meta_robots', $robots ?? 'index,follow')
 
 @section('content')
 
