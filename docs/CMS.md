@@ -54,8 +54,8 @@ Admin ──▶ /admin/* (admin.auth + admin.active) ──▶ Controller Admin 
   `admin.active` (akun nonaktif → logout paksa + pesan).
 - Login: regenerasi session + catat `last_login_at`. Logout (`POST /admin/logout`):
   logout guard, invalidate session, regenerate token CSRF.
-- Akun demo (khusus pengembangan, hardcoded di `AdminSeeder`):
-  email `admin@gmail.com`, password `password`. Ganti untuk produksi.
+- Akun administrator awal dibuat oleh `AdminSeeder` saat instalasi.
+  Ganti kredensial bawaan untuk produksi via menu **Kelola Admin**.
 
 ## 3. Database & Seeder
 
