@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\ContentRepositoryInterface;
+use App\Models\Research;
 use Illuminate\View\View;
 
 class RisetPengabdianController extends Controller
@@ -14,6 +15,8 @@ class RisetPengabdianController extends Controller
         return view('riset-pengabdian.riset-publikasi', [
             'riset' => $this->content->getRiset(),
             'info' => $this->content->getGeneralInfo(),
+            'researchList' => Research::where('status', 'published')
+                ->orderByDesc('year')->orderByDesc('id')->get(),
         ]);
     }
 
