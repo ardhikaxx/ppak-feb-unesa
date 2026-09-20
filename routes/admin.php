@@ -92,6 +92,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/media', [MediaController::class, 'destroy'])->name('media.destroy');
 
         // Website & sistem
+        Route::get('/seo-health', [\App\Http\Controllers\Admin\SeoHealthController::class, 'index'])->name('seo-health.index');
+        Route::post('/seo-health/flush-cache', [\App\Http\Controllers\Admin\SeoHealthController::class, 'flushCache'])->name('seo-health.flush-cache');
         Route::get('/site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
         Route::put('/site-settings', [SiteSettingController::class, 'update'])->name('site-settings.update');
         Route::get('/helpdesk', [HelpdeskController::class, 'index'])->name('helpdesk.index');
