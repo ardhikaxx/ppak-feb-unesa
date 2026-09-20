@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Riset & Publikasi Ilmiah',
-    'badge' => 'Karya Dosen Pengajar',
-    'lead' => 'Daftar publikasi artikel ilmiah dan kegiatan ilmiah dosen pengajar Program Studi Pendidikan Profesi Akuntan FEB UNESA yang tercatat pada database resmi.',
+    'title' => $pg['header_title']['heading'] ?? 'Riset & Publikasi Ilmiah',
+    'badge' => $pg['header_badge']['heading'] ?? 'Karya Dosen Pengajar',
+    'lead' => $pg['header_lead']['body'] ?? 'Daftar publikasi artikel ilmiah dan kegiatan ilmiah dosen pengajar Program Studi Pendidikan Profesi Akuntan FEB UNESA yang tercatat pada database resmi.',
     'breadcrumbs' => [
         ['label' => 'Riset & Pengabdian', 'url' => route('riset-pengabdian.riset-publikasi')],
         ['label' => 'Riset & Publikasi', 'url' => '']
@@ -109,3 +109,4 @@
 </section>
 
 @endsection
+
