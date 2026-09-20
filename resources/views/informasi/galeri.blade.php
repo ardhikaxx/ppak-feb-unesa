@@ -5,7 +5,7 @@
 
 @section('content')
 
-<x-page-header title="Galeri Foto & Dokumentasi Kegiatan" badge="Dokumentasi Visual" lead="Kilas balik rekaman visual suasana pembelajaran, kuliah tamu, praktika laboratorium, dan pengukuhan profesi akuntan." :breadcrumbs="[
+<x-page-header :title="$pg['header_title']['heading'] ?? 'Galeri Foto & Dokumentasi Kegiatan'" :badge="$pg['header_badge']['heading'] ?? 'Dokumentasi Visual'" :lead="$pg['header_lead']['body'] ?? 'Kilas balik rekaman visual suasana pembelajaran, kuliah tamu, praktika laboratorium, dan pengukuhan profesi akuntan.'" :breadcrumbs="[
     ['label' => 'Informasi', 'url' => route('informasi.berita')],
     ['label' => 'Galeri Kegiatan', 'url' => '']
 ]" />
@@ -61,3 +61,4 @@
 </div>
 
 @endsection
+
