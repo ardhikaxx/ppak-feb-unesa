@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', '404 - Halaman Tidak Ditemukan | PPAk FEB UNESA')
+@section('meta_robots', 'noindex,nofollow')
 @section('hide_cta', true)
 
 @section('content')
