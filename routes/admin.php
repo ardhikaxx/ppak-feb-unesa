@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\LearningOutcomeController;
 use App\Http\Controllers\Admin\LecturerController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\PageContentController;
 use App\Http\Controllers\Admin\PartnershipController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ProgramProfileController;
@@ -93,6 +94,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/media', [MediaController::class, 'destroy'])->name('media.destroy');
 
         // Website & sistem
+        Route::resource('page-contents', PageContentController::class)->except(['show']);
         Route::resource('content-blocks', ContentBlockController::class)->except(['show']);
         Route::post('/content-blocks/import/{group}', [ContentBlockController::class, 'import'])->name('content-blocks.import');
         Route::get('/site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
