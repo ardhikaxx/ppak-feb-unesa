@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Prosedur & Jadwal Seleksi Masuk',
-    'badge' => 'Alur Penerimaan Terpadu PMB UNESA',
-    'lead' => 'Tahapan pendaftaran terpusat melalui portal PMB UNESA dan rekam jadwal seleksi penerimaan mahasiswa baru.',
+    'title' => $pg['header_title']['heading'] ?? 'Prosedur & Jadwal Seleksi Masuk',
+    'badge' => $pg['header_badge']['heading'] ?? 'Alur Penerimaan Terpadu PMB UNESA',
+    'lead' => $pg['header_lead']['body'] ?? 'Tahapan pendaftaran terpusat melalui portal PMB UNESA dan rekam jadwal seleksi penerimaan mahasiswa baru.',
     'breadcrumbs' => [
         ['label' => 'Admisi', 'url' => route('admisi.jalur-syarat')],
         ['label' => 'Prosedur & Jadwal', 'url' => '']
@@ -113,3 +113,4 @@
 </section>
 
 @endsection
+
