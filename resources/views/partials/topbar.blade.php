@@ -9,13 +9,13 @@
 
         {{-- Right: Utility Contact & Navigation Links --}}
         <div class="top-infobar-utility" role="list">
-            <a href="mailto:ppak.feb@unesa.ac.id" class="top-infobar-link d-none d-xl-inline-flex" role="listitem">
+            <a href="mailto:{{ $ppakInstitution['email'] ?? 'ppak.feb@unesa.ac.id' }}" class="top-infobar-link d-none d-xl-inline-flex" role="listitem">
                 <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-                <span>ppak.feb@unesa.ac.id</span>
+                <span>{{ $ppakInstitution['email'] ?? 'ppak.feb@unesa.ac.id' }}</span>
             </a>
-            <a href="tel:+62318280009" class="top-infobar-link d-none d-xl-inline-flex ms-1" role="listitem">
+            <a href="tel:{{ preg_replace('/[^0-9+]/', '', $ppakInstitution['phone'] ?? '+62 31 828 0009') }}" class="top-infobar-link d-none d-xl-inline-flex ms-1" role="listitem">
                 <i class="fa-solid fa-phone" aria-hidden="true"></i>
-                <span>+62 31 828 0009</span>
+                <span>{{ $ppakInstitution['phone'] ?? '+62 31 828 0009' }}</span>
             </a>
             <span class="top-infobar-divider d-none d-xl-inline-block" aria-hidden="true"></span>
             <a href="{{ route('akademik.kalender') }}" class="top-infobar-link" role="listitem">
