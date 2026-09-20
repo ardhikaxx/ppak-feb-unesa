@@ -59,8 +59,6 @@ class AppServiceProvider extends ServiceProvider
             $view->with('ppakInstitution', app(ContentRepositoryInterface::class)->getGeneralInfo());
             // Site Settings global (kontak, SEO) - cached key-value, tanpa query di Blade
             $view->with('siteContact', SiteSetting::allKeyed());
-            // Konten global CMS (CTA banner dkk) - cached, tanpa query di Blade
-            $view->with('pgGlobal', app(ContentRepositoryInterface::class)->getPageContent('global'));
         });
 
         // Badge helpdesk terbuka pada sidebar CMS (hanya saat admin login)
