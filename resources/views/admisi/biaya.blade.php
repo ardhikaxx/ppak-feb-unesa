@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => $pg['header_title']['heading'] ?? 'Biaya Pendidikan & Investasi Studi',
-    'badge' => $pg['header_badge']['heading'] ?? 'Informasi Biaya Resmi',
-    'lead' => $pg['header_lead']['body'] ?? 'Besaran Uang Kuliah Tunggal (UKT) Program Studi Pendidikan Profesi Akuntan berdasarkan penetapan resmi Admisi UNESA.',
+    'title' => 'Biaya Pendidikan & Investasi Studi',
+    'badge' => 'Informasi Biaya Resmi',
+    'lead' => 'Besaran Uang Kuliah Tunggal (UKT) Program Studi Pendidikan Profesi Akuntan berdasarkan penetapan resmi Admisi UNESA.',
     'breadcrumbs' => [
         ['label' => 'Admisi', 'url' => route('admisi.jalur-syarat')],
         ['label' => 'Biaya Pendidikan', 'url' => '']
@@ -60,12 +60,14 @@
         <div class="row g-4">
             <div class="col-lg-6">
                 <div class="card-ppak-flat h-100 bg-subtle">
-                    <h3 class="fs-6 fw-bold text-navy mb-3"><i class="fa-solid fa-building-columns text-primary me-2"></i>{{ $pg['payment_heading']['heading'] ?? 'Kanal Pembayaran Resmi Bank Mitra UNESA' }}</h3>
-                    {!! $pg['payment_body']['body'] ?? '<p class="small text-secondary mb-3">Seluruh transaksi pembayaran biaya pendaftaran maupun UKT semester menggunakan kode <strong>Virtual Account (VA)</strong> resmi yang diterbitkan oleh sistem PMB/SIAKAD UNESA:</p>' !!}
+                    <h3 class="fs-6 fw-bold text-navy mb-3"><i class="fa-solid fa-building-columns text-primary me-2"></i>Kanal Pembayaran Resmi Bank Mitra UNESA</h3>
+                    <p class="small text-secondary mb-3">Seluruh transaksi pembayaran biaya pendaftaran maupun UKT semester menggunakan kode <strong>Virtual Account (VA)</strong> resmi yang diterbitkan oleh sistem PMB/SIAKAD UNESA:</p>
                     <div class="d-flex flex-wrap gap-2 mb-3">
-                        @foreach(explode('|', $pg['banks_body']['body'] ?? 'Bank Mandiri|Bank BTN|Bank BNI|Bank BRI|Bank Syariah Indonesia (BSI)') as $bank)
-                            <span class="badge-ppak badge-ppak-navy">{{ trim($bank) }}</span>
-                        @endforeach
+                        <span class="badge-ppak badge-ppak-navy">Bank Mandiri</span>
+                        <span class="badge-ppak badge-ppak-navy">Bank BTN</span>
+                        <span class="badge-ppak badge-ppak-navy">Bank BNI</span>
+                        <span class="badge-ppak badge-ppak-navy">Bank BRI</span>
+                        <span class="badge-ppak badge-ppak-navy">Bank Syariah Indonesia (BSI)</span>
                     </div>
                     <div class="p-2 rounded-2 bg-white border small text-danger" style="font-size: 0.775rem;">
                         <i class="fa-solid fa-triangle-exclamation me-1"></i> UNESA tidak pernah melayani pembayaran di luar kode Virtual Account resmi atau melalui rekening perorangan.
@@ -100,4 +102,5 @@
 </section>
 
 @endsection
+
 
