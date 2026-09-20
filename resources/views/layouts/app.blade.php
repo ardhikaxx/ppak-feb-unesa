@@ -13,6 +13,7 @@
     <meta name="author" content="PPAk FEB UNESA">
     <meta name="robots" content="@yield('meta_robots', 'index,follow')">
     <link rel="canonical" href="@yield('canonical', url()->current())">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-single.png') }}">
 
     {{-- Open Graph --}}
     <meta property="og:type" content="@yield('og_type', 'website')">
