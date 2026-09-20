@@ -19,11 +19,9 @@
     <div class="container">
         <div class="text-center max-w-700 mx-auto mb-5">
             <span class="badge-ppak badge-ppak-gold mb-2">Hierarki Tata Kelola</span>
-            <h2>Struktur Organisasi & Kepemimpinan</h2>
+            <h2>{{ $pg['intro_heading']['heading'] ?? 'Struktur Organisasi & Kepemimpinan' }}</h2>
             <div class="golden-line center"></div>
-            <p class="text-secondary">
-                Hubungan kelembagaan Program Studi Pendidikan Profesi Akuntan dalam struktur tata kelola Universitas Negeri Surabaya dan Fakultas Ekonomika dan Bisnis.
-            </p>
+            {!! $pg['intro_body']['body'] ?? '<p class="text-secondary">Hubungan kelembagaan Program Studi Pendidikan Profesi Akuntan dalam struktur tata kelola Universitas Negeri Surabaya dan Fakultas Ekonomika dan Bisnis.</p>' !!}
         </div>
 
         {{-- ORGANIZATIONAL HIERARCHY CHART --}}
@@ -32,9 +30,9 @@
                 {{-- Level 1: Universitas Negeri Surabaya --}}
                 <div class="org-level">
                     <div class="org-card" style="border-top: 4px solid var(--unesa-navy); min-width: 300px;">
-                        <div class="org-role">Tingkat Universitas</div>
-                        <div class="org-name">Universitas Negeri Surabaya</div>
-                        <div class="org-subtext">Perguruan Tinggi Negeri Badan Hukum (PTN-BH)</div>
+                        <div class="org-role">{{ $pg['org_1_role']['heading'] ?? 'Tingkat Universitas' }}</div>
+                        <div class="org-name">{{ $pg['org_1_name']['heading'] ?? 'Universitas Negeri Surabaya' }}</div>
+                        <div class="org-subtext">{{ $pg['org_1_sub']['body'] ?? 'Perguruan Tinggi Negeri Badan Hukum (PTN-BH)' }}</div>
                     </div>
                 </div>
 
@@ -44,9 +42,9 @@
                 {{-- Level 2: Fakultas Ekonomika dan Bisnis --}}
                 <div class="org-level">
                     <div class="org-card" style="border-top: 4px solid var(--unesa-blue); min-width: 320px;">
-                        <div class="org-role">Tingkat Fakultas</div>
-                        <div class="org-name">Fakultas Ekonomika dan Bisnis (FEB)</div>
-                        <div class="org-subtext">Dekan, Wakil Dekan, Senat Fakultas & Kantor Tata Usaha</div>
+                        <div class="org-role">{{ $pg['org_2_role']['heading'] ?? 'Tingkat Fakultas' }}</div>
+                        <div class="org-name">{{ $pg['org_2_name']['heading'] ?? 'Fakultas Ekonomika dan Bisnis (FEB)' }}</div>
+                        <div class="org-subtext">{{ $pg['org_2_sub']['body'] ?? 'Dekan, Wakil Dekan, Senat Fakultas & Kantor Tata Usaha' }}</div>
                     </div>
                 </div>
 
@@ -56,9 +54,9 @@
                 {{-- Level 3: Program Studi Pendidikan Profesi Akuntan --}}
                 <div class="org-level">
                     <div class="org-card" style="border-top: 4px solid var(--unesa-gold); min-width: 320px; background: #ffffff;">
-                        <div class="org-role">Tingkat Program Studi</div>
-                        <div class="org-name">Pendidikan Profesi Akuntan (PPAk)</div>
-                        <div class="org-subtext">Kode Program Studi: 62902 &bull; Berdiri: 23 Mei 2025</div>
+                        <div class="org-role">{{ $pg['org_3_role']['heading'] ?? 'Tingkat Program Studi' }}</div>
+                        <div class="org-name">{{ $pg['org_3_name']['heading'] ?? 'Pendidikan Profesi Akuntan (PPAk)' }}</div>
+                        <div class="org-subtext">Kode Program Studi: {{ $info['program_code'] ?? '62902' }} &bull; Berdiri: {{ $info['established_date'] ?? '23 Mei 2025' }}</div>
                     </div>
                 </div>
 
@@ -68,9 +66,9 @@
                 {{-- Level 4: Koordinator Program Studi --}}
                 <div class="org-level">
                     <div class="org-card org-card-leader" style="min-width: 320px; box-shadow: var(--shadow-md);">
-                        <div class="org-role">Koordinator Program Studi</div>
-                        <div class="org-name">Rediyanto Putra, S.E., M.S.A.</div>
-                        <div class="org-subtext text-light opacity-75">Koordinator Program Studi Pendidikan Profesi Akuntan</div>
+                        <div class="org-role">{{ $pg['org_4_role']['heading'] ?? 'Koordinator Program Studi' }}</div>
+                        <div class="org-name">{{ $info['coordinator'] ?? 'Rediyanto Putra, S.E., M.S.A.' }}</div>
+                        <div class="org-subtext text-light opacity-75">{{ $pg['org_4_sub']['body'] ?? 'Koordinator Program Studi Pendidikan Profesi Akuntan' }}</div>
                     </div>
                 </div>
             </div>
@@ -91,11 +89,9 @@
                         <div class="feature-icon-wrapper">
                             <i class="fa-solid fa-building-columns"></i>
                         </div>
-                        <h3 class="fs-6 fw-bold text-navy mb-0">Pimpinan Fakultas</h3>
+                        <h3 class="fs-6 fw-bold text-navy mb-0">{{ $pg['kartu_1_heading']['heading'] ?? 'Pimpinan Fakultas' }}</h3>
                     </div>
-                    <p class="small text-secondary mb-0">
-                        Tata kelola fakultas dipimpin oleh Dekan bersama para Wakil Dekan bidang akademik, keuangan & sumber daya, serta kemahasiswaan dan alumni yang menetapkan kebijakan strategis bagi seluruh program studi di FEB UNESA.
-                    </p>
+                    {!! $pg['kartu_1_body']['body'] ?? '<p class="small text-secondary mb-0">Tata kelola fakultas dipimpin oleh Dekan bersama para Wakil Dekan bidang akademik, keuangan & sumber daya, serta kemahasiswaan dan alumni yang menetapkan kebijakan strategis bagi seluruh program studi di FEB UNESA.</p>' !!}
                 </div>
             </div>
             <div class="col-md-4">
@@ -104,11 +100,9 @@
                         <div class="feature-icon-wrapper">
                             <i class="fa-solid fa-user-gear"></i>
                         </div>
-                        <h3 class="fs-6 fw-bold text-navy mb-0">Koordinasi Program Studi</h3>
+                        <h3 class="fs-6 fw-bold text-navy mb-0">{{ $pg['kartu_2_heading']['heading'] ?? 'Koordinasi Program Studi' }}</h3>
                     </div>
-                    <p class="small text-secondary mb-0">
-                        Penyelenggaraan operasional kurikulum, penugasan dosen pengampu, evaluasi proses pembelajaran, dan layanan mahasiswa dikoordinasikan secara langsung oleh Koordinator Program Studi.
-                    </p>
+                    {!! $pg['kartu_2_body']['body'] ?? '<p class="small text-secondary mb-0">Penyelenggaraan operasional kurikulum, penugasan dosen pengampu, evaluasi proses pembelajaran, dan layanan mahasiswa dikoordinasikan secara langsung oleh Koordinator Program Studi.</p>' !!}
                 </div>
             </div>
             <div class="col-md-4">
@@ -117,11 +111,9 @@
                         <div class="feature-icon-wrapper">
                             <i class="fa-solid fa-flask"></i>
                         </div>
-                        <h3 class="fs-6 fw-bold text-navy mb-0">Laboratorium & Layanan Terpadu</h3>
+                        <h3 class="fs-6 fw-bold text-navy mb-0">{{ $pg['kartu_3_heading']['heading'] ?? 'Laboratorium & Layanan Terpadu' }}</h3>
                     </div>
-                    <p class="small text-secondary mb-0">
-                        Didukung oleh fasilitas Laboratorium Akuntansi Komputer FEB UNESA, sarana perpustakaan fakultas, serta unit tata usaha FEB untuk administrasi persuratan dan bantuan teknis perkuliahan.
-                    </p>
+                    {!! $pg['kartu_3_body']['body'] ?? '<p class="small text-secondary mb-0">Didukung oleh fasilitas Laboratorium Akuntansi Komputer FEB UNESA, sarana perpustakaan fakultas, serta unit tata usaha FEB untuk administrasi persuratan dan bantuan teknis perkuliahan.</p>' !!}
                 </div>
             </div>
         </div>
