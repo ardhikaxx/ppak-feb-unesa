@@ -60,5 +60,11 @@ interface ContentRepositoryInterface
 
     public function getUnduhanPaginated(int $perPage = 10, ?string $category = null): LengthAwarePaginator;
 
+    /**
+     * Konten section halaman statis, keyed by section_key:
+     * ['heading' => ?, 'subtitle' => ?, 'body' => ?, 'link_url' => ?].
+     */
+    public function getPageContent(string $page): array;
+
     public function search(string $keyword, int $perPage = 6): array;
 }
