@@ -51,7 +51,7 @@
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
                                 <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
-                                       value="{{ old('email') }}" required autofocus autocomplete="username" placeholder="admin@gmail.com">
+                                       value="{{ old('email') }}" required autofocus autocomplete="username" placeholder="nama@unesa.ac.id">
                             </div>
                         </div>
                         <div class="mb-3">
