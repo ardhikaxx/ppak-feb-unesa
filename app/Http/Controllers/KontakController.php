@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Contracts\ContentRepositoryInterface;
 use App\Http\Requests\HelpdeskRequest;
+use App\Models\HelpdeskInquiry;
+use App\Support\ArrayPaginator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
-use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class KontakController extends Controller
 {
@@ -37,7 +40,7 @@ class KontakController extends Controller
         $validated = $request->validated();
 
         try {
-            $inquiry = \App\Models\HelpdeskInquiry::create([
+            $inquiry = HelpdeskInquiry::create([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
                 'phone' => $validated['phone'] ?? null,
@@ -48,7 +51,7 @@ class KontakController extends Controller
                 'ip_address' => $request->ip(),
             ]);
         } catch (\Throwable $e) {
-            \Illuminate\Support\Facades\Log::error('Helpdesk inquiry failed to save', [
+            Log::error('Helpdesk inquiry failed to save', [
                 'error' => $e->getMessage(),
                 'email' => $validated['email'] ?? null,
             ]);
@@ -58,7 +61,7 @@ class KontakController extends Controller
                 ->with('error', 'Pesan gagal dikirim karena gangguan sistem. Silakan coba lagi beberapa saat.');
         }
 
-        \Illuminate\Support\Facades\Log::info('Helpdesk inquiry received', ['id' => $inquiry->id]);
+        Log::info('Helpdesk inquiry received', ['id' => $inquiry->id]);
 
         return back()->with('success', 'Pesan Anda berhasil dikirim. Tim helpdesk akan merespons dalam 1x24 jam kerja.');
     }
@@ -81,11 +84,10 @@ class KontakController extends Controller
         if ($search) {
             $items = $this->content->getUnduhan();
             $lower = mb_strtolower($search);
-            $filtered = array_filter($items, fn($doc) =>
-                str_contains(mb_strtolower($doc['title']), $lower) ||
+            $filtered = array_filter($items, fn ($doc) => str_contains(mb_strtolower($doc['title']), $lower) ||
                 str_contains(mb_strtolower($doc['kategori']), $lower)
             );
-            $paginated = \App\Support\ArrayPaginator::paginate(array_values($filtered), $perPage);
+            $paginated = ArrayPaginator::paginate(array_values($filtered), $perPage);
         }
 
         return view('kontak.unduhan', [
@@ -98,29 +100,29 @@ class KontakController extends Controller
      * Secure file download - streams via Filesystem or public storage.
      * Ready for local/S3 without changing business logic.
      */
-    public function download(string $filename): \Symfony\Component\HttpFoundation\Response
+    public function download(string $filename): Response
     {
         $all = $this->content->getUnduhan();
         $doc = collect($all)->firstWhere('filename', $filename);
 
-        if (!$doc) {
+        if (! $doc) {
             abort(404, 'Informasi berkas tidak ditemukan.');
         }
 
-        $sanitizedName = preg_replace('/[^\w\s\-\.]/u', '', $doc['title'] ?? 'dokumen-resmi-ppak') . '.pdf';
+        $sanitizedName = preg_replace('/[^\w\s\-\.]/u', '', $doc['title'] ?? 'dokumen-resmi-ppak').'.pdf';
 
         // Check in public/documents first
-        $publicFilePath = public_path('documents/' . $filename);
+        $publicFilePath = public_path('documents/'.$filename);
         if (file_exists($publicFilePath)) {
             return response()->download($publicFilePath, $sanitizedName, [
                 'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'attachment; filename="' . $sanitizedName . '"',
+                'Content-Disposition' => 'attachment; filename="'.$sanitizedName.'"',
             ]);
         }
 
         // Fallback check in storage/app/public/documents
         $disk = Storage::disk('public');
-        $path = 'documents/' . $filename;
+        $path = 'documents/'.$filename;
         if ($disk->exists($path)) {
             return $disk->download($path, $sanitizedName, [
                 'Content-Type' => 'application/pdf',
@@ -130,4 +132,3 @@ class KontakController extends Controller
         abort(404, 'Dokumen fisik belum tersedia di repositori server.');
     }
 }
-
