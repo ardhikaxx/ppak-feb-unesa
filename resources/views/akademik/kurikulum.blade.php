@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => $pg['header_title']['heading'] ?? 'Kurikulum & Capaian Pembelajaran',
-    'badge' => $pg['header_badge']['heading'] ?? 'Kurikulum Resmi SINDIG UNESA',
-    'lead' => $pg['header_lead']['body'] ?? 'Struktur mata kuliah, distribusi SKS semester, dan pemetaan Capaian Pembelajaran Lulusan (CPL) Program Studi Pendidikan Profesi Akuntan (Kode: 62902).',
+    'title' => 'Kurikulum & Capaian Pembelajaran',
+    'badge' => 'Kurikulum Resmi SINDIG UNESA',
+    'lead' => 'Struktur mata kuliah, distribusi SKS semester, dan pemetaan Capaian Pembelajaran Lulusan (CPL) Program Studi Pendidikan Profesi Akuntan (Kode: 62902).',
     'breadcrumbs' => [
         ['label' => 'Akademik', 'url' => route('akademik.kurikulum')],
         ['label' => 'Kurikulum & CPL', 'url' => '']
