@@ -15,7 +15,12 @@ use Tests\TestCase;
 */
 
 pest()->extend(TestCase::class)
- // ->use(RefreshDatabase::class)
+    ->use(RefreshDatabase::class)
+    ->beforeEach(function () {
+        // Frontend dibaca dari database: seed data existing agar
+        // assertion konten asli tetap valid.
+        $this->seed(\Database\Seeders\PpakDatabaseSeeder::class);
+    })
     ->in('Feature');
 
 /*
