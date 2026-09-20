@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Aktivitas Akademik & Pembelajaran',
-    'badge' => 'Dinamika Pembelajaran Profesi',
-    'lead' => 'Rangkaian kegiatan perkuliahan terstruktur, praktika kertas kerja, magang industri, dan diskusi keprofesian mahasiswa Pendidikan Profesi Akuntan.',
+    'title' => $pg['header_title']['heading'] ?? 'Aktivitas Akademik & Pembelajaran',
+    'badge' => $pg['header_badge']['heading'] ?? 'Dinamika Pembelajaran Profesi',
+    'lead' => $pg['header_lead']['body'] ?? 'Rangkaian kegiatan perkuliahan terstruktur, praktika kertas kerja, magang industri, dan diskusi keprofesian mahasiswa Pendidikan Profesi Akuntan.',
     'breadcrumbs' => [
         ['label' => 'Kemahasiswaan & Alumni', 'url' => route('kemahasiswaan-alumni.alumni')],
         ['label' => 'Aktivitas Pembelajaran', 'url' => '']
@@ -119,4 +119,5 @@
 </section>
 
 @endsection
+
 
