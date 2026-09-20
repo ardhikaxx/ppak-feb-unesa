@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Testimoni & Jejaring Karier Alumni',
-    'badge' => 'Prospek Profesi & Alumni',
-    'lead' => 'Informasi bidang profesi akuntan dan direktori testimoni pengalaman studi Program Studi Pendidikan Profesi Akuntan FEB UNESA.',
+    'title' => $pg['header_title']['heading'] ?? 'Testimoni & Jejaring Karier Alumni',
+    'badge' => $pg['header_badge']['heading'] ?? 'Prospek Profesi & Alumni',
+    'lead' => $pg['header_lead']['body'] ?? 'Informasi bidang profesi akuntan dan direktori testimoni pengalaman studi Program Studi Pendidikan Profesi Akuntan FEB UNESA.',
     'breadcrumbs' => [
         ['label' => 'Kemahasiswaan & Alumni', 'url' => route('kemahasiswaan-alumni.alumni')],
         ['label' => 'Testimoni & Karier', 'url' => '']
@@ -106,3 +106,4 @@
 </section>
 
 @endsection
+
