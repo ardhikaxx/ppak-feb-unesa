@@ -750,7 +750,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
                     'leader' => $p->leader_name,
                     'location' => $p->location,
                     'year' => $p->year,
-                    'tahun' => $p->year,
+                    'tahun' => $p->year, // dipakai Blade pengabdian
                     'description' => $p->description,
                 ])->all(),
             ];
@@ -774,6 +774,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
                 'id' => $g->id,
                 'title' => $g->title,
                 'category' => $g->category?->name ?? 'Dokumentasi',
+                'category_label' => $g->category?->name ?? 'Dokumentasi', // dipakai badge galeri
                 'date' => $g->event_date ? Carbon::parse($g->event_date)->format('Y') : '-',
                 'image' => $g->image,
                 'description' => $g->title,
