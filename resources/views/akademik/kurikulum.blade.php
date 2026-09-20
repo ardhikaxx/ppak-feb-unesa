@@ -216,6 +216,12 @@
                 </div>
             </div>
         </div>
+
+        @include('partials.related-links', ['links' => [
+            ['label' => 'Jadwal perkuliahan semester berjalan', 'url' => route('akademik.kalender'), 'desc' => 'Kalender resmi masa kuliah, ujian, dan yudisium.'],
+            ['label' => 'Tenaga pengajar mata kuliah', 'url' => route('profil.dosen-pengajar'), 'desc' => 'Dosen pengampu tiap mata kuliah profesi.'],
+            ['label' => 'Jalur sertifikasi CA dan CPA', 'url' => route('akademik.gelar-sertifikasi'), 'desc' => 'Gelar profesi setelah lulus pendidikan profesi.'],
+        ]])
     </div>
 </section>
 
