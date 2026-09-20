@@ -110,6 +110,13 @@
                 </a>
             </div>
         </div>
+
+        @include('partials.related-links', ['links' => [
+            ['label' => 'Rincian UKT per semester', 'url' => route('admisi.biaya'), 'desc' => 'Besaran biaya pendidikan resmi program profesi.'],
+            ['label' => 'Tahapan seleksi dan jadwal gelombang', 'url' => route('admisi.prosedur-jadwal'), 'desc' => 'Alur pendaftaran hingga pengumuman hasil seleksi.'],
+            ['label' => 'Tanya jawab pendaftaran', 'url' => route('admisi.faq'), 'desc' => 'Jawaban atas pertanyaan umum calon mahasiswa.'],
+            ['label' => 'Lokasi sekretariat dan helpdesk', 'url' => route('kontak.lokasi'), 'desc' => 'Alamat kampus dan kanal konsultasi resmi.'],
+        ]])
     </div>
 </section>
 
