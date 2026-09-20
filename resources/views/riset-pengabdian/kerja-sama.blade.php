@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Jejaring & Kerja Sama',
-    'badge' => 'Kemitraan Kelembagaan',
-    'lead' => 'Inisiasi dan tata kelola kemitraan strategis Program Studi Pendidikan Profesi Akuntan di lingkungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
+    'title' => $pg['header_title']['heading'] ?? 'Jejaring & Kerja Sama',
+    'badge' => $pg['header_badge']['heading'] ?? 'Kemitraan Kelembagaan',
+    'lead' => $pg['header_lead']['body'] ?? 'Inisiasi dan tata kelola kemitraan strategis Program Studi Pendidikan Profesi Akuntan di lingkungan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya.',
     'breadcrumbs' => [
         ['label' => 'Riset & Pengabdian', 'url' => route('riset-pengabdian.riset-publikasi')],
         ['label' => 'Kerja Sama & Mitra', 'url' => '']
@@ -98,3 +98,4 @@
 </section>
 
 @endsection
+
