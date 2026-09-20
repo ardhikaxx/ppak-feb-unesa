@@ -101,9 +101,9 @@ class GalleryController extends BaseAdminController
         return redirect()->route('admin.galleries.index')->with('success', 'Foto galeri diarsipkan.');
     }
 
-    public function restore(int $gallery): RedirectResponse
+    public function restore(string|int $gallery): RedirectResponse
     {
-        $item = Gallery::withTrashed()->findOrFail($gallery);
+        $item = Gallery::withTrashed()->where('id', $gallery)->orWhere('slug', (string) $gallery)->firstOrFail();
         $item->restore();
 
         $this->audit('restored', $item, $item->toArray());
