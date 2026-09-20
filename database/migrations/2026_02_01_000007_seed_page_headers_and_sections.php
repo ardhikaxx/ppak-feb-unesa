@@ -110,8 +110,6 @@ return new class extends Migration
             // Global
             $c('global', 'cta_heading', 'Bangun Kompetensi Profesional Anda di PPAk FEB UNESA'),
             $c('global', 'cta_body', null, 'Tingkatkan kualifikasi keprofesian akuntansi Anda dengan bimbingan akademisi dan praktisi terkemuka. Tempuh jalur terpadu meraih gelar Akuntan (Ak.), pembebasan ujian sertifikasi Chartered Accountant (CA), dan keunggulan karier global.'),
-            $c('global', 'cta_btn1', 'Informasi Pendaftaran'),
-            $c('global', 'cta_btn2', 'Hubungi Sekretariat'),
             $c('global', 'footer_about', null, 'Program Studi Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis menyelenggarakan pendidikan keprofesian berstandar mutu tinggi, berakar pada integritas, kepakaran teknis, dan etika profesi luhur.'),
             // Lokasi
             $c('lokasi', 'schedule_body', null, 'Senin – Kamis: 08.00 – 16.00 WIB<br>Jumat: 08.00 – 16.30 WIB (Istirahat 11.30 – 13.00 WIB)<br>Sabtu & Minggu: Layanan Khusus Kelas Eksekutif'),
