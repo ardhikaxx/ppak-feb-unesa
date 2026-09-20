@@ -11,6 +11,7 @@
     <meta name="description" content="@yield('meta_description', ($siteContact['meta_description'] ?? null) ?: config('ppak.seo.default_description'))">
     <meta name="keywords" content="@yield('meta_keywords', config('ppak.seo.default_keywords'))">
     <meta name="author" content="PPAk FEB UNESA">
+    <meta name="robots" content="@yield('meta_robots', 'index,follow')">
     <link rel="canonical" href="@yield('canonical', url()->current())">
 
     {{-- Open Graph --}}
@@ -18,7 +19,12 @@
     <meta property="og:url" content="@yield('og_url', url()->current())">
     <meta property="og:title" content="@yield('og_title', View::hasSection('title') ? trim($__env->yieldContent('title')) : config('ppak.seo.default_title'))">
     <meta property="og:description" content="@yield('og_description', View::hasSection('meta_description') ? trim($__env->yieldContent('meta_description')) : config('ppak.seo.default_description'))">
-    <meta property="og:image" content="@yield('og_image', asset(ltrim(($siteContact['og_image'] ?? null) ?: config('ppak.seo.default_image'), '/')))">
+    <meta property="og:image" content="@yield('og_image', asset(ltrim(config('ppak.seo.default_image'), '/')))">
+    <meta property="og:image:secure_url" content="@yield('og_image', asset(ltrim(config('ppak.seo.default_image'), '/')))">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="@yield('og_title', View::hasSection('title') ? trim($__env->yieldContent('title')) : config('ppak.seo.default_title'))">
     <meta property="og:site_name" content="PPAk FEB UNESA">
     <meta property="og:locale" content="id_ID">
 
@@ -26,7 +32,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('twitter_title', View::hasSection('title') ? trim($__env->yieldContent('title')) : config('ppak.seo.default_title'))">
     <meta name="twitter:description" content="@yield('twitter_description', View::hasSection('meta_description') ? trim($__env->yieldContent('meta_description')) : config('ppak.seo.default_description'))">
-    <meta name="twitter:image" content="@yield('twitter_image', asset(ltrim(($siteContact['og_image'] ?? null) ?: config('ppak.seo.default_image'), '/')) )">
+    <meta name="twitter:image" content="@yield('twitter_image', asset(ltrim(config('ppak.seo.default_image'), '/')) )">
 
     {{-- Preconnect to CDN for performance (Bootstrap, Font Awesome) --}}
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -45,6 +51,7 @@
 
     {{-- Structured Data (Organization) --}}
     <script type="application/ld+json">{!! json_encode(\App\Services\SeoService::organizationJsonLd(), JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}</script>
+    @stack('jsonld')
 
     @stack('styles')
 </head>
