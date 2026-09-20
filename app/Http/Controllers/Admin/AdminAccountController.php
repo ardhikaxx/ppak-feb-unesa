@@ -58,7 +58,7 @@ class AdminAccountController extends BaseAdminController
         }
 
         // Cegah admin menonaktifkan dirinya sendiri.
-        if ($admin->id === $this->admin()->id && ! $data['is_active']) {
+        if ($admin->id === $this->admin()?->id && ! $data['is_active']) {
             return back()->with('error', 'Anda tidak dapat menonaktifkan akun sendiri.')->withInput();
         }
 
@@ -71,7 +71,7 @@ class AdminAccountController extends BaseAdminController
 
     public function destroy(Admin $admin): RedirectResponse
     {
-        if ($admin->id === $this->admin()->id) {
+        if ($admin->id === $this->admin()?->id) {
             return back()->with('error', 'Anda tidak dapat menghapus akun sendiri.');
         }
 
