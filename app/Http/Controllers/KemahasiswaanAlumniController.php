@@ -25,6 +25,7 @@ class KemahasiswaanAlumniController extends Controller
     {
         return view('kemahasiswaan-alumni.mahasiswa', [
             'info' => $this->content->getGeneralInfo(),
+            'pg' => $this->content->getPageContent('mahasiswa'),
         ]);
     }
 
