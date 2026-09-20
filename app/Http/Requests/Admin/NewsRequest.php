@@ -14,7 +14,8 @@ class NewsRequest extends FormRequest
 
     public function rules(): array
     {
-        $newsId = $this->route('news')?->id;
+        $news = $this->route('news');
+        $newsId = is_object($news) ? $news->id : (is_numeric($news) ? (int) $news : ($news ? \App\Models\News::where('slug', $news)->value('id') : null));
 
         return [
             'title' => ['required', 'string', 'max:255'],
