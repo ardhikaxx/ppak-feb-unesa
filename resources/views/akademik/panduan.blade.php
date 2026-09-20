@@ -42,6 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse($panduanList as $doc)
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center gap-3">
@@ -49,49 +50,29 @@
                                             <i class="fa-solid fa-file-pdf"></i>
                                         </div>
                                         <div>
-                                            <div class="fw-semibold text-navy">Kalender Akademik Universitas Negeri Surabaya 2026/2027</div>
-                                            <div class="small text-muted">Surat Nomor B/2322/UN38.I/TU.00.02/2026 (06 Januari 2026)</div>
+                                            <div class="fw-semibold text-navy">{{ $doc['title'] }}</div>
+                                            <div class="small text-muted">{{ $doc['nomor_sk'] ?? '' }}@if(!empty($doc['tanggal'])) ({{ $doc['tanggal'] }})@endif</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="badge-ppak badge-ppak-blue">Direktorat Pembelajaran</span>
+                                    <span class="badge-ppak {{ ($doc['kategori'] ?? '') === 'Kalender' ? 'badge-ppak-blue' : 'badge-ppak-gold' }}">{{ $doc['kategori'] ?? 'Dokumen' }}</span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="badge bg-light text-secondary border">PDF &bull; 850 KB</span>
+                                    <span class="badge bg-light text-secondary border">{{ $doc['format'] ?? 'PDF' }} &bull; {{ $doc['size'] ?? $doc['ukuran'] }}</span>
                                 </td>
                                 <td class="text-end">
-                                    <a href="https://unesa.ac.id" target="_blank" rel="noopener noreferrer" class="btn-ppak-secondary btn-ppak-sm text-nowrap">
-                                        <i class="fa-solid fa-arrow-up-right-from-square me-1 text-navy"></i>
-                                        <span>Buka Dokumen</span>
+                                    <a href="{{ route('kontak.unduhan.download', $doc['filename']) }}" class="btn-ppak-secondary btn-ppak-sm text-nowrap">
+                                        <i class="fa-solid fa-download me-1 text-navy"></i>
+                                        <span>Unduh Dokumen</span>
                                     </a>
                                 </td>
                             </tr>
+                            @empty
                             <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="feature-icon-wrapper" style="width: 38px; height: 38px; font-size: 1rem; background-color: #fef2f2; color: #dc2626; border-color: #fee2e2;">
-                                            <i class="fa-solid fa-file-pdf"></i>
-                                        </div>
-                                        <div>
-                                            <div class="fw-semibold text-navy">SK & Sertifikat Akreditasi LAMEMBA (Peringkat Baik)</div>
-                                            <div class="small text-muted">SK No. 611/DE/A.5/AR.11/II/2025 (26 Februari 2025)</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="badge-ppak badge-ppak-gold">LAMEMBA / SIMUTU</span>
-                                </td>
-                                <td class="text-center">
-                                    <span class="badge bg-light text-secondary border">PDF &bull; 420 KB</span>
-                                </td>
-                                <td class="text-end">
-                                    <a href="https://simutu.unesa.ac.id" target="_blank" rel="noopener noreferrer" class="btn-ppak-secondary btn-ppak-sm text-nowrap">
-                                        <i class="fa-solid fa-arrow-up-right-from-square me-1 text-navy"></i>
-                                        <span>Lihat SK</span>
-                                    </a>
-                                </td>
+                                <td colspan="4" class="text-center text-muted py-4">Belum ada dokumen panduan yang dipublikasikan.</td>
                             </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -119,9 +100,9 @@
                                 </div>
                             </div>
                             <div class="d-flex flex-wrap gap-2">
-                                <a href="mailto:ppak.feb@unesa.ac.id" class="btn-ppak-primary btn-ppak-sm">
+                                <a href="mailto:{{ $info['email'] ?? 'ppak.feb@unesa.ac.id' }}" class="btn-ppak-primary btn-ppak-sm">
                                     <i class="fa-solid fa-envelope me-1"></i>
-                                    <span>Hubungi Sekretariat (ppak.feb@unesa.ac.id)</span>
+                                    <span>Hubungi Sekretariat ({{ $info['email'] ?? 'ppak.feb@unesa.ac.id' }})</span>
                                 </a>
                                 <a href="{{ route('kontak.helpdesk') }}" class="btn-ppak-secondary btn-ppak-sm">
                                     <i class="fa-solid fa-headset me-1"></i>
