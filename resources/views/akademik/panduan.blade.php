@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Pedoman & Panduan Akademik',
-    'badge' => 'Dokumen Resmi & Layanan',
-    'lead' => 'Akses dokumen resmi ketetapan universitas dan informasi ketersediaan panduan akademik Program Studi Pendidikan Profesi Akuntan.',
+    'title' => $pg['header_title']['heading'] ?? 'Pedoman & Panduan Akademik',
+    'badge' => $pg['header_badge']['heading'] ?? 'Dokumen Resmi & Layanan',
+    'lead' => $pg['header_lead']['body'] ?? 'Akses dokumen resmi ketetapan universitas dan informasi ketersediaan panduan akademik Program Studi Pendidikan Profesi Akuntan.',
     'breadcrumbs' => [
         ['label' => 'Akademik', 'url' => route('akademik.kurikulum')],
         ['label' => 'Buku Panduan', 'url' => '']
@@ -18,14 +18,14 @@
 <section class="section-py bg-white">
     <div class="container-xl">
         {{-- Dokumen Resmi yang Terverifikasi --}}
-        <div class="text-center max-w-700 mx-auto mb-4">
+                <div class="text-center max-w-700 mx-auto mb-4">
             <span class="badge-ppak badge-ppak-gold mb-2">
                 <i class="fa-solid fa-file-circle-check me-1"></i> DOKUMEN RESMI TERSEDIA
             </span>
-            <h2>Dokumen Resmi Universitas & Akreditasi</h2>
+            <h2>{{ $pg['docs_heading']['heading'] ?? 'Dokumen Resmi Universitas & Akreditasi' }}</h2>
             <div class="golden-line center"></div>
             <p class="text-secondary">
-                Dokumen ketetapan resmi yang telah dipublikasikan dan dapat diakses publik.
+                {{ $pg['docs_lead']['body'] ?? 'Dokumen ketetapan resmi yang telah dipublikasikan dan dapat diakses publik.' }}
             </p>
         </div>
 
@@ -89,10 +89,8 @@
                         </div>
                         <div>
                             <span class="badge-ppak badge-ppak-navy mb-2">Dokumen Akademik PPAk</span>
-                            <h3 class="h4 text-navy fw-bold mb-2">Pedoman Akademik & Buku Panduan Khusus Program Studi</h3>
-                            <p class="text-secondary small mb-3" style="line-height: 1.65;">
-                                Dokumen Buku Pedoman Akademik Khusus Program Studi, Petunjuk Praktik Magang Industri, dan Panduan Capstone Project sedang dalam proses penyusunan dan pengesahan tata pamong kelembagaan menyusul berdirinya program pada 23 Mei 2025.
-                            </p>
+                            <h3 class="h4 text-navy fw-bold mb-2">{{ $pg['notice_heading']['heading'] ?? 'Pedoman Akademik & Buku Panduan Khusus Program Studi' }}</h3>
+                            {!! $pg['notice_body']['body'] ?? '<p class="text-secondary small mb-3" style="line-height: 1.65;">Dokumen Buku Pedoman Akademik Khusus Program Studi, Petunjuk Praktik Magang Industri, dan Panduan Capstone Project sedang dalam proses penyusunan dan pengesahan tata pamong kelembagaan menyusul berdirinya program pada 23 Mei 2025.</p>' !!}
                             <div class="p-3 bg-white rounded-3 border mb-3">
                                 <div class="fw-bold text-navy small mb-1">Status Ketersediaan Dokumen:</div>
                                 <div class="small text-secondary">
@@ -118,3 +116,4 @@
 </section>
 
 @endsection
+
