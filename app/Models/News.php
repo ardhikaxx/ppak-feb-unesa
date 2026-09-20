@@ -19,7 +19,8 @@ class News extends Model
 
     protected $fillable = [
         'title', 'slug', 'excerpt', 'content', 'category_id', 'author_id',
-        'image', 'image_thumb', 'status', 'published_at', 'tags', 'read_time',
+        'author_name', 'image', 'image_thumb', 'status', 'published_at',
+        'tags', 'read_time',
     ];
 
     protected $casts = [
