@@ -20,14 +20,19 @@ class News extends Model
     protected $fillable = [
         'title', 'slug', 'excerpt', 'content', 'category_id', 'author_id',
         'author_name', 'image', 'image_thumb', 'status', 'published_at',
-        'tags', 'read_time',
+        'tags', 'read_time', 'seo_title', 'seo_description', 'canonical_url',
+        'og_title', 'og_description', 'og_image', 'robots_index',
     ];
 
-    protected $casts = [
-        'published_at' => 'datetime',
-        'tags' => 'array',
-        'status' => ContentStatus::class,
-    ];
+    protected function casts(): array
+    {
+        return [
+            'published_at' => 'datetime',
+            'tags' => 'array',
+            'status' => ContentStatus::class,
+            'robots_index' => 'boolean',
+        ];
+    }
 
     // Indexes automatically via migration: slug unique, status, published_at, category_id
 
