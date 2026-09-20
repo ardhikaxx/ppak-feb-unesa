@@ -15,6 +15,7 @@ class ProfilController extends Controller
     {
         return view('profil.sejarah', [
             'info' => $this->content->getGeneralInfo(),
+            'pg' => $this->content->getPageContent('sejarah'),
         ]);
     }
 
@@ -22,6 +23,7 @@ class ProfilController extends Controller
     {
         return view('profil.visi-misi', [
             'info' => $this->content->getGeneralInfo(),
+            'pg' => $this->content->getPageContent('visi-misi'),
         ]);
     }
 
@@ -29,6 +31,7 @@ class ProfilController extends Controller
     {
         return view('profil.struktur-organisasi', [
             'info' => $this->content->getGeneralInfo(),
+            'pg' => $this->content->getPageContent('struktur-organisasi'),
         ]);
     }
 
