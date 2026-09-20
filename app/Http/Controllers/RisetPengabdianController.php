@@ -17,7 +17,6 @@ class RisetPengabdianController extends Controller
             'info' => $this->content->getGeneralInfo(),
             'researchList' => Research::where('status', 'published')
                 ->orderByDesc('year')->orderByDesc('id')->get(),
-            'pg' => $this->content->getPageContent('riset-publikasi'),
         ]);
     }
 
@@ -26,7 +25,6 @@ class RisetPengabdianController extends Controller
         return view('riset-pengabdian.pengabdian', [
             'pengabdian' => $this->content->getPengabdian(),
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('pengabdian'),
         ]);
     }
 
@@ -35,7 +33,7 @@ class RisetPengabdianController extends Controller
         return view('riset-pengabdian.kerja-sama', [
             'mitra' => $this->content->getMitra(),
             'info' => $this->content->getGeneralInfo(),
-            'pg' => $this->content->getPageContent('kerja-sama'),
         ]);
     }
 }
+
