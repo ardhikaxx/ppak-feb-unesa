@@ -143,6 +143,9 @@
             </a>
 
             <div class="sidebar-group">Website</div>
+            <a href="{{ route('admin.page-contents.index') }}" class="sidebar-link {{ request()->routeIs('admin.page-contents.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-file-lines"></i> Konten Halaman
+            </a>
             <a href="{{ route('admin.content-blocks.index') }}" class="sidebar-link {{ request()->routeIs('admin.content-blocks.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-cubes"></i> Blok Konten
             </a>
