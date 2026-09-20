@@ -137,14 +137,37 @@ class PpakDatabaseSeeder extends Seeder
             );
         }
 
-        // 5. Academic Calendars (2026/2027)
+        // 5. Academic Calendars (2026/2027) - tanggal akurat sesuai SK resmi
         $kalender = PpakData::getKalender();
         $calOrder = 1;
+        // Peta tanggal resmi per kegiatan (agar format tampilan frontend sama persis).
+        // Kunci: semester|kegiatan, karena nama kegiatan Gasal & Genap bisa sama.
+        $dateMap = [
+            'Gasal|Pembayaran UKT dan Registrasi Ulang Mahasiswa' => ['2026-07-01', '2026-07-31'],
+            'Gasal|Konsultasi Dosen PA dan Pengisian Kartu Rencana Studi (KRS)' => ['2026-07-20', '2026-08-15'],
+            'Gasal|Masa Perkuliahan Efektif Tatap Muka & Praktika Semester Gasal' => ['2026-09-01', '2026-12-18'],
+            'Gasal|Penilaian Formatif Tengah Semester (UTS)' => ['2026-10-19', '2026-10-30'],
+            'Gasal|Minggu Tenang dan Persiapan Evaluasi Akhir' => ['2026-12-21', '2026-12-25'],
+            'Gasal|Penilaian Sumatif Akhir Semester (UAS)' => ['2026-12-28', '2027-01-08'],
+            'Gasal|Entry dan Finalisasi Nilai Semester Gasal' => ['2027-01-04', '2027-01-15'],
+            'Gasal|Rapat Yudisium Kelulusan Periode Semester Gasal' => ['2027-01-25', '2027-01-30'],
+            'Genap|Pembayaran UKT dan Registrasi Ulang Mahasiswa Semester Genap' => ['2027-01-04', '2027-01-29'],
+            'Genap|Konsultasi Dosen PA dan Pengisian / Perubahan KRS Genap' => ['2027-01-25', '2027-02-06'],
+            'Genap|Masa Perkuliahan Efektif Tatap Muka & Praktika Semester Genap' => ['2027-02-08', '2027-05-28'],
+            'Genap|Penilaian Formatif Tengah Semester (UTS)' => ['2027-03-29', '2027-04-09'],
+            'Genap|Minggu Tenang dan Persiapan Evaluasi Akhir' => ['2027-05-31', '2027-06-04'],
+            'Genap|Penilaian Sumatif Akhir Semester (UAS)' => ['2027-06-07', '2027-06-18'],
+            'Genap|Entry dan Finalisasi Nilai Semester Genap' => ['2027-06-14', '2027-06-25'],
+            'Genap|Rapat Yudisium Kelulusan Periode Semester Genap' => ['2027-07-19', '2027-07-24'],
+        ];
         foreach ($kalender['gasal']['agenda'] as $item) {
+            $dates = $dateMap['Gasal|' . $item['kegiatan']] ?? ['2026-08-01', null];
             AcademicCalendar::updateOrCreate(
                 ['academic_year' => '2026/2027', 'semester' => 'Gasal', 'activity' => $item['kegiatan']],
                 [
-                    'start_date' => '2026-08-01',
+                    'period_label' => $kalender['gasal']['periode'],
+                    'start_date' => $dates[0],
+                    'end_date' => $dates[1],
                     'category' => $item['kategori'],
                     'decree_info' => 'Surat Nomor B/2322/UN38.I/TU.00.02/2026',
                     'sort_order' => $calOrder++,
@@ -158,10 +181,13 @@ class PpakDatabaseSeeder extends Seeder
         }
 
         foreach ($kalender['genap']['agenda'] as $item) {
+            $dates = $dateMap['Genap|' . $item['kegiatan']] ?? ['2027-02-01', null];
             AcademicCalendar::updateOrCreate(
                 ['academic_year' => '2026/2027', 'semester' => 'Genap', 'activity' => $item['kegiatan']],
                 [
-                    'start_date' => '2027-02-01',
+                    'period_label' => $kalender['genap']['periode'],
+                    'start_date' => $dates[0],
+                    'end_date' => $dates[1],
                     'category' => $item['kategori'],
                     'decree_info' => 'Surat Nomor B/2322/UN38.I/TU.00.02/2026',
                     'sort_order' => $calOrder++,
@@ -306,12 +332,18 @@ class PpakDatabaseSeeder extends Seeder
 
         // 12. Agendas
         $agendas = PpakData::getAgenda();
+        $agendaEnds = [
+            'perkuliahan-semester-gasal-2026-2027' => '2026-12-18',
+            'evaluasi-formatif-tengah-semester-uts-gasal' => '2026-10-30',
+            'penilaian-sumatif-akhir-semester-uas-gasal' => '2027-01-08',
+        ];
         foreach ($agendas as $ag) {
             Agenda::updateOrCreate(
                 ['slug' => $ag['slug']],
                 [
                     'title' => $ag['title'],
                     'event_date' => $ag['date_raw'],
+                    'event_end_date' => $agendaEnds[$ag['slug']] ?? null,
                     'time' => $ag['time'],
                     'venue' => $ag['venue'],
                     'speaker' => $ag['speaker'],
