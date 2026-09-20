@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Gelar Profesi & Sertifikasi Akuntan',
-    'badge' => 'Informasi Keprofesian & Sertifikasi',
-    'lead' => 'Memahami hubungan program Pendidikan Profesi Akuntan dengan sebutan profesi, sertifikasi Chartered Accountant (CA) IAI, dan CPA of Indonesia IAPI.',
+    'title' => $pg['header_title']['heading'] ?? 'Gelar Profesi & Sertifikasi Akuntan',
+    'badge' => $pg['header_badge']['heading'] ?? 'Informasi Keprofesian & Sertifikasi',
+    'lead' => $pg['header_lead']['body'] ?? 'Memahami hubungan program Pendidikan Profesi Akuntan dengan sebutan profesi, sertifikasi Chartered Accountant (CA) IAI, dan CPA of Indonesia IAPI.',
     'breadcrumbs' => [
         ['label' => 'Akademik', 'url' => route('akademik.kurikulum')],
         ['label' => 'Gelar & Sertifikasi', 'url' => '']
@@ -132,3 +132,4 @@
 </section>
 
 @endsection
+
