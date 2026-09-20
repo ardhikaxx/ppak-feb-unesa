@@ -296,6 +296,15 @@ class EloquentContentRepository implements ContentRepositoryInterface
             'image' => $n->image ?? '/images/default-img.png',
             'tags' => $n->tags ?? [],
             'source' => $n->author?->name ?? 'Humas FEB UNESA',
+            'updated_at' => $n->updated_at?->format('Y-m-d'),
+            // Field SEO per artikel (null = fallback hierarki di SeoService).
+            'seo_title' => $n->seo_title,
+            'seo_description' => $n->seo_description,
+            'canonical_url' => $n->canonical_url,
+            'og_title' => $n->og_title,
+            'og_description' => $n->og_description,
+            'og_image' => $n->og_image,
+            'robots_index' => (bool) ($n->robots_index ?? true),
         ];
     }
 
