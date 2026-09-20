@@ -181,7 +181,7 @@ class PpakDatabaseSeeder extends Seeder
         ];
 
         foreach ($kalender['gasal']['agenda'] as $item) {
-            $dates = $dateMap['Gasal|' . $item['kegiatan']] ?? ['2026-08-01', null];
+            $dates = $dateMap['Gasal|'.$item['kegiatan']] ?? ['2026-08-01', null];
             AcademicCalendar::updateOrCreate(
                 ['academic_year' => '2026/2027', 'semester' => 'Gasal', 'activity' => $item['kegiatan']],
                 [
@@ -201,7 +201,7 @@ class PpakDatabaseSeeder extends Seeder
         }
 
         foreach ($kalender['genap']['agenda'] as $item) {
-            $dates = $dateMap['Genap|' . $item['kegiatan']] ?? ['2027-02-01', null];
+            $dates = $dateMap['Genap|'.$item['kegiatan']] ?? ['2027-02-01', null];
             AcademicCalendar::updateOrCreate(
                 ['academic_year' => '2026/2027', 'semester' => 'Genap', 'activity' => $item['kegiatan']],
                 [
@@ -262,8 +262,11 @@ class PpakDatabaseSeeder extends Seeder
                 'end_date' => '2026-04-30',
                 'verification_date' => '2026-05-02',
                 'exam_date' => '2026-05-06',
+                'exam_label' => '04 – 08 Mei 2026',
                 'announcement_date' => '2026-05-15',
+                'announcement_label' => '15 Mei 2026',
                 'registration_deadline' => '2026-05-31',
+                'registration_label' => '18 – 31 Mei 2026',
                 'status' => 'archived',
             ],
             [
@@ -273,8 +276,11 @@ class PpakDatabaseSeeder extends Seeder
                 'end_date' => '2026-06-30',
                 'verification_date' => '2026-07-02',
                 'exam_date' => '2026-07-08',
+                'exam_label' => '06 – 10 Juli 2026',
                 'announcement_date' => '2026-07-17',
+                'announcement_label' => '17 Juli 2026',
                 'registration_deadline' => '2026-07-31',
+                'registration_label' => '20 – 31 Juli 2026',
                 'status' => 'archived',
             ],
             [
@@ -284,8 +290,11 @@ class PpakDatabaseSeeder extends Seeder
                 'end_date' => '2026-08-15',
                 'verification_date' => '2026-08-16',
                 'exam_date' => '2026-08-20',
+                'exam_label' => '18 – 21 Agustus 2026',
                 'announcement_date' => '2026-08-25',
+                'announcement_label' => '25 Agustus 2026',
                 'registration_deadline' => '2026-08-31',
+                'registration_label' => '26 – 31 Agustus 2026',
                 'status' => 'archived',
             ],
         ];
@@ -300,8 +309,11 @@ class PpakDatabaseSeeder extends Seeder
                     'end_date' => $s['end_date'],
                     'verification_date' => $s['verification_date'],
                     'exam_date' => $s['exam_date'],
+                    'exam_label' => $s['exam_label'],
                     'announcement_date' => $s['announcement_date'],
+                    'announcement_label' => $s['announcement_label'],
                     'registration_deadline' => $s['registration_deadline'],
+                    'registration_label' => $s['registration_label'],
                     'status' => $s['status'],
                     'sort_order' => $admOrder++,
                     'source_url' => 'https://admisi.unesa.ac.id',
@@ -349,6 +361,7 @@ class PpakDatabaseSeeder extends Seeder
                     'journal_or_publisher' => $r['jurnal'],
                     'publish_date' => '2026-02-12',
                     'year' => $r['tahun'],
+                    'summary' => $r['deskripsi'],
                     'doi_or_url' => $r['sinta_url'],
                     'lecturer_name' => 'Rediyanto Putra, S.E., M.S.A.',
                     'source_url' => $r['sinta_url'],
@@ -609,7 +622,8 @@ class PpakDatabaseSeeder extends Seeder
                     'image' => $n['image'],
                     'status' => 'published',
                     'published_at' => $n['date_raw'],
-                    'read_time' => '3 Menit',
+                    'read_time' => $n['read_time'],
+                    'author_name' => $n['author'],
                     'tags' => $n['tags'],
                 ]
             );
@@ -623,10 +637,15 @@ class PpakDatabaseSeeder extends Seeder
             'penilaian-sumatif-akhir-semester-uas-gasal' => '2027-01-08',
         ];
         foreach ($agendas as $ag) {
+            $agendaCat = Category::firstOrCreate(
+                ['slug' => 'agenda-'.Str::slug($ag['category'] ?? 'akademik')],
+                ['name' => $ag['category'] ?? 'Akademik', 'type' => 'agenda']
+            );
             Agenda::updateOrCreate(
                 ['slug' => $ag['slug']],
                 [
                     'title' => $ag['title'],
+                    'category_id' => $agendaCat->id,
                     'event_date' => $ag['date_raw'],
                     'event_end_date' => $agendaEnds[$ag['slug']] ?? null,
                     'time' => $ag['time'],
@@ -636,6 +655,7 @@ class PpakDatabaseSeeder extends Seeder
                     'is_upcoming' => $ag['is_upcoming'],
                     'description' => $ag['description'],
                     'published_at' => now(),
+                    'source_name' => $ag['source'] ?? null,
                     'verified_at' => now(),
                 ]
             );
@@ -644,22 +664,30 @@ class PpakDatabaseSeeder extends Seeder
         // 16. Documents
         $unduhans = PpakData::getUnduhan();
         foreach ($unduhans as $u) {
-            $filename = $u['filename'] ?? ($u['slug'] . '.' . strtolower($u['format']));
-            $filePath = public_path('documents/' . $filename);
+            $filename = $u['filename'] ?? ($u['slug'].'.'.strtolower($u['format']));
+            $filePath = public_path('documents/'.$filename);
             $fileSize = file_exists($filePath) ? filesize($filePath) : 8500;
+            $docCat = Category::firstOrCreate(
+                ['slug' => 'dokumen-'.Str::slug($u['kategori'] ?? 'dokumen')],
+                ['name' => $u['kategori'] ?? 'Dokumen', 'type' => 'document']
+            );
 
             Document::updateOrCreate(
                 ['slug' => $u['slug']],
                 [
                     'title' => $u['judul'] ?? $u['title'],
+                    'category_id' => $docCat->id,
                     'filename' => $filename,
-                    'path' => 'documents/' . $filename,
+                    'path' => 'documents/'.$filename,
                     'mime_type' => 'application/pdf',
                     'size' => $fileSize,
                     'format' => $u['format'] ?? 'PDF',
                     'year' => (int) ($u['tahun'] ?? 2026),
+                    'display_date' => $u['tanggal'] ?? null,
                     'status' => 'published',
                     'published_at' => now(),
+                    'source_name' => $u['nomor_sk'] ?? null,
+                    'source_url' => $u['url'] ?? null,
                     'verified_at' => now(),
                 ]
             );
@@ -668,10 +696,15 @@ class PpakDatabaseSeeder extends Seeder
         // 17. Galleries
         $galeris = PpakData::getGaleri();
         foreach ($galeris as $g) {
+            $galCat = Category::firstOrCreate(
+                ['slug' => 'galeri-'.Str::slug($g['category'] ?? 'dokumentasi')],
+                ['name' => $g['category'] ?? 'Dokumentasi', 'type' => 'gallery']
+            );
             Gallery::updateOrCreate(
                 ['slug' => Str::slug($g['title'])],
                 [
                     'title' => $g['title'],
+                    'category_id' => $galCat->id,
                     'image' => $g['image'],
                     'event_date' => '2026-01-01',
                     'status' => 'published',
