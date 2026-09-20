@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => 'Jalur & Persyaratan Pendaftaran',
-    'badge' => 'Informasi Admisi PMB UNESA',
-    'lead' => 'Ketentuan umum dan dokumen yang diperlukan calon mahasiswa Program Studi Pendidikan Profesi Akuntan (Kode: 62902) FEB UNESA.',
+    'title' => $pg['header_title']['heading'] ?? 'Jalur & Persyaratan Pendaftaran',
+    'badge' => $pg['header_badge']['heading'] ?? 'Informasi Admisi PMB UNESA',
+    'lead' => $pg['header_lead']['body'] ?? 'Ketentuan umum dan dokumen yang diperlukan calon mahasiswa Program Studi Pendidikan Profesi Akuntan (Kode: 62902) FEB UNESA.',
     'breadcrumbs' => [
         ['label' => 'Admisi', 'url' => route('admisi.jalur-syarat')],
         ['label' => 'Jalur & Syarat', 'url' => '']
@@ -114,3 +114,4 @@
 </section>
 
 @endsection
+
