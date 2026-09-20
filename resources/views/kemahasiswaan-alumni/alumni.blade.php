@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => $pg['header_title']['heading'] ?? 'Jejaring Alumni (PPAk FEB UNESA)',
-    'badge' => $pg['header_badge']['heading'] ?? 'Pengembangan Jejaring & Silaturahmi',
-    'lead' => $pg['header_lead']['body'] ?? 'Wadah sinergi dan jejaring komunikasi profesional bagi lulusan Program Studi Pendidikan Profesi Akuntan FEB UNESA.',
+    'title' => 'Jejaring Alumni (PPAk FEB UNESA)',
+    'badge' => 'Pengembangan Jejaring & Silaturahmi',
+    'lead' => 'Wadah sinergi dan jejaring komunikasi profesional bagi lulusan Program Studi Pendidikan Profesi Akuntan FEB UNESA.',
     'breadcrumbs' => [
         ['label' => 'Kemahasiswaan & Alumni', 'url' => route('kemahasiswaan-alumni.alumni')],
         ['label' => 'Jejaring Alumni', 'url' => '']
@@ -72,8 +72,8 @@
                     <div class="feature-icon-wrapper mx-auto mb-3">
                         <i class="fa-solid fa-comments"></i>
                     </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-2">{{ $pg['pilar_1_heading']['heading'] ?? 'Forum Silaturahmi & Diskusi' }}</h3>
-                    {!! $pg['pilar_1_body']['body'] ?? '<p class="small text-secondary mb-0">Menjaga komunikasi antarangkatan dan pertukaran wawasan dinamika keprofesian akuntan.</p>' !!}
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Forum Silaturahmi & Diskusi</h3>
+                    <p class="small text-secondary mb-0">Menjaga komunikasi antarangkatan dan pertukaran wawasan dinamika keprofesian akuntan.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -81,8 +81,8 @@
                     <div class="feature-icon-wrapper mx-auto mb-3">
                         <i class="fa-solid fa-briefcase"></i>
                     </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-2">{{ $pg['pilar_2_heading']['heading'] ?? 'Peluang Karier & Referral' }}</h3>
-                    {!! $pg['pilar_2_body']['body'] ?? '<p class="small text-secondary mb-0">Berbagi informasi rekrutmen profesional di Kantor Akuntan Publik, korporasi, dan lembaga pemerintah.</p>' !!}
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Peluang Karier & Referral</h3>
+                    <p class="small text-secondary mb-0">Berbagi informasi rekrutmen profesional di Kantor Akuntan Publik, korporasi, dan lembaga pemerintah.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -90,8 +90,8 @@
                     <div class="feature-icon-wrapper mx-auto mb-3">
                         <i class="fa-solid fa-handshake-angle"></i>
                     </div>
-                    <h3 class="fs-6 fw-bold text-navy mb-2">{{ $pg['pilar_3_heading']['heading'] ?? 'Mentoring & Kontribusi Almamater' }}</h3>
-                    {!! $pg['pilar_3_body']['body'] ?? '<p class="small text-secondary mb-0">Dukungan pembekalan studi kasus dan masukan praktis bagi pengembangan mutu pembelajaran.</p>' !!}
+                    <h3 class="fs-6 fw-bold text-navy mb-2">Mentoring & Kontribusi Almamater</h3>
+                    <p class="small text-secondary mb-0">Dukungan pembekalan studi kasus dan masukan praktis bagi pengembangan mutu pembelajaran.</p>
                 </div>
             </div>
         </div>
@@ -117,4 +117,5 @@
 </section>
 
 @endsection
+
 
