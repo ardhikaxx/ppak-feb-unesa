@@ -102,7 +102,7 @@
                 </div>
                 <div class="d-flex align-items-center gap-3">
                     <span class="badge-ppak" style="font-size: 0.725rem; text-transform: none; background: rgba(255,255,255,0.08); color: #ffffff; border: 1px solid rgba(255,255,255,0.15);">
-                        <i class="fa-solid fa-award text-warning"></i> Akreditasi Baik [LAMEMBA]
+                        <i class="fa-solid fa-award text-warning"></i> Akreditasi {{ $ppakInstitution['akreditasi_status'] ?? 'Baik' }} [{{ $ppakInstitution['akreditasi_lembaga'] ?? 'LAMEMBA' }}]
                     </span>
                     <a href="#top-infobar" class="text-secondary hover-white" aria-label="Kembali ke atas">
                         <i class="fa-solid fa-arrow-up"></i>
