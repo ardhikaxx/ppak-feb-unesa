@@ -53,6 +53,7 @@ class ProfilController extends Controller
         return view('profil.dosen-pengajar', [
             'dosen' => $dosen,
             'info' => $this->content->getGeneralInfo(),
+            'pg' => $this->content->getPageContent('dosen'),
         ]);
     }
 
@@ -62,6 +63,7 @@ class ProfilController extends Controller
             'info' => $this->content->getGeneralInfo(),
             'unduhan' => $this->content->getUnduhan(),
             'accreditation' => Accreditation::orderByDesc('effective_until')->first(),
+            'pg' => $this->content->getPageContent('akreditasi'),
         ]);
     }
 }
