@@ -6,9 +6,9 @@
 @section('content')
 
 @include('partials.page-header', [
-    'title' => $pg['header_title']['heading'] ?? 'Pengabdian Kepada Masyarakat (PKM)',
-    'badge' => $pg['header_badge']['heading'] ?? 'Tridharma Perguruan Tinggi',
-    'lead' => $pg['header_lead']['body'] ?? 'Penyelenggaraan kegiatan pengabdian kepada masyarakat dan literasi akuntansi oleh sivitas akademika FEB UNESA.',
+    'title' => 'Pengabdian Kepada Masyarakat (PKM)',
+    'badge' => 'Tridharma Perguruan Tinggi',
+    'lead' => 'Penyelenggaraan kegiatan pengabdian kepada masyarakat dan literasi akuntansi oleh sivitas akademika FEB UNESA.',
     'breadcrumbs' => [
         ['label' => 'Riset & Pengabdian', 'url' => route('riset-pengabdian.riset-publikasi')],
         ['label' => 'Pengabdian Masyarakat', 'url' => '']
