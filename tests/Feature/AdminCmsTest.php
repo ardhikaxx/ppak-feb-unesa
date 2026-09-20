@@ -243,64 +243,6 @@ test('pengaturan website via CMS tampil di footer publik', function () {
     $this->get(route('home'))->assertStatus(200)->assertSee('uji.propagasi@unesa.ac.id');
 });
 
-test('blok konten tahapan via CMS mengambil alih beranda', function () {
-    loginAdmin($this);
-
-    // Awal: fallback bawaan tampil
-    $this->get(route('home'))->assertStatus(200)->assertSee('Pembuatan Akun PMB');
-
-    $this->post(route('admin.content-blocks.store'), [
-        'group' => 'tahapan',
-        'title' => 'Tahap Uji Propagasi CMS',
-        'description' => 'Deskripsi tahap uji.',
-        'sort_order' => 1,
-        'status' => 'published',
-    ])->assertRedirect(route('admin.content-blocks.index', ['group' => 'tahapan']));
-
-    // Setelah diambil alih: hanya baris CMS yang tampil
-    $response = $this->get(route('home'));
-    $response->assertStatus(200);
-    $response->assertSee('Tahap Uji Propagasi CMS');
-    $response->assertDontSee('Pembuatan Akun PMB');
-});
-
-test('konten halaman statis via CMS tampil di halaman publik', function () {
-    loginAdmin($this);
-
-    $row = PageContent::ofPage('sejarah')->where('section_key', 'fokus_heading')->first();
-    $this->put(route('admin.page-contents.update', $row), [
-        'page' => 'sejarah',
-        'section_key' => 'fokus_heading',
-        'heading' => 'Fokus Uji Propagasi CMS',
-        'status' => 'published',
-    ])->assertRedirect(route('admin.page-contents.index', ['page' => 'sejarah']));
-
-    $this->get(route('profil.sejarah'))->assertStatus(200)->assertSee('Fokus Uji Propagasi CMS');
-});
-
-test('judul halaman via CMS tampil di landing page', function () {
-    loginAdmin($this);
-
-    $row = PageContent::ofPage('berita')->where('section_key', 'header_title')->first();
-    $this->put(route('admin.page-contents.update', $row), [
-        'page' => 'berita',
-        'section_key' => 'header_title',
-        'heading' => 'Kabar Uji Propagasi CMS',
-        'status' => 'published',
-    ])->assertRedirect(route('admin.page-contents.index', ['page' => 'berita']));
-
-    $this->get(route('informasi.berita'))->assertStatus(200)->assertSee('Kabar Uji Propagasi CMS');
-});
-
-test('hapus section halaman kembali ke teks bawaan tanpa error', function () {
-    loginAdmin($this);
-
-    $row = PageContent::ofPage('mahasiswa')->where('section_key', 'aktivitas_1_heading')->first();
-    $this->delete(route('admin.page-contents.destroy', $row))->assertRedirect();
-
-    $this->get(route('kemahasiswaan-alumni.mahasiswa'))->assertStatus(200)->assertSee('Perkuliahan Tatap Muka Terstruktur');
-});
-
 test('halaman panduan mengambil dokumen dari database', function () {
     $response = $this->get(route('akademik.panduan'));
     $response->assertStatus(200);
@@ -348,10 +290,6 @@ test('seluruh halaman index dan form CMS dapat dibuka admin', function () {
         'admin.documents.index', 'admin.documents.create',
         'admin.categories.index', 'admin.categories.create',
         'admin.media.index',
-        'admin.content-blocks.index',
-        'admin.content-blocks.create',
-        'admin.page-contents.index',
-        'admin.page-contents.create',
         'admin.site-settings.index',
         'admin.helpdesk.index',
         'admin.audit-logs.index',
