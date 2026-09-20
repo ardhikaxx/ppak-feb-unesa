@@ -38,6 +38,33 @@
             </div>
         </div>
 
+        {{-- Direktori Alumni Terverifikasi (dari CMS; kosong = tidak tampil) --}}
+        @if($alumniList->isNotEmpty())
+            <div class="p-4 p-lg-5 rounded-4 border bg-white shadow-sm mb-5">
+                <span class="badge-ppak badge-ppak-navy mb-2">DIREKTORI LULUSAN</span>
+                <h3 class="h5 text-navy fw-bold mb-4">Alumni Terverifikasi</h3>
+                <div class="row g-4">
+                    @foreach($alumniList as $al)
+                        <div class="col-md-6">
+                            <div class="card-ppak-flat h-100 bg-subtle p-4 rounded-3 border">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="feature-icon-wrapper flex-shrink-0" style="width: 44px; height: 44px; font-size: 1.1rem;">
+                                        <i class="fa-solid fa-user-graduate"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="fs-6 fw-bold text-navy mb-1">{{ $al->full_name }}</h4>
+                                        <div class="small text-muted mb-1">Lulusan {{ $al->graduation_year ?? '-' }}</div>
+                                        @php($alMeta = array_filter([$al->current_position ?? null, $al->current_company ?? null]))
+                                        <div class="small text-secondary">{{ implode(' • ', $alMeta) }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
         {{-- Pilar Pengembangan Sinergi Alumni --}}
         <div class="row g-4 mb-5">
             <div class="col-md-4">
