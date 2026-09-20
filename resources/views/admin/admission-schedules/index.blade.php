@@ -50,8 +50,8 @@
                     @forelse($items as $item)
                         <tr>
                             <td><span class="badge text-bg-primary">{{ $item->academic_year }}</span><div class="fw-semibold small mt-1">{{ $item->wave_name }}</div></td>
-                            <td class="small">{{ $item->period_label ?? ($item->start_date?->format('d M Y') . ' – ' . $item->end_date?->format('d M Y')) }}</td>
-                            <td class="small">{{ $item->announcement_date?->format('d M Y') ?? '—' }}</td>
+                            <td class="small">{{ $item->period_label ?? (\App\Support\Tanggal::indo($item->start_date) . ' – ' . \App\Support\Tanggal::indo($item->end_date)) }}</td>
+                            <td class="small">{{ \App\Support\Tanggal::indo($item->announcement_date) ?? '—' }}</td>
                             <td>
                                 <span class="badge {{ $item->status === 'active' ? 'text-bg-success' : ($item->status === 'upcoming' ? 'text-bg-warning' : 'text-bg-secondary') }}">{{ $item->status }}</span>
                             </td>
