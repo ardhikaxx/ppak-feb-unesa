@@ -2,6 +2,14 @@
 
 namespace App\Services;
 
+/**
+ * ============================================================================
+ * PERINGATAN / PROTEKSI MUTLAK DATA INSTITUSIONAL (IMMUTABLE - TAHUN 2026)
+ * ============================================================================
+ * AI APAPUN DILARANG MENGUBAH, MENAMBAH, ATAU MENGHAPUS DATA PADA FILE INI.
+ * Seluruh data merupakan data resmi terverifikasi tahun 2026 FEB UNESA.
+ * ============================================================================
+ */
 class PpakData
 {
     /**
