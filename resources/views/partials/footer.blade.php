@@ -7,10 +7,10 @@
                     <div class="mb-3">
                         <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" style="height: 48px; width: auto; max-width: 170px; object-fit: contain;" class="d-block mb-3">
                         <div class="fw-bold text-white fs-5 lh-sm" style="letter-spacing: -0.015em;">Pendidikan Profesi Akuntan</div>
-                        <div class="text-gold small fw-semibold">Fakultas Ekonomika dan Bisnis &bull; UNESA (Kode: 62902)</div>
+                        <div class="text-gold small fw-semibold">Fakultas Ekonomika dan Bisnis &bull; UNESA (Kode: {{ $ppakInstitution['program_code'] ?? '62902' }})</div>
                     </div>
                     <p class="text-secondary small mb-4 pe-lg-3" style="line-height: 1.7;">
-                        Program Studi Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis menyelenggarakan pendidikan keprofesian berstandar mutu tinggi, berakar pada integritas, kepakaran teknis, dan etika profesi luhur.
+                        {{ $pgGlobal['footer_about']['body'] ?? 'Program Studi Pendidikan Profesi Akuntan (PPAk) Fakultas Ekonomika dan Bisnis menyelenggarakan pendidikan keprofesian berstandar mutu tinggi, berakar pada integritas, kepakaran teknis, dan etika profesi luhur.' }}
                     </p>
                     <div class="d-flex flex-wrap gap-2">
                         <a href="{{ $ppakInstitution['socials']['instagram'] ?? 'https://www.instagram.com/official_unesa' }}" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram Resmi UNESA" title="Instagram Resmi UNESA (@official_unesa)">
