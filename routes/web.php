@@ -74,7 +74,7 @@ Route::redirect('/kemahasiswaan/alumni', '/kemahasiswaan-alumni/alumni', 301)->n
 Route::redirect('/kemahasiswaan/komunitas', '/kemahasiswaan-alumni/mahasiswa', 301)->name('kemahasiswaan.komunitas');
 Route::redirect('/kemahasiswaan/karier', '/kemahasiswaan-alumni/testimoni-karier', 301)->name('kemahasiswaan.karier');
 
-// Informasi & Publikasi - slug-based, paginated, searchable
+// Informasi & Publikasi - slug-based, paginated
 Route::prefix('informasi')->name('informasi.')->group(function () {
     Route::get('/berita', [InformasiController::class, 'berita'])->name('berita');
     Route::get('/berita/{slug}', [InformasiController::class, 'beritaDetail'])
@@ -101,9 +101,5 @@ Route::prefix('kontak')->name('kontak.')->group(function () {
 // Scalable extras - SEO & performance
 Route::get('/sitemap.xml', [InformasiController::class, 'sitemap'])->name('sitemap');
 Route::get('/robots.txt', [InformasiController::class, 'robots'])->name('robots');
-Route::get('/search', [InformasiController::class, 'search'])
-    ->middleware('throttle:search')
-    ->name('search');
-
 // CMS Admin PPAk FEB UNESA - route terpisah, lihat routes/admin.php
 require __DIR__.'/admin.php';
