@@ -26,7 +26,7 @@
             <h2 class="h5 fw-bold mt-2">{{ $news->title }}</h2>
             <p class="text-muted small">Slug: /{{ $news->slug }} &bull; Terbit: {{ \App\Support\Tanggal::datetime($news->published_at) ?? '—' }} &bull; Dilihat: {{ $news->view_count }}</p>
             @if($news->image)
-                <img src="{{ $news->image }}" alt="" class="img-fluid rounded mb-3" style="max-height:320px;">
+                <img src="{{ $news->image }}" alt="Berita: {{ $news->title }}" class="img-fluid rounded mb-3" style="max-height:320px;">
             @endif
             <p class="fst-italic text-secondary">{{ $news->excerpt }}</p>
             <hr>
