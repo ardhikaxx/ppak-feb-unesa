@@ -90,7 +90,10 @@ class PartnershipController extends BaseAdminController
     public function destroy(Partnership $partnership): RedirectResponse
     {
         $old = $partnership->toArray();
+        $logo = $partnership->logo;
         $partnership->delete();
+        // Hapus file fisik ala sepeda-listrik (hard delete).
+        $this->deleteStoredFile($logo);
 
         $this->audit('deleted', $partnership, [], $old);
         $this->flushContentCache();
