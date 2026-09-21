@@ -14,7 +14,7 @@ class InformasiController extends Controller
     public function __construct(private ContentRepositoryInterface $content) {}
 
     /**
-     * Berita list - paginated, searchable, projection.
+     * Berita list - paginated, filterable, projection.
      * Never Model::all() - always pagination.
      */
     public function berita(Request $request): View
@@ -115,27 +115,7 @@ class InformasiController extends Controller
     }
 
     /**
-     * Scalable search - server-side filtering with pagination.
-     * Ready to swap to Meilisearch without changing Blade.
-     */
-    public function search(Request $request): View
-    {
-        $request->validate([
-            'q' => ['required', 'string', 'min:2', 'max:100'],
-        ]);
-
-        $keyword = $request->query('q');
-        $results = $this->content->search($keyword, config('ppak.search.per_category_limit', 6));
-
-        return view('informasi.search', [
-            'keyword' => $keyword,
-            'results' => $results,
-            'info' => $this->content->getGeneralInfo(),
-        ]);
-    }
-
-    /**
-     * robots.txt dinamis: izinkan publik + aset, tutup /admin/* dan /search,
+     * robots.txt dinamis: izinkan publik + aset, tutup /admin/*,
      * rujuk sitemap absolut sesuai APP_URL production.
      */
     public function robots(): Response
@@ -146,7 +126,6 @@ class InformasiController extends Controller
             . "Allow: /\n"
             . "Disallow: /admin/\n"
             . "Disallow: /admin\n"
-            . "Disallow: /search\n"
             . "\n"
             . "Sitemap: {$sitemap}\n";
 
@@ -194,7 +173,7 @@ class InformasiController extends Controller
             ]);
 
             // Berita terbit saja (chunked, siap ribuan URL).
-            \App\Models\News::where('status', 'published')
+            \App\Models\News::published()
                 ->select(['slug', 'updated_at'])
                 ->orderByDesc('published_at')
                 ->chunk(500, function ($items) use ($urls) {
