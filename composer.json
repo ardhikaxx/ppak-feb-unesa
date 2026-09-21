@@ -10,6 +10,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "ext-fileinfo": "*",
+        "ext-gd": "*",
+        "ext-mbstring": "*",
         "dompdf/dompdf": "*",
         "laravel/framework": "^13.17",
         "laravel/tinker": "^3.0"
