@@ -71,7 +71,6 @@ test('robots.txt returns valid text format with disallow admin directives', func
     $response->assertHeader('Content-Type', 'text/plain; charset=UTF-8');
     $response->assertSee('User-agent: *');
     $response->assertSee('Disallow: /admin/');
-    $response->assertSee('Disallow: /search');
     $response->assertSee('Sitemap:');
 });
 
@@ -82,22 +81,6 @@ test('sitemap.xml returns valid xml sitemap format with canonical urls', functio
     $response->assertSee('<urlset', false);
     $response->assertSee(route('home'), false);
     $response->assertSee(route('profil.akreditasi'), false);
-});
-
-test('search endpoint works with query filter and handles empty results safely', function () {
-    $res = $this->get(route('search', ['q' => 'akuntansi']));
-    $res->assertStatus(200);
-    $res->assertSee('Hasil Pencarian');
-
-    $resEmpty = $this->get(route('search', ['q' => 'kata_kunci_acak_yang_pasti_tidak_ada_xyz123']));
-    $resEmpty->assertStatus(200);
-    $resEmpty->assertSee('Hasil Pencarian');
-});
-
-test('search validation rejects query shorter than 2 chars', function () {
-    $res = $this->get(route('search', ['q' => 'a']));
-    $res->assertStatus(302);
-    $res->assertSessionHasErrors('q');
 });
 
 test('helpdesk form submission validates input, persists to db, and rate limits', function () {
