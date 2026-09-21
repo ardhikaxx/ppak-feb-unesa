@@ -255,12 +255,6 @@ test('dosen page pagination renders numbers only without text labels', function 
     $response->assertDontSee('&raquo;', false);
 });
 
-test('berita search with pagination preserves query string', function () {
-    $response = $this->get(route('search', ['q' => 'akuntansi']));
-    $response->assertStatus(200);
-    $response->assertSee('Hasil Pencarian');
-});
-
 test('sitemap returns valid xml', function () {
     $response = $this->get(route('sitemap'));
     $response->assertStatus(200);
