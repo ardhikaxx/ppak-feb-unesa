@@ -119,12 +119,13 @@ class Uploads
     }
 
     /**
-     * Simpan gambar APAPUN: resize maks 1200px + konversi WebP (GD, seperti sepeda-listrik).
+     * Simpan gambar APAPUN (JPG/JPEG/PNG/WebP): resize maks 1200px +
+     * kompres + konversi WAJIB ke WebP (GD, seperti sepeda-listrik).
      * Fallback: pindahkan file original bila GD gagal / mime tak dikenal.
      *
      * @return string path publik, contoh /uploads/news/xxx.webp
      */
-    public static function storeImage(UploadedFile $file, string $directory, int $maxWidth = 1200, int $quality = 80): string
+    public static function storeImage(UploadedFile $file, string $directory, int $maxWidth = 1200, int $quality = 75): string
     {
         $directory = self::ensureDirectory($directory);
         $absoluteDir = self::basePath().'/'.$directory;
