@@ -56,12 +56,8 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label fw-semibold">Password</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
-                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror"
-                                       required autocomplete="current-password" placeholder="••••••••">
-                            </div>
+                            <x-password-field name="password" label="Password" icon="fa-lock"
+                                              autocomplete="current-password" :required="true" />
                         </div>
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" value="1" {{ old('remember') ? 'checked' : '' }}>
