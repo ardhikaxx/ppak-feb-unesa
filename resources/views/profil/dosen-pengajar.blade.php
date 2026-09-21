@@ -41,7 +41,7 @@
                         <div class="row g-3 align-items-center">
                             <div class="col-sm-4 text-center">
                                 <div class="dosen-photo-wrapper mx-auto" style="width: 130px; height: 140px; border-radius: 12px; overflow: hidden;">
-                                    <img src="{{ $d['image'] }}" alt="{{ $d['name'] }}" class="dosen-photo w-100 h-100" loading="lazy" style="object-fit:cover;">
+                                    <img src="{{ $d['image'] }}" alt="{{ $d['name'] }}" class="dosen-photo w-100 h-100" loading="lazy" width="130" height="140" style="object-fit:cover;">
                                 </div>
                             </div>
                             <div class="col-sm-8">
