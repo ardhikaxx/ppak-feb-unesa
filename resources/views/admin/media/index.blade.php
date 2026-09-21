@@ -7,7 +7,7 @@
 
 @section('content')
     <h1 class="h4 fw-bold mb-1">Media / File Manager</h1>
-    <p class="text-muted small mb-3">File yang diupload melalui CMS (storage). File yang masih dipakai konten tidak dapat dihapus.</p>
+    <p class="text-muted small mb-3">File yang diupload melalui CMS (<code>storage/uploads</code>, tanpa <code>storage:link</code>). File yang masih dipakai konten tidak dapat dihapus.</p>
 
     <div class="card mb-3">
         <div class="card-body">
@@ -63,7 +63,7 @@
                             </td>
                         </tr>
                     @empty
-                        <tr><td colspan="5" class="text-center text-muted py-4">Belum ada file di storage. Upload melalui modul Berita, Dosen, Galeri, atau Dokumen.</td></tr>
+                        <tr><td colspan="5" class="text-center text-muted py-4">Belum ada file di storage/uploads. Upload melalui modul Berita, Dosen, Galeri, atau Dokumen.</td></tr>
                     @endforelse
                 </tbody>
             </table>
