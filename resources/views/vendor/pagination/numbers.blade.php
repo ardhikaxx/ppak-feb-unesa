@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav role="navigation" aria-label="Navigasi Halaman" class="d-flex justify-content-center my-4">
+    <nav role="navigation" aria-label="Navigasi Halaman" class="d-flex justify-content-center my-4 ppak-pagination">
         <ul class="pagination">
             {{-- Pagination Elements (Numbers Only - Tanpa Teks) --}}
             @foreach ($elements as $element)
