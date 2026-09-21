@@ -110,7 +110,7 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center py-2 px-3">
                             <div>
                                 <div class="fw-semibold small">Robots.txt Dinamis</div>
-                                <div class="text-muted" style="font-size:0.75rem;">Menutup akses bot ke <code>/admin/</code> dan <code>/search</code>, membuka publik</div>
+                                <div class="text-muted" style="font-size:0.75rem;">Menutup akses bot ke <code>/admin/</code> dan membuka halaman publik</div>
                             </div>
                             <span class="badge bg-success"><i class="fa-solid fa-check"></i> Terkonfigurasi</span>
                         </li>
@@ -158,8 +158,8 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center py-2 px-3">
                             <div>
-                                <div class="fw-semibold small"><code>WebSite</code> + <code>SearchAction</code> Schema</div>
-                                <div class="text-muted" style="font-size:0.75rem;">Sitelink Search Box resmi merujuk ke endpoint <code>/search</code></div>
+                                <div class="fw-semibold small"><code>WebSite</code> Schema</div>
+                                <div class="text-muted" style="font-size:0.75rem;">Identitas website resmi tanpa endpoint pencarian internal</div>
                             </div>
                             <span class="badge bg-success">Beranda</span>
                         </li>
