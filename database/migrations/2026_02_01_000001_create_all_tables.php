@@ -518,22 +518,6 @@ return new class extends Migration
             $table->softDeletes();
         });
 
-        Schema::create('partners', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->string('category')->index();
-            $table->string('type')->nullable();
-            $table->text('description')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('status')->default('active')->index();
-            $table->string('source_url')->nullable();
-            $table->string('source_name')->nullable();
-            $table->timestamp('verified_at')->nullable();
-            $table->string('data_status')->default('verified')->index();
-            $table->timestamps();
-        });
-
         Schema::create('helpdesk_inquiries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -566,7 +550,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('audit_logs');
         Schema::dropIfExists('helpdesk_inquiries');
-        Schema::dropIfExists('partners');
         Schema::dropIfExists('testimonials');
         Schema::dropIfExists('galleries');
         Schema::dropIfExists('documents');
