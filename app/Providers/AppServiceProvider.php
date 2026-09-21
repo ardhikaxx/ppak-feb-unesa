@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      * - Shared view data via View Composer (efficient, not per-request heavy query)
      * - Pagination style
-     * - Rate limiting for search/helpdesk/download
+     * - Rate limiting for helpdesk/download
      */
     public function boot(): void
     {
@@ -40,7 +40,6 @@ class AppServiceProvider extends ServiceProvider
         Paginator::defaultView('vendor.pagination.numbers');
 
         // Rate limiters - prevent abuse on public endpoints
-        RateLimiter::for('search', fn (Request $request) => Limit::perMinute(30)->by($request->ip()));
         RateLimiter::for('helpdesk', fn (Request $request) => Limit::perMinute(10)->by($request->ip()));
         RateLimiter::for('download', fn (Request $request) => Limit::perMinute(60)->by($request->ip()));
         // Admin login: 5 percobaan/menit per email+IP (anti brute force)
