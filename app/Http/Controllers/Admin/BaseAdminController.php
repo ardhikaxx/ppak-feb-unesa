@@ -11,6 +11,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Laravel\Facades\Image;
 
 /**
  * Base controller CMS: helper audit log, invalidasi cache konten,
@@ -55,17 +56,25 @@ abstract class BaseAdminController extends Controller
     }
 
     /**
-     * Simpan upload gambar secara aman. Kembalikan path publik '/storage/...'.
-     * Menolak executable (php, dll) via validasi MIME + ekstensi.
+     * Simpan upload gambar secara aman. Konversi ke WebP dan kompres.
      */
     protected function storeImage(UploadedFile $file, string $directory): string
     {
         $filename = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
-        $filename = substr($filename, 0, 60).'-'.time().'.'.strtolower($file->getClientOriginalExtension());
+        $filename = substr($filename, 0, 60).'-'.time().'.webp';
 
-        $path = $file->storeAs($directory, $filename, 'public');
+        // Baca gambar, resize jika terlalu besar, kompres & konversi ke WebP
+        $image = Image::read($file);
 
-        return '/storage/'.$path;
+        if ($image->width() > 1200) {
+            $image->scale(width: 1200);
+        }
+
+        $encoded = $image->toWebp(quality: 75);
+
+        Storage::disk('public')->put($directory.'/'.$filename, (string) $encoded);
+
+        return '/storage/'.$directory.'/'.$filename;
     }
 
     /**
