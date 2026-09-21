@@ -6,6 +6,7 @@ use App\Contracts\ContentRepositoryInterface;
 use App\Http\Requests\HelpdeskRequest;
 use App\Models\HelpdeskInquiry;
 use App\Support\ArrayPaginator;
+use App\Support\Uploads;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -97,11 +98,17 @@ class KontakController extends Controller
     }
 
     /**
-     * Secure file download - streams via Filesystem or public storage.
-     * Ready for local/S3 without changing business logic.
+     * Secure file download ala sepeda-listrik: stream dari storage/uploads.
+     * Mendukung file APAPUN (PDF/DOC/XLS/PPT/ZIP) tanpa storage:link,
+     * dengan fallback legacy (public/documents, storage/app/public).
      */
     public function download(string $filename): Response
     {
+        // Cegah path traversal.
+        if (str_contains($filename, '..') || str_contains($filename, '/') || str_contains($filename, '\\')) {
+            abort(404, 'Informasi berkas tidak ditemukan.');
+        }
+
         $all = $this->content->getUnduhan();
         $doc = collect($all)->firstWhere('filename', $filename);
 
@@ -109,24 +116,41 @@ class KontakController extends Controller
             abort(404, 'Informasi berkas tidak ditemukan.');
         }
 
-        $sanitizedName = preg_replace('/[^\w\s\-\.]/u', '', $doc['title'] ?? 'dokumen-resmi-ppak').'.pdf';
+        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+        $sanitizedName = preg_replace('/[^\w\s\-\.]/u', '', $doc['title'] ?? 'dokumen-resmi-ppak').'.'.($ext !== '' ? $ext : 'pdf');
 
-        // Check in public/documents first
-        $publicFilePath = public_path('documents/'.$filename);
-        if (file_exists($publicFilePath)) {
-            return response()->download($publicFilePath, $sanitizedName, [
-                'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'attachment; filename="'.$sanitizedName.'"',
-            ]);
+        // 1) Lokasi baru: storage/uploads/documents (+ subfolder akreditasi).
+        $candidates = [
+            Uploads::absolutePath('/uploads/documents/'.$filename),
+            Uploads::absolutePath('/uploads/documents/accreditations/'.$filename),
+        ];
+
+        foreach ($candidates as $candidate) {
+            if ($candidate && is_file($candidate)) {
+                return response()->download($candidate, $sanitizedName);
+            }
         }
 
-        // Fallback check in storage/app/public/documents
+        // 2) Legacy: record Document menyimpan path absolut/relatif.
+        $record = \App\Models\Document::where('filename', $filename)->first();
+        if ($record && Uploads::exists($record->path)) {
+            $absolute = Uploads::absolutePath($record->path);
+            if ($absolute && is_file($absolute)) {
+                return response()->download($absolute, $sanitizedName);
+            }
+        }
+
+        // 3) Fallback lama: public/documents.
+        $publicFilePath = public_path('documents/'.$filename);
+        if (is_file($publicFilePath)) {
+            return response()->download($publicFilePath, $sanitizedName);
+        }
+
+        // 4) Fallback lama: storage/app/public/documents.
         $disk = Storage::disk('public');
         $path = 'documents/'.$filename;
         if ($disk->exists($path)) {
-            return $disk->download($path, $sanitizedName, [
-                'Content-Type' => 'application/pdf',
-            ]);
+            return $disk->download($path, $sanitizedName);
         }
 
         abort(404, 'Dokumen fisik belum tersedia di repositori server.');
