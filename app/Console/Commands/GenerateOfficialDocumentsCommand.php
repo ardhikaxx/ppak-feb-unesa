@@ -16,14 +16,11 @@ class GenerateOfficialDocumentsCommand extends Command
     {
         $this->info('Generating official PDF documents for PPAk FEB UNESA...');
 
-        $publicDir = public_path('documents');
-        $storageDir = storage_path('app/public/documents');
+        // Lokasi kanonis upload ala sepeda-listrik: storage/uploads (tanpa storage:link).
+        $uploadsDir = storage_path('uploads/documents');
 
-        if (!File::exists($publicDir)) {
-            File::makeDirectory($publicDir, 0755, true);
-        }
-        if (!File::exists($storageDir)) {
-            File::makeDirectory($storageDir, 0755, true);
+        if (!File::exists($uploadsDir)) {
+            File::makeDirectory($uploadsDir, 0755, true);
         }
 
         $documents = [
@@ -48,14 +45,12 @@ class GenerateOfficialDocumentsCommand extends Command
             $dompdf->render();
             $output = $dompdf->output();
 
-            $pubPath = $publicDir . DIRECTORY_SEPARATOR . $filename;
-            $storPath = $storageDir . DIRECTORY_SEPARATOR . $filename;
+            $destPath = $uploadsDir . DIRECTORY_SEPARATOR . $filename;
 
-            File::put($pubPath, $output);
-            File::put($storPath, $output);
+            File::put($destPath, $output);
 
             $sizeKb = round(strlen($output) / 1024, 1);
-            $this->line("  -> Saved {$filename} ({$sizeKb} KB) to public and storage");
+            $this->line("  -> Saved {$filename} ({$sizeKb} KB) to storage/uploads/documents");
         }
 
         $this->info('All 6 official PDF documents have been successfully generated and placed in repository!');
