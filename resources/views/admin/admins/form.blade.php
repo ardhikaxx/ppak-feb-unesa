@@ -26,14 +26,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label fw-semibold {{ $account->exists ? '' : 'required' }}" for="password">
-                            Password {{ $account->exists ? '(kosongkan jika tidak diubah)' : '(min 8 karakter)' }}
-                        </label>
-                        <input type="password" name="password" id="password" class="form-control" autocomplete="new-password" @if(!$account->exists) required @endif>
+                        <x-password-field name="password"
+                                          :label="'Password ' . ($account->exists ? '(kosongkan jika tidak diubah)' : '(min 8 karakter)')"
+                                          :labelClass="$account->exists ? '' : 'required'"
+                                          :required="!$account->exists" />
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label fw-semibold" for="password_confirmation">Konfirmasi password</label>
-                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" autocomplete="new-password">
+                        <x-password-field name="password_confirmation" label="Konfirmasi password" />
                     </div>
                 </div>
                 <div class="form-check mb-0">
