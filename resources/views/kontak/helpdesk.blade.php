@@ -69,18 +69,8 @@
                         Isi formulir di bawah ini untuk menyampaikan pertanyaan Anda. Tim administrasi kami akan merespons melalui email dalam kurun waktu 1x24 jam kerja.
                     </p>
 
-                    @if(session('success'))
-                        <div class="alert alert-success mb-4" role="alert">
-                            <i class="fa-solid fa-circle-check me-2"></i>
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    @if(session('error'))
-                        <div class="alert alert-danger mb-4" role="alert">
-                            <i class="fa-solid fa-circle-exclamation me-2"></i>
-                            {{ session('error') }}
-                        </div>
-                    @endif
+                    {{-- Flash success/error dirender sebagai SweetAlert2 toast
+                        via partial components.swal (agar tidak tampil dua kali). --}}
                     @if($errors->any())
                         <div class="alert alert-danger mb-4" role="alert">
                             <strong>Mohon periksa kembali isian berikut:</strong>
