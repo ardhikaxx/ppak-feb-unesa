@@ -67,6 +67,58 @@ return [
         'driver' => env('SEARCH_DRIVER', 'database'),
     ],
 
+    'options' => [
+        'news_status' => [
+            'draft' => 'Draft',
+            'published' => 'Terbit',
+            'scheduled' => 'Terjadwal',
+            'archived' => 'Arsip',
+        ],
+        'news_status_verbose' => [
+            'draft' => 'Draft (tidak tampil di publik)',
+            'published' => 'Terbit',
+            'scheduled' => 'Terjadwal',
+            'archived' => 'Arsip',
+        ],
+        'doc_status' => [
+            'draft' => 'Draft',
+            'published' => 'Terbit',
+            'archived' => 'Arsip',
+        ],
+        'helpdesk_status' => [
+            'open' => 'Terbuka',
+            'in_progress' => 'Diproses',
+            'closed' => 'Selesai',
+        ],
+        'agenda_status' => [
+            'upcoming' => 'Mendatang',
+            'ongoing' => 'Berlangsung',
+            'completed' => 'Selesai',
+            'cancelled' => 'Batal',
+        ],
+        'gallery_status' => [
+            'draft' => 'Draft',
+            'published' => 'Terbit',
+            'archived' => 'Arsip',
+        ],
+        'testimonial_status' => [
+            'draft' => 'Draft',
+            'unpublished' => 'Tidak terbit',
+            'published' => 'Terbit',
+        ],
+        'research_status' => [
+            'draft' => 'Draft',
+            'unpublished' => 'Tidak terbit',
+            'published' => 'Terbit',
+        ],
+        'partnership_status' => [
+            'draft' => 'Draft',
+            'unpublished' => 'Tidak tampil',
+            'active' => 'Aktif (tampil)',
+            'archived' => 'Arsip',
+        ],
+    ],
+
     'rate_limit' => [
         'search' => '30,1', // 30/min
         'helpdesk' => '10,1',
