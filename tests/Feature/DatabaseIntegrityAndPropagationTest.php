@@ -83,6 +83,36 @@ test('publishing news makes it immediately visible on homepage and berita index'
     $resDetail->assertSee('Judul Berita Propagasi Realtime');
 });
 
+test('future dated and scheduled news stay hidden from public pages', function () {
+    $admin = Admin::first();
+    $this->actingAs($admin, 'admin');
+
+    $futurePublishedSlug = 'berita-published-masa-depan-' . time();
+    $scheduledSlug = 'berita-terjadwal-masa-depan-' . time();
+
+    $this->post(route('admin.news.store'), [
+        'title' => 'Berita Published Masa Depan',
+        'slug' => $futurePublishedSlug,
+        'excerpt' => 'Ringkasan berita published masa depan.',
+        'content' => 'Isi lengkap berita published masa depan yang tidak boleh tampil sebelum waktunya.',
+        'status' => 'published',
+        'published_at' => now()->addDay()->toDateTimeString(),
+    ])->assertRedirect(route('admin.news.index'));
+
+    $this->post(route('admin.news.store'), [
+        'title' => 'Berita Terjadwal Masa Depan',
+        'slug' => $scheduledSlug,
+        'excerpt' => 'Ringkasan berita terjadwal masa depan.',
+        'content' => 'Isi lengkap berita terjadwal masa depan yang belum boleh tampil di publik.',
+        'status' => 'scheduled',
+        'published_at' => now()->addHour()->toDateTimeString(),
+    ])->assertRedirect(route('admin.news.index'));
+
+    $this->get(route('informasi.berita'))->assertDontSee('Berita Published Masa Depan')->assertDontSee('Berita Terjadwal Masa Depan');
+    $this->get(route('informasi.berita.detail', $futurePublishedSlug))->assertNotFound();
+    $this->get(route('informasi.berita.detail', $scheduledSlug))->assertNotFound();
+});
+
 test('category in use cannot be deleted to prevent orphan relational records', function () {
     $admin = Admin::first();
     $this->actingAs($admin, 'admin');
