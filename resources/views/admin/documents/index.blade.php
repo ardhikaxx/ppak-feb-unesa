@@ -36,7 +36,7 @@
                 <div class="col-md-2">
                     <select name="status" class="form-select form-select-sm">
                         <option value="">Semua status</option>
-                        @foreach(['draft' => 'Draft', 'published' => 'Terbit', 'archived' => 'Arsip'] as $val => $label)
+                        @foreach(config('ppak.options.doc_status') as $val => $label)
                             <option value="{{ $val }}" @selected(request('status') === $val)>{{ $label }}</option>
                         @endforeach
                     </select>
