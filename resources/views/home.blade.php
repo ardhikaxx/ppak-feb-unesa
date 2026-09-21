@@ -17,7 +17,7 @@
         <div class="row align-items-center">
             <div class="col-lg-9 col-xl-8">
                 <div class="hero-brand-badge">
-                    <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi UNESA" class="hero-brand-badge-logo">
+                    <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi UNESA" class="hero-brand-badge-logo" width="160" height="48" fetchpriority="high">
                     <span class="hero-brand-badge-text">{{ strtoupper($info['name'] ?? 'PENDIDIKAN PROFESI AKUNTAN') }} &bull; {{ strtoupper($info['short_name'] ?? 'FEB UNESA') }}</span>
                 </div>
                 <h1 class="hero-headline">
@@ -416,7 +416,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="dosen-card bg-white">
                         <div class="dosen-photo-wrapper">
-                            <img src="{{ $d['image'] }}" alt="{{ $d['name'] }}" class="dosen-photo" loading="lazy">
+                            <img src="{{ $d['image'] }}" alt="{{ $d['name'] }}" class="dosen-photo" loading="lazy" width="400" height="420">
                         </div>
                         <div class="dosen-info">
                             <h3 class="dosen-name">{{ $d['name'] }}</h3>
