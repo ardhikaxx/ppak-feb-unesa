@@ -46,7 +46,7 @@
                         <div class="card-ppak-flat h-100 bg-subtle p-4 rounded-3 border">
                             <div class="d-flex align-items-start gap-3">
                                 @if(!empty($t['avatar']))
-                                    <img src="{{ $t['avatar'] }}" alt="{{ $t['name'] }}" class="rounded-circle flex-shrink-0" style="width:52px;height:52px;object-fit:cover;">
+                                    <img src="{{ $t['avatar'] }}" alt="{{ $t['name'] }}" class="rounded-circle flex-shrink-0" loading="lazy" width="52" height="52" style="width:52px;height:52px;object-fit:cover;">
                                 @else
                                     <div class="feature-icon-wrapper flex-shrink-0" style="width: 52px; height: 52px; font-size: 1.3rem;">
                                         <i class="fa-solid fa-quote-left"></i>
