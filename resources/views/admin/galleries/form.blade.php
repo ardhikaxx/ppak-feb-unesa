@@ -39,7 +39,7 @@
                     <div class="col-md-4 mb-3">
                         <label class="form-label fw-semibold required" for="status">Status</label>
                         <select name="status" id="status" class="form-select" required>
-                            @foreach(['draft' => 'Draft', 'published' => 'Terbit', 'archived' => 'Arsip'] as $val => $label)
+                            @foreach(config('ppak.options.gallery_status') as $val => $label)
                                 <option value="{{ $val }}" @selected(old('status', $item->status ?? 'published') === $val)>{{ $label }}</option>
                             @endforeach
                         </select>
@@ -48,7 +48,7 @@
                 <div class="mb-0">
                     <label class="form-label fw-semibold {{ $item->exists ? '' : 'required' }}" for="image">Foto (JPG/PNG/WebP, maks 5 MB)</label>
                     @if($item->image)
-                        <div class="mb-2"><img src="{{ $item->image }}" alt="" class="img-fluid rounded" style="max-height:220px;"></div>
+                        <div class="mb-2"><img src="{{ $item->image }}" alt="Pratinjau {{ $item->title }}" class="img-fluid rounded" style="max-height:220px;"></div>
                     @endif
                     <input type="file" name="image" id="image" class="form-control" accept=".jpg,.jpeg,.png,.webp" @if(!$item->exists) required @endif>
                 </div>
