@@ -56,7 +56,7 @@
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
     <aside class="sidebar" id="adminSidebar" aria-label="Navigasi CMS">
         <div class="sidebar-brand d-flex align-items-center gap-2">
-            <img src="{{ asset('images/logo-single.png') }}" alt="Logo PPAk FEB UNESA">
+            <img src="{{ asset('images/logo-single.png') }}" alt="Logo PPAk FEB UNESA" width="38" height="38">
             <div>
                 <div class="fw-bold" style="font-size:.95rem;">CMS PPAk</div>
                 <div class="small" style="color:#8fa3bd;">FEB UNESA</div>
@@ -292,6 +292,26 @@
                 if (touched) return;
                 slugInput.value = src.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
             });
+        });
+
+        // Lindungi form panjang CMS dari perubahan yang belum tersimpan.
+        let cmsFormDirty = false;
+        let cmsFormSubmitting = false;
+        document.querySelectorAll('form').forEach(function (form) {
+            if (form.dataset.noUnsavedWarning === 'true') return;
+
+            form.addEventListener('input', () => { cmsFormDirty = true; });
+            form.addEventListener('change', () => { cmsFormDirty = true; });
+            form.addEventListener('submit', () => {
+                cmsFormSubmitting = true;
+                cmsFormDirty = false;
+            });
+        });
+
+        window.addEventListener('beforeunload', function (event) {
+            if (!cmsFormDirty || cmsFormSubmitting) return;
+            event.preventDefault();
+            event.returnValue = '';
         });
     </script>
     @stack('scripts')
