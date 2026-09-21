@@ -3,7 +3,7 @@
         <div class="navbar-ppak-container">
             {{-- 1. Brand Area (Sisi Kiri) --}}
             <a class="navbar-brand-wrapper" href="{{ route('home') }}">
-                <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" class="navbar-brand-logo">
+                <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" class="navbar-brand-logo" width="160" height="48" fetchpriority="high">
                 <div class="navbar-brand-divider"></div>
                 <div class="navbar-brand-text">
                     <span class="navbar-brand-title">Pendidikan Profesi Akuntan</span>
@@ -20,7 +20,7 @@
             <div class="offcanvas offcanvas-end offcanvas-ppak" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
                 <div class="offcanvas-header border-bottom d-xl-none">
                     <div class="d-flex align-items-center gap-3">
-                        <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" height="36" style="width:auto; max-width: 130px; object-fit: contain;">
+                        <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" width="130" height="36" style="width:auto; max-width: 130px; object-fit: contain;">
                         <div>
                             <div class="fw-bold text-navy lh-sm" style="font-size: 0.95rem;">Pendidikan Profesi Akuntan</div>
                             <div class="text-muted" style="font-size: 0.75rem;">Fakultas Ekonomika dan Bisnis</div>
