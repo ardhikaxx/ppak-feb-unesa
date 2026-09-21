@@ -54,8 +54,8 @@ Website menerapkan structured data valid tanpa *rating/review palsu*:
 1. **`EducationalOrganization` (Global)**:
    - Diterapkan pada layout global (`app.blade.php`).
    - Menyediakan informasi resmi institusi: nama lengkap, nama singkat (*PPAk FEB UNESA*), logo UNESA, alamat pos (*Gedung G6 FEB Kampus Ketintang, Surabaya, Jawa Timur 60231*), kontak telepon, email resmi, dan link media sosial (*sameAs*).
-2. **`WebSite` & `SearchAction` (Beranda)**:
-   - Diterapkan pada `/` dengan target Sitelink Search Box ke endpoint publik `/search?q={search_term_string}`.
+2. **`WebSite` (Beranda)**:
+   - Diterapkan pada `/` sebagai identitas website resmi tanpa endpoint pencarian internal.
 3. **`BreadcrumbList` (Seluruh Sub-halaman)**:
    - Otomatis di-generate dari komponen `page-header` sesuai hierarki breadcrumb visual.
 4. **`NewsArticle` (Detail Berita `/informasi/berita/{slug}`)**:
@@ -106,7 +106,6 @@ Website menerapkan structured data valid tanpa *rating/review palsu*:
    Allow: /
    Disallow: /admin/
    Disallow: /admin
-   Disallow: /search
 
    Sitemap: https://ppak.feb.unesa.ac.id/sitemap.xml
    ```
@@ -120,7 +119,6 @@ Website menerapkan structured data valid tanpa *rating/review palsu*:
    - Alias route lama (seperti `/profil/dosen` -> `/profil/dosen-pengajar`, `/akademik/sertifikasi` -> `/akademik/gelar-sertifikasi`, `/admisi/syarat` -> `/admisi/jalur-syarat`) dialihkan dengan HTTP 301 permanen tanpa rantai redirect (*redirect chain*).
 4. **Proteksi Noindex**:
    - Halaman admin (`/admin/*`) dan login admin memiliki `<meta name="robots" content="noindex,nofollow">`.
-   - Halaman hasil pencarian internal (`/search`) memiliki `<meta name="robots" content="noindex,follow">`.
    - Halaman error 403, 404, 419, 429, 500 memiliki `<meta name="robots" content="noindex,nofollow">`.
 
 ---
