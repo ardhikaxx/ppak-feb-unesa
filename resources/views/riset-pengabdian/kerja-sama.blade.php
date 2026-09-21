@@ -44,6 +44,9 @@
                 @foreach($mitra['items'] as $m)
                     <div class="col-lg-6">
                         <div class="card-ppak-flat h-100">
+                            @if(!empty($m['logo']))
+                                <img src="{{ $m['logo'] }}" alt="Logo {{ $m['name'] }}" class="d-block mb-2" loading="lazy" style="max-height:56px; width:auto; max-width:100%; object-fit:contain;">
+                            @endif
                             <span class="badge-ppak badge-ppak-navy mb-2">{{ $m['category'] ?? 'Mitra' }}</span>
                             <h3 class="fs-6 fw-bold text-navy mb-1">{{ $m['name'] }}</h3>
                             <p class="small text-secondary mb-0">{{ $m['description'] ?? '' }}</p>
