@@ -6,12 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\AuditLog;
 use App\Support\ContentCache;
+use App\Support\Uploads;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use Intervention\Image\Laravel\Facades\Image;
 
 /**
  * Base controller CMS: helper audit log, invalidasi cache konten,
@@ -56,49 +54,30 @@ abstract class BaseAdminController extends Controller
     }
 
     /**
-     * Simpan upload gambar secara aman. Konversi ke WebP dan kompres.
+     * Simpan upload gambar APAPUN secara aman ala sepeda-listrik:
+     * fisik di storage/uploads/{directory}, resize + konversi WebP (GD),
+     * TANPA storage:link. Kembalikan path publik /uploads/...
      */
     protected function storeImage(UploadedFile $file, string $directory): string
     {
-        $filename = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
-        $filename = substr($filename, 0, 60).'-'.time().'.webp';
-
-        // Baca gambar, resize jika terlalu besar, kompres & konversi ke WebP
-        $image = Image::read($file);
-
-        if ($image->width() > 1200) {
-            $image->scale(width: 1200);
-        }
-
-        $encoded = $image->toWebp(quality: 75);
-
-        Storage::disk('public')->put($directory.'/'.$filename, (string) $encoded);
-
-        return '/storage/'.$directory.'/'.$filename;
+        return Uploads::storeImage($file, $directory);
     }
 
     /**
-     * Simpan upload dokumen (PDF/DOC). Kembalikan ['path','filename','mime','size'].
+     * Simpan upload file APAPUN (PDF/DOC/XLS/PPT/ZIP/gambar/lainnya)
+     * ala sepeda-listrik: fisik di storage/uploads/{directory} via move(),
+     * TANPA storage:link. Kembalikan ['path','filename','mime_type','size','format'].
+     * 'path' berupa URL publik /uploads/...
      */
     protected function storeDocument(UploadedFile $file, string $directory = 'documents'): array
     {
-        $filename = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
-        $filename = substr($filename, 0, 80).'-'.time().'.'.strtolower($file->getClientOriginalExtension());
-
-        $path = $file->storeAs($directory, $filename, 'public');
-
-        return [
-            'path' => $path,
-            'filename' => $filename,
-            'mime_type' => $file->getMimeType(),
-            'size' => $file->getSize(),
-            'format' => strtoupper($file->getClientOriginalExtension()),
-        ];
+        return Uploads::storeFile($file, $directory);
     }
 
     /**
-     * Hapus file dari disk public HANYA jika tidak dipakai konten lain.
+     * Hapus file fisik dari storage/uploads HANYA jika tidak dipakai konten lain.
      * $usages: array ['Label' => count]. Kembalikan error string atau null.
+     * Mendukung path baru /uploads/... dan legacy /storage/...
      */
     protected function guardFileUsage(?string $storedPath, array $usages): ?string
     {
@@ -114,12 +93,17 @@ abstract class BaseAdminController extends Controller
             return "File masih digunakan oleh: {$detail}. Nonaktifkan/arsipkan konten tersebut terlebih dahulu.";
         }
 
-        $relative = ltrim(str_replace('/storage/', '', $storedPath), '/');
-        if ($relative && Storage::disk('public')->exists($relative)) {
-            Storage::disk('public')->delete($relative);
-        }
+        Uploads::delete($storedPath);
 
         return null;
+    }
+
+    /**
+     * Hapus file fisik secara langsung (untuk destroy hard-delete).
+     */
+    protected function deleteStoredFile(?string $storedPath): void
+    {
+        Uploads::delete($storedPath);
     }
 
     protected function imageRules(string $field = 'image', bool $required = false): array
