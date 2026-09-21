@@ -10,6 +10,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,6 +37,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Produksi (ppak-feb-unesa.ac.id): paksa skema HTTPS untuk semua
+        // URL yang digenerate (asset, sitemap, OG image, canonical).
+        if ($this->app->isProduction()) {
+            URL::forceScheme('https');
+        }
+
         // Use custom numbers-only pagination styling
         Paginator::defaultView('vendor.pagination.numbers');
 
