@@ -313,7 +313,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
         $data = Cache::remember(CacheKeys::BERITA_ALL, $this->ttlDynamic, function () {
             return News::query()
                 ->with(['category:id,name,slug', 'author:id,name'])
-                ->where('status', 'published')
+                ->published()
                 ->orderByDesc('published_at')
                 ->get()
                 ->map(fn ($n) => $this->mapNews($n))
@@ -329,7 +329,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
         // sehingga perubahan Admin selalu langsung terlihat.
         $query = News::query()
             ->with(['category:id,name,slug', 'author:id,name'])
-            ->where('status', 'published')
+            ->published()
             ->orderByDesc('published_at');
 
         if ($search) {
@@ -364,7 +364,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
             $n = News::query()
                 ->with(['category:id,name,slug', 'author:id,name'])
                 ->where('slug', $slug)
-                ->where('status', 'published')
+                ->published()
                 ->first();
 
             return $n ? $this->mapNews($n) : null;
@@ -375,7 +375,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
     {
         return News::query()
             ->where('slug', '!=', $excludeSlug)
-            ->where('status', 'published')
+            ->published()
             ->orderByDesc('published_at')
             ->limit($limit)
             ->with(['category:id,name,slug', 'author:id,name'])
@@ -883,7 +883,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
         }
 
         $berita = News::query()
-            ->where('status', 'published')
+            ->published()
             ->where(fn ($q) => $q->where('title', 'like', "%{$keyword}%")->orWhere('excerpt', 'like', "%{$keyword}%"))
             ->orderByDesc('published_at')
             ->limit($perPage)
