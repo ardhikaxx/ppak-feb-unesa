@@ -136,25 +136,13 @@ class SeoService
 
     public static function websiteJsonLd(): array
     {
-        $data = [
+        return [
             '@context' => 'https://schema.org',
             '@type' => 'WebSite',
             'name' => self::siteTitle(),
             'alternateName' => 'PPAk FEB UNESA',
             'url' => config('app.url'),
         ];
-
-        // SearchAction hanya karena /search benar-benar ada dan publik.
-        $data['potentialAction'] = [
-            '@type' => 'SearchAction',
-            'target' => [
-                '@type' => 'EntryPoint',
-                'urlTemplate' => self::absoluteUrl('search?q={search_term_string}'),
-            ],
-            'query-input' => 'required name=search_term_string',
-        ];
-
-        return $data;
     }
 
     public static function breadcrumbJsonLd(array $breadcrumbs): array
@@ -334,10 +322,10 @@ class SeoService
     public static function auditHealth(): array
     {
         $newsTotal = \App\Models\News::count();
-        $newsPublished = \App\Models\News::where('status', 'published')->count();
-        $newsMissingFeaturedImage = \App\Models\News::where('status', 'published')->whereNull('image')->count();
-        $newsMissingSeoTitle = \App\Models\News::where('status', 'published')->whereNull('seo_title')->count();
-        $newsMissingSeoDesc = \App\Models\News::where('status', 'published')->whereNull('seo_description')->count();
+        $newsPublished = \App\Models\News::published()->count();
+        $newsMissingFeaturedImage = \App\Models\News::published()->whereNull('image')->count();
+        $newsMissingSeoTitle = \App\Models\News::published()->whereNull('seo_title')->count();
+        $newsMissingSeoDesc = \App\Models\News::published()->whereNull('seo_description')->count();
         $newsNoindex = \App\Models\News::where('robots_index', false)->count();
 
         $agendaTotal = \App\Models\Agenda::count();
