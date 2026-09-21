@@ -12,6 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Hosting produksi umumnya di balik proxy/load balancer:
+        // percayakan header Forwarded agar deteksi HTTPS & IP benar.
+        $middleware->trustProxies(at: '*');
+
         $middleware->alias([
             'admin.auth' => \App\Http\Middleware\AuthenticateAdmin::class,
             'admin.active' => \App\Http\Middleware\EnsureAdminActive::class,
