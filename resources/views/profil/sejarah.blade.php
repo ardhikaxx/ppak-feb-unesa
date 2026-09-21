@@ -3,6 +3,10 @@
 @section('title', 'Sejarah Singkat Program | Pendidikan Profesi Akuntan FEB UNESA')
 @section('meta_description', 'Sejarah berdirinya Program Studi Pendidikan Profesi Akuntan Fakultas Ekonomika dan Bisnis Universitas Negeri Surabaya yang tercatat berdiri pada 23 Mei 2025.')
 
+@push('jsonld')
+<script type="application/ld+json">{!! json_encode(\App\Services\SeoService::websiteJsonLd(), JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}</script>
+@endpush
+
 @section('content')
 
 @include('partials.page-header', [
