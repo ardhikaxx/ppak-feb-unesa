@@ -39,16 +39,16 @@
                     @method('PUT')
                     <div class="card-body">
                         <div class="mb-3">
-                            <label class="form-label fw-semibold required" for="current_password">Password saat ini</label>
-                            <input type="password" name="current_password" id="current_password" class="form-control" required autocomplete="current-password">
+                            <x-password-field name="current_password" label="Password saat ini" labelClass="required"
+                                              autocomplete="current-password" :required="true" />
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-semibold required" for="password">Password baru (min 8, huruf besar-kecil + angka)</label>
-                            <input type="password" name="password" id="password" class="form-control" required autocomplete="new-password">
+                            <x-password-field name="password" label="Password baru (min 8, huruf besar-kecil + angka)" labelClass="required"
+                                              :required="true" />
                         </div>
                         <div class="mb-0">
-                            <label class="form-label fw-semibold required" for="password_confirmation">Konfirmasi password baru</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required autocomplete="new-password">
+                            <x-password-field name="password_confirmation" label="Konfirmasi password baru" labelClass="required"
+                                              :required="true" />
                         </div>
                     </div>
                     <div class="card-footer">
