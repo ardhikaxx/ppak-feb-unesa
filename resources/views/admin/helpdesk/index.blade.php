@@ -17,7 +17,7 @@
                 <div class="col-md-3">
                     <select name="status" class="form-select form-select-sm">
                         <option value="">Semua status</option>
-                        @foreach(['open' => 'Terbuka', 'in_progress' => 'Diproses', 'closed' => 'Selesai'] as $val => $label)
+                        @foreach(config('ppak.options.helpdesk_status') as $val => $label)
                             <option value="{{ $val }}" @selected(request('status') === $val)>{{ $label }}</option>
                         @endforeach
                     </select>
