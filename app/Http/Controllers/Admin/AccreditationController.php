@@ -49,6 +49,9 @@ class AccreditationController extends BaseAdminController
         $data = $request->validated();
 
         if ($request->hasFile('certificate_file')) {
+            if ($accreditation->certificate_file) {
+                $this->guardFileUsage($accreditation->certificate_file, []);
+            }
             $stored = $this->storeDocument($request->file('certificate_file'), 'documents/accreditations');
             $data['certificate_file'] = $stored['path'];
         } else {
@@ -66,7 +69,10 @@ class AccreditationController extends BaseAdminController
     public function destroy(Accreditation $accreditation): RedirectResponse
     {
         $old = $accreditation->toArray();
+        $certificate = $accreditation->certificate_file;
         $accreditation->delete();
+        // Hapus file fisik ala sepeda-listrik (hard delete).
+        $this->deleteStoredFile($certificate);
 
         $this->audit('deleted', $accreditation, [], $old);
         $this->flushContentCache();
