@@ -142,7 +142,7 @@
                         <div class="mb-3">
                             <label for="status" class="form-label fw-semibold required">Status</label>
                             <select name="status" id="status" class="form-select @error('status') is-invalid @enderror" required>
-                                @foreach(['draft' => 'Draft (tidak tampil di publik)', 'published' => 'Terbit', 'scheduled' => 'Terjadwal', 'archived' => 'Arsip'] as $val => $label)
+                                @foreach(config('ppak.options.news_status_verbose') as $val => $label)
                                     <option value="{{ $val }}" @selected(old('status', $article->status ?? 'draft') === $val)>{{ $label }}</option>
                                 @endforeach
                             </select>
