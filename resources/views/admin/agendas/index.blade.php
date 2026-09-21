@@ -20,7 +20,7 @@
                 <div class="col-md-3">
                     <select name="status" class="form-select form-select-sm">
                         <option value="">Semua status</option>
-                        @foreach(['upcoming' => 'Mendatang', 'ongoing' => 'Berlangsung', 'completed' => 'Selesai', 'cancelled' => 'Batal'] as $val => $label)
+                        @foreach(config('ppak.options.agenda_status') as $val => $label)
                             <option value="{{ $val }}" @selected(request('status') === $val)>{{ $label }}</option>
                         @endforeach
                     </select>
