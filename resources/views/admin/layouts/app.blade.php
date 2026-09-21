@@ -199,7 +199,10 @@
                             <li><a class="dropdown-item" href="{{ route('admin.profile.edit') }}"><i class="fa-solid fa-user me-2"></i>Profil Saya</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <form method="POST" action="{{ route('admin.logout') }}">
+                                <form method="POST" action="{{ route('admin.logout') }}" data-swal-confirm
+                                     data-confirm-title="Konfirmasi Logout"
+                                     data-confirm-text="Apakah Anda yakin ingin keluar dari akun?"
+                                     data-confirm-confirm-text="Ya, Logout">
                                     @csrf
                                     <button class="dropdown-item text-danger" type="submit"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</button>
                                 </form>
@@ -211,18 +214,8 @@
         </header>
 
         <main class="content">
-            @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-circle-check me-1"></i>{{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
-                </div>
-            @endif
-            @if(session('error'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-circle-exclamation me-1"></i>{{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
-                </div>
-            @endif
+            {{-- Flash success/error/info/warning dirender sebagai SweetAlert2 toast
+                via partial components.swal (agar tidak tampil dua kali). --}}
             @if($errors->any() && !isset($hideErrorBag))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong><i class="fa-solid fa-triangle-exclamation me-1"></i>Periksa kembali isian form:</strong>
@@ -243,28 +236,12 @@
         </footer>
     </div>
 
-    {{-- Modal konfirmasi hapus generik --}}
-    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"><i class="fa-solid fa-triangle-exclamation text-danger me-2"></i>Konfirmasi Hapus</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                </div>
-                <div class="modal-body">
-                    <p class="mb-0" id="confirmDeleteMessage">Data yang dihapus masuk ke arsip (soft delete) dan dapat dipulihkan. Lanjutkan?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <form method="POST" id="confirmDeleteForm">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash me-1"></i>Ya, Hapus</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{-- Form DELETE generik untuk konfirmasi hapus SweetAlert2 (tanpa modal Bootstrap).
+        Diisi action dari tombol .btn-delete[data-url], lalu di-submit setelah user konfirmasi. --}}
+    <form method="POST" id="confirmDeleteForm" class="d-none">
+        @csrf
+        @method('DELETE')
+    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
@@ -272,15 +249,7 @@
         document.getElementById('sidebarToggle')?.addEventListener('click', () => document.body.classList.toggle('sidebar-open'));
         document.getElementById('sidebarBackdrop')?.addEventListener('click', () => document.body.classList.remove('sidebar-open'));
 
-        // Delete confirm modal: pakai tombol .btn-delete[data-url][data-message]
-        document.addEventListener('click', function (e) {
-            const btn = e.target.closest('.btn-delete');
-            if (!btn) return;
-            e.preventDefault();
-            document.getElementById('confirmDeleteForm').setAttribute('action', btn.dataset.url);
-            document.getElementById('confirmDeleteMessage').textContent = btn.dataset.message || 'Data yang dihapus masuk ke arsip (soft delete) dan dapat dipulihkan. Lanjutkan?';
-            new bootstrap.Modal(document.getElementById('confirmDeleteModal')).show();
-        });
+        // Konfirmasi hapus (.btn-delete) ditangani SweetAlert2 via partial components.swal.
 
         // Slug otomatis dari judul pada form yang punya [data-slug-from]
         document.querySelectorAll('[data-slug-from]').forEach(function (slugInput) {
@@ -314,6 +283,7 @@
             event.returnValue = '';
         });
     </script>
+    @include('components.swal')
     @stack('scripts')
 </body>
 </html>
