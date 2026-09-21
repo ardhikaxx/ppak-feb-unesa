@@ -45,7 +45,7 @@
 
                 {{-- Featured Image --}}
                 <div class="mb-4 rounded-4 overflow-hidden border shadow-sm">
-                    <img src="{{ $article['image'] ?? '/images/default-img.png' }}" alt="{{ $article['title'] ?? 'Berita PPAk' }}" class="img-fluid w-100" style="max-height: 480px; object-fit: cover;">
+                    <img src="{{ $article['image'] ?? '/images/default-img.png' }}" alt="{{ $article['title'] ?? 'Berita PPAk' }}" class="img-fluid w-100" width="900" height="480" fetchpriority="high" style="max-height: 480px; object-fit: cover;">
                 </div>
 
                 {{-- Article Body --}}
@@ -106,7 +106,7 @@
                         <div class="col-md-4">
                             <article class="news-card">
                                 <div class="news-card-img-wrapper">
-                                    <img src="{{ $rel['image'] }}" alt="{{ $rel['title'] }}" class="news-card-img" loading="lazy">
+                                    <img src="{{ $rel['image'] }}" alt="{{ $rel['title'] }}" class="news-card-img" loading="lazy" width="600" height="338">
                                 </div>
                                 <div class="news-card-body">
                                     <div class="news-card-meta">
