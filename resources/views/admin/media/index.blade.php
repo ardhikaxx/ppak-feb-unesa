@@ -33,7 +33,7 @@
                         <tr>
                             <td>
                                 @if($file['is_image'])
-                                    <img src="{{ $file['url'] }}" alt="" class="rounded" style="width:64px;height:48px;object-fit:cover;">
+                                    <img src="{{ $file['url'] }}" alt="Pratinjau {{ $file['name'] }}" class="rounded" style="width:64px;height:48px;object-fit:cover;">
                                 @else
                                     <div class="text-center text-danger fs-4"><i class="fa-solid fa-file-pdf"></i></div>
                                 @endif
