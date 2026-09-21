@@ -145,7 +145,7 @@
                         <div class="mb-3">
                             <label for="status" class="form-label fw-semibold required">Status</label>
                             <select name="status" id="status" class="form-select" required>
-                                @foreach(['upcoming' => 'Mendatang', 'ongoing' => 'Berlangsung', 'completed' => 'Selesai', 'cancelled' => 'Batal'] as $val => $label)
+                                @foreach(config('ppak.options.agenda_status') as $val => $label)
                                     <option value="{{ $val }}" @selected(old('status', $agenda->status ?? 'upcoming') === $val)>{{ $label }}</option>
                                 @endforeach
                             </select>
