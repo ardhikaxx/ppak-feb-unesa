@@ -19,7 +19,7 @@
     <main class="container py-5">
         <div class="login-card mx-auto">
             <div class="text-center text-white mb-4 login-brand">
-                <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" class="mb-3">
+                <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" class="mb-3" width="180" height="56">
                 <h1 class="h4 fw-bold mb-1">CMS Admin PPAk FEB UNESA</h1>
                 <p class="small mb-0" style="color:#b8c7dd;">Pendidikan Profesi Akuntan &bull; Universitas Negeri Surabaya</p>
             </div>
