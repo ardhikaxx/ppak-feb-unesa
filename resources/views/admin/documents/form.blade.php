@@ -39,7 +39,7 @@
                     <div class="col-md-4 mb-3">
                         <label class="form-label fw-semibold required" for="status">Status</label>
                         <select name="status" id="status" class="form-select" required>
-                            @foreach(['draft' => 'Draft', 'published' => 'Terbit', 'archived' => 'Arsip'] as $val => $label)
+                            @foreach(config('ppak.options.doc_status') as $val => $label)
                                 <option value="{{ $val }}" @selected(old('status', $document->status ?? 'published') === $val)>{{ $label }}</option>
                             @endforeach
                         </select>
