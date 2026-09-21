@@ -29,12 +29,8 @@
                     <h2 class="h5 fw-bold mb-1">Login Administrator</h2>
                     <p class="text-muted small mb-4">Area khusus pengelola konten website. Bukan untuk publik.</p>
 
-                    @if(session('error'))
-                        <div class="alert alert-danger" role="alert"><i class="fa-solid fa-circle-exclamation me-1"></i>{{ session('error') }}</div>
-                    @endif
-                    @if(session('success'))
-                        <div class="alert alert-success" role="alert"><i class="fa-solid fa-circle-check me-1"></i>{{ session('success') }}</div>
-                    @endif
+                    {{-- Flash success/error dirender sebagai SweetAlert2 toast
+                        via partial components.swal (agar tidak tampil dua kali). --}}
                     @if($errors->any())
                         <div class="alert alert-danger" role="alert">
                             <ul class="mb-0 ps-3">
@@ -75,5 +71,6 @@
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    @include('components.swal')
 </body>
 </html>
