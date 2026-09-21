@@ -8,6 +8,7 @@ use App\Http\Controllers\KemahasiswaanAlumniController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RisetPengabdianController;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,39 @@ use Illuminate\Support\Facades\Route;
 | to prevent duplicate content. All public GET routes are cacheable and
 | SEO-friendly with slug-based URLs.
 */
+
+// File upload ala sepeda-listrik: serve dari storage/uploads TANPA storage:link.
+// Mendukung gambar APAPUN dan file APAPUN di subfolder manapun.
+// Contoh: /uploads/news/xxx.webp, /uploads/documents/yyy.pdf
+Route::get('/uploads/{path}', function ($path) {
+    // Cegah path traversal.
+    if (str_contains($path, '..')) {
+        abort(404);
+    }
+
+    $absolute = storage_path('uploads/'.$path);
+
+    if (! File::exists($absolute) || ! is_file($absolute)) {
+        abort(404);
+    }
+
+    $mime = File::mimeType($absolute) ?: 'application/octet-stream';
+    $lastModified = File::lastModified($absolute);
+    $isImage = str_starts_with($mime, 'image/');
+
+    $response = response()->file($absolute, ['Content-Type' => $mime]);
+
+    // Gambar: cache lama seperti sepeda-listrik. Dokumen: no-cache agar selalu fresh.
+    if ($isImage) {
+        $response->headers->set('Cache-Control', 'public, max-age=31536000, immutable');
+        $response->headers->set('ETag', md5($path.$lastModified));
+    } else {
+        $response->headers->set('Cache-Control', 'public, max-age=3600');
+    }
+    $response->headers->set('Last-Modified', gmdate('D, d M Y H:i:s', $lastModified).' GMT');
+
+    return $response;
+})->where('path', '.*');
 
 // Beranda
 Route::get('/', [HomeController::class, 'index'])->name('home');
