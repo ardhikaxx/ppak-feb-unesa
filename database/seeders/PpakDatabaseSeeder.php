@@ -83,7 +83,7 @@ class PpakDatabaseSeeder extends Seeder
                 'decree_date' => '2025-02-26',
                 'effective_from' => '2025-02-26',
                 'effective_until' => '2027-02-25',
-                'certificate_file' => 'documents/sk-akreditasi-lamemba-ppak-unesa.pdf',
+                'certificate_file' => '/uploads/documents/sk-akreditasi-lamemba-ppak-unesa.pdf',
                 'source_url' => 'https://simutu.unesa.ac.id',
                 'source_name' => 'SIMUTU UNESA - Data Akreditasi Nasional',
                 'source_published_at' => '2025-02-26',
@@ -608,7 +608,7 @@ class PpakDatabaseSeeder extends Seeder
         $unduhans = PpakData::getUnduhan();
         foreach ($unduhans as $u) {
             $filename = $u['filename'] ?? ($u['slug'].'.'.strtolower($u['format']));
-            $filePath = public_path('documents/'.$filename);
+            $filePath = storage_path('uploads/documents/'.$filename);
             $fileSize = file_exists($filePath) ? filesize($filePath) : 8500;
             $docCat = Category::firstOrCreate(
                 ['slug' => 'dokumen-'.Str::slug($u['kategori'] ?? 'dokumen')],
@@ -621,7 +621,7 @@ class PpakDatabaseSeeder extends Seeder
                     'title' => $u['judul'] ?? $u['title'],
                     'category_id' => $docCat->id,
                     'filename' => $filename,
-                    'path' => 'documents/'.$filename,
+                    'path' => '/uploads/documents/'.$filename,
                     'mime_type' => 'application/pdf',
                     'size' => $fileSize,
                     'format' => $u['format'] ?? 'PDF',
