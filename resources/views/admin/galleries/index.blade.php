@@ -20,7 +20,7 @@
                 <div class="col-md-4">
                     <select name="status" class="form-select form-select-sm">
                         <option value="">Semua status</option>
-                        @foreach(['draft' => 'Draft', 'published' => 'Terbit', 'archived' => 'Arsip'] as $val => $label)
+                        @foreach(config('ppak.options.gallery_status') as $val => $label)
                             <option value="{{ $val }}" @selected(request('status') === $val)>{{ $label }}</option>
                         @endforeach
                     </select>
@@ -41,7 +41,7 @@
                 <tbody>
                     @forelse($items as $item)
                         <tr @if($item->trashed()) class="table-light" @endif>
-                            <td><img src="{{ $item->image }}" alt="" class="rounded" style="width:64px;height:48px;object-fit:cover;"></td>
+                            <td><img src="{{ $item->image }}" alt="Pratinjau {{ $item->title }}" class="rounded" style="width:64px;height:48px;object-fit:cover;"></td>
                             <td>
                                 <div class="fw-semibold">{{ $item->title }}</div>
                                 <div class="small text-muted">/{{ $item->slug }} &bull; {{ \App\Support\Tanggal::indo($item->event_date) ?? '—' }}</div>
