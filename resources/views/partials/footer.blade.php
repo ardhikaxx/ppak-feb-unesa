@@ -5,7 +5,7 @@
                 {{-- Column 1: Identity & About --}}
                 <div class="col-lg-4 col-md-6">
                     <div class="mb-3">
-                        <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" style="height: 48px; width: auto; max-width: 170px; object-fit: contain;" class="d-block mb-3">
+                        <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo Resmi Universitas Negeri Surabaya" width="170" height="48" loading="lazy" style="height: 48px; width: auto; max-width: 170px; object-fit: contain;" class="d-block mb-3">
                         <div class="fw-bold text-white fs-5 lh-sm" style="letter-spacing: -0.015em;">Pendidikan Profesi Akuntan</div>
                         <div class="text-gold small fw-semibold">Fakultas Ekonomika dan Bisnis &bull; UNESA (Kode: {{ $ppakInstitution['program_code'] ?? '62902' }})</div>
                     </div>
