@@ -643,7 +643,7 @@ a:hover {
   color: #0A2342;
   padding: 10px 12px;
   border-radius: 10px;
-  transition: all 0.16s cubic-bezier(0.16,1,0.3,1);
+  transition: background-color 0.16s cubic-bezier(0.16,1,0.3,1), color 0.16s cubic-bezier(0.16,1,0.3,1), transform 0.16s cubic-bezier(0.16,1,0.3,1);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -738,7 +738,7 @@ a:hover {
   justify-content: center;
   gap: 8px;
   box-shadow: 0 2px 10px rgba(216, 174, 71, 0.28);
-  transition: all 0.22s cubic-bezier(0.16,1,0.3,1);
+  transition: background-color 0.22s cubic-bezier(0.16,1,0.3,1), border-color 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s cubic-bezier(0.16,1,0.3,1), color 0.22s cubic-bezier(0.16,1,0.3,1), transform 0.22s cubic-bezier(0.16,1,0.3,1);
   text-decoration: none;
   white-space: nowrap;
   letter-spacing: -0.01em;
@@ -855,7 +855,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   font-size: 1.05rem;
-  transition: all 0.2s cubic-bezier(0.16,1,0.3,1);
+  transition: background-color 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1);
   box-shadow: 0 2px 8px rgba(10,35,66,0.06);
 }
 
@@ -988,7 +988,7 @@ a:hover {
   padding: 0.625rem 1.4rem;
   border-radius: var(--radius-sm); /* 8px */
   border: 1px solid var(--unesa-navy);
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1012,7 +1012,7 @@ a:hover {
   padding: 0.625rem 1.4rem;
   border-radius: var(--radius-sm); /* 8px */
   border: 1px solid var(--border);
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1035,7 +1035,7 @@ a:hover {
   padding: 0.625rem 1.4rem;
   border-radius: var(--radius-sm); /* 8px */
   border: 1px solid var(--unesa-gold);
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1335,7 +1335,7 @@ a:hover {
   align-items: center;
   gap: 8px;
   box-shadow: 0 8px 24px rgba(216, 174, 71, 0.3);
-  transition: all var(--transition-base);
+  transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), color var(--transition-base), transform var(--transition-base);
   text-decoration: none;
 }
 
@@ -1360,7 +1360,7 @@ a:hover {
   gap: 8px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  transition: all var(--transition-base);
+  transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), color var(--transition-base), transform var(--transition-base);
   text-decoration: none;
 }
 
@@ -1605,7 +1605,7 @@ a:hover {
   border: 1px solid var(--ppak-border);
   border-radius: var(--radius-md);
   height: 100%;
-  transition: all var(--transition-base);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
 }
 
 .stat-card-apple:hover {
@@ -1741,7 +1741,7 @@ a:hover {
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-subtle);
-  transition: all var(--transition-base);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
 }
 
 .news-card:hover {
@@ -1822,7 +1822,7 @@ a:hover {
   border: 1px solid var(--ppak-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-subtle);
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
   margin-bottom: 1rem;
 }
 
@@ -1870,7 +1870,7 @@ a:hover {
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-subtle);
-  transition: all var(--transition-base);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -1944,7 +1944,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .testi-card:hover {
@@ -2016,7 +2016,7 @@ a:hover {
   max-width: 320px;
   text-align: center;
   box-shadow: var(--shadow-subtle);
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
 }
 
 .org-card:hover {
@@ -2181,7 +2181,7 @@ a:hover {
   color: #ffffff;
   transform: translateY(10px);
   opacity: 0;
-  transition: all var(--transition-fast);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
 .gallery-card:hover .gallery-overlay {
@@ -2299,7 +2299,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   font-size: 0.85rem;
 }
 
@@ -2343,7 +2343,7 @@ a:hover {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   height: 100%;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
   box-shadow: 0 2px 6px rgba(10, 35, 66, 0.04);
 }
 
@@ -2366,7 +2366,7 @@ a:hover {
   justify-content: center;
   font-size: 1.05rem;
   flex-shrink: 0;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .karier-item-card:hover .karier-icon-box {
@@ -2383,7 +2383,7 @@ a:hover {
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
   box-shadow: 0 2px 8px rgba(10, 35, 66, 0.04);
 }
 
@@ -2405,7 +2405,7 @@ a:hover {
   font-size: 1.25rem;
   border: 1px solid var(--border);
   margin-bottom: 1.15rem;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .profesi-card:hover .profesi-icon {
@@ -2601,7 +2601,7 @@ a:hover {
   background-color: #f8fafc;
   border: 1px solid rgba(10, 35, 66, 0.08);
   border-radius: 9999px !important;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
   cursor: pointer;
   user-select: none;
 }
@@ -2636,4 +2636,3 @@ a:hover {
   pointer-events: none;
   min-width: 28px;
 }
-
