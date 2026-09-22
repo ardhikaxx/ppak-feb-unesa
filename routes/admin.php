@@ -45,6 +45,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         ->middleware('throttle:admin-login')
         ->name('login.store');
 
+    // Lupa password admin (verifikasi email via session, tanpa token email)
+    Route::get('/forgot-password', [AuthController::class, 'showForgot'])->name('password.request');
+    Route::post('/forgot-password', [AuthController::class, 'verifyEmail'])
+        ->middleware('throttle:admin-login')
+        ->name('password.email');
+    Route::get('/reset-password', [AuthController::class, 'showReset'])->name('password.reset');
+    Route::post('/reset-password', [AuthController::class, 'resetPassword'])
+        ->middleware('throttle:admin-login')
+        ->name('password.update');
+
     Route::middleware(['admin.auth:admin', 'admin.active'])->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
