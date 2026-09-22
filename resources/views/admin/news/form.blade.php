@@ -71,7 +71,9 @@
                             <div class="small fw-bold text-secondary mb-2"><i class="fa-solid fa-share-nodes text-primary me-1"></i> Preview Media Sosial (WhatsApp / Facebook / X)</div>
                             <div class="p-3 bg-light rounded-2 border" style="max-width: 480px;">
                                 <div class="bg-secondary-subtle rounded d-flex align-items-center justify-content-center text-muted mb-2 overflow-hidden" style="height: 140px;">
-                                    @if($article->image)
+                                    @if($article->og_image)
+                                        <img src="{{ $article->og_image }}" alt="OG Preview" id="ogPreviewImg" class="w-100 h-100 object-fit-cover">
+                                    @elseif($article->image)
                                         <img src="{{ $article->image }}" alt="OG Preview" id="ogPreviewImg" class="w-100 h-100 object-fit-cover">
                                     @else
                                         <span id="ogPreviewImgPlaceholder"><i class="fa-solid fa-image fs-1 opacity-25"></i></span>
@@ -122,6 +124,22 @@
                             <label for="og_description" class="form-label fw-semibold">Custom OG Description (Opsional)</label>
                             <textarea name="og_description" id="og_description" rows="2" maxlength="500" class="form-control"
                                       placeholder="Override deskripsi kartu medsos">{{ old('og_description', $article->og_description) }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="og_image" class="form-label fw-semibold">Custom OG Image (Opsional)</label>
+                            @if($article->og_image)
+                                <div class="mb-2">
+                                    <img src="{{ $article->og_image }}" alt="OG Preview" class="img-fluid rounded" style="max-height: 120px;">
+                                    <div class="form-check mt-1">
+                                        <input class="form-check-input" type="checkbox" name="remove_og_image" value="1" id="remove_og_image">
+                                        <label class="form-check-label small" for="remove_og_image">Hapus gambar OG saat ini</label>
+                                    </div>
+                                </div>
+                            @endif
+                            <input type="file" name="og_image" id="og_image" class="form-control @error('og_image') is-invalid @enderror" accept=".jpg,.jpeg,.png,.webp">
+                            <div class="form-text">Gambar khusus untuk preview media sosial (WhatsApp/Facebook/X). JPG/PNG/WebP, maks 5 MB. Ukuran ideal: 1200x630px. Kosongkan = pakai gambar utama berita.</div>
+                            @error('og_image')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
 
                         <div class="form-check form-switch mt-3">
