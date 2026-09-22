@@ -188,40 +188,6 @@ class ArrayContentRepository implements ContentRepositoryInterface
         return ArrayPaginator::paginate(array_values($items), $perPage);
     }
 
-    public function search(string $keyword, int $perPage = 6): array
-    {
-        if (mb_strlen(trim($keyword)) < 2) {
-            return ['berita' => [], 'agenda' => [], 'dosen' => []];
-        }
-
-        $lower = mb_strtolower($keyword);
-
-        // Efficient server-side search (when DB: use fulltext index)
-        $berita = array_filter($this->getBerita(), fn($item) =>
-            str_contains(mb_strtolower($item['title'] ?? ''), $lower) ||
-            str_contains(mb_strtolower($item['excerpt'] ?? ''), $lower) ||
-            str_contains(mb_strtolower($item['content'] ?? ''), $lower)
-        );
-
-        $agenda = array_filter($this->getAgenda(), fn($item) =>
-            str_contains(mb_strtolower($item['title'] ?? ''), $lower) ||
-            str_contains(mb_strtolower($item['desc'] ?? $item['description'] ?? ''), $lower) ||
-            str_contains(mb_strtolower($item['venue'] ?? ''), $lower)
-        );
-
-        $dosen = array_filter($this->getDosen(), fn($item) =>
-            str_contains(mb_strtolower($item['name'] ?? ''), $lower) ||
-            str_contains(mb_strtolower($item['role'] ?? $item['bidang'] ?? ''), $lower) ||
-            str_contains(mb_strtolower($item['category_label'] ?? ''), $lower)
-        );
-
-        return [
-            'berita' => array_slice(array_values($berita), 0, $perPage),
-            'agenda' => array_slice(array_values($agenda), 0, $perPage),
-            'dosen' => array_slice(array_values($dosen), 0, $perPage),
-        ];
-    }
-
     /**
      * Projection - select only needed columns to minimize payload.
      * Mimics Eloquent select() for list views.
