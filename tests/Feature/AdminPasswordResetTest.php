@@ -32,7 +32,7 @@ test('verifikasi email berhasil lalu reset password dan login dengan password ba
     $verify->assertRedirect(route('admin.password.reset'));
     $verify->assertSessionHas('success');
 
-    $this->get(route('admin.password.reset'))->assertStatus(200)->assertSee('Buat Password Baru', false);
+    $this->get(route('admin.password.reset'))->assertStatus(200)->assertSee('Buat password baru', false);
 
     $newPassword = 'Baru1234';
     $reset = $this->post(route('admin.password.update'), [
