@@ -17,6 +17,19 @@
 
 <section class="section-py bg-white">
     <div class="container">
+        {{-- Print Header (hanya muncul saat cetak) --}}
+        <div class="print-header d-none">
+            <h1>Kalender Akademik 2026/2027</h1>
+            <p>Universitas Negeri Surabaya — Surat No. B/2322/UN38.I/TU.00.02/2026</p>
+        </div>
+
+        {{-- Print Button --}}
+        <div class="text-end mb-3 no-print">
+            <button onclick="window.print()" class="btn-ppak-secondary btn-ppak-sm">
+                <i class="fa-solid fa-print me-1"></i> Cetak Halaman
+            </button>
+        </div>
+
         {{-- Formal SK Decree Header --}}
         <div class="p-4 p-lg-5 rounded-4 border bg-subtle mb-5">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
