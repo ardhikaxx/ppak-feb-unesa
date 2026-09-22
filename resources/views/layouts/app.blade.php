@@ -74,6 +74,11 @@
 
     @include('partials.footer')
 
+    {{-- Back to Top --}}
+    <button type="button" id="backToTopBtn" class="btn btn-lg back-to-top" aria-label="Kembali ke atas" title="Kembali ke atas">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
     {{-- Bootstrap bundle - deferred, not blocking LCP --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
