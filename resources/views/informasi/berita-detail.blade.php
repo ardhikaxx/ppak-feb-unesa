@@ -70,6 +70,12 @@
                                 <a href="https://api.whatsapp.com/send?text={{ urlencode($article['title'] . ' ' . url()->current()) }}" target="_blank" rel="noopener noreferrer" class="btn-ppak-secondary btn-ppak-sm" aria-label="Share WhatsApp">
                                     <i class="fa-brands fa-whatsapp text-success"></i>
                                 </a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank" rel="noopener noreferrer" class="btn-ppak-secondary btn-ppak-sm" aria-label="Share Facebook">
+                                    <i class="fa-brands fa-facebook text-primary"></i>
+                                </a>
+                                <a href="https://twitter.com/intent/tweet?text={{ urlencode($article['title']) }}&url={{ urlencode(url()->current()) }}" target="_blank" rel="noopener noreferrer" class="btn-ppak-secondary btn-ppak-sm" aria-label="Share Twitter">
+                                    <i class="fa-brands fa-x-twitter"></i>
+                                </a>
                                 <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->current()) }}" target="_blank" rel="noopener noreferrer" class="btn-ppak-secondary btn-ppak-sm" aria-label="Share LinkedIn">
                                     <i class="fa-brands fa-linkedin text-primary"></i>
                                 </a>
