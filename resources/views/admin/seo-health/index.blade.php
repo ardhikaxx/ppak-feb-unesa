@@ -79,7 +79,11 @@
                             {{ $health['settings']['og_image_exists'] ? '1200x630 Statis Aktif' : 'File Tidak Ditemukan' }}
                         </div>
                     </div>
-                    <i class="fa-solid fa-image fs-2 text-primary opacity-25"></i>
+                    @if($health['settings']['og_image_exists'])
+                        <img src="{{ asset(ltrim($health['settings']['default_og_image'], '/')) }}" alt="OG Image" class="rounded" style="width: 60px; height: 40px; object-fit: cover;">
+                    @else
+                        <i class="fa-solid fa-image fs-2 text-primary opacity-25"></i>
+                    @endif
                 </div>
             </div>
         </div>
