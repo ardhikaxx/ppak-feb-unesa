@@ -18,23 +18,6 @@
   <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT">
 </p>
 
-## Daftar Isi
-
-- [Tentang Proyek](#tentang-proyek)
-- [Fitur Website Publik](#fitur-website-publik)
-- [Fitur CMS Admin](#fitur-cms-admin)
-- [Teknologi](#teknologi)
-- [Sumber Data Resmi](#sumber-data-resmi)
-- [Struktur Proyek](#struktur-proyek)
-- [Instalasi](#instalasi)
-- [Akun Admin](#akun-admin)
-- [Pengujian](#pengujian)
-- [Keamanan](#keamanan)
-- [Dokumentasi](#dokumentasi)
-- [Deployment](#deployment)
-- [Penulis](#penulis)
-- [Lisensi](#lisensi)
-
 ## Tentang Proyek
 
 Aplikasi web profil Program Studi Pendidikan Profesi Akuntan (Kode Prodi **62902**)
@@ -59,7 +42,7 @@ tanpa menyentuh source code dan tanpa mengubah tampilan website.
 
 ## Fitur CMS Admin
 
-Akses di `/admin/login` → `/admin/dashboard`. Selengkapnya di [docs/CMS.md](docs/CMS.md).
+Akses di `/admin/login` → `/admin/dashboard`.
 
 - **Dashboard** dengan statistik konten real dari database, konten terakhir diubah, dan audit log terakhir.
 - **Profil PPAk**: profil program (satu sumber kebenaran), akreditasi, dosen/pengajar (foto, urutan tampil, aktif/nonaktif, arsip + restore).
@@ -89,38 +72,6 @@ Seluruh data awal terverifikasi dari dokumen resmi dan dimuat melalui seeder ide
 - Kalender Akademik UNESA 2026/2027 (Surat No. B/2322/UN38.I/TU.00.02/2026)
 - UKT Admisi UNESA **Rp5.500.000/semester** (Kode Prodi 62902)
 - Kurikulum & CPL SINDIG UNESA, portal PMB `pmb.unesa.ac.id`
-
-> File seeder bersifat final dan hanya dibaca/di-seed ulang oleh AI maupun pengembang.
-> Perubahan data operasional dilakukan lewat CMS `/admin`, bukan dengan mengedit seeder.
-
-## Struktur Proyek
-
-```text
-app/
-├── Contracts/            # Kontrak repository konten (frontend)
-├── Http/
-│   ├── Controllers/      # Controller publik (per domain)
-│   │   └── Admin/        # Controller CMS (per modul, terpisah dari publik)
-│   ├── Middleware/       # admin.auth, admin.active
-│   └── Requests/Admin/   # Validasi server-side tiap form CMS
-├── Models/               # Eloquent (News, Lecturer, Document, Admin, ...)
-├── Repositories/
-│   ├── EloquentContentRepository.php  # Sumber data frontend (database) — aktif
-│   └── ArrayContentRepository.php     # Implementasi statis lama (referensi)
-├── Services/PpakData.php # Data master statis (read-only, acuan seeder)
-└── Support/              # CacheKeys, ContentCache, ArrayPaginator
-database/
-├── migrations/           # Termasuk admins & site_settings
-└── seeders/              # PpakDatabaseSeeder, AdminSeeder, SiteSettingSeeder
-docs/                     # CMS.md, PANDUAN-ADMIN.md, DEPLOYMENT.md
-resources/views/
-├── <publik>              # Blade frontend (tidak diubah oleh CMS)
-└── admin/                # Blade CMS (layout, dashboard, CRUD per modul)
-routes/
-├── web.php               # Route publik
-└── admin.php             # Route CMS prefix /admin
-tests/Feature/           # PpakRoutesTest, AdminCmsTest
-```
 
 ## Instalasi
 
@@ -183,7 +134,6 @@ php artisan test
 - [docs/CMS.md](docs/CMS.md) — dokumentasi teknis CMS (arsitektur, tabel, route, keamanan).
 - [docs/PANDUAN-ADMIN.md](docs/PANDUAN-ADMIN.md) — panduan penggunaan CMS untuk admin.
 - [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) — panduan deployment (XAMPP & shared hosting).
-- [CONTRIBUTING.md](CONTRIBUTING.md) — panduan kontribusi.
 - [SECURITY.md](SECURITY.md) — kebijakan keamanan & pelaporan kerentanan.
 - [CHANGELOG.md](CHANGELOG.md) — riwayat perubahan per versi.
 
