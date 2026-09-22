@@ -28,7 +28,7 @@ test('verifikasi email gagal jika email tidak terdaftar', function () {
 });
 
 test('verifikasi email berhasil lalu reset password dan login dengan password baru', function () {
-    $verify = $this->post(route('admin.password.email'), ['email' => 'admin@gmail.com']);
+    $verify = $this->post(route('admin.password.email'), ['email' => 'superadmin@gmail.com']);
     $verify->assertRedirect(route('admin.password.reset'));
     $verify->assertSessionHas('success');
 
@@ -43,10 +43,10 @@ test('verifikasi email berhasil lalu reset password dan login dengan password ba
     $reset->assertSessionHas('success');
     $reset->assertSessionHas('password_reset_success');
 
-    expect(Hash::check($newPassword, Admin::where('email', 'admin@gmail.com')->first()->password))->toBeTrue();
+    expect(Hash::check($newPassword, Admin::where('email', 'superadmin@gmail.com')->first()->password))->toBeTrue();
 
     // Login dengan password baru berhasil.
-    $login = $this->post(route('admin.login.store'), ['email' => 'admin@gmail.com', 'password' => $newPassword]);
+    $login = $this->post(route('admin.login.store'), ['email' => 'superadmin@gmail.com', 'password' => $newPassword]);
     $login->assertRedirect(route('admin.dashboard'));
     $this->assertAuthenticated('admin');
 });
