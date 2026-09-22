@@ -79,6 +79,14 @@
         <i class="fa-solid fa-chevron-up"></i>
     </button>
 
+    {{-- WhatsApp Floating --}}
+    @php($whatsapp = \App\Models\SiteSetting::get('whatsapp', '+62 812 3456 7890'))
+    @if($whatsapp)
+    <a href="https://api.whatsapp.com/send?phone={{ ltrim(preg_replace('/[^0-9]/', '', $whatsapp), '0') }}&text={{ urlencode('Halo, saya ingin bertanya tentang PPAk FEB UNESA') }}" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat WhatsApp" title="Hubungi via WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    @endif
+
     {{-- Bootstrap bundle - deferred, not blocking LCP --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
