@@ -69,7 +69,11 @@ class NewsController extends BaseAdminController
             $data['image'] = $this->storeImage($request->file('image'), 'news');
         }
 
-        unset($data['remove_image']);
+        if ($request->hasFile('og_image')) {
+            $data['og_image'] = $this->storeImage($request->file('og_image'), 'news');
+        }
+
+        unset($data['remove_image'], $data['remove_og_image']);
 
         $article = News::create($data);
 
@@ -114,7 +118,19 @@ class NewsController extends BaseAdminController
             unset($data['image']);
         }
 
-        unset($data['remove_image']);
+        if ($request->boolean('remove_og_image') && $news->og_image) {
+            $this->guardFileUsage($news->og_image, []);
+            $data['og_image'] = null;
+        } elseif ($request->hasFile('og_image')) {
+            if ($news->og_image) {
+                $this->guardFileUsage($news->og_image, []);
+            }
+            $data['og_image'] = $this->storeImage($request->file('og_image'), 'news');
+        } else {
+            unset($data['og_image']);
+        }
+
+        unset($data['remove_image'], $data['remove_og_image']);
 
         if (($data['status'] ?? null) === 'published' && ! $news->published_at && empty($data['published_at'])) {
             $data['published_at'] = now();
