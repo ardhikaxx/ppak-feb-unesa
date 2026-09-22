@@ -35,9 +35,21 @@
                         <x-password-field name="password_confirmation" label="Konfirmasi password" />
                     </div>
                 </div>
-                <div class="form-check mb-0">
-                    <input class="form-check-input" type="checkbox" name="is_active" value="1" id="is_active" @checked(old('is_active', $account->is_active ?? true))>
-                    <label class="form-check-label" for="is_active">Akun aktif (dapat login CMS)</label>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold required" for="role">Role</label>
+                        <select name="role" id="role" class="form-select" required>
+                            <option value="operator" @selected(old('role', $account->role ?? 'operator') === 'operator')>Operator — konten (berita, agenda, galeri, dokumen, FAQ, publikasi, kurikulum, dosen, admisi)</option>
+                            <option value="super_admin" @selected(old('role', $account->role) === 'super_admin')>Super Admin — akses penuh CMS</option>
+                        </select>
+                        <div class="form-text">Hanya super admin yang dapat mengatur role. Role akun sendiri tidak dapat diubah.</div>
+                    </div>
+                    <div class="col-md-6 mb-3 d-flex align-items-end">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="is_active" value="1" id="is_active" @checked(old('is_active', $account->is_active ?? true))>
+                            <label class="form-check-label" for="is_active">Akun aktif (dapat login CMS)</label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card-footer d-flex gap-2">
