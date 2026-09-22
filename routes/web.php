@@ -134,6 +134,7 @@ Route::prefix('kontak')->name('kontak.')->group(function () {
 
 // Scalable extras - SEO & performance
 Route::get('/sitemap.xml', [InformasiController::class, 'sitemap'])->name('sitemap');
+Route::get('/sitemap-news.xml', [InformasiController::class, 'sitemapNews'])->name('sitemap.news');
 Route::get('/robots.txt', [InformasiController::class, 'robots'])->name('robots');
 // CMS Admin PPAk FEB UNESA - route terpisah, lihat routes/admin.php
 require __DIR__.'/admin.php';
