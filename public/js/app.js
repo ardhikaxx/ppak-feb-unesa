@@ -166,4 +166,18 @@ document.addEventListener('DOMContentLoaded', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // 9. WhatsApp Floating Tooltip (every 5 seconds)
+  const waFloat = document.querySelector('.whatsapp-float');
+  if (waFloat) {
+    const showTooltip = () => {
+      waFloat.classList.add('wa-tooltip-show');
+      setTimeout(() => {
+        waFloat.classList.remove('wa-tooltip-show');
+      }, 3000);
+    };
+
+    setTimeout(showTooltip, 3000);
+    setInterval(showTooltip, 5000);
+  }
 });
