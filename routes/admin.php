@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ProgramProfileController;
 use App\Http\Controllers\Admin\PublicationController;
 use App\Http\Controllers\Admin\ResearchController;
+use App\Http\Controllers\Admin\SeoHealthController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\TuitionFeeController;
@@ -45,9 +46,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         ->middleware('throttle:admin-login')
         ->name('login.store');
 
-    // Lupa password admin (verifikasi email via session, tanpa token email)
+    // Lupa password admin: token via email (Password broker "admins"),
+    // respons identik untuk mencegah user enumeration.
     Route::get('/forgot-password', [AuthController::class, 'showForgot'])->name('password.request');
-    Route::post('/forgot-password', [AuthController::class, 'verifyEmail'])
+    Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])
         ->middleware('throttle:admin-login')
         ->name('password.email');
     Route::get('/reset-password', [AuthController::class, 'showReset'])->name('password.reset');
@@ -113,8 +115,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::delete('/media', [MediaController::class, 'destroy'])->name('media.destroy');
 
             // Website & sistem
-            Route::get('/seo-health', [\App\Http\Controllers\Admin\SeoHealthController::class, 'index'])->name('seo-health.index');
-            Route::post('/seo-health/flush-cache', [\App\Http\Controllers\Admin\SeoHealthController::class, 'flushCache'])->name('seo-health.flush-cache');
+            Route::get('/seo-health', [SeoHealthController::class, 'index'])->name('seo-health.index');
+            Route::post('/seo-health/flush-cache', [SeoHealthController::class, 'flushCache'])->name('seo-health.flush-cache');
             Route::get('/site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
             Route::put('/site-settings', [SiteSettingController::class, 'update'])->name('site-settings.update');
             Route::get('/helpdesk', [HelpdeskController::class, 'index'])->name('helpdesk.index');

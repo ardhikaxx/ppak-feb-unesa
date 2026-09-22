@@ -54,8 +54,8 @@
                             <div class="auth-step done">
                                 <span class="step-badge"><i class="fa-solid fa-check"></i></span>
                                 <div>
-                                    <div class="fw-semibold">Verifikasi email</div>
-                                    <small style="color:#9db1c9;">Akun <strong>{{ $email }}</strong> terverifikasi.</small>
+                                    <div class="fw-semibold">Tautan dari email</div>
+                                    <small style="color:#9db1c9;">Tautan untuk <strong>{{ $email }}</strong> terverifikasi.</small>
                                 </div>
                             </div>
                             <div class="auth-step active">
@@ -87,7 +87,7 @@
                     </div>
                     <div class="gold-line mb-3"></div>
                     <h2 class="h4 fw-bold mb-1" style="color:var(--navy);">Buat password baru</h2>
-                    <p class="text-muted small mb-4">Akun <strong>{{ $email }}</strong> terverifikasi. Silakan masukkan password baru Anda.</p>
+                    <p class="text-muted small mb-4">Tautan untuk <strong>{{ $email }}</strong> terverifikasi. Silakan masukkan password baru Anda.</p>
 
                     @if($errors->any())
                         <div class="alert alert-danger" role="alert">
@@ -101,6 +101,8 @@
 
                     <form method="POST" action="{{ route('admin.password.update') }}" id="resetForm" novalidate>
                         @csrf
+                        <input type="hidden" name="token" value="{{ $token }}">
+                        <input type="hidden" name="email" value="{{ $email }}">
                         <div class="mb-3">
                             <x-password-field name="password" label="Password Baru" icon="fa-lock"
                                               autocomplete="new-password" :required="true" />
@@ -117,7 +119,7 @@
                     </form>
 
                     <p class="text-center small mt-4 mb-0">
-                        <a href="{{ route('admin.password.request') }}" class="text-decoration-none"><i class="fa-solid fa-arrow-left me-1"></i>Gunakan email lain</a>
+                        <a href="{{ route('admin.password.request') }}" class="text-decoration-none"><i class="fa-solid fa-arrow-left me-1"></i>Minta tautan untuk email lain</a>
                     </p>
                 </div>
             </div>

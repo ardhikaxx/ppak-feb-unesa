@@ -53,22 +53,22 @@
                             <div class="auth-step active">
                                 <span class="step-badge">1</span>
                                 <div>
-                                    <div class="fw-semibold">Verifikasi email</div>
+                                    <div class="fw-semibold">Minta tautan reset</div>
                                     <small style="color:#9db1c9;">Masukkan email akun admin Anda pada form di samping.</small>
                                 </div>
                             </div>
                             <div class="auth-step">
                                 <span class="step-badge">2</span>
                                 <div>
-                                    <div class="fw-semibold">Buat password baru</div>
-                                    <small style="color:#9db1c9;">Minimal 8 karakter, kombinasi huruf besar, kecil, dan angka.</small>
+                                    <div class="fw-semibold">Buka tautan di email</div>
+                                    <small style="color:#9db1c9;">Klik tautan "Atur Ulang Password" yang dikirim ke email Anda.</small>
                                 </div>
                             </div>
                             <div class="auth-step">
                                 <span class="step-badge">3</span>
                                 <div>
-                                    <div class="fw-semibold">Login kembali</div>
-                                    <small style="color:#9db1c9;">Masuk ke dashboard dengan password baru Anda.</small>
+                                    <div class="fw-semibold">Buat password baru</div>
+                                    <small style="color:#9db1c9;">Minimal 8 karakter, kombinasi huruf besar, kecil, dan angka.</small>
                                 </div>
                             </div>
                         </div>
@@ -85,8 +85,8 @@
                         <div class="fw-bold" style="color:var(--navy);">CMS Admin PPAk FEB UNESA</div>
                     </div>
                     <div class="gold-line mb-3"></div>
-                    <h2 class="h4 fw-bold mb-1" style="color:var(--navy);">Verifikasi email Anda</h2>
-                    <p class="text-muted small mb-4">Jika email terdaftar, Anda akan diarahkan ke halaman buat password baru.</p>
+                    <h2 class="h4 fw-bold mb-1" style="color:var(--navy);">Lupa password?</h2>
+                    <p class="text-muted small mb-4">Jika email terdaftar, tautan untuk membuat password baru akan dikirim ke email Anda.</p>
 
                     @if($errors->any())
                         <div class="alert alert-danger" role="alert">
@@ -112,7 +112,7 @@
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-navy w-100 fw-semibold py-2" id="forgotBtn">
-                            <i class="fa-solid fa-envelope-circle-check me-1"></i><span>Verifikasi Email</span>
+                            <i class="fa-solid fa-envelope-circle-check me-1"></i><span>Kirim Tautan Reset</span>
                         </button>
                     </form>
 
@@ -129,7 +129,7 @@
             var btn = document.getElementById('forgotBtn');
             if (!btn) return;
             btn.disabled = true;
-            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span><span>Memverifikasi...</span>';
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span><span>Mengirim...</span>';
         });
     </script>
     @include('components.swal')

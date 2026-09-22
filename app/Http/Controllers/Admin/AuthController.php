@@ -8,7 +8,8 @@ use App\Models\Admin;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Validation\Rules\Password as PasswordRule;
 use Illuminate\View\View;
 
 class AuthController extends Controller
@@ -66,7 +67,12 @@ class AuthController extends Controller
         return view('admin.auth.forgot');
     }
 
-    public function verifyEmail(Request $request): RedirectResponse
+    /**
+     * Kirim tautan reset via token email (bukan verifikasi session).
+     * Respons SELALU sama untuk email terdaftar maupun tidak
+     * (mencegah user enumeration).
+     */
+    public function sendResetLink(Request $request): RedirectResponse
     {
         $data = $request->validate([
             'email' => ['required', 'string', 'email', 'max:255'],
@@ -75,18 +81,14 @@ class AuthController extends Controller
             'email.email' => 'Format email tidak valid.',
         ]);
 
-        $admin = Admin::where('email', $data['email'])->first();
+        $generic = 'Jika email terdaftar pada akun admin aktif, tautan untuk mengatur ulang password telah dikirim. Periksa kotak masuk atau folder spam Anda.';
 
-        if (! $admin || ! $admin->is_active) {
-            return back()
-                ->with('error', 'Email tidak ditemukan atau akun nonaktif.')
-                ->onlyInput('email');
+        // Hanya kirim token bila akun ada & aktif; respons identik di kedua kasus.
+        if (Admin::where('email', $data['email'])->where('is_active', true)->exists()) {
+            Password::broker('admins')->sendResetLink(['email' => $data['email']]);
         }
 
-        $request->session()->put('admin_pw_reset_email', $admin->email);
-
-        return redirect()->route('admin.password.reset')
-            ->with('success', 'Email terverifikasi. Silakan buat password baru.');
+        return redirect()->route('admin.password.request')->with('info', $generic);
     }
 
     public function showReset(Request $request): View|RedirectResponse
@@ -95,47 +97,62 @@ class AuthController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        $email = $request->session()->get('admin_pw_reset_email');
+        $token = (string) $request->query('token', '');
+        $email = (string) $request->query('email', '');
 
-        if (! $email) {
+        if ($token === '' || $email === '' || ! $this->validResetToken($email, $token)) {
             return redirect()->route('admin.password.request')
-                ->with('error', 'Silakan verifikasi email terlebih dahulu.');
+                ->with('error', 'Tautan reset tidak valid atau sudah kedaluwarsa. Silakan minta tautan baru.');
         }
 
-        return view('admin.auth.reset', ['email' => $email]);
+        return view('admin.auth.reset', ['email' => $email, 'token' => $token]);
     }
 
     public function resetPassword(Request $request): RedirectResponse
     {
-        $email = $request->session()->get('admin_pw_reset_email');
-
-        if (! $email) {
-            return redirect()->route('admin.password.request')
-                ->with('error', 'Silakan verifikasi email terlebih dahulu.');
-        }
-
         $data = $request->validate([
-            'password' => ['required', 'string', Password::min(8)->mixedCase()->numbers(), 'confirmed'],
+            'token' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', PasswordRule::min(8)->mixedCase()->numbers(), 'confirmed'],
         ], [
             'password.required' => 'Password baru wajib diisi.',
             'password.confirmed' => 'Konfirmasi password baru tidak sama.',
         ]);
 
-        $admin = Admin::where('email', $email)->first();
+        $invalid = 'Tautan reset tidak valid atau sudah kedaluwarsa. Silakan minta tautan baru.';
 
-        if (! $admin || ! $admin->is_active) {
-            $request->session()->forget('admin_pw_reset_email');
-
-            return redirect()->route('admin.password.request')
-                ->with('error', 'Email tidak ditemukan atau akun nonaktif.');
+        if (! $this->validResetToken($data['email'], $data['token'])) {
+            return redirect()->route('admin.password.request')->with('error', $invalid);
         }
 
-        $admin->update(['password' => $data['password']]);
+        $response = Password::broker('admins')->reset(
+            [
+                'token' => $data['token'],
+                'email' => $data['email'],
+                'password' => $data['password'],
+                'password_confirmation' => $request->input('password_confirmation'),
+            ],
+            function (Admin $admin, string $password): void {
+                $admin->forceFill(['password' => $password])->save();
+            }
+        );
 
-        $request->session()->forget('admin_pw_reset_email');
+        if ($response !== Password::PASSWORD_RESET) {
+            return redirect()->route('admin.password.request')->with('error', $invalid);
+        }
 
         return redirect()->route('admin.login')
             ->with('success', 'Password sudah berhasil diubah. Silakan login dengan password baru.')
             ->with('password_reset_success', true);
+    }
+
+    /**
+     * Token valid hanya untuk akun aktif + token hash cocok (broker admins).
+     */
+    private function validResetToken(string $email, string $token): bool
+    {
+        $admin = Admin::where('email', $email)->where('is_active', true)->first();
+
+        return $admin !== null && Password::broker('admins')->tokenExists($admin, $token);
     }
 }
