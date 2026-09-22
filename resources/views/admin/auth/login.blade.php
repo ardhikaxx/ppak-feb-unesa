@@ -55,9 +55,12 @@
                             <x-password-field name="password" label="Password" icon="fa-lock"
                                               autocomplete="current-password" :required="true" />
                         </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" value="1" {{ old('remember') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="remember">Ingat saya</label>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember" value="1" {{ old('remember') ? 'checked' : '' }}>
+                                <label class="form-check-label" for="remember">Ingat saya</label>
+                            </div>
+                            <a href="{{ route('admin.password.request') }}" class="small text-decoration-none">Lupa password?</a>
                         </div>
                         <button type="submit" class="btn btn-primary w-100 fw-semibold">
                             <i class="fa-solid fa-right-to-bracket me-1"></i>Masuk ke Dashboard
@@ -72,5 +75,21 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     @include('components.swal')
+    @if(session('password_reset_success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                if (typeof window.Swal === 'undefined') return;
+                window.Swal.fire({
+                    icon: 'success',
+                    title: 'Password Berhasil Diubah',
+                    text: 'Password sudah berhasil diubah. Silakan login dengan password baru Anda.',
+                    confirmButtonText: 'Oke',
+                    confirmButtonColor: '#0b409c',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                });
+            });
+        </script>
+    @endif
 </body>
 </html>
