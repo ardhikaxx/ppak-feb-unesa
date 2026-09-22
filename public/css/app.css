@@ -2689,6 +2689,46 @@ a:hover {
   }
 }
 
+/* ==================== WhatsApp Floating ==================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 1050;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25D366;
+  color: #fff;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+  color: #fff;
+}
+
+.whatsapp-float:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@media (max-width: 575.98px) {
+  .whatsapp-float {
+    bottom: 1.25rem;
+    left: 1.25rem;
+    width: 46px;
+    height: 46px;
+    font-size: 1.3rem;
+  }
+}
+
 /* ==================== Print Styles ==================== */
 @media print {
   *,
@@ -2728,6 +2768,7 @@ a:hover {
   .cta-banner-section,
   .footer-ppak,
   .back-to-top,
+  .whatsapp-float,
   .breadcrumb,
   .btn,
   .pagination,
