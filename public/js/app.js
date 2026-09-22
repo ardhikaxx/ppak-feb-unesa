@@ -148,4 +148,22 @@ document.addEventListener('DOMContentLoaded', function () {
   // 7. Helpdesk Form: native POST to server (CSRF + rate limited).
   // Success/error feedback is rendered server-side from session flash,
   // so no fake client-side success here - the form must really be saved.
+
+  // 8. Back to Top Button
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  if (backToTopBtn) {
+    const toggleBackToTop = () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    };
+    window.addEventListener('scroll', toggleBackToTop, { passive: true });
+    toggleBackToTop();
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 });
