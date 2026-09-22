@@ -87,18 +87,21 @@
                 <div class="small" style="color:#8fa3bd;">FEB UNESA</div>
             </div>
         </div>
+        @php($cmsAdmin = auth('admin')->user())
         <nav class="sidebar-nav">
             <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                 <i class="fa-solid fa-gauge-high"></i> Dashboard
             </a>
 
             <div class="sidebar-group">Profil PPAk</div>
-            <a href="{{ route('admin.program-profile.edit') }}" class="sidebar-link {{ request()->routeIs('admin.program-profile.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-building-columns"></i> Profil Program
-            </a>
-            <a href="{{ route('admin.accreditations.index') }}" class="sidebar-link {{ request()->routeIs('admin.accreditations.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-award"></i> Akreditasi
-            </a>
+            @if($cmsAdmin?->isSuperAdmin())
+                <a href="{{ route('admin.program-profile.edit') }}" class="sidebar-link {{ request()->routeIs('admin.program-profile.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-building-columns"></i> Profil Program
+                </a>
+                <a href="{{ route('admin.accreditations.index') }}" class="sidebar-link {{ request()->routeIs('admin.accreditations.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-award"></i> Akreditasi
+                </a>
+            @endif
             <a href="{{ route('admin.lecturers.index') }}" class="sidebar-link {{ request()->routeIs('admin.lecturers.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-chalkboard-user"></i> Dosen / Pengajar
             </a>
@@ -107,12 +110,14 @@
             <a href="{{ route('admin.curricula.index') }}" class="sidebar-link {{ request()->routeIs('admin.curricula.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-book-open"></i> Kurikulum
             </a>
-            <a href="{{ route('admin.learning-outcomes.index') }}" class="sidebar-link {{ request()->routeIs('admin.learning-outcomes.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-bullseye"></i> CPL
-            </a>
-            <a href="{{ route('admin.academic-calendars.index') }}" class="sidebar-link {{ request()->routeIs('admin.academic-calendars.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-calendar-days"></i> Kalender Akademik
-            </a>
+            @if($cmsAdmin?->isSuperAdmin())
+                <a href="{{ route('admin.learning-outcomes.index') }}" class="sidebar-link {{ request()->routeIs('admin.learning-outcomes.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-bullseye"></i> CPL
+                </a>
+                <a href="{{ route('admin.academic-calendars.index') }}" class="sidebar-link {{ request()->routeIs('admin.academic-calendars.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-calendar-days"></i> Kalender Akademik
+                </a>
+            @endif
 
             <div class="sidebar-group">Admisi</div>
             <a href="{{ route('admin.admission-schedules.index') }}" class="sidebar-link {{ request()->routeIs('admin.admission-schedules.*') ? 'active' : '' }}">
@@ -129,23 +134,27 @@
             <a href="{{ route('admin.publications.index') }}" class="sidebar-link {{ request()->routeIs('admin.publications.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-file-lines"></i> Publikasi
             </a>
-            <a href="{{ route('admin.researches.index') }}" class="sidebar-link {{ request()->routeIs('admin.researches.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-flask"></i> Riset
-            </a>
-            <a href="{{ route('admin.community-services.index') }}" class="sidebar-link {{ request()->routeIs('admin.community-services.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-hand-holding-heart"></i> Pengabdian (PKM)
-            </a>
-            <a href="{{ route('admin.partnerships.index') }}" class="sidebar-link {{ request()->routeIs('admin.partnerships.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-handshake"></i> Kerja Sama
-            </a>
+            @if($cmsAdmin?->isSuperAdmin())
+                <a href="{{ route('admin.researches.index') }}" class="sidebar-link {{ request()->routeIs('admin.researches.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-flask"></i> Riset
+                </a>
+                <a href="{{ route('admin.community-services.index') }}" class="sidebar-link {{ request()->routeIs('admin.community-services.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-hand-holding-heart"></i> Pengabdian (PKM)
+                </a>
+                <a href="{{ route('admin.partnerships.index') }}" class="sidebar-link {{ request()->routeIs('admin.partnerships.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-handshake"></i> Kerja Sama
+                </a>
+            @endif
 
-            <div class="sidebar-group">Kemahasiswaan & Alumni</div>
-            <a href="{{ route('admin.testimonials.index') }}" class="sidebar-link {{ request()->routeIs('admin.testimonials.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-quote-left"></i> Testimoni
-            </a>
-            <a href="{{ route('admin.alumni.index') }}" class="sidebar-link {{ request()->routeIs('admin.alumni.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-user-graduate"></i> Alumni
-            </a>
+            @if($cmsAdmin?->isSuperAdmin())
+                <div class="sidebar-group">Kemahasiswaan & Alumni</div>
+                <a href="{{ route('admin.testimonials.index') }}" class="sidebar-link {{ request()->routeIs('admin.testimonials.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-quote-left"></i> Testimoni
+                </a>
+                <a href="{{ route('admin.alumni.index') }}" class="sidebar-link {{ request()->routeIs('admin.alumni.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-user-graduate"></i> Alumni
+                </a>
+            @endif
 
             <div class="sidebar-group">Informasi & Publikasi</div>
             <a href="{{ route('admin.news.index') }}" class="sidebar-link {{ request()->routeIs('admin.news.*') ? 'active' : '' }}">
@@ -162,41 +171,50 @@
             <a href="{{ route('admin.documents.index') }}" class="sidebar-link {{ request()->routeIs('admin.documents.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-file-pdf"></i> Dokumen
             </a>
-            <a href="{{ route('admin.categories.index') }}" class="sidebar-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-tags"></i> Kategori
-            </a>
-            <a href="{{ route('admin.media.index') }}" class="sidebar-link {{ request()->routeIs('admin.media.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-folder-open"></i> Media Manager
-            </a>
+            @if($cmsAdmin?->isSuperAdmin())
+                <a href="{{ route('admin.categories.index') }}" class="sidebar-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-tags"></i> Kategori
+                </a>
+                <a href="{{ route('admin.media.index') }}" class="sidebar-link {{ request()->routeIs('admin.media.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-folder-open"></i> Media Manager
+                </a>
+            @endif
 
-            <div class="sidebar-group">Website</div>
-            <a href="{{ route('admin.seo-health.index') }}" class="sidebar-link {{ request()->routeIs('admin.seo-health.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-gauge-high"></i> Kesehatan SEO
-            </a>
-            <a href="{{ route('admin.site-settings.index') }}" class="sidebar-link {{ request()->routeIs('admin.site-settings.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-gear"></i> Pengaturan Website
-            </a>
-            <a href="{{ route('admin.helpdesk.index') }}" class="sidebar-link {{ request()->routeIs('admin.helpdesk.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-headset"></i> Helpdesk
-                @if(($helpdeskOpenCount ?? 0) > 0)
-                    <span class="badge text-bg-danger ms-auto">{{ $helpdeskOpenCount }}</span>
-                @endif
-            </a>
-            <a href="{{ route('admin.audit-logs.index') }}" class="sidebar-link {{ request()->routeIs('admin.audit-logs.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-clock-rotate-left"></i> Audit Log
-            </a>
+            @if($cmsAdmin?->isSuperAdmin())
+                <div class="sidebar-group">Website</div>
+                <a href="{{ route('admin.seo-health.index') }}" class="sidebar-link {{ request()->routeIs('admin.seo-health.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-gauge-high"></i> Kesehatan SEO
+                </a>
+                <a href="{{ route('admin.site-settings.index') }}" class="sidebar-link {{ request()->routeIs('admin.site-settings.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-gear"></i> Pengaturan Website
+                </a>
+                <a href="{{ route('admin.helpdesk.index') }}" class="sidebar-link {{ request()->routeIs('admin.helpdesk.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-headset"></i> Helpdesk
+                    @if(($helpdeskOpenCount ?? 0) > 0)
+                        <span class="badge text-bg-danger ms-auto">{{ $helpdeskOpenCount }}</span>
+                    @endif
+                </a>
+                <a href="{{ route('admin.audit-logs.index') }}" class="sidebar-link {{ request()->routeIs('admin.audit-logs.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Audit Log
+                </a>
+            @endif
 
             <div class="sidebar-group">Akun</div>
-            <a href="{{ route('admin.admins.index') }}" class="sidebar-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-users-gear"></i> Kelola Admin
-            </a>
+            @if($cmsAdmin?->isSuperAdmin())
+                <a href="{{ route('admin.admins.index') }}" class="sidebar-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-users-gear"></i> Kelola Admin
+                </a>
+            @endif
             <a href="{{ route('admin.profile.edit') }}" class="sidebar-link {{ request()->routeIs('admin.profile.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-user"></i> Profil Saya
             </a>
         </nav>
         <div class="sidebar-footer">
-            <div class="fw-semibold text-white">{{ auth('admin')->user()?->name }}</div>
-            <div class="text-truncate">{{ auth('admin')->user()?->email }}</div>
+            <div class="fw-semibold text-white">{{ $cmsAdmin?->name }}</div>
+            <div class="text-truncate">{{ $cmsAdmin?->email }}</div>
+            @if($cmsAdmin)
+                <div class="mt-1"><span class="badge {{ $cmsAdmin->isSuperAdmin() ? 'text-bg-warning' : 'text-bg-secondary' }}">{{ $cmsAdmin->isSuperAdmin() ? 'Super Admin' : 'Operator' }}</span></div>
+            @endif
         </div>
     </aside>
 
