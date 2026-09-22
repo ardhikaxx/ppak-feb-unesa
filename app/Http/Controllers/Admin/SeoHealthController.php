@@ -15,11 +15,12 @@ class SeoHealthController extends BaseAdminController
     {
         $health = SeoService::auditHealth();
         $sitemapUrl = rtrim(config('app.url'), '/') . '/sitemap.xml';
+        $sitemapNewsUrl = rtrim(config('app.url'), '/') . '/sitemap-news.xml';
         $robotsUrl = rtrim(config('app.url'), '/') . '/robots.txt';
 
         $sitemapCached = Cache::has(CacheKeys::SITEMAP);
 
-        return view('admin.seo-health.index', compact('health', 'sitemapUrl', 'robotsUrl', 'sitemapCached'));
+        return view('admin.seo-health.index', compact('health', 'sitemapUrl', 'sitemapNewsUrl', 'robotsUrl', 'sitemapCached'));
     }
 
     public function flushCache(Request $request): RedirectResponse

@@ -13,15 +13,18 @@
         </div>
         <div class="d-flex gap-2">
             <a href="{{ $sitemapUrl }}" target="_blank" class="btn btn-outline-secondary btn-sm">
-                <i class="fa-solid fa-sitemap me-1"></i> Buka Sitemap XML
+                <i class="fa-solid fa-sitemap me-1"></i> Sitemap XML
+            </a>
+            <a href="{{ $sitemapNewsUrl }}" target="_blank" class="btn btn-outline-secondary btn-sm">
+                <i class="fa-solid fa-newspaper me-1"></i> Sitemap News
             </a>
             <a href="{{ $robotsUrl }}" target="_blank" class="btn btn-outline-secondary btn-sm">
-                <i class="fa-solid fa-robot me-1"></i> Cek robots.txt
+                <i class="fa-solid fa-robot me-1"></i> robots.txt
             </a>
             <form method="POST" action="{{ route('admin.seo-health.flush-cache') }}" class="d-inline">
                 @csrf
                 <button class="btn btn-primary btn-sm">
-                    <i class="fa-solid fa-rotate me-1"></i> Segarkan Cache Sitemap
+                    <i class="fa-solid fa-rotate me-1"></i> Segarkan Cache
                 </button>
             </form>
         </div>
@@ -270,6 +273,7 @@
                     <ul class="small text-secondary ps-3 mb-0" style="line-height: 1.6;">
                         <li>Daftarkan properti domain di <a href="https://search.google.com/search-console" target="_blank" class="text-primary fw-semibold">Google Search Console</a> via verifikasi DNS / HTML Tag.</li>
                         <li>Submit URL Sitemap: <code>{{ $sitemapUrl }}</code> pada menu Sitemaps.</li>
+                        <li>Submit URL Sitemap News: <code>{{ $sitemapNewsUrl }}</code> untuk indeks berita di Google News.</li>
                         <li>Lakukan <strong>URL Inspection</strong> pada Homepage dan halaman pendaftaran untuk memvalidasi render bot.</li>
                         <li>Periksa tab <strong>Enhancements / Rich Results</strong> untuk memastikan schema Organization, Breadcrumb, dan Article terbaca valid.</li>
                     </ul>
