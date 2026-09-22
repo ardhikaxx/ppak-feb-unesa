@@ -2709,10 +2709,56 @@ a:hover {
   text-decoration: none;
 }
 
+.whatsapp-float::before {
+  content: 'Chat Kami di WhatsApp';
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  color: #333;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 8px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.whatsapp-float::after {
+  content: '';
+  position: absolute;
+  left: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.whatsapp-float.wa-tooltip-show::before,
+.whatsapp-float.wa-tooltip-show::after {
+  opacity: 1;
+  visibility: visible;
+}
+
 .whatsapp-float:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
   color: #fff;
+}
+
+.whatsapp-float:hover::before,
+.whatsapp-float:hover::after {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .whatsapp-float:active {
@@ -2726,6 +2772,19 @@ a:hover {
     width: 46px;
     height: 46px;
     font-size: 1.3rem;
+  }
+
+  .whatsapp-float::before {
+    left: auto;
+    right: calc(100% + 12px);
+    transform: translateY(-50%);
+  }
+
+  .whatsapp-float::after {
+    left: auto;
+    right: calc(100% + 6px);
+    border-right-color: transparent;
+    border-left-color: #fff;
   }
 }
 
