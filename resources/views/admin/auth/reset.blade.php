@@ -9,24 +9,84 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        body { background: #102a43; min-height: 100vh; display: flex; align-items: center; }
-        .login-card { max-width: 440px; width: 100%; }
-        .login-brand img { height: 56px; }
-        .gold-line { width: 56px; height: 4px; background: #c9a227; border-radius: 2px; }
+        :root { --navy: #102a43; --navy-dark: #0b1e33; --gold: #c9a227; }
+        body { background: #eef2f7; min-height: 100vh; }
+        .auth-brand {
+            background-image: linear-gradient(160deg, rgba(11, 30, 51, .94) 0%, rgba(16, 42, 67, .88) 45%, rgba(16, 42, 67, .72) 100%), url('{{ asset('images/background-hero.jpg') }}');
+            background-size: cover; background-position: center;
+            color: #fff; min-height: 100vh;
+        }
+        .auth-brand .gold-line { width: 64px; height: 4px; background: var(--gold); border-radius: 2px; }
+        .auth-step { display: flex; gap: .85rem; align-items: flex-start; }
+        .auth-step .step-badge {
+            width: 42px; height: 42px; flex: 0 0 42px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(201, 162, 39, .16); border: 1px solid rgba(201, 162, 39, .45); color: var(--gold);
+            font-weight: 700;
+        }
+        .auth-step.done .step-badge { background: rgba(25, 135, 84, .25); border-color: #198754; color: #7dd3a8; }
+        .auth-step.active .step-badge { background: var(--gold); color: var(--navy-dark); border-color: var(--gold); }
+        .auth-form-col { background: #fff; min-height: 100vh; }
+        .auth-form-wrap { max-width: 400px; width: 100%; }
+        .auth-form-wrap .gold-line { width: 56px; height: 4px; background: var(--gold); border-radius: 2px; }
+        .btn-navy { background: var(--navy); border-color: var(--navy); color: #fff; transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
+        .btn-navy:hover, .btn-navy:focus { background: var(--navy-dark); border-color: var(--navy-dark); color: #fff; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(16, 42, 67, .25); }
+        .btn-navy:focus-visible { outline: 3px solid rgba(201, 162, 39, .55); outline-offset: 2px; }
+        .form-control:focus { border-color: var(--gold); box-shadow: 0 0 0 .2rem rgba(201, 162, 39, .22); }
+        a { color: var(--navy); }
+        a:hover { color: var(--navy-dark); }
     </style>
 </head>
 <body>
-    <main class="container py-5">
-        <div class="login-card mx-auto">
-            <div class="text-center text-white mb-4 login-brand">
-                <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" class="mb-3" width="180" height="56">
-                <h1 class="h4 fw-bold mb-1">CMS Admin PPAk FEB UNESA</h1>
-                <p class="small mb-0" style="color:#b8c7dd;">Pendidikan Profesi Akuntan &bull; Universitas Negeri Surabaya</p>
+    <main class="container-fluid p-0">
+        <div class="row g-0">
+            {{-- Panel branding kampus (desktop) --}}
+            <div class="col-lg-6 d-none d-lg-flex auth-brand">
+                <div class="d-flex flex-column justify-content-between w-100 p-5">
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="{{ asset('images/logo-unesa.png') }}" alt="Logo UNESA" width="170" height="53">
+                    </div>
+                    <div>
+                        <div class="gold-line mb-3"></div>
+                        <h1 class="fw-bold mb-2" style="font-size:2rem;">Hampir selesai</h1>
+                        <p class="mb-4" style="color:#b8c7dd;">Buat password baru yang kuat untuk akun Anda.</p>
+                        <div class="d-flex flex-column gap-3">
+                            <div class="auth-step done">
+                                <span class="step-badge"><i class="fa-solid fa-check"></i></span>
+                                <div>
+                                    <div class="fw-semibold">Verifikasi email</div>
+                                    <small style="color:#9db1c9;">Akun <strong>{{ $email }}</strong> terverifikasi.</small>
+                                </div>
+                            </div>
+                            <div class="auth-step active">
+                                <span class="step-badge">2</span>
+                                <div>
+                                    <div class="fw-semibold">Buat password baru</div>
+                                    <small style="color:#9db1c9;">Minimal 8 karakter, kombinasi huruf besar, kecil, dan angka.</small>
+                                </div>
+                            </div>
+                            <div class="auth-step">
+                                <span class="step-badge">3</span>
+                                <div>
+                                    <div class="fw-semibold">Login kembali</div>
+                                    <small style="color:#9db1c9;">Masuk ke dashboard dengan password baru Anda.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <small style="color:#8fa3bd;"><i class="fa-solid fa-lock me-1"></i>Area khusus pengelola &bull; Aktivitas tercatat di audit log</small>
+                </div>
             </div>
-            <div class="card shadow">
-                <div class="card-body p-4">
+
+            {{-- Panel form --}}
+            <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center auth-form-col py-5 px-3">
+                <div class="auth-form-wrap">
+                    <div class="text-center d-lg-none mb-4">
+                        <img src="{{ asset('images/logo-single.png') }}" alt="Logo PPAk FEB UNESA" width="52" height="52" class="mb-2">
+                        <div class="fw-bold" style="color:var(--navy);">CMS Admin PPAk FEB UNESA</div>
+                    </div>
                     <div class="gold-line mb-3"></div>
-                    <h2 class="h5 fw-bold mb-1">Buat Password Baru</h2>
+                    <h2 class="h4 fw-bold mb-1" style="color:var(--navy);">Buat password baru</h2>
                     <p class="text-muted small mb-4">Akun <strong>{{ $email }}</strong> terverifikasi. Silakan masukkan password baru Anda.</p>
 
                     @if($errors->any())
@@ -39,33 +99,46 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('admin.password.update') }}" novalidate>
+                    <form method="POST" action="{{ route('admin.password.update') }}" id="resetForm" novalidate>
                         @csrf
                         <div class="mb-3">
                             <x-password-field name="password" label="Password Baru" icon="fa-lock"
                                               autocomplete="new-password" :required="true" />
+                            <div class="form-text text-warning d-none" id="capsHint"><i class="fa-solid fa-triangle-exclamation me-1"></i>Caps Lock aktif.</div>
                         </div>
                         <div class="mb-3">
                             <x-password-field name="password_confirmation" label="Konfirmasi Password Baru" icon="fa-lock"
                                               autocomplete="new-password" :required="true" />
                         </div>
                         <p class="text-muted small mb-3"><i class="fa-solid fa-circle-info me-1"></i>Minimal 8 karakter, kombinasi huruf besar, huruf kecil, dan angka.</p>
-                        <button type="submit" class="btn btn-primary w-100 fw-semibold">
-                            <i class="fa-solid fa-key me-1"></i>Simpan Password Baru
+                        <button type="submit" class="btn btn-navy w-100 fw-semibold py-2" id="resetBtn">
+                            <i class="fa-solid fa-key me-1"></i><span>Simpan Password Baru</span>
                         </button>
                     </form>
 
-                    <p class="text-center small mt-3 mb-0">
+                    <p class="text-center small mt-4 mb-0">
                         <a href="{{ route('admin.password.request') }}" class="text-decoration-none"><i class="fa-solid fa-arrow-left me-1"></i>Gunakan email lain</a>
                     </p>
                 </div>
             </div>
-            <p class="text-center small mt-3 mb-0" style="color:#8fa3bd;">
-                <a href="{{ route('home') }}" class="text-decoration-none" style="color:#cdd9e8;"><i class="fa-solid fa-globe me-1"></i>Kembali ke website publik</a>
-            </p>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('resetForm')?.addEventListener('submit', function () {
+            var btn = document.getElementById('resetBtn');
+            if (!btn) return;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span><span>Menyimpan...</span>';
+        });
+        document.querySelectorAll('[data-password-input]').forEach(function (input) {
+            input.addEventListener('keyup', function (e) {
+                var hint = document.getElementById('capsHint');
+                if (!hint || !e.getModifierState) return;
+                hint.classList.toggle('d-none', !e.getModifierState('CapsLock'));
+            });
+        });
+    </script>
     @include('components.swal')
 </body>
 </html>
