@@ -59,6 +59,4 @@ interface ContentRepositoryInterface
     public function getUnduhan(): array;
 
     public function getUnduhanPaginated(int $perPage = 10, ?string $category = null): LengthAwarePaginator;
-
-    public function search(string $keyword, int $perPage = 6): array;
 }
