@@ -34,6 +34,8 @@ class NewsRequest extends FormRequest
             'canonical_url' => ['nullable', 'url', 'max:500'],
             'og_title' => ['nullable', 'string', 'max:255'],
             'og_description' => ['nullable', 'string', 'max:500'],
+            'og_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'remove_og_image' => ['nullable', 'boolean'],
             'robots_index' => ['nullable', 'boolean'],
         ];
     }
