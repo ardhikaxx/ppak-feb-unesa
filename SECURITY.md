@@ -35,8 +35,9 @@ akses > XSS/CSRF > informasi minor).
 
 ## Di Luar Cakupan
 
-- Kredensial demo bawaan (`admin@gmail.com` / `password`) — memang untuk
-  pengembangan lokal dan **wajib diganti** di produksi (lihat checklist di
+- Kredensial demo bawaan (`superadmin@gmail.com` / `operator@gmail.com`,
+  password `password`) — memang untuk pengembangan lokal dan **wajib
+  diganti** di produksi (lihat checklist di
   [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)).
 - Kerentanan pada dependensi upstream (Laravel, Bootstrap CDN, dsb.) —
   laporkan ke maintainer masing-masing, lalu beri tahu kami bila perlu
