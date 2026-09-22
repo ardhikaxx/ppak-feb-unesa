@@ -2672,6 +2672,10 @@ a:hover {
   color: #fff;
 }
 
+.back-to-top i {
+  color: #fff;
+}
+
 .back-to-top:active {
   transform: translateY(0);
 }
