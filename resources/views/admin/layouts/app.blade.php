@@ -69,8 +69,8 @@
             .topbar .btn { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
             .topbar .dropdown-toggle { font-size: 0.75rem; padding: 0.25rem 0.5rem; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
             .content { padding: 0.75rem; }
-            .d-flex.align-items-center.justify-content-between.mb-4 { flex-direction: column; align-items: stretch !important; gap: 0.75rem; }
-            .d-flex.align-items-center.justify-content-between.mb-4 .btn { width: 100%; justify-content: center; }
+            .d-flex.align-items-center.justify-content-between { flex-direction: column; align-items: stretch !important; gap: 0.6rem; }
+            .d-flex.align-items-center.justify-content-between .btn { width: 100%; justify-content: center; }
             .row.g-3 > [class*="col-"] { padding-left: 0.375rem; padding-right: 0.375rem; }
             .stat-tile .card-body { flex-direction: row !important; text-align: left !important; gap: 0.6rem !important; }
         }
