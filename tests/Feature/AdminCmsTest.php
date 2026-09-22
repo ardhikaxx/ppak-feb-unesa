@@ -35,7 +35,7 @@ test('tamu yang membuka halaman admin diarahkan ke login', function () {
 test('halaman login admin dapat dibuka publik', function () {
     $response = $this->get(route('admin.login'));
     $response->assertStatus(200);
-    $response->assertSee('Login Administrator');
+    $response->assertSee('Selamat datang kembali');
 });
 
 test('login dengan kredensial salah ditolak', function () {
