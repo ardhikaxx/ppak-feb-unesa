@@ -35,10 +35,13 @@ class AdminAccountController extends BaseAdminController
     {
         $data = $request->validated();
         $data['is_active'] = $request->boolean('is_active', true);
+        // Akun baru default operator; hanya super_admin yang mencapai
+        // route ini (middleware) sehingga role tidak bisa diisi publik.
+        $data['role'] = $data['role'] ?? Admin::ROLE_OPERATOR;
 
         $account = Admin::create($data);
 
-        $this->audit('created', $account, ['id' => $account->id, 'name' => $account->name, 'email' => $account->email]);
+        $this->audit('created', $account, ['id' => $account->id, 'name' => $account->name, 'email' => $account->email, 'role' => $account->role]);
 
         return redirect()->route('admin.admins.index')->with('success', 'Akun admin berhasil dibuat.');
     }
@@ -57,14 +60,36 @@ class AdminAccountController extends BaseAdminController
             unset($data['password']);
         }
 
+        // Tanpa role di payload berarti role tidak diubah (kompatibel
+        // dengan form lama / request tanpa field role).
+        if (! array_key_exists('role', $data)) {
+            unset($data['role']);
+        }
+
         // Cegah admin menonaktifkan dirinya sendiri.
         if ($admin->id === $this->admin()?->id && ! $data['is_active']) {
             return back()->with('error', 'Anda tidak dapat menonaktifkan akun sendiri.')->withInput();
         }
 
+        // Cegah mengubah role diri sendiri (anti lockout / anti eskalasi).
+        if ($admin->id === $this->admin()?->id && isset($data['role']) && $data['role'] !== $admin->role) {
+            return back()->with('error', 'Anda tidak dapat mengubah role akun sendiri.')->withInput();
+        }
+
+        // Cegah demosi / nonaktivasi super_admin terakhir.
+        if ($admin->isSuperAdmin() && Admin::superAdmins()->count() <= 1) {
+            if (isset($data['role']) && $data['role'] !== Admin::ROLE_SUPER_ADMIN) {
+                return back()->with('error', 'Tidak dapat menurunkan satu-satunya super admin.')->withInput();
+            }
+
+            if (! $data['is_active'] && $admin->is_active) {
+                return back()->with('error', 'Tidak dapat menonaktifkan satu-satunya super admin.')->withInput();
+            }
+        }
+
         $admin->update($data);
 
-        $this->audit('updated', $admin, ['id' => $admin->id, 'name' => $admin->name, 'email' => $admin->email, 'is_active' => $admin->is_active]);
+        $this->audit('updated', $admin, ['id' => $admin->id, 'name' => $admin->name, 'email' => $admin->email, 'role' => $admin->role, 'is_active' => $admin->is_active]);
 
         return redirect()->route('admin.admins.index')->with('success', 'Akun admin berhasil diperbarui.');
     }
@@ -75,12 +100,18 @@ class AdminAccountController extends BaseAdminController
             return back()->with('error', 'Anda tidak dapat menghapus akun sendiri.');
         }
 
+        // Operator tidak pernah mencapai titik ini (route super_admin saja),
+        // namun penghapusan super_admin tetap dijaga di level controller.
+        if ($admin->isSuperAdmin() && Admin::superAdmins()->count() <= 1) {
+            return back()->with('error', 'Tidak dapat menghapus satu-satunya super admin.');
+        }
+
         if (Admin::where('is_active', true)->count() <= 1 && $admin->is_active) {
             return back()->with('error', 'Tidak dapat menghapus satu-satunya admin aktif.');
         }
 
         $admin->delete();
-        $this->audit('deleted', $admin, ['email' => $admin->email]);
+        $this->audit('deleted', $admin, ['email' => $admin->email, 'role' => $admin->role]);
 
         return redirect()->route('admin.admins.index')->with('success', 'Akun admin dihapus.');
     }
