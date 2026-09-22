@@ -72,7 +72,7 @@
             .d-flex.align-items-center.justify-content-between.mb-4 { flex-direction: column; align-items: stretch !important; gap: 0.75rem; }
             .d-flex.align-items-center.justify-content-between.mb-4 .btn { width: 100%; justify-content: center; }
             .row.g-3 > [class*="col-"] { padding-left: 0.375rem; padding-right: 0.375rem; }
-            .card-body.d-flex.align-items-center.gap-3 { flex-direction: column; text-align: center; gap: 0.5rem !important; }
+            .stat-tile .card-body { flex-direction: row !important; text-align: left !important; gap: 0.6rem !important; }
         }
     </style>
     @stack('styles')
