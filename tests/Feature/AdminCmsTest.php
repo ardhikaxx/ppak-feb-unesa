@@ -19,7 +19,7 @@ beforeEach(function () {
 
 function adminCredentials(): array
 {
-    return ['email' => env('ADMIN_EMAIL', 'admin@gmail.com'), 'password' => env('ADMIN_PASSWORD', 'password')];
+    return ['email' => env('ADMIN_EMAIL', 'superadmin@gmail.com'), 'password' => env('ADMIN_PASSWORD', 'password')];
 }
 
 function loginAdmin($testcase)
