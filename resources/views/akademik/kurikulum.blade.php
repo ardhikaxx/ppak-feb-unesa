@@ -17,6 +17,19 @@
 
 <section class="section-py bg-white">
     <div class="container">
+        {{-- Print Header (hanya muncul saat cetak) --}}
+        <div class="print-header d-none">
+            <h1>Kurikulum & Capaian Pembelajaran Lulusan</h1>
+            <p>Pendidikan Profesi Akuntan FEB UNESA — Tahun Akademik 2026/2027</p>
+        </div>
+
+        {{-- Print Button --}}
+        <div class="text-end mb-3 no-print">
+            <button onclick="window.print()" class="btn-ppak-secondary btn-ppak-sm">
+                <i class="fa-solid fa-print me-1"></i> Cetak Halaman
+            </button>
+        </div>
+
         {{-- Source Attribution Banner --}}
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center p-3 rounded-3 border bg-subtle mb-5 gap-2">
             <div class="small text-secondary">
