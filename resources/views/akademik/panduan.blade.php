@@ -17,6 +17,19 @@
 
 <section class="section-py bg-white">
     <div class="container-xl">
+        {{-- Print Header (hanya muncul saat cetak) --}}
+        <div class="print-header d-none">
+            <h1>Pedoman & Panduan Akademik</h1>
+            <p>Pendidikan Profesi Akuntan FEB UNESA</p>
+        </div>
+
+        {{-- Print Button --}}
+        <div class="text-end mb-3 no-print">
+            <button onclick="window.print()" class="btn-ppak-secondary btn-ppak-sm">
+                <i class="fa-solid fa-print me-1"></i> Cetak Halaman
+            </button>
+        </div>
+
         {{-- Dokumen Resmi yang Terverifikasi --}}
                 <div class="text-center max-w-700 mx-auto mb-4">
             <span class="badge-ppak badge-ppak-gold mb-2">
