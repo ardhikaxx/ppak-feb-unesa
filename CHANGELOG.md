@@ -3,6 +3,22 @@
 Semua perubahan penting proyek ini dicatat di sini dengan format
 [Keep a Changelog](https://keepachangelog.com/id/1.1.0/).
 
+## [Unreleased]
+
+### Ditambahkan
+
+- Fitur **Lupa Password** admin: verifikasi email → buat password baru,
+  toast sukses/gagal + SweetAlert konfirmasi di halaman login.
+- **RBAC CMS**: role `super_admin` (akses penuh) vs `operator` (berita,
+  agenda, galeri, dokumen, FAQ, publikasi, kurikulum, dosen, informasi
+  admisi). Izin ditegakkan server-side via middleware `admin.access` +
+  grup `admin.role:super_admin` (deny by default, 403), sidebar
+  menyesuaikan role, kolom & form role di Kelola Admin, proteksi
+  super admin terakhir,   dan test `AdminRbacTest` baru. Akun existing menjadi super_admin via
+  migration backfill; akun seeder lama `admin@gmail.com` dihapus dan
+  diganti `superadmin@gmail.com` + `operator@gmail.com` (pengecualian
+  satu kali atas proteksi seeder, disetujui pemilik proyek).
+
 ## [1.0.0] - 2026-09-20
 
 Rilis CMS Admin — seluruh konten website dapat dikelola dari database.
