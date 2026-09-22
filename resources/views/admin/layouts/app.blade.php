@@ -44,10 +44,35 @@
         .required::after { content: " *"; color: #dc3545; }
         .sidebar-backdrop { display: none; }
         @media (max-width: 991.98px) {
-            .sidebar { transform: translateX(-100%); }
+            .sidebar { transform: translateX(-100%); width: 280px; max-width: 85vw; }
             body.sidebar-open .sidebar { transform: translateX(0); }
             body.sidebar-open .sidebar-backdrop { display: block; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 1035; }
             .main { margin-left: 0; }
+            .topbar .breadcrumb { max-width: calc(100vw - 180px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            .topbar .breadcrumb-item { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            .content { padding: 1rem; }
+            .card-header { font-size: 0.85rem; padding: 0.65rem 0.85rem; }
+            .card-body { padding: 0.85rem; }
+            .table th { font-size: 0.7rem; padding: 0.6rem 0.5rem; }
+            .table td { font-size: 0.8rem; padding: 0.6rem 0.5rem; }
+            .btn-group-sm .btn { padding: 0.25rem 0.4rem; font-size: 0.75rem; }
+            .stat-tile .card-body { gap: 0.5rem !important; }
+            .stat-tile .fs-3 { font-size: 1.2rem !important; }
+            .stat-tile .fs-4 { font-size: 1.1rem !important; }
+            .form-control, .form-select { font-size: 16px; min-height: 44px; }
+            .form-label { font-size: 0.85rem; }
+            .breadcrumb { font-size: 0.75rem; }
+            footer.px-4 { padding-left: 1rem !important; padding-right: 1rem !important; font-size: 0.75rem; }
+        }
+        @media (max-width: 575.98px) {
+            .topbar .d-flex.align-items-center.gap-2 { flex-wrap: wrap; gap: 0.35rem !important; }
+            .topbar .btn { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
+            .topbar .dropdown-toggle { font-size: 0.75rem; padding: 0.25rem 0.5rem; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            .content { padding: 0.75rem; }
+            .d-flex.align-items-center.justify-content-between.mb-4 { flex-direction: column; align-items: stretch !important; gap: 0.75rem; }
+            .d-flex.align-items-center.justify-content-between.mb-4 .btn { width: 100%; justify-content: center; }
+            .row.g-3 > [class*="col-"] { padding-left: 0.375rem; padding-right: 0.375rem; }
+            .card-body.d-flex.align-items-center.gap-3 { flex-direction: column; text-align: center; gap: 0.5rem !important; }
         }
     </style>
     @stack('styles')
