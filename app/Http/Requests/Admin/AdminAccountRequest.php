@@ -21,6 +21,7 @@ class AdminAccountRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('admins', 'email')->ignore($id)],
             'password' => [$isCreate ? 'required' : 'nullable', 'string', 'min:8', 'max:255', 'confirmed'],
+            'role' => ['sometimes', 'string', Rule::in(\App\Models\Admin::ROLES)],
             'is_active' => ['nullable', 'boolean'],
         ];
     }
@@ -30,6 +31,7 @@ class AdminAccountRequest extends FormRequest
         return [
             'password.min' => 'Password minimal 8 karakter.',
             'password.confirmed' => 'Konfirmasi password tidak sama.',
+            'role.in' => 'Role tidak valid.',
         ];
     }
 }
