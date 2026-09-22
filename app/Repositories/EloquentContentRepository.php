@@ -875,41 +875,4 @@ class EloquentContentRepository implements ContentRepositoryInterface
 
         return $paginator;
     }
-
-    public function search(string $keyword, int $perPage = 6): array
-    {
-        if (mb_strlen(trim($keyword)) < 2) {
-            return ['berita' => [], 'agenda' => [], 'dosen' => []];
-        }
-
-        $berita = News::query()
-            ->published()
-            ->where(fn ($q) => $q->where('title', 'like', "%{$keyword}%")->orWhere('excerpt', 'like', "%{$keyword}%"))
-            ->orderByDesc('published_at')
-            ->limit($perPage)
-            ->with(['category:id,name,slug', 'author:id,name'])
-            ->get()
-            ->map(fn ($n) => $this->mapNews($n))
-            ->all();
-
-        $agenda = Agenda::query()
-            ->where(fn ($q) => $q->where('title', 'like', "%{$keyword}%")->orWhere('description', 'like', "%{$keyword}%"))
-            ->orderBy('event_date')
-            ->limit($perPage)
-            ->with('category:id,name')
-            ->get()
-            ->map(fn ($a) => $this->mapAgenda($a))
-            ->all();
-
-        $dosen = Lecturer::query()
-            ->where('status', 'active')
-            ->where(fn ($q) => $q->where('name', 'like', "%{$keyword}%")->orWhere('bidang', 'like', "%{$keyword}%"))
-            ->orderBy('sort_order')
-            ->limit($perPage)
-            ->get()
-            ->map(fn ($d) => $this->mapLecturer($d))
-            ->all();
-
-        return ['berita' => $berita, 'agenda' => $agenda, 'dosen' => $dosen];
-    }
 }
