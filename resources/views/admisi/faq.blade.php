@@ -3,6 +3,31 @@
 @section('title', 'Tanya Jawab (FAQ) Admisi & Pendaftaran | Pendidikan Profesi Akuntan FEB UNESA')
 @section('meta_description', 'Pertanyaan yang sering diajukan seputar prosedur pendaftaran akun PMB, verifikasi berkas, biaya UKT, dan jadwal perkuliahan Pendidikan Profesi Akuntan FEB UNESA.')
 
+@push('jsonld')
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        @foreach($faqs as $index => $faq)
+        @php
+            $question = $faq['tanya'] ?? $faq['q'] ?? '';
+            $answer = $faq['jawab'] ?? $faq['a'] ?? '';
+        @endphp
+        {
+            "@type": "Question",
+            "name": @json($question),
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": @json($answer)
+            }
+        }{{ $loop->last ? '' : ',' }}
+        @endforeach
+    ]
+}
+</script>
+@endpush
+
 @section('content')
 
 @include('partials.page-header', [
