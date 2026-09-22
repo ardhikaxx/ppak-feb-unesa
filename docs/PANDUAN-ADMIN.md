@@ -26,7 +26,8 @@ Panduan operasional harian bagi admin pengelola website. Untuk hal teknis
 5. Selesai bekerja, klik nama Anda di kanan atas → **Logout**. Jangan hanya menutup tab
    pada komputer bersama.
 
-> Lupa password? Hubungi administrator utama untuk mereset lewat menu **Kelola Admin**.
+> Lupa password? Klik **Lupa password?** di halaman login, masukkan email akun
+> untuk verifikasi, lalu buat password baru di halaman berikutnya.
 
 ## 2. Mengenal Dashboard
 
@@ -129,8 +130,16 @@ Perubahan di sini langsung berlaku di seluruh website — periksa kembali sebelu
   status tiket (Terbuka → Diproses → Selesai). Badge merah di sidebar = jumlah tiket terbuka.
 - **Audit Log**: riwayat siapa mengubah apa dan kapan (read-only). Gunakan untuk
   melacak perubahan bermasalah.
-- **Kelola Admin**: tambah/nonaktifkan akun. Anda **tidak bisa** menonaktifkan atau
-  menghapus akun sendiri, dan satu-satunya admin aktif dilindungi.
+- **Kelola Admin** (khusus Super Admin): tambah/nonaktifkan akun dan atur **role**.
+  - **Super Admin**: akses penuh seluruh CMS termasuk pengaturan, helpdesk,
+    audit log, dan kelola akun.
+  - **Operator**: hanya modul konten — berita, agenda, galeri, dokumen, FAQ,
+    publikasi, kurikulum, dosen, dan informasi admisi (gelombang & biaya).
+  - Pembatasan ditegakkan di server: operator yang mengakses URL sensitif
+    langsung mendapat halaman 403.
+  - Anda **tidak bisa** mengubah role/menonaktifkan/menghapus akun sendiri,
+    dan satu-satunya super admin dilindungi dari demosi, nonaktivasi,
+    maupun penghapusan.
 - **Profil Saya**: ubah nama/email sendiri dan ganti password (minimal 8 karakter,
   kombinasi huruf besar-kecil dan angka).
 
