@@ -257,7 +257,7 @@
         </main>
 
         <footer class="px-4 py-3 small text-muted border-top bg-white">
-            CMS Admin PPAk FEB UNESA &bull; Seluruh perubahan konten tercatat pada audit log.
+            CMS Admin PPAk FEB UNESA
         </footer>
     </div>
 
