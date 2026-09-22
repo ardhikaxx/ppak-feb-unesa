@@ -121,13 +121,15 @@ class InformasiController extends Controller
     public function robots(): Response
     {
         $sitemap = rtrim(config('app.url'), '/') . '/sitemap.xml';
+        $sitemapNews = rtrim(config('app.url'), '/') . '/sitemap-news.xml';
 
         $content = "User-agent: *\n"
             . "Allow: /\n"
             . "Disallow: /admin/\n"
             . "Disallow: /admin\n"
             . "\n"
-            . "Sitemap: {$sitemap}\n";
+            . "Sitemap: {$sitemap}\n"
+            . "Sitemap: {$sitemapNews}\n";
 
         return response($content, 200, ['Content-Type' => 'text/plain']);
     }
@@ -205,6 +207,36 @@ class InformasiController extends Controller
             $xmlContent = view('sitemap', ['urls' => $urls])->render();
 
             return $xmlContent;
+        });
+
+        return response($xml, 200, ['Content-Type' => 'application/xml']);
+    }
+
+    /**
+     * Sitemap khusus berita: XML terpisah untuk News Google.
+     * Hanya berita published, noindex excluded.
+     */
+    public function sitemapNews(): Response
+    {
+        $xml = Cache::remember('ppak:sitemap:news', config('ppak.cache.ttl.sitemap', 3600), function () {
+            $urls = collect();
+
+            \App\Models\News::published()
+                ->select(['slug', 'title', 'updated_at', 'published_at', 'robots_index'])
+                ->where('robots_index', true)
+                ->orderByDesc('published_at')
+                ->chunk(500, function ($items) use ($urls) {
+                    foreach ($items as $item) {
+                        $urls->push([
+                            'loc' => route('informasi.berita.detail', $item->slug),
+                            'lastmod' => $item->updated_at?->toAtomString(),
+                            'news_title' => $item->title,
+                            'news_date' => $item->published_at?->toAtomString(),
+                        ]);
+                    }
+                });
+
+            return view('sitemap-news', ['urls' => $urls])->render();
         });
 
         return response($xml, 200, ['Content-Type' => 'application/xml']);
