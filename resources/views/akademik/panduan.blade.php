@@ -19,7 +19,7 @@
     <div class="container-xl">
         {{-- Print Header (hanya muncul saat cetak) --}}
         <div class="print-header d-none">
-            <h1>Pedoman & Panduan Akademik</h1>
+            <div class="print-header-title">Pedoman & Panduan Akademik</div>
             <p>Pendidikan Profesi Akuntan FEB UNESA</p>
         </div>
 

@@ -19,7 +19,7 @@
     <div class="container">
         {{-- Print Header (hanya muncul saat cetak) --}}
         <div class="print-header d-none">
-            <h1>Kalender Akademik 2026/2027</h1>
+            <div class="print-header-title">Kalender Akademik 2026/2027</div>
             <p>Universitas Negeri Surabaya — Surat No. B/2322/UN38.I/TU.00.02/2026</p>
         </div>
 

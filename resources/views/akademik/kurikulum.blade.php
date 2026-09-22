@@ -19,7 +19,7 @@
     <div class="container">
         {{-- Print Header (hanya muncul saat cetak) --}}
         <div class="print-header d-none">
-            <h1>Kurikulum & Capaian Pembelajaran Lulusan</h1>
+            <div class="print-header-title">Kurikulum & Capaian Pembelajaran Lulusan</div>
             <p>Pendidikan Profesi Akuntan FEB UNESA — Tahun Akademik 2026/2027</p>
         </div>
 

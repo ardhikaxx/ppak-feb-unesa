@@ -3420,8 +3420,9 @@ a:hover {
     border-bottom: 2px solid #000;
   }
 
-  .print-header h1 {
+  .print-header .print-header-title {
     font-size: 18pt;
+    font-weight: 700;
     margin-bottom: 0.25rem;
   }
 

@@ -7,25 +7,20 @@ use App\Models\Admin;
 use App\Models\AdmissionSchedule;
 use App\Models\Agenda;
 use App\Models\AlumniRecord;
-use App\Models\Category;
 use App\Models\CommunityService;
-use App\Models\Document;
 use App\Models\FAQ;
 use App\Models\Gallery;
 use App\Models\HelpdeskInquiry;
 use App\Models\LearningOutcome;
-use App\Models\Lecturer;
-use App\Models\News;
 use App\Models\Partnership;
-use App\Models\ProgramProfile;
 use App\Models\Publication;
 use App\Models\Research;
-use App\Models\SiteSetting;
 use App\Models\Testimonial;
 use App\Models\TuitionFee;
+use App\Support\Uploads;
 use Database\Seeders\AdminSeeder;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 beforeEach(function () {
     $this->seed(AdminSeeder::class);
@@ -35,6 +30,7 @@ function loginAsAdmin($testcase)
 {
     $admin = Admin::first();
     $testcase->actingAs($admin, 'admin');
+
     return $admin;
 }
 
@@ -354,4 +350,102 @@ test('admin can view seo health dashboard and flush cache', function () {
     $flush = $this->post(route('admin.seo-health.flush-cache'));
     $flush->assertRedirect(route('admin.seo-health.index'));
     $flush->assertSessionHas('success');
+});
+
+test('admin can manage gallery CRUD with image upload', function () {
+    loginAsAdmin($this);
+
+    $slug = 'galeri-uji-cms-admin';
+    $res = $this->post(route('admin.galleries.store'), [
+        'title' => 'Galeri Uji CMS Admin',
+        'slug' => $slug,
+        'image' => UploadedFile::fake()->image('galeri-uji.jpg', 200, 150),
+        'event_date' => '2026-09-01',
+        'status' => 'published',
+    ]);
+    $res->assertRedirect(route('admin.galleries.index'));
+    $item = Gallery::where('slug', $slug)->first();
+    expect($item)->not->toBeNull();
+    expect($item->image)->toStartWith('/uploads/');
+
+    $this->get(route('admin.galleries.edit', $item))->assertStatus(200);
+
+    $this->put(route('admin.galleries.update', $item), [
+        'title' => 'Galeri Uji CMS Admin Updated',
+        'slug' => $slug,
+        'event_date' => '2026-09-02',
+        'status' => 'draft',
+    ])->assertRedirect(route('admin.galleries.index'));
+    expect($item->fresh()->title)->toBe('Galeri Uji CMS Admin Updated');
+    expect($item->fresh()->status)->toBe('draft');
+
+    $this->delete(route('admin.galleries.destroy', $item))->assertRedirect(route('admin.galleries.index'));
+    expect(Gallery::where('slug', $slug)->count())->toBe(0);
+    expect(Gallery::withTrashed()->where('slug', $slug)->count())->toBe(1);
+
+    $this->post(route('admin.galleries.restore', $item->id))->assertRedirect(route('admin.galleries.index'));
+    expect(Gallery::where('slug', $slug)->count())->toBe(1);
+
+    // Cleanup file fisik + record
+    Uploads::delete($item->fresh()->image);
+    Gallery::withTrashed()->where('slug', $slug)->forceDelete();
+});
+
+test('admin can manage community service (PKM) CRUD', function () {
+    loginAsAdmin($this);
+
+    $res = $this->post(route('admin.community-services.store'), [
+        'title' => 'Pelatihan Akuntansi Desa Uji',
+        'leader_name' => 'Dr. Uji PKM',
+        'target_audience' => 'Perangkat Desa',
+        'location' => 'Surabaya',
+        'year' => 2026,
+        'status' => 'published',
+        'description' => 'Deskripsi kegiatan pengabdian kepada masyarakat untuk pengujian CMS.',
+    ]);
+    $res->assertRedirect(route('admin.community-services.index'));
+    $item = CommunityService::where('title', 'Pelatihan Akuntansi Desa Uji')->first();
+    expect($item)->not->toBeNull();
+
+    $this->get(route('admin.community-services.edit', $item))->assertStatus(200);
+
+    $this->put(route('admin.community-services.update', $item), [
+        'title' => 'Pelatihan Akuntansi Desa Uji Updated',
+        'leader_name' => 'Dr. Uji PKM Updated',
+        'year' => 2026,
+        'status' => 'draft',
+        'description' => 'Deskripsi kegiatan pengabdian kepada masyarakat untuk pengujian CMS.',
+    ])->assertRedirect(route('admin.community-services.index'));
+    expect($item->fresh()->title)->toBe('Pelatihan Akuntansi Desa Uji Updated');
+    expect($item->fresh()->status)->toBe('draft');
+
+    $this->delete(route('admin.community-services.destroy', $item))->assertRedirect(route('admin.community-services.index'));
+    expect(CommunityService::where('title', 'Pelatihan Akuntansi Desa Uji Updated')->count())->toBe(0);
+});
+
+test('admin can delete unused media file and path traversal is rejected', function () {
+    loginAsAdmin($this);
+
+    Uploads::ensureDirectory('media-uji');
+    $absolute = Uploads::basePath().'/media-uji/file-uji.txt';
+    File::put($absolute, 'isi file uji media manager');
+    expect(File::exists($absolute))->toBeTrue();
+
+    $this->get(route('admin.media.index'))
+        ->assertStatus(200)
+        ->assertSee('file-uji.txt', false);
+
+    $this->delete(route('admin.media.destroy'), ['path' => 'media-uji/file-uji.txt'])
+        ->assertRedirect(route('admin.media.index'))
+        ->assertSessionHas('success');
+    expect(File::exists($absolute))->toBeFalse();
+
+    // Path traversal / file tidak ada ditolak dengan error, tanpa hapus apa pun.
+    $this->delete(route('admin.media.destroy'), ['path' => '../../.env'])
+        ->assertRedirect(route('admin.media.index'))
+        ->assertSessionHas('error');
+
+    $this->delete(route('admin.media.destroy'), ['path' => 'media-uji/tidak-ada.txt'])
+        ->assertRedirect(route('admin.media.index'))
+        ->assertSessionHas('error');
 });
