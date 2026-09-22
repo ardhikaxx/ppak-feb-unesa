@@ -60,13 +60,6 @@ return [
         'allowed_mimes' => ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'],
     ],
 
-    'search' => [
-        'min_length' => 2,
-        'per_category_limit' => 6,
-        // Future: driver 'database' -> 'meilisearch' without changing Blade
-        'driver' => env('SEARCH_DRIVER', 'database'),
-    ],
-
     'options' => [
         'news_status' => [
             'draft' => 'Draft',
@@ -120,7 +113,6 @@ return [
     ],
 
     'rate_limit' => [
-        'search' => '30,1', // 30/min
         'helpdesk' => '10,1',
         'download' => '60,1',
     ],
