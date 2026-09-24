@@ -20,8 +20,6 @@ class AlumniRequest extends FormRequest
             'current_company' => ['nullable', 'string', 'max:255'],
             'current_position' => ['nullable', 'string', 'max:255'],
             'status' => ['required', Rule::in(['draft', 'unpublished', 'published'])],
-            'source_url' => ['nullable', 'url', 'max:500'],
-            'source_name' => ['nullable', 'string', 'max:255'],
         ];
     }
 
