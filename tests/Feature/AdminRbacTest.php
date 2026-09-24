@@ -33,6 +33,7 @@ test('operator dapat mengakses dashboard, profil, dan modul konten yang diizinka
 
     $allowed = [
         'admin.dashboard',
+        'admin.guide',
         'admin.profile.edit',
         'admin.lecturers.index',
         'admin.curricula.index',
@@ -78,6 +79,29 @@ test('operator ditolak 403 pada area sensitif (enforcement backend)', function (
     foreach ($denied as $route) {
         $this->get(route($route))->assertForbidden();
     }
+});
+
+test('halaman panduan dapat diakses super admin, operator, dan ditolak tamu', function () {
+    $this->get(route('admin.guide'))->assertRedirect(route('admin.login'));
+
+    $this->actingAs(createOperator(), 'admin');
+    $this->get(route('admin.guide'))
+        ->assertStatus(200)
+        ->assertSee('Panduan Penggunaan CMS')
+        ->assertSee('Daftar Isi')
+        // Panduan khusus super admin tidak dirender sama sekali untuk operator.
+        ->assertSee('id="berita"', false)
+        ->assertDontSee('id="kelola-admin"', false)
+        ->assertDontSee('id="pengaturan"', false)
+        ->assertDontSee('id="helpdesk"', false);
+
+    $this->actingAs(Admin::where('email', 'superadmin@gmail.com')->first(), 'admin');
+    $this->get(route('admin.guide'))
+        ->assertStatus(200)
+        ->assertSee('id="berita"', false)
+        ->assertSee('id="kelola-admin"', false)
+        ->assertSee('id="pengaturan"', false)
+        ->assertSee('id="helpdesk"', false);
 });
 
 test('role selain super_admin dan operator ditolak total di CMS', function () {
