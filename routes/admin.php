@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DocumentController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\GuideController;
 use App\Http\Controllers\Admin\HelpdeskController;
 use App\Http\Controllers\Admin\LearningOutcomeController;
 use App\Http\Controllers\Admin\LecturerController;
@@ -63,6 +64,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['admin.auth:admin', 'admin.active', 'admin.access'])->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        // Panduan penggunaan CMS per role (dibuka super_admin & operator).
+        Route::get('/panduan', [GuideController::class, 'index'])->name('guide');
 
         // Profil milik sendiri (kedua role).
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
