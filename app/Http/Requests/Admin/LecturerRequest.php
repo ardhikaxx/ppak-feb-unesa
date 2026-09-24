@@ -32,8 +32,6 @@ class LecturerRequest extends FormRequest
             'sort_order' => ['nullable', 'integer', 'min:0', 'max:9999'],
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
             'remove_image' => ['nullable', 'boolean'],
-            'source_url' => ['nullable', 'url', 'max:500'],
-            'source_name' => ['nullable', 'string', 'max:255'],
         ];
     }
 
