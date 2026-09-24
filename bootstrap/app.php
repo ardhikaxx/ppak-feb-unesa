@@ -12,9 +12,19 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // Hosting produksi umumnya di balik proxy/load balancer:
-        // percayakan header Forwarded agar deteksi HTTPS & IP benar.
-        $middleware->trustProxies(at: '*');
+        // Daftar proxy tepercaya via TRUSTED_PROXIES (koma, IP/CIDR).
+        // Kosong = tidak percaya siapa pun (default aman untuk local).
+        // Produksi di balik LB: set TRUSTED_PROXIES=IP_LB di .env
+        // (atau bake ke config saat config:cache).
+        $trustedProxies = array_values(array_filter(array_map(
+            'trim',
+            explode(',', (string) env('TRUSTED_PROXIES', ''))
+        )));
+        $middleware->trustProxies(at: $trustedProxies);
+
+        $middleware->web(append: [
+            \App\Http\Middleware\SecurityHeaders::class,
+        ]);
 
         $middleware->alias([
             'admin.auth' => \App\Http\Middleware\AuthenticateAdmin::class,
