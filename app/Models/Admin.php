@@ -26,6 +26,7 @@ class Admin extends Authenticatable
      */
     public const OPERATOR_ROUTE_PREFIXES = [
         'admin.dashboard',
+        'admin.guide',
         'admin.logout',
         'admin.profile.',
         'admin.news.',
