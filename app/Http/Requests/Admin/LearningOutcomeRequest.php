@@ -22,8 +22,6 @@ class LearningOutcomeRequest extends FormRequest
             'description' => ['required', 'string'],
             'category' => ['nullable', 'string', 'max:50'],
             'sort_order' => ['nullable', 'integer', 'min:0', 'max:9999'],
-            'source_url' => ['nullable', 'url', 'max:500'],
-            'source_name' => ['nullable', 'string', 'max:255'],
         ];
     }
 }
