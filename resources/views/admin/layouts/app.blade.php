@@ -199,6 +199,11 @@
                 </a>
             @endif
 
+            <div class="sidebar-group">Bantuan</div>
+            <a href="{{ route('admin.guide') }}" class="sidebar-link {{ request()->routeIs('admin.guide') ? 'active' : '' }}">
+                <i class="fa-solid fa-book-open-reader"></i> Panduan CMS
+            </a>
+
             <div class="sidebar-group">Akun</div>
             @if($cmsAdmin?->isSuperAdmin())
                 <a href="{{ route('admin.admins.index') }}" class="sidebar-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}">
