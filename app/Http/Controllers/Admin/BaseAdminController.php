@@ -112,8 +112,9 @@ abstract class BaseAdminController extends Controller
     }
 
     /**
-     * Sanitasi HTML konten panjang (berita, deskripsi): izinkan tag format
-     * dasar, buang <script>/<iframe>/<style> dan event handler / javascript:.
+     * Sanitasi HTML konten panjang (berita) berbasis parser DOM:
+     * allowlist tag + atribut, buang node berbahaya (script/iframe/dll)
+     * dan skema berbahaya pada href (javascript:, vbscript:, data:).
      */
     protected function sanitizeHtml(?string $html): ?string
     {
@@ -121,14 +122,98 @@ abstract class BaseAdminController extends Controller
             return $html;
         }
 
-        $html = preg_replace('#<(script|iframe|object|embed|style|link|meta)[^>]*>.*?</\1>#is', '', $html);
-        $html = strip_tags($html, '<p><br><strong><em><u><ul><ol><li><a><h2><h3><h4><blockquote>');
-        // Hapus event handler (onclick, onerror, ...)
-        $html = preg_replace('/\son\w+\s*=\s*("[^"]*"|\'[^\']*\'|[^\s>]+)/i', '', $html);
-        // Netralkan javascript: pada href
-        $html = preg_replace('/href\s*=\s*"\s*javascript:[^"]*"/i', 'href="#"', $html);
-        $html = preg_replace("/href\s*=\s*'\s*javascript:[^']*'/i", "href='#'", $html);
+        $allowedTags = ['p', 'br', 'strong', 'em', 'u', 'ul', 'ol', 'li', 'a', 'h2', 'h3', 'h4', 'blockquote'];
+        $allowedAttributes = ['href', 'title', 'target', 'rel'];
+        $dropWithContent = ['script', 'style', 'iframe', 'object', 'embed', 'link', 'meta', 'form', 'input', 'button', 'textarea', 'select', 'svg', 'math', 'template', 'noscript'];
 
-        return trim($html);
+        $previous = libxml_use_internal_errors(true);
+        $document = new \DOMDocument();
+        $document->loadHTML(
+            '<!DOCTYPE html><html><body id="sanitize-root">'.$html.'</body></html>',
+            LIBXML_HTML_NODEFDTD
+        );
+        libxml_clear_errors();
+        libxml_use_internal_errors($previous);
+
+        $root = $document->getElementsByTagName('body')->item(0);
+        if (! $root) {
+            return trim(strip_tags($html));
+        }
+
+        $filter = function (\DOMNode $node) use (&$filter, $allowedTags, $allowedAttributes, $dropWithContent): void {
+            if (! $node->hasChildNodes()) {
+                return;
+            }
+
+            foreach (iterator_to_array($node->childNodes) as $child) {
+                if ($child instanceof \DOMElement) {
+                    $tag = strtolower($child->nodeName);
+
+                    if (in_array($tag, $dropWithContent, true)) {
+                        $child->parentNode?->removeChild($child);
+
+                        continue;
+                    }
+
+                    if (! in_array($tag, $allowedTags, true)) {
+                        // Lift: buang tag, pertahankan isinya.
+                        $parent = $child->parentNode;
+                        if ($parent) {
+                            while ($child->firstChild) {
+                                $parent->insertBefore($child->firstChild, $child);
+                            }
+                            $parent->removeChild($child);
+                        }
+
+                        // Anak yang di-lift ke parent tetap perlu difilter.
+                        continue;
+                    }
+
+                    $remove = [];
+                    foreach (iterator_to_array($child->attributes) as $attribute) {
+                        $name = strtolower($attribute->name);
+                        $value = trim($attribute->value);
+
+                        if (! in_array($name, $allowedAttributes, true)) {
+                            $remove[] = $attribute->name;
+
+                            continue;
+                        }
+
+                        if (in_array($name, ['href', 'src'], true) && preg_match('/^\s*(javascript|vbscript|data)\s*:/i', $value)) {
+                            $remove[] = $attribute->name;
+                        }
+                    }
+
+                    foreach ($remove as $name) {
+                        $child->removeAttribute($name);
+                    }
+
+                    if ($tag === 'a') {
+                        $href = $child->getAttribute('href');
+                        if ($href === '' || preg_match('/^\s*(javascript|vbscript|data)\s*:/i', $href)) {
+                            $child->removeAttribute('href');
+                        }
+                        $child->setAttribute('rel', 'noopener noreferrer');
+                        if ($child->hasAttribute('target')) {
+                            $child->setAttribute('target', '_blank');
+                        }
+                    }
+                }
+
+                if ($child->parentNode) {
+                    $filter($child);
+                }
+            }
+        };
+
+        $filter($root);
+
+        $result = '';
+        foreach (iterator_to_array($root->childNodes) as $child) {
+            $result .= $document->saveHTML($child);
+        }
+
+        return trim($result);
     }
 }
