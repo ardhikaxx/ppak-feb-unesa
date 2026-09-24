@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <x-password-field name="password"
-                                          :label="'Password ' . ($account->exists ? '(kosongkan jika tidak diubah)' : '(min 8 karakter)')"
+                                          :label="'Password ' . ($account->exists ? '(kosongkan jika tidak diubah)' : '(min 8 karakter, huruf besar/kecil + angka)')"
                                           :labelClass="$account->exists ? '' : 'required'"
                                           :required="!$account->exists" />
                     </div>
