@@ -22,9 +22,6 @@ class PartnershipRequest extends FormRequest
             'valid_until' => ['nullable', 'date', 'after_or_equal:valid_from'],
             'status' => ['required', Rule::in(['draft', 'unpublished', 'active', 'archived'])],
             'logo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
-            'remove_logo' => ['nullable', 'boolean'],
-            'source_url' => ['nullable', 'url', 'max:500'],
-            'source_name' => ['nullable', 'string', 'max:255'],
         ];
     }
 }
