@@ -21,8 +21,6 @@ class ResearchRequest extends FormRequest
             'year' => ['nullable', 'integer', 'min:2000', 'max:2100'],
             'status' => ['required', Rule::in(['draft', 'unpublished', 'published'])],
             'description' => ['nullable', 'string'],
-            'source_url' => ['nullable', 'url', 'max:500'],
-            'source_name' => ['nullable', 'string', 'max:255'],
         ];
     }
 }
