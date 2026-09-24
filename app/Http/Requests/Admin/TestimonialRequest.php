@@ -23,9 +23,6 @@ class TestimonialRequest extends FormRequest
             'status' => ['required', Rule::in(['draft', 'unpublished', 'published'])],
             'sort_order' => ['nullable', 'integer', 'min:0', 'max:9999'],
             'avatar' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
-            'remove_avatar' => ['nullable', 'boolean'],
-            'source_url' => ['nullable', 'url', 'max:500'],
-            'source_name' => ['nullable', 'string', 'max:255'],
         ];
     }
 
