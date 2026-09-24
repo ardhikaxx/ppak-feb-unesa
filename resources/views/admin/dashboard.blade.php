@@ -106,12 +106,14 @@
     <div class="card mt-3">
         <div class="card-header"><i class="fa-solid fa-bolt me-1"></i>Akses Cepat</div>
         <div class="card-body d-flex flex-wrap gap-2">
-            <a href="{{ route('admin.program-profile.edit') }}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-building-columns me-1"></i>Profil Program</a>
+            @if(auth('admin')->user()->isSuperAdmin())
+                <a href="{{ route('admin.program-profile.edit') }}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-building-columns me-1"></i>Profil Program</a>
+                <a href="{{ route('admin.site-settings.index') }}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-gear me-1"></i>Pengaturan Website</a>
+            @endif
             <a href="{{ route('admin.lecturers.create') }}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-plus me-1"></i>Tambah Dosen</a>
             <a href="{{ route('admin.agendas.create') }}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-plus me-1"></i>Tambah Agenda</a>
             <a href="{{ route('admin.documents.create') }}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-upload me-1"></i>Upload Dokumen</a>
             <a href="{{ route('admin.galleries.create') }}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-image me-1"></i>Tambah Galeri</a>
-            <a href="{{ route('admin.site-settings.index') }}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-gear me-1"></i>Pengaturan Website</a>
         </div>
     </div>
 @endsection
