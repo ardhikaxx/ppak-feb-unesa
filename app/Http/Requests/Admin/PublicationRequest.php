@@ -21,11 +21,7 @@ class PublicationRequest extends FormRequest
             'publish_date' => ['nullable', 'date'],
             'year' => ['nullable', 'string', 'max:10'],
             'doi_or_url' => ['nullable', 'string', 'max:500'],
-            'sinta_id' => ['nullable', 'string', 'max:100'],
             'lecturer_name' => ['nullable', 'string', 'max:255'],
-            'sort_order' => ['nullable', 'integer', 'min:0', 'max:9999'],
-            'source_url' => ['nullable', 'url', 'max:500'],
-            'source_name' => ['nullable', 'string', 'max:255'],
         ];
     }
 }
