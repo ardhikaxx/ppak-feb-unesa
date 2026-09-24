@@ -24,8 +24,6 @@ class GalleryRequest extends FormRequest
             'image' => [$this->isMethod('post') ? 'required' : 'nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
             'event_date' => ['nullable', 'date'],
             'status' => ['required', Rule::in(['draft', 'published', 'archived'])],
-            'source_url' => ['nullable', 'url', 'max:500'],
-            'source_name' => ['nullable', 'string', 'max:255'],
         ];
     }
 }
