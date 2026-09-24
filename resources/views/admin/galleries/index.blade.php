@@ -28,6 +28,12 @@
                 <div class="col-md-2 d-grid">
                     <button class="btn btn-secondary btn-sm">Cari</button>
                 </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="trashed" value="1" id="trashed" @checked(request()->boolean('trashed')) onchange="this.form.submit()">
+                        <label class="form-check-label small" for="trashed">Tampilkan arsip (soft delete)</label>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
