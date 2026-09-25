@@ -23,7 +23,7 @@ class AdminSeeder extends Seeder
             ['email' => 'superadmin@gmail.com'],
             [
                 'name' => 'Super Admin PPAk',
-                'password' => 'password', // cast 'hashed' otomatis
+                'password' => 'ppakunesa', // cast 'hashed' otomatis
                 'role' => Admin::ROLE_SUPER_ADMIN,
                 'is_active' => true,
             ]
@@ -33,7 +33,7 @@ class AdminSeeder extends Seeder
             ['email' => 'operator@gmail.com'],
             [
                 'name' => 'Operator PPAk',
-                'password' => 'password', // cast 'hashed' otomatis
+                'password' => 'ppakunesa', // cast 'hashed' otomatis
                 'role' => Admin::ROLE_OPERATOR,
                 'is_active' => true,
             ]
