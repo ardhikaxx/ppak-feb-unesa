@@ -40,6 +40,8 @@ final class ContentCache
             CacheKeys::NAVIGATION,
             CacheKeys::FOOTER,
             CacheKeys::SITEMAP,
+            CacheKeys::SITEMAP_NEWS,
+            UploadVisibility::CACHE_KEY,
             SiteSetting::CACHE_KEY,
         ];
 

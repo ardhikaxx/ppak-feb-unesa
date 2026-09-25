@@ -218,7 +218,7 @@ class InformasiController extends Controller
      */
     public function sitemapNews(): Response
     {
-        $xml = Cache::remember('ppak:sitemap:news', config('ppak.cache.ttl.sitemap', 3600), function () {
+        $xml = Cache::remember(CacheKeys::SITEMAP_NEWS, config('ppak.cache.ttl.sitemap', 3600), function () {
             $urls = collect();
 
             \App\Models\News::published()

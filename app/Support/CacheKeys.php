@@ -35,6 +35,7 @@ final class CacheKeys
     public const NAVIGATION = 'ppak:navigation';
     public const FOOTER = 'ppak:footer';
     public const SITEMAP = 'ppak:sitemap';
+    public const SITEMAP_NEWS = 'ppak:sitemap:news';
 
     public static function beritaSlug(string $slug): string
     {
