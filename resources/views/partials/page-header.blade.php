@@ -57,5 +57,8 @@
         @if($lead)
             <p class="page-header-lead">{{ $lead }}</p>
         @endif
+
+        {{-- Konten tambahan dari pemanggil (hanya saat dipakai sebagai <x-page-header>) --}}
+        {{ $slot ?? '' }}
     </div>
 </header>
