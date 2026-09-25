@@ -8,6 +8,7 @@ use App\Http\Controllers\KemahasiswaanAlumniController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RisetPengabdianController;
+use App\Support\UploadVisibility;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/uploads/{path}', function ($path) {
     // Cegah path traversal.
     if (str_contains($path, '..')) {
+        abort(404);
+    }
+
+    // File milik record non-publik (draft/arsip/terhapus) disembunyikan
+    // dari tamu; admin CMS tetap boleh membuka untuk preview.
+    if (! UploadVisibility::isPublic($path)) {
         abort(404);
     }
 
