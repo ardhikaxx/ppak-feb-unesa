@@ -5,11 +5,25 @@ namespace App\Http\Controllers\Admin;
 use App\Models\HelpdeskInquiry;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
-class HelpdeskController extends BaseAdminController
+class HelpdeskController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Helpdesk: khusus super_admin (route admin.role:super_admin).
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('can:viewAny,'.HelpdeskInquiry::class, only: ['index']),
+            new Middleware('can:view,inquiry', only: ['show']),
+            new Middleware('can:update,inquiry', only: ['update']),
+        ];
+    }
+
     public function index(Request $request): View
     {
         $request->validate([

@@ -6,11 +6,20 @@ use App\Http\Requests\Admin\LecturerRequest;
 use App\Models\Lecturer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
-class LecturerController extends BaseAdminController
+class LecturerController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(Lecturer::class);
+    }
+
     public function index(Request $request): View
     {
         $request->validate([

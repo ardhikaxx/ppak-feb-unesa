@@ -5,10 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\AccreditationRequest;
 use App\Models\Accreditation;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\View\View;
 
-class AccreditationController extends BaseAdminController
+class AccreditationController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(Accreditation::class);
+    }
+
     public function index(): View
     {
         $accreditations = Accreditation::orderByDesc('effective_until')->paginate(10);

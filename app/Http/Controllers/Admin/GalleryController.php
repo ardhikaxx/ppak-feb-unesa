@@ -7,11 +7,20 @@ use App\Models\Category;
 use App\Models\Gallery;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
-class GalleryController extends BaseAdminController
+class GalleryController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(Gallery::class);
+    }
+
     public function index(Request $request): View
     {
         $request->validate([

@@ -6,10 +6,19 @@ use App\Http\Requests\Admin\AdmissionScheduleRequest;
 use App\Models\AdmissionSchedule;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\View\View;
 
-class AdmissionScheduleController extends BaseAdminController
+class AdmissionScheduleController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(AdmissionSchedule::class);
+    }
+
     public function index(Request $request): View
     {
         $request->validate([

@@ -5,10 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\LearningOutcomeRequest;
 use App\Models\LearningOutcome;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\View\View;
 
-class LearningOutcomeController extends BaseAdminController
+class LearningOutcomeController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(LearningOutcome::class);
+    }
+
     public function index(): View
     {
         $outcomes = LearningOutcome::orderBy('sort_order')->paginate(15);

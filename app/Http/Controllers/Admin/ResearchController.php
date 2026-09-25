@@ -6,10 +6,19 @@ use App\Http\Requests\Admin\ResearchRequest;
 use App\Models\Research;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\View\View;
 
-class ResearchController extends BaseAdminController
+class ResearchController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(Research::class);
+    }
+
     public function index(Request $request): View
     {
         $request->validate([

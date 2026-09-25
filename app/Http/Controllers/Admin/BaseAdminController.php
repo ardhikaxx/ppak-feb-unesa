@@ -9,7 +9,9 @@ use App\Support\ContentCache;
 use App\Support\Uploads;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 /**
  * Base controller CMS: helper audit log, invalidasi cache konten,
@@ -17,6 +19,38 @@ use Illuminate\Support\Facades\Auth;
  */
 abstract class BaseAdminController extends Controller
 {
+    /**
+     * Middleware otorisasi Laravel Policy untuk controller resource CRUD.
+     *
+     * Dipakai bersama HasMiddleware pada masing-masing controller
+     * (pengganti authorizeResource(), yang butuh Illuminate\Routing\Controller
+     * untuk mendaftarkan middleware instance — base controller aplikasi
+     * tidak mewarisinya sejak skeleton Laravel 11).
+     *
+     * Ability mengikuti resourceAbilityMap() Laravel:
+     * index=viewAny, show=view, create/store=create,
+     * edit/update=update, destroy=delete, restore=restore.
+     * Kolom `restore` bukan bagian resource route default sehingga
+     * didaftarkan eksplisit di sini, dan sengaja memakai class-string
+     * ($model, bukan $parameter): route restore menerima id/slug mentah
+     * (tanpa type-hint model), sehingga argumen route tidak akan pernah
+     * cocok dengan policy — sedangkan ability lain selalu punya
+     * implicit binding bertipe model pada signature controller.
+     */
+    protected static function resourceMiddleware(string $model, ?string $parameter = null): array
+    {
+        $parameter = $parameter ?: Str::snake(class_basename($model));
+
+        return [
+            new Middleware("can:viewAny,{$model}", only: ['index']),
+            new Middleware("can:view,{$parameter}", only: ['show']),
+            new Middleware("can:create,{$model}", only: ['create', 'store']),
+            new Middleware("can:update,{$parameter}", only: ['edit', 'update']),
+            new Middleware("can:delete,{$parameter}", only: ['destroy']),
+            new Middleware("can:restore,{$model}", only: ['restore']),
+        ];
+    }
+
     protected function admin(): ?Admin
     {
         return Auth::guard('admin')->user();

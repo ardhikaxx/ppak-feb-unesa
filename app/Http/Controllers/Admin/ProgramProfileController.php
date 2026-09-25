@@ -5,10 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\ProgramProfileRequest;
 use App\Models\ProgramProfile;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\View\View;
 
-class ProgramProfileController extends BaseAdminController
+class ProgramProfileController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Profil program adalah modul singleton (tanpa route binding):
+     * policy dipanggil dengan class-string, ability update.
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('can:update,'.ProgramProfile::class, only: ['edit', 'update']),
+        ];
+    }
+
     public function edit(): View
     {
         $profile = ProgramProfile::firstOrNew(['program_code' => '62902']);

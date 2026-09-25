@@ -10,11 +10,20 @@ use App\Models\Gallery;
 use App\Models\News;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
-class CategoryController extends BaseAdminController
+class CategoryController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(Category::class);
+    }
+
     public function index(Request $request): View
     {
         $request->validate(['type' => ['nullable', 'in:news,agenda,document,gallery']]);

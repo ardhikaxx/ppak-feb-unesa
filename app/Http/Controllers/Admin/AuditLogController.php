@@ -4,10 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\AuditLog;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\View\View;
 
-class AuditLogController extends BaseAdminController
+class AuditLogController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Log audit: modul baca-saja, hanya super_admin.
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('can:viewAny,'.AuditLog::class, only: ['index']),
+        ];
+    }
+
     public function index(Request $request): View
     {
         $request->validate([

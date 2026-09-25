@@ -6,10 +6,19 @@ use App\Http\Requests\Admin\FaqRequest;
 use App\Models\FAQ;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\View\View;
 
-class FaqController extends BaseAdminController
+class FaqController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(FAQ::class, 'faq');
+    }
+
     public function index(Request $request): View
     {
         $request->validate([

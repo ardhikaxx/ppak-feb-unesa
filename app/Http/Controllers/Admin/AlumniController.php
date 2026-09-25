@@ -6,10 +6,19 @@ use App\Http\Requests\Admin\AlumniRequest;
 use App\Models\AlumniRecord;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\View\View;
 
-class AlumniController extends BaseAdminController
+class AlumniController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(AlumniRecord::class, 'alumnus');
+    }
+
     public function index(Request $request): View
     {
         $request->validate([

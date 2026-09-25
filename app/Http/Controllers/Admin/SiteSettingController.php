@@ -5,10 +5,24 @@ namespace App\Http\Controllers\Admin;
 use App\Models\SiteSetting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\View\View;
 
-class SiteSettingController extends BaseAdminController
+class SiteSettingController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Pengaturan website: modul singleton per-key, tanpa route binding,
+     * sehingga policy dipanggil dengan class-string.
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('can:viewAny,'.SiteSetting::class, only: ['index']),
+            new Middleware('can:update,'.SiteSetting::class, only: ['update']),
+        ];
+    }
+
     public function index(): View
     {
         // og_image disembunyikan: OG institusional statis, bukan kelolaan admin.

@@ -6,10 +6,19 @@ use App\Http\Requests\Admin\AdminAccountRequest;
 use App\Models\Admin;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\View\View;
 
-class AdminAccountController extends BaseAdminController
+class AdminAccountController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(Admin::class);
+    }
+
     public function index(Request $request): View
     {
         $request->validate(['q' => ['nullable', 'string', 'max:100']]);

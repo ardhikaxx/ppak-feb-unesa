@@ -8,12 +8,21 @@ use App\Models\News;
 use App\Support\CacheKeys;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
-class NewsController extends BaseAdminController
+class NewsController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(News::class);
+    }
+
     public function index(Request $request): View
     {
         $request->validate([

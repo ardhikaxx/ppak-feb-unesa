@@ -8,11 +8,20 @@ use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
-class AgendaController extends BaseAdminController
+class AgendaController extends BaseAdminController implements HasMiddleware
 {
+    /**
+     * Otorisasi resource (Laravel Policy) per aksi CMS.
+     */
+    public static function middleware(): array
+    {
+        return self::resourceMiddleware(Agenda::class);
+    }
+
     public function index(Request $request): View
     {
         $request->validate([
