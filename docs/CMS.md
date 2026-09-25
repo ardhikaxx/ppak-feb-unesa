@@ -29,7 +29,7 @@ sehingga sumber data bisa diganti tanpa mengubah controller maupun Blade:
 | Implementasi | Sumber | Status |
 |---|---|---|
 | `App\Repositories\EloquentContentRepository` | Database (Eloquent) | **Aktif** (di-binding di `AppServiceProvider`) |
-| `App\Repositories\ArrayContentRepository` | `App\Services\PpakData` (statis) | Arsip/referensi, tidak di-binding |
+| `App\Services\PpakData` | Array statis | Fallback & data acuan pengujian (tanpa implementasi repository terpisah) |
 
 Bentuk array yang dikembalikan repository database **identik** dengan sumber statis
 (terverifikasi otomatis, lihat [10. Pengujian](#10-pengujian)). Controller CMS berada di

@@ -59,8 +59,8 @@ CMS khusus admin dengan autentikasi terproteksi untuk mengelola seluruh konten w
 - **Backend**: PHP ^8.3, Laravel 13, Eloquent ORM, Blade.
 - **Frontend publik & CMS**: Bootstrap 5.3.3 CDN, Font Awesome 6.6.0 CDN (tanpa framework JS tambahan).
 - **Database**: MySQL / MariaDB (XAMPP & Server Produksi).
-- **Testing**: Pest 5 + PHPUnit (39 test, 310 assertion).
-- **Lainnya**: `dompdf/dompdf` (cetak PDF), Vite + Tailwind CSS (build aset).
+- **Testing**: Pest 5 + PHPUnit (103 test, 923 assertion).
+- **Lainnya**: `dompdf/dompdf` (cetak PDF), aset statis tanpa proses build (CSS/JS manual + CDN).
 
 ## Sumber Data Resmi
 

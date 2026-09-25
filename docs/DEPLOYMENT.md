@@ -21,7 +21,6 @@ hosting/cPanel, termasuk lingkungan XAMPP). Target pembaca: administrator server
 | Composer | 2.x |
 | Database | MySQL 8+ / MariaDB 10.4+ (satu-satunya database yang didukung; SQLite sudah dihapus dari proyek) |
 | Web server | Nginx / Apache (mod_rewrite) |
-| Node.js + NPM | Hanya bila perlu build ulang aset (opsional — hasil build sudah ada di `public/build`) |
 
 ## 2. Deployment ke VPS / Server Penuh
 
@@ -159,7 +158,7 @@ php artisan config:cache && php artisan route:cache && php artisan view:cache
 |---|---|
 | Halaman putih / 500 | `APP_DEBUG=true` sementara untuk melihat error; cek `storage/logs/laravel.log`; pastikan permission `storage/` & `bootstrap/cache/` writable |
 | Gambar upload 404 | `public/storage` belum ter-link → jalankan `php artisan storage:link` |
-| CSS/JS tidak termuat | Jalankan `npm install && npm run build`, atau pastikan `public/build` ter-upload |
+| CSS/JS tidak termuat | Pastikan `public/css/app.css` dan `public/js/app.js` ter-upload (aset statis, tanpa build Node) |
 | Session sering logout | Pastikan tabel `sessions` ada (`migrate`) dan `SESSION_DRIVER` konsisten |
 | Login admin "terlalu banyak percobaan" | Tunggu 1 menit (throttle brute force); pastikan jam server benar |
 | Seeder error duplikat | Seeder idempotent — aman dijalankan ulang; pastikan migrasi sudah jalan dulu |
