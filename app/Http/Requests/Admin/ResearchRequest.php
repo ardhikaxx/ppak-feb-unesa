@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Research;
 use Illuminate\Validation\Rule;
 
-class ResearchRequest extends FormRequest
+class ResearchRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return Research::class;
     }
 
     public function rules(): array

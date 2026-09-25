@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Gallery;
 use Illuminate\Validation\Rule;
 
-class GalleryRequest extends FormRequest
+class GalleryRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return Gallery::class;
     }
 
     public function rules(): array

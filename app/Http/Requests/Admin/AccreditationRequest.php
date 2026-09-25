@@ -2,13 +2,13 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Accreditation;
 
-class AccreditationRequest extends FormRequest
+class AccreditationRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return Accreditation::class;
     }
 
     public function rules(): array

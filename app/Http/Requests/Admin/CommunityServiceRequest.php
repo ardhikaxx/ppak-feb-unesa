@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\CommunityService;
 use Illuminate\Validation\Rule;
 
-class CommunityServiceRequest extends FormRequest
+class CommunityServiceRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return CommunityService::class;
     }
 
     public function rules(): array

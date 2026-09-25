@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Document;
 use Illuminate\Validation\Rule;
 
-class DocumentRequest extends FormRequest
+class DocumentRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return Document::class;
     }
 
     public function rules(): array

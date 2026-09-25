@@ -2,15 +2,15 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Admin;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
-class AdminAccountRequest extends FormRequest
+class AdminAccountRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return Admin::class;
     }
 
     public function rules(): array

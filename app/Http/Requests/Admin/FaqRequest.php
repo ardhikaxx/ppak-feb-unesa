@@ -2,13 +2,13 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\FAQ;
 
-class FaqRequest extends FormRequest
+class FaqRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return FAQ::class;
     }
 
     public function rules(): array

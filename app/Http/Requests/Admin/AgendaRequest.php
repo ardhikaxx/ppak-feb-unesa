@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Agenda;
 use Illuminate\Validation\Rule;
 
-class AgendaRequest extends FormRequest
+class AgendaRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return Agenda::class;
     }
 
     public function rules(): array

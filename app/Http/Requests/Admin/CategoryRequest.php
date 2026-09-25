@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Category;
 use Illuminate\Validation\Rule;
 
-class CategoryRequest extends FormRequest
+class CategoryRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return Category::class;
     }
 
     public function rules(): array

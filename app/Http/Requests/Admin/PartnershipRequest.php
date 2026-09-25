@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Partnership;
 use Illuminate\Validation\Rule;
 
-class PartnershipRequest extends FormRequest
+class PartnershipRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return Partnership::class;
     }
 
     public function rules(): array

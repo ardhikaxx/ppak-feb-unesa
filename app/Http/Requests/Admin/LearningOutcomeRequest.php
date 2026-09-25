@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\LearningOutcome;
 use Illuminate\Validation\Rule;
 
-class LearningOutcomeRequest extends FormRequest
+class LearningOutcomeRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return LearningOutcome::class;
     }
 
     public function rules(): array

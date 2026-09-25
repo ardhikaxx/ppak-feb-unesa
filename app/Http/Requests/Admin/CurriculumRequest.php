@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\AcademicCurriculum;
 use Illuminate\Validation\Rule;
 
-class CurriculumRequest extends FormRequest
+class CurriculumRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return AcademicCurriculum::class;
     }
 
     public function rules(): array

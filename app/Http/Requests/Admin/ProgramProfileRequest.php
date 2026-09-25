@@ -2,13 +2,13 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\ProgramProfile;
 
-class ProgramProfileRequest extends FormRequest
+class ProgramProfileRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return ProgramProfile::class;
     }
 
     public function rules(): array

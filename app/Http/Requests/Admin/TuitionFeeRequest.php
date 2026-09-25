@@ -2,13 +2,13 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\TuitionFee;
 
-class TuitionFeeRequest extends FormRequest
+class TuitionFeeRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return TuitionFee::class;
     }
 
     public function rules(): array

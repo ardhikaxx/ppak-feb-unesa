@@ -2,13 +2,13 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\AcademicCalendar;
 
-class AcademicCalendarRequest extends FormRequest
+class AcademicCalendarRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return AcademicCalendar::class;
     }
 
     public function rules(): array

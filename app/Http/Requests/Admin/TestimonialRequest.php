@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Testimonial;
 use Illuminate\Validation\Rule;
 
-class TestimonialRequest extends FormRequest
+class TestimonialRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return Testimonial::class;
     }
 
     public function rules(): array

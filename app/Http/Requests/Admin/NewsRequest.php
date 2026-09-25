@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\News;
 use Illuminate\Validation\Rule;
 
-class NewsRequest extends FormRequest
+class NewsRequest extends AdminRequest
 {
-    public function authorize(): bool
+    public function resourceModel(): string
     {
-        return auth('admin')->check();
+        return News::class;
     }
 
     public function rules(): array
