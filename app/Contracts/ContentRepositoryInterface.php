@@ -6,8 +6,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Contract for content data access.
- * Current implementation: ArrayContentRepository (static PpakData).
- * Future implementation: EloquentContentRepository (database) without changing consumers.
+ * Current implementation: EloquentContentRepository (database), with the
+ * static PpakData array as fallback for unpublished/missing rows.
  * Keeps presentation layer decoupled from data source.
  */
 interface ContentRepositoryInterface
