@@ -8,6 +8,7 @@ use App\Models\Lecturer;
 use App\Models\News;
 use App\Models\Partnership;
 use App\Models\Testimonial;
+use App\Support\Format;
 use App\Support\Uploads;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class MediaController extends BaseAdminController
                     'name' => basename($relative),
                     'dir' => dirname($relative),
                     'size' => $size,
-                    'size_human' => $this->humanSize($size),
+                    'size_human' => Format::bytes($size),
                     'mime' => $mime,
                     'is_image' => str_starts_with($mime, 'image/'),
                     'url' => $publicPath,
@@ -112,17 +113,5 @@ class MediaController extends BaseAdminController
         }
 
         return $usage;
-    }
-
-    private function humanSize(int $bytes): string
-    {
-        if ($bytes >= 1048576) {
-            return number_format($bytes / 1048576, 2, ',', '.').' MB';
-        }
-        if ($bytes >= 1024) {
-            return number_format($bytes / 1024, 1, ',', '.').' KB';
-        }
-
-        return $bytes.' B';
     }
 }
