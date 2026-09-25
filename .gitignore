@@ -14,8 +14,7 @@
 /.zed
 /auth.json
 /node_modules
-# Aset build DIPUSH agar deploy shared hosting tanpa Node tetap jalan.
-/public/fonts-manifest.dev.json
+# Aset frontend berupa file statis yang dikomit langsung (tanpa build Node).
 /public/hot
 /public/storage
 /storage/*.key
