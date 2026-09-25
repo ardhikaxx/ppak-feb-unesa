@@ -24,23 +24,31 @@ use App\Models\Testimonial;
 use App\Models\TuitionFee;
 use App\Services\PpakData;
 use App\Support\CacheKeys;
+use App\Support\Format;
 use App\Support\Tanggal;
 use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Eloquent-backed repository - sumber data frontend dari database.
  *
  * Kontrak: mengembalikan bentuk array yang IDENTIK dengan
- * ArrayContentRepository/PpakData sehingga TIDAK ADA perubahan Blade.
+ * data statis PpakData sehingga TIDAK ADA perubahan Blade.
  * Frontend hanya berganti sumber data, bukan tampilan.
  */
 class EloquentContentRepository implements ContentRepositoryInterface
 {
-    private int $ttlStatic = 3600;
+    private int $ttlStatic;
 
-    private int $ttlDynamic = 600;
+    private int $ttlDynamic;
+
+    public function __construct()
+    {
+        $this->ttlStatic = (int) config('ppak.cache.ttl.static', 3600);
+        $this->ttlDynamic = (int) config('ppak.cache.ttl.dynamic', 600);
+    }
 
     // ------------------------------------------------------------------
     // Helpers format tanggal Indonesia (tanpa dependensi locale server)
@@ -86,19 +94,6 @@ class EloquentContentRepository implements ContentRepositoryInterface
 
         return $start->format('d').' '.self::BULAN[$start->month].' '.$start->year
             .' - '.$end->format('d').' '.self::BULAN[$end->month].' '.$end->year;
-    }
-
-    /**
-     * Format ukuran gaya dokumen resmi existing: KB desimal (1 angka),
-     * MB desimal (2 angka), dipotong (truncate) seperti data awal.
-     */
-    private function humanSize(int $bytes): string
-    {
-        if ($bytes >= 1000000) {
-            return number_format(floor($bytes / 1000000 * 100) / 100, 2, '.', '').' MB';
-        }
-
-        return number_format(floor($bytes / 1000 * 10) / 10, 1, '.', '').' KB';
     }
 
     private function project(array $data, array $onlyColumns): array
@@ -313,6 +308,7 @@ class EloquentContentRepository implements ContentRepositoryInterface
         $data = Cache::remember(CacheKeys::BERITA_ALL, $this->ttlDynamic, function () {
             return News::query()
                 ->with(['category:id,name,slug', 'author:id,name'])
+                ->select($this->newsListColumns())
                 ->published()
                 ->orderByDesc('published_at')
                 ->get()
@@ -323,12 +319,25 @@ class EloquentContentRepository implements ContentRepositoryInterface
         return $this->project($data, $onlyColumns);
     }
 
+    /**
+     * Kolom berita untuk daftar: SEMUA KECUALI `content` (longText).
+     * Body artikel hanya dibutuhkan halaman detail (findBeritaBySlug),
+     * sehingga listing tidak lagi meng-query + meng-cache seluruh body.
+     *
+     * @return list<string>
+     */
+    private function newsListColumns(): array
+    {
+        return array_values(array_diff(Schema::getColumnListing('news'), ['content']));
+    }
+
     public function getBeritaPaginated(int $perPage = 6, ?string $search = null, ?string $category = null): LengthAwarePaginator
     {
         // Tanpa cache: query langsung ke DB berindeks (slug/status/published_at),
         // sehingga perubahan Admin selalu langsung terlihat.
         $query = News::query()
             ->with(['category:id,name,slug', 'author:id,name'])
+            ->select($this->newsListColumns())
             ->published()
             ->orderByDesc('published_at');
 
@@ -833,8 +842,8 @@ class EloquentContentRepository implements ContentRepositoryInterface
                 'nomor_sk' => $d->source_name ?? '-',
                 'tanggal' => $d->display_date ?? (string) ($d->year ?? '-'),
                 'tahun' => (string) ($d->year ?? '-'),
-                'ukuran' => $this->humanSize((int) $d->size),
-                'size' => $this->humanSize((int) $d->size),
+                'ukuran' => Format::bytes((int) $d->size),
+                'size' => Format::bytes((int) $d->size),
                 'format' => $d->format,
                 'instansi' => $d->source_name ?? 'PPAk FEB UNESA',
                 'url' => $d->source_url ?? '#',
@@ -865,8 +874,8 @@ class EloquentContentRepository implements ContentRepositoryInterface
             'nomor_sk' => $d->source_name ?? '-',
             'tanggal' => $d->display_date ?? (string) ($d->year ?? '-'),
             'tahun' => (string) ($d->year ?? '-'),
-            'ukuran' => $this->humanSize((int) $d->size),
-            'size' => $this->humanSize((int) $d->size),
+            'ukuran' => Format::bytes((int) $d->size),
+            'size' => Format::bytes((int) $d->size),
             'format' => $d->format,
             'instansi' => $d->source_name ?? 'PPAk FEB UNESA',
             'url' => $d->source_url ?? '#',

@@ -37,6 +37,7 @@ return [
             'static' => 3600,
             'dynamic' => 600, // 10 min for news/agenda
             'sitemap' => 3600,
+            'uploads' => 600, // daftar file upload non-publik
         ],
         'prefix' => env('CACHE_PREFIX', 'ppak'),
     ],
@@ -115,5 +116,6 @@ return [
     'rate_limit' => [
         'helpdesk' => '10,1',
         'download' => '60,1',
+        'admin_login' => '5,1',
     ],
 ];
