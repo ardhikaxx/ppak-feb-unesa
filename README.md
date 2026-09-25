@@ -42,7 +42,7 @@ tanpa menyentuh source code dan tanpa mengubah tampilan website.
 
 ## Fitur CMS Admin
 
-Akses di `/admin/login` → `/admin/dashboard`.
+CMS khusus admin dengan autentikasi terproteksi untuk mengelola seluruh konten website.
 
 - **Dashboard** dengan statistik konten real dari database, konten terakhir diubah, dan audit log terakhir.
 - **Profil PPAk**: profil program (satu sumber kebenaran), akreditasi, dosen/pengajar (foto, urutan tampil, aktif/nonaktif, arsip + restore).

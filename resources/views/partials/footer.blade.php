@@ -104,8 +104,8 @@
                     <span class="badge-ppak" style="font-size: 0.725rem; text-transform: none; background: rgba(255,255,255,0.08); color: #ffffff; border: 1px solid rgba(255,255,255,0.15);">
                         <i class="fa-solid fa-award text-warning"></i> Akreditasi {{ $ppakInstitution['akreditasi_status'] ?? 'Baik' }} [{{ $ppakInstitution['akreditasi_lembaga'] ?? 'LAMEMBA' }}]
                     </span>
-                    <a href="{{ route('admin.login') }}" class="text-secondary hover-white text-decoration-none d-inline-flex align-items-center gap-2 px-3 py-2 fw-semibold" style="font-size:.95rem;" aria-label="Login Admin CMS">
-                        <i class="fa-solid fa-lock"></i>Login Admin
+                    <a href="{{ route('admin.login') }}" class="text-secondary hover-white text-decoration-none d-inline-flex align-items-center gap-2 px-3 py-2 fw-semibold" style="font-size:.95rem;" aria-label="Admin">
+                        <i class="fa-solid fa-lock"></i>Admin
                     </a>
 
                 </div>
