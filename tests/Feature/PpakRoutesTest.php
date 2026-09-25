@@ -307,7 +307,7 @@ test('form helpdesk menyimpan pesan ke database dan tampil di panel admin', func
 
     // Terlihat di panel admin CMS
     $this->seed(AdminSeeder::class);
-    $this->post(route('admin.login.store'), ['email' => 'superadmin@gmail.com', 'password' => 'password']);
+    $this->post(route('admin.login.store'), ['email' => 'superadmin@gmail.com', 'password' => 'ppakunesa']);
     $this->get(route('admin.helpdesk.index'))->assertStatus(200)->assertSee('Uji simpan helpdesk');
 });
 

@@ -4,14 +4,15 @@ use App\Contracts\ContentRepositoryInterface;
 use App\Models\AcademicCurriculum;
 use App\Models\Accreditation;
 use App\Models\Agenda;
+use App\Models\Document;
 use App\Models\Lecturer;
 use App\Models\News;
 use App\Models\PageContent;
 use App\Models\SiteSetting;
 use App\Models\TuitionFee;
+use App\Support\Uploads;
 use Database\Seeders\AdminSeeder;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
 beforeEach(function () {
     $this->seed(AdminSeeder::class);
@@ -19,7 +20,7 @@ beforeEach(function () {
 
 function adminCredentials(): array
 {
-    return ['email' => env('ADMIN_EMAIL', 'superadmin@gmail.com'), 'password' => env('ADMIN_PASSWORD', 'password')];
+    return ['email' => env('ADMIN_EMAIL', 'superadmin@gmail.com'), 'password' => env('ADMIN_PASSWORD', 'ppakunesa')];
 }
 
 function loginAdmin($testcase)
@@ -217,7 +218,6 @@ test('agenda dan FAQ baru via CMS tampil di halaman publik', function () {
 
 test('dokumen baru via CMS tampil di halaman unduhan', function () {
     loginAdmin($this);
-    Storage::fake('public');
 
     $this->post(route('admin.documents.store'), [
         'title' => 'Dokumen Uji Propagasi',
@@ -228,6 +228,8 @@ test('dokumen baru via CMS tampil di halaman unduhan', function () {
     ])->assertRedirect(route('admin.documents.index'));
 
     $this->get(route('kontak.unduhan'))->assertStatus(200)->assertSee('Dokumen Uji Propagasi');
+
+    Uploads::delete(Document::query()->where('slug', 'dokumen-uji-propagasi')->value('path'));
 });
 
 test('pengaturan website via CMS tampil di footer publik', function () {
